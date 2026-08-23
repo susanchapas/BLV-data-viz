@@ -2,7 +2,7 @@ import { Link, NavLink, useSearchParams } from 'react-router-dom'
 import { useMotion } from '@/lib/motion'
 
 const links = [
-  { to: '/', label: 'Generator' },
+  { to: '/generator', label: 'Generator' },
   { to: '/evidence', label: 'Evidence' },
   { to: '/verification', label: 'Verification' },
   { to: '/signals', label: 'Signals' },
@@ -74,7 +74,7 @@ export function Nav() {
               <NavLink
                 key={to}
                 to={{ pathname: to, search: qs ? `?${qs}` : '' }}
-                end={to === '/'}
+                end={to === '/generator'}
                 className={({ isActive }) =>
                   `px-4 py-3 text-[15px] rounded-button min-h-12 flex items-center border transition-colors ${
                     isActive

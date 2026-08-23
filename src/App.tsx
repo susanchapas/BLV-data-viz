@@ -6,6 +6,7 @@ import { MotionProvider } from '@/lib/motion'
 import { AnnounceProvider } from '@/lib/announce'
 import { Nav } from '@/components/Nav'
 import { FilterBar } from '@/components/FilterBar'
+import { Dashboard } from '@/views/Dashboard'
 
 const EvidenceExplorer = lazy(() => import('@/views/EvidenceExplorer').then(m => ({ default: m.EvidenceExplorer })))
 const VerificationAsymmetry = lazy(() => import('@/views/VerificationAsymmetry').then(m => ({ default: m.VerificationAsymmetry })))
@@ -15,35 +16,42 @@ const ParticipantProfiles = lazy(() => import('@/views/ParticipantProfiles').the
 const ChartGallery = lazy(() => import('@/views/ChartGallery').then(m => ({ default: m.ChartGallery })))
 const DataExplorer = lazy(() => import('@/views/DataExplorer').then(m => ({ default: m.DataExplorer })))
 
+function Subpage({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen bg-surface text-text font-sans">
+      <Nav />
+      <FilterBar />
+      <main
+        id="main"
+        className="max-w-[1240px] mx-auto"
+        style={{ padding: 'clamp(24px, 4vw, 48px) clamp(20px, 4vw, 48px)' }}
+        tabIndex={-1}
+      >
+        <Suspense fallback={<div className="py-12 text-center text-text-muted">Loading…</div>}>
+          {children}
+        </Suspense>
+      </main>
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <MotionProvider>
       <AnnounceProvider>
         <FilterProvider>
           <SelectionProvider>
-          <div className="min-h-screen bg-surface text-text font-sans">
-            <Nav />
-            <FilterBar />
-            <main
-              id="main"
-              className="max-w-[1240px] mx-auto"
-              style={{ padding: 'clamp(24px, 4vw, 48px) clamp(20px, 4vw, 48px)' }}
-              tabIndex={-1}
-            >
-              <Suspense fallback={<div className="py-12 text-center text-text-muted">Loading…</div>}>
-                <Routes>
-                  <Route path="/" element={<DataExplorer />} />
-                  <Route path="/evidence" element={<EvidenceExplorer />} />
-                  <Route path="/verification" element={<VerificationAsymmetry />} />
-                  <Route path="/signals" element={<SignalLedger />} />
-                  <Route path="/themes" element={<ThemeBrowser />} />
-                  <Route path="/participants" element={<ParticipantProfiles />} />
-                  <Route path="/participants/:pid" element={<ParticipantProfiles />} />
-                  <Route path="/charts" element={<ChartGallery />} />
-                </Routes>
-              </Suspense>
-            </main>
-          </div>
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/generator" element={<Subpage><DataExplorer /></Subpage>} />
+              <Route path="/evidence" element={<Subpage><EvidenceExplorer /></Subpage>} />
+              <Route path="/verification" element={<Subpage><VerificationAsymmetry /></Subpage>} />
+              <Route path="/signals" element={<Subpage><SignalLedger /></Subpage>} />
+              <Route path="/themes" element={<Subpage><ThemeBrowser /></Subpage>} />
+              <Route path="/participants" element={<Subpage><ParticipantProfiles /></Subpage>} />
+              <Route path="/participants/:pid" element={<Subpage><ParticipantProfiles /></Subpage>} />
+              <Route path="/charts" element={<Subpage><ChartGallery /></Subpage>} />
+            </Routes>
           </SelectionProvider>
         </FilterProvider>
       </AnnounceProvider>
