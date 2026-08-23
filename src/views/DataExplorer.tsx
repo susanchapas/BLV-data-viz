@@ -1,21 +1,15 @@
 import { useState, useMemo, useCallback } from 'react'
 import { useContainerWidth } from '@/lib/useContainerWidth'
-import { evidence, participants, painPoints, feedbackSignals, verificationModes } from '@/lib/data'
+import { participants, themes, feedbackSignals, verificationModes, codebook, subthemes, comparison } from '@/lib/data'
 import { BarChart, PieChart, StackedBarChart, ClusteredBarChart, TreeMap } from '@/charts'
 import type { BarDatum, StackedDatum } from '@/charts'
 
 type ChartKind = 'bar' | 'stacked' | 'clustered' | 'pie' | 'donut' | 'treemap'
-type MetricKey = 'quotes' | 'participants' | 'painPoints' | 'codes' | 'signals' | 'failureModes'
-type VariableKey =
-  | 'theme' | 'subTheme' | 'code'
-  | 'signalStatus' | 'detectability'
-  | 'ageGroup' | 'gender' | 'visionLevel' | 'education' | 'employment' | 'deviceTenure' | 'mobility'
-type DataSource = 'evidence' | 'painPoints' | 'signals' | 'verification'
-type DemoKey = Extract<VariableKey, 'ageGroup' | 'gender' | 'visionLevel' | 'education' | 'employment' | 'deviceTenure' | 'mobility'>
+type Metric = 'participants' | 'total'
+type DemoKey = 'ageGroup' | 'gender' | 'visionLevel' | 'education' | 'employment' | 'deviceTenure' | 'mobility'
 
 const DEMO_KEYS: DemoKey[] = ['ageGroup', 'gender', 'visionLevel', 'education', 'employment', 'deviceTenure', 'mobility']
-
-// ── Demographic simplification ──────────────────────
+const PID_KEYS = participants.map(p => p.id)
 
 type DemoRecord = Record<DemoKey, string>
 
@@ -89,187 +83,200 @@ function buildDemographics(p: (typeof participants)[0]): DemoRecord {
 }
 
 const demoMap = new Map(participants.map(p => [p.id, buildDemographics(p)]))
-const emptyDemo: DemoRecord = { ageGroup: 'Unknown', gender: 'Unknown', visionLevel: 'Unknown', education: 'Unknown', employment: 'Unknown', deviceTenure: 'Unknown', mobility: 'Unknown' }
-function demoFor(pid: string): DemoRecord { return demoMap.get(pid) ?? emptyDemo }
 
-// ── Pre-joined datasets ─────────────────────────────
+const DEMO_LABELS: Record<DemoKey, string> = {
+  ageGroup: 'Age group', gender: 'Gender', visionLevel: 'Vision level',
+  education: 'Education', employment: 'Employment', deviceTenure: 'Device tenure', mobility: 'Mobility aid',
+}
 
-type Row = Record<string, string>
-const PID_RE = /^P\d{3}$/
+const DEMO_ORDER: Record<DemoKey, string[]> = {
+  ageGroup: ['18–34', '35–54', '55+'],
+  gender: ['Female', 'Male'],
+  visionLevel: ['Totally blind', 'Low vision', 'Light perception'],
+  education: ['High school', 'Some college', "Bachelor's", 'Graduate'],
+  employment: ['Employed', 'Retired', 'Not employed'],
+  deviceTenure: ['< 6 months', '6–12 months', '1–2 years', '2+ years'],
+  mobility: ['Cane', 'Guide dog', 'Wheelchair', 'Minimal'],
+}
 
-const evidenceJoined: Row[] = evidence.map(e => ({
-  pid: e.Who,
-  theme: e['Theme name'],
-  subTheme: e['Sub-theme'],
-  code: e.Code,
-  ...demoFor(e.Who),
-}))
-
-const painPointJoined: Row[] = painPoints.flatMap(pp => {
-  const pids = (pp.Who ?? '').split(/,\s*/).filter(s => PID_RE.test(s.trim()))
-  if (pids.length === 0) {
-    return [{ pid: '', theme: pp.Theme ?? '', subTheme: pp['Sub-theme'] ?? '', ...emptyDemo }]
+function demoUniqueValues(): Record<DemoKey, string[]> {
+  const result = {} as Record<DemoKey, string[]>
+  for (const key of DEMO_KEYS) {
+    const vals = new Set<string>()
+    for (const [, demo] of demoMap) vals.add(demo[key])
+    result[key] = DEMO_ORDER[key] ?? [...vals].sort()
   }
-  return pids.map(pid => ({
-    pid: pid.trim(),
-    theme: pp.Theme ?? '',
-    subTheme: pp['Sub-theme'] ?? '',
-    ...demoFor(pid.trim()),
-  }))
-})
+  return result
+}
 
-const signalJoined: Row[] = feedbackSignals.flatMap(sig =>
-  participants
-    .filter(p => (Number(sig[p.id]) || 0) > 0)
-    .map(p => ({
-      pid: p.id,
-      signalStatus: sig['Signal status'],
-      ...demoFor(p.id),
-    })),
-)
+const DEMO_VALUES = demoUniqueValues()
 
-const verificationJoined: Row[] = verificationModes.flatMap(vm =>
-  participants
-    .filter(p => (Number(vm[p.id]) || 0) > 0)
-    .map(p => ({
-      pid: p.id,
-      detectability: vm['Detectable without sight'],
-      ...demoFor(p.id),
-    })),
-)
-
-// ── Variable & metric definitions ───────────────────
-
-interface VariableDef {
-  key: VariableKey
+interface DataItem {
+  key: string
   label: string
-  group: 'research' | 'demographic'
-  description: string
-  measurement: string
-  orderedValues?: string[]
+  values: Map<string, number>
+  rawValues?: Map<string, string>
 }
 
-const VARIABLES: VariableDef[] = [
-  { key: 'theme', label: 'Theme', group: 'research', description: 'One of 22 emergent themes from thematic analysis.', measurement: 'Inductive coding across 17 semi-structured interviews' },
-  { key: 'subTheme', label: 'Sub-theme', group: 'research', description: 'Fine-grained divisions within themes (361 total).', measurement: 'Second-pass coding within established themes' },
-  { key: 'code', label: 'Code', group: 'research', description: 'Labels applied to transcript segments (361 unique).', measurement: 'Inductive open coding of interview quotes' },
-  { key: 'signalStatus', label: 'Signal status', group: 'research', description: 'Whether the device announces, stays silent about, or leaves the consequence of a feedback signal.', measurement: 'Classified from 24 identified feedback signals', orderedValues: ['Announced', 'Silent', 'Consequence'] },
-  { key: 'detectability', label: 'Detectability', group: 'research', description: 'Whether a verification failure can be detected without sight.', measurement: 'Classified from 28 identified failure modes', orderedValues: ['Self-evident', 'Partly detectable', 'Undetectable'] },
-  { key: 'ageGroup', label: 'Age group', group: 'demographic', description: 'Participant age, grouped into three bands.', measurement: 'Self-reported during interview', orderedValues: ['18–34', '35–54', '55+'] },
-  { key: 'gender', label: 'Gender', group: 'demographic', description: 'Participant gender identity.', measurement: 'Self-reported during interview', orderedValues: ['Female', 'Male'] },
-  { key: 'visionLevel', label: 'Vision level', group: 'demographic', description: 'Simplified vision status.', measurement: 'Self-reported, classified by research team', orderedValues: ['Totally blind', 'Low vision', 'Light perception'] },
-  { key: 'education', label: 'Education', group: 'demographic', description: 'Highest level of education completed.', measurement: 'Self-reported during interview', orderedValues: ['High school', 'Some college', "Bachelor's", 'Graduate'] },
-  { key: 'employment', label: 'Employment', group: 'demographic', description: 'Current employment status.', measurement: 'Self-reported during interview', orderedValues: ['Employed', 'Retired', 'Not employed'] },
-  { key: 'deviceTenure', label: 'Device tenure', group: 'demographic', description: 'How long the participant has owned their smart glasses.', measurement: 'Self-reported during interview', orderedValues: ['< 6 months', '6–12 months', '1–2 years', '2+ years'] },
-  { key: 'mobility', label: 'Mobility aid', group: 'demographic', description: 'Primary mobility tool used.', measurement: 'Self-reported during interview', orderedValues: ['Cane', 'Guide dog', 'Wheelchair', 'Minimal'] },
-]
-
-const VAR_MAP = new Map(VARIABLES.map(v => [v.key, v]))
-
-interface MetricDef {
-  key: MetricKey
+interface DataGroup {
+  key: string
   label: string
-  question: string
-  description: string
-  source: DataSource
+  source: 'comparison' | 'research'
+  items: DataItem[]
 }
 
-const METRICS: MetricDef[] = [
-  { key: 'quotes', label: 'Evidence quotes', question: 'How many coded interview quotes?', description: 'Count of coded interview segments (2,146 total).', source: 'evidence' },
-  { key: 'participants', label: 'Unique participants', question: 'How many participants mentioned this?', description: 'Count of distinct participants (out of 17).', source: 'evidence' },
-  { key: 'codes', label: 'Unique codes', question: 'How many distinct codes appear?', description: 'Count of unique codebook entries.', source: 'evidence' },
-  { key: 'painPoints', label: 'Pain points', question: 'How many pain points?', description: 'Count of identified pain points (110 total).', source: 'painPoints' },
-  { key: 'signals', label: 'Feedback signals', question: 'How many feedback signals?', description: 'Count of identified feedback signals (24 total).', source: 'signals' },
-  { key: 'failureModes', label: 'Failure modes', question: 'How many verification failure modes?', description: 'Count of identified failure modes (28 total).', source: 'verification' },
-]
+function classifyValue(raw: unknown): number {
+  if (raw == null || raw === '') return 0
+  const s = String(raw)
+  if (s.startsWith('Yes')) return 1
+  if (s.startsWith('Partly')) return 1
+  if (typeof raw === 'number' && raw > 0) return 1
+  return 0
+}
 
-const METRIC_MAP = new Map(METRICS.map(m => [m.key, m]))
-
-function getSourceRows(source: DataSource): Row[] {
-  switch (source) {
-    case 'evidence': return evidenceJoined
-    case 'painPoints': return painPointJoined
-    case 'signals': return signalJoined
-    case 'verification': return verificationJoined
+function buildComparisonGroups(): DataGroup[] {
+  const groupMap = new Map<string, DataItem[]>()
+  const groupOrder: string[] = []
+  for (const row of comparison) {
+    const group = String(row.Group ?? '')
+    const attr = String(row.Attribute ?? '')
+    if (!group || !attr) continue
+    const values = new Map<string, number>()
+    const rawValues = new Map<string, string>()
+    for (const pid of PID_KEYS) {
+      values.set(pid, classifyValue(row[pid]))
+      rawValues.set(pid, String(row[pid] ?? ''))
+    }
+    if (!groupMap.has(group)) { groupMap.set(group, []); groupOrder.push(group) }
+    groupMap.get(group)!.push({ key: `c|${group}|${attr}`, label: attr, values, rawValues })
   }
-}
-
-function getAvailableXAxes(source: DataSource): VariableKey[] {
-  const demos: VariableKey[] = [...DEMO_KEYS]
-  switch (source) {
-    case 'evidence': return ['theme', 'subTheme', 'code', ...demos]
-    case 'painPoints': return ['theme', 'subTheme', ...demos]
-    case 'signals': return ['signalStatus', ...demos]
-    case 'verification': return ['detectability', ...demos]
-  }
-}
-
-// ── Curated questions ───────────────────────────────
-
-interface CuratedQ {
-  label: string
-  metric: MetricKey
-  xAxis: VariableKey
-  splitBy: VariableKey | null
-  chartKind: ChartKind
-}
-
-const CURATED: CuratedQ[] = [
-  { label: 'Which themes dominate the evidence?', metric: 'quotes', xAxis: 'theme', splitBy: null, chartKind: 'bar' },
-  { label: 'Themes by vision level', metric: 'quotes', xAxis: 'theme', splitBy: 'visionLevel', chartKind: 'stacked' },
-  { label: 'Evidence by age group', metric: 'quotes', xAxis: 'ageGroup', splitBy: null, chartKind: 'bar' },
-  { label: 'Pain points by theme', metric: 'painPoints', xAxis: 'theme', splitBy: null, chartKind: 'bar' },
-  { label: 'Which signals are missing?', metric: 'signals', xAxis: 'signalStatus', splitBy: null, chartKind: 'bar' },
-  { label: "What can't users detect?", metric: 'failureModes', xAxis: 'detectability', splitBy: null, chartKind: 'bar' },
-  { label: 'Themes by gender', metric: 'quotes', xAxis: 'theme', splitBy: 'gender', chartKind: 'stacked' },
-  { label: 'Participant reach by theme', metric: 'participants', xAxis: 'theme', splitBy: null, chartKind: 'bar' },
-]
-
-// ── Data computation ────────────────────────────────
-
-function computeMetricValue(rows: Row[], metric: MetricKey): number {
-  switch (metric) {
-    case 'quotes':
-    case 'painPoints':
-    case 'signals':
-    case 'failureModes':
-      return rows.length
-    case 'participants':
-      return new Set(rows.map(r => r.pid)).size
-    case 'codes':
-      return new Set(rows.map(r => r.code).filter(Boolean)).size
-  }
-}
-
-function computeSimple(rows: Row[], xAxis: VariableKey, metric: MetricKey): BarDatum[] {
-  const groups = new Map<string, Row[]>()
-  for (const row of rows) {
-    const key = row[xAxis] || 'Unknown'
-    if (!groups.has(key)) groups.set(key, [])
-    groups.get(key)!.push(row)
-  }
-  return Array.from(groups.entries()).map(([label, g]) => ({
-    label,
-    value: computeMetricValue(g, metric),
+  return groupOrder.map(group => ({
+    key: `c|${group}`,
+    label: group,
+    source: 'comparison' as const,
+    items: groupMap.get(group)!,
   }))
 }
 
-function computeSplit(rows: Row[], xAxis: VariableKey, splitBy: VariableKey, metric: MetricKey): StackedDatum[] {
-  const groups = new Map<string, Map<string, Row[]>>()
-  for (const row of rows) {
-    const xKey = row[xAxis] || 'Unknown'
-    const sKey = row[splitBy] || 'Unknown'
-    if (!groups.has(xKey)) groups.set(xKey, new Map())
-    const sub = groups.get(xKey)!
-    if (!sub.has(sKey)) sub.set(sKey, [])
-    sub.get(sKey)!.push(row)
+function pidValues(row: Record<string, unknown>): Map<string, number> {
+  return new Map(PID_KEYS.map(pid => [pid, Number(row[pid as keyof typeof row]) || 0]))
+}
+
+function buildResearchGroups(): DataGroup[] {
+  return [
+    {
+      key: 'r|themes',
+      label: 'Evidence themes',
+      source: 'research',
+      items: themes.map(t => ({ key: `r|t|${t.Theme}`, label: t.Name, values: pidValues(t) })),
+    },
+    {
+      key: 'r|signals',
+      label: 'Feedback signals',
+      source: 'research',
+      items: feedbackSignals.map(s => ({ key: `r|s|${s.Tag}`, label: s['Signal the user needs'], values: pidValues(s) })),
+    },
+    {
+      key: 'r|verification',
+      label: 'Verification failures',
+      source: 'research',
+      items: verificationModes.map(v => ({ key: `r|v|${v.Tag}`, label: v['Failure mode'], values: pidValues(v) })),
+    },
+    {
+      key: 'r|codebook',
+      label: 'Codebook codes',
+      source: 'research',
+      items: [...codebook]
+        .sort((a, b) => (b.Total ?? 0) - (a.Total ?? 0))
+        .map(c => ({ key: `r|c|${c.Code}`, label: c.Label || c.Code, values: pidValues(c) })),
+    },
+    {
+      key: 'r|subthemes',
+      label: 'Sub-themes',
+      source: 'research',
+      items: [...subthemes]
+        .sort((a, b) => ((b['Coded quotes'] ?? 0) as number) - ((a['Coded quotes'] ?? 0) as number))
+        .map(st => ({ key: `r|st|${st['Sub-theme']}`, label: st['Sub-theme'], values: pidValues(st) })),
+    },
+  ]
+}
+
+const ALL_GROUPS: DataGroup[] = [...buildComparisonGroups(), ...buildResearchGroups()]
+const GROUP_MAP = new Map(ALL_GROUPS.map(g => [g.key, g]))
+
+interface Suggestion {
+  label: string
+  groupKey: string
+  itemKey: string | null
+  crossTab: DemoKey | null
+}
+
+const SUGGESTIONS: Suggestion[] = [
+  { label: 'Device use patterns', groupKey: 'c|Device use', itemKey: null, crossTab: null },
+  { label: 'Trust & verification', groupKey: 'c|Trust & verification', itemKey: null, crossTab: null },
+  { label: 'Privacy concerns', groupKey: 'c|Privacy', itemKey: null, crossTab: null },
+  { label: 'Social perception by gender', groupKey: 'c|Social perception', itemKey: null, crossTab: 'gender' },
+  { label: 'Evidence themes', groupKey: 'r|themes', itemKey: null, crossTab: null },
+  { label: 'Themes by age', groupKey: 'r|themes', itemKey: null, crossTab: 'ageGroup' },
+  { label: 'Themes by vision', groupKey: 'r|themes', itemKey: null, crossTab: 'visionLevel' },
+  { label: 'Failure modes', groupKey: 'r|verification', itemKey: null, crossTab: null },
+]
+
+function getFilteredPids(demoFilters: Record<string, Set<string>>, includeP011: boolean): string[] {
+  return PID_KEYS.filter(pid => {
+    if (!includeP011 && pid === 'P011') return false
+    const demo = demoMap.get(pid)
+    if (!demo) return false
+    for (const [key, allowed] of Object.entries(demoFilters)) {
+      if (allowed.size > 0 && !allowed.has(demo[key as DemoKey])) return false
+    }
+    return true
+  })
+}
+
+function itemMetric(item: DataItem, pids: string[], metric: Metric): number {
+  if (metric === 'participants') return pids.filter(pid => (item.values.get(pid) ?? 0) > 0).length
+  return pids.reduce((sum, pid) => sum + (item.values.get(pid) ?? 0), 0)
+}
+
+function computeGroupBars(items: DataItem[], pids: string[], metric: Metric): BarDatum[] {
+  return items.map(item => ({ label: item.label, value: itemMetric(item, pids, metric) }))
+}
+
+function computeGroupStacked(items: DataItem[], pids: string[], crossTab: DemoKey, metric: Metric, swapped: boolean): StackedDatum[] {
+  const demoGroups = new Map<string, string[]>()
+  for (const pid of pids) {
+    const dv = demoMap.get(pid)?.[crossTab] ?? 'Unknown'
+    if (!demoGroups.has(dv)) demoGroups.set(dv, [])
+    demoGroups.get(dv)!.push(pid)
   }
-  return Array.from(groups.entries()).map(([label, sub]) => ({
-    label,
-    segments: Array.from(sub.entries()).map(([key, sRows]) => ({
+
+  if (swapped) {
+    return Array.from(demoGroups.entries()).map(([demoVal, dPids]) => ({
+      label: demoVal,
+      segments: items.map(item => ({ key: item.label, value: itemMetric(item, dPids, metric) })),
+    }))
+  }
+
+  return items.map(item => ({
+    label: item.label,
+    segments: Array.from(demoGroups.entries()).map(([key, dPids]) => ({
       key,
-      value: computeMetricValue(sRows, metric),
+      value: itemMetric(item, dPids, metric),
     })),
+  }))
+}
+
+function computeItemCrossTab(item: DataItem, pids: string[], crossTab: DemoKey, metric: Metric): BarDatum[] {
+  const demoGroups = new Map<string, string[]>()
+  for (const pid of pids) {
+    const dv = demoMap.get(pid)?.[crossTab] ?? 'Unknown'
+    if (!demoGroups.has(dv)) demoGroups.set(dv, [])
+    demoGroups.get(dv)!.push(pid)
+  }
+  return Array.from(demoGroups.entries()).map(([label, dPids]) => ({
+    label,
+    value: itemMetric(item, dPids, metric),
   }))
 }
 
@@ -290,8 +297,6 @@ function sortStacked(data: StackedDatum[], ordered?: string[]): StackedDatum[] {
   return [...data].sort((a, b) => total(b) - total(a))
 }
 
-// ── UI Components ───────────────────────────────────
-
 function Select({ value, onChange, options, label }: { value: string; onChange: (v: string) => void; options: { value: string; label: string }[]; label: string }) {
   return (
     <label className="flex flex-col gap-1.5">
@@ -307,170 +312,147 @@ function Select({ value, onChange, options, label }: { value: string; onChange: 
   )
 }
 
-// ── Main Component ──────────────────────────────────
-
 export function DataExplorer() {
   const [ref, width] = useContainerWidth()
 
-  const [metric, setMetric] = useState<MetricKey>('quotes')
-  const [xAxis, setXAxis] = useState<VariableKey>('theme')
-  const [splitBy, setSplitBy] = useState<VariableKey | null>(null)
+  const [groupKey, setGroupKey] = useState(ALL_GROUPS[0].key)
+  const [itemKey, setItemKey] = useState<string | null>(null)
+  const [crossTab, setCrossTab] = useState<DemoKey | null>(null)
+  const [swapped, setSwapped] = useState(false)
   const [chartKind, setChartKind] = useState<ChartKind>('bar')
+  const [metric, setMetric] = useState<Metric>('participants')
   const [demoFilters, setDemoFilters] = useState<Record<string, Set<string>>>({})
   const [includeP011, setIncludeP011] = useState(false)
   const [showFilters, setShowFilters] = useState(false)
   const [showSummary, setShowSummary] = useState(false)
   const [showTable, setShowTable] = useState(false)
-  const [limit, setLimit] = useState(25)
+  const [limit, setLimit] = useState(30)
 
-  const metricDef = METRIC_MAP.get(metric)!
-  const xAxisDef = VAR_MAP.get(xAxis)!
-  const splitByDef = splitBy ? VAR_MAP.get(splitBy) ?? null : null
+  const group = GROUP_MAP.get(groupKey) ?? ALL_GROUPS[0]
+  const selectedItem = itemKey ? group.items.find(i => i.key === itemKey) ?? null : null
+  const isResearch = group.source === 'research'
 
-  const availableX = useMemo(() => getAvailableXAxes(metricDef.source), [metricDef.source])
-
-  const splitByOptions = useMemo(() =>
-    VARIABLES
-      .filter(v => v.key !== xAxis && availableX.includes(v.key))
-      .map(v => ({ value: v.key, label: v.label })),
-    [xAxis, availableX],
-  )
-
-  const demoUniqueValues = useMemo(() => {
-    const result: Record<string, string[]> = {}
-    for (const key of DEMO_KEYS) {
-      const varDef = VAR_MAP.get(key)
-      if (varDef?.orderedValues) {
-        result[key] = varDef.orderedValues
-      } else {
-        const vals = new Set<string>()
-        for (const [, demo] of demoMap) vals.add(demo[key])
-        result[key] = [...vals].sort()
-      }
-    }
-    return result
+  const handleGroupChange = useCallback((key: string) => {
+    setGroupKey(key)
+    setItemKey(null)
+    setSwapped(false)
   }, [])
 
-  const { barData, stackedData, total, uniqueParticipants } = useMemo(() => {
-    let rows = getSourceRows(metricDef.source)
+  const handleItemChange = useCallback((key: string) => {
+    setItemKey(key || null)
+    setSwapped(false)
+  }, [])
 
-    if (!includeP011) rows = rows.filter(r => r.pid !== 'P011')
-
-    for (const [key, allowed] of Object.entries(demoFilters)) {
-      if (allowed.size > 0) rows = rows.filter(r => allowed.has(r[key] ?? ''))
-    }
-
-    const total = rows.length
-    const uniqueParticipants = new Set(rows.map(r => r.pid)).size
-
-    if (splitBy) {
-      let data = computeSplit(rows, xAxis, splitBy, metric)
-      data = sortStacked(data, xAxisDef.orderedValues)
-      if (!xAxisDef.orderedValues) data = data.slice(0, limit)
-      return { barData: null, stackedData: data, total, uniqueParticipants }
-    }
-
-    let data = computeSimple(rows, xAxis, metric)
-    data = sortBar(data, xAxisDef.orderedValues)
-    if (!xAxisDef.orderedValues) data = data.slice(0, limit)
-    return { barData: data, stackedData: null, total, uniqueParticipants }
-  }, [metric, xAxis, splitBy, demoFilters, includeP011, limit, metricDef.source, xAxisDef.orderedValues])
-
-  const segKeys = useMemo(() => {
-    if (!stackedData || !splitBy) return []
-    const keys = [...new Set(stackedData.flatMap(d => d.segments.map(s => s.key)))]
-    const ordered = splitByDef?.orderedValues
-    if (ordered) {
-      const idx = new Map(ordered.map((v, i) => [v, i]))
-      return keys.sort((a, b) => (idx.get(a) ?? 999) - (idx.get(b) ?? 999))
-    }
-    return keys.sort()
-  }, [stackedData, splitBy, splitByDef])
-
-  const applyCurated = useCallback((q: CuratedQ) => {
-    setMetric(q.metric)
-    setXAxis(q.xAxis)
-    setSplitBy(q.splitBy)
-    setChartKind(q.chartKind)
+  const applySuggestion = useCallback((s: Suggestion) => {
+    setGroupKey(s.groupKey)
+    setItemKey(s.itemKey)
+    setCrossTab(s.crossTab)
+    setSwapped(false)
     setDemoFilters({})
     setIncludeP011(false)
-    setLimit(25)
+    setChartKind(s.crossTab && !s.itemKey ? 'stacked' : 'bar')
+    setLimit(30)
   }, [])
 
-  const handleSwap = useCallback(() => {
-    if (!splitBy) return
-    const newX = splitBy
-    const newSplit = xAxis
-    setXAxis(newX)
-    setSplitBy(newSplit)
-  }, [xAxis, splitBy])
+  const handleCrossTabChange = useCallback((v: string) => {
+    const ct = v ? (v as DemoKey) : null
+    setCrossTab(ct)
+    setSwapped(false)
+    if (ct && !selectedItem && !['stacked', 'clustered'].includes(chartKind)) setChartKind('stacked')
+    if (!ct && ['stacked', 'clustered'].includes(chartKind)) setChartKind('bar')
+  }, [selectedItem, chartKind])
 
-  const handleMetricChange = useCallback((key: string) => {
-    const m = METRIC_MAP.get(key as MetricKey)
-    if (!m) return
-    setMetric(key as MetricKey)
-    const avail = getAvailableXAxes(m.source)
-    if (!avail.includes(xAxis)) {
-      setXAxis(avail[0])
-      setSplitBy(null)
-    }
-  }, [xAxis])
-
-  const handleXAxisChange = useCallback((key: string) => {
-    setXAxis(key as VariableKey)
-    if (splitBy === key) setSplitBy(null)
-  }, [splitBy])
-
-  const handleSplitByChange = useCallback((v: string) => {
-    const newSplit = v ? (v as VariableKey) : null
-    setSplitBy(newSplit)
-    if (newSplit && !['stacked', 'clustered'].includes(chartKind)) setChartKind('stacked')
-    if (!newSplit && ['stacked', 'clustered'].includes(chartKind)) setChartKind('bar')
-  }, [chartKind])
-
-  const toggleDemoFilter = useCallback((demoKey: string, value: string) => {
+  const toggleDemoFilter = useCallback((key: string, value: string) => {
     setDemoFilters(prev => {
       const next = { ...prev }
-      const current = next[demoKey] ? new Set(next[demoKey]) : new Set<string>()
+      const current = next[key] ? new Set(next[key]) : new Set<string>()
       if (current.has(value)) current.delete(value)
       else current.add(value)
-      if (current.size === 0) delete next[demoKey]
-      else next[demoKey] = current
+      if (current.size === 0) delete next[key]
+      else next[key] = current
       return next
     })
   }, [])
 
-  const clearFilters = useCallback(() => {
-    setDemoFilters({})
-    setIncludeP011(false)
-  }, [])
-
+  const clearFilters = useCallback(() => { setDemoFilters({}); setIncludeP011(false) }, [])
   const hasActiveFilters = Object.keys(demoFilters).length > 0 || includeP011
 
-  const metricOptions = METRICS.map(m => ({ value: m.key, label: m.question }))
-  const xAxisOptions = useMemo(() => availableX.map(key => ({ value: key, label: VAR_MAP.get(key)!.label })), [availableX])
+  const pids = useMemo(() => getFilteredPids(demoFilters, includeP011), [demoFilters, includeP011])
 
-  const chartKindOptions: { key: ChartKind; label: string }[] = splitBy
+  const groupOptions = useMemo(() =>
+    ALL_GROUPS.map(g => ({ value: g.key, label: `${g.label} (${g.items.length})` })),
+  [])
+
+  const itemOptions = useMemo(() => [
+    { value: '', label: `All in group (${group.items.length})` },
+    ...group.items.map(i => ({ value: i.key, label: i.label })),
+  ], [group])
+
+  const crossTabOptions = useMemo(() => [
+    { value: '', label: '(none)' },
+    ...DEMO_KEYS.map(k => ({ value: k, label: DEMO_LABELS[k] })),
+  ], [])
+
+  const { barData, stackedData, valueLabel } = useMemo(() => {
+    const vLabel = metric === 'participants' ? 'Participants' : 'Total count'
+
+    if (selectedItem) {
+      if (crossTab) {
+        let data = computeItemCrossTab(selectedItem, pids, crossTab, metric)
+        data = sortBar(data, DEMO_ORDER[crossTab])
+        return { barData: data, stackedData: null, valueLabel: vLabel }
+      }
+      return { barData: [{ label: selectedItem.label, value: itemMetric(selectedItem, pids, metric) }], stackedData: null, valueLabel: vLabel }
+    }
+
+    let items = group.items
+    if (items.length > limit) items = items.slice(0, limit)
+
+    if (crossTab) {
+      let data = computeGroupStacked(items, pids, crossTab, metric, swapped)
+      const order = swapped ? DEMO_ORDER[crossTab] : undefined
+      data = sortStacked(data, order)
+      return { barData: null, stackedData: data, valueLabel: vLabel }
+    }
+
+    let data = computeGroupBars(items, pids, metric)
+    data = sortBar(data)
+    return { barData: data, stackedData: null, valueLabel: vLabel }
+  }, [group, selectedItem, crossTab, swapped, metric, pids, limit])
+
+  const segKeys = useMemo(() => {
+    if (!stackedData) return []
+    const keys = [...new Set(stackedData.flatMap(d => d.segments.map(s => s.key)))]
+    if (crossTab && !swapped) {
+      const idx = new Map(DEMO_ORDER[crossTab]?.map((v, i) => [v, i]) ?? [])
+      return keys.sort((a, b) => (idx.get(a) ?? 999) - (idx.get(b) ?? 999))
+    }
+    return keys.sort()
+  }, [stackedData, crossTab, swapped])
+
+  const canSwap = crossTab != null && !selectedItem
+  const isGroupView = !selectedItem
+
+  const chartKindOptions: { key: ChartKind; label: string }[] = stackedData
     ? [{ key: 'stacked', label: 'Stacked' }, { key: 'clustered', label: 'Clustered' }]
     : [{ key: 'bar', label: 'Bar' }, { key: 'pie', label: 'Pie' }, { key: 'donut', label: 'Donut' }, { key: 'treemap', label: 'Treemap' }]
 
   const chart = useMemo(() => {
     if (width <= 0) return null
     if (stackedData) {
-      if (chartKind === 'clustered') return <ClusteredBarChart data={stackedData} width={width} valueLabel={metricDef.label} />
-      return <StackedBarChart data={stackedData} width={width} valueLabel={metricDef.label} />
+      if (chartKind === 'clustered') return <ClusteredBarChart data={stackedData} width={width} valueLabel={valueLabel} />
+      return <StackedBarChart data={stackedData} width={width} valueLabel={valueLabel} />
     }
-    if (barData) {
+    if (barData && barData.length > 0) {
       if (chartKind === 'pie') return <PieChart data={barData} width={width} />
       if (chartKind === 'donut') return <PieChart data={barData} width={width} donut />
       if (chartKind === 'treemap') return <TreeMap data={barData} width={width} />
-      return <BarChart data={barData} width={width} valueLabel={metricDef.label} />
+      return <BarChart data={barData} width={width} valueLabel={valueLabel} />
     }
-    return <p className="text-[15px] text-text-muted">No data for this combination.</p>
-  }, [barData, stackedData, chartKind, width, metricDef])
+    return <p className="text-[15px] text-text-muted">No data for this selection.</p>
+  }, [barData, stackedData, chartKind, width, valueLabel])
 
-  const isCuratedActive = (q: CuratedQ) => metric === q.metric && xAxis === q.xAxis && splitBy === q.splitBy
-  const needsLimit = !xAxisDef.orderedValues
+  const isSuggestionActive = (s: Suggestion) => groupKey === s.groupKey && itemKey === s.itemKey && crossTab === s.crossTab
 
   return (
     <section aria-labelledby="explorer-heading">
@@ -480,73 +462,74 @@ export function DataExplorer() {
           Explore the research data, your way.
         </h1>
         <p className="body-lg">
-          Pick a question, choose how to break it down, and watch the visualization update live.
+          Pick a category, drill into data points, and cross-tabulate by demographics.
+          The visualization updates as you change variables.
         </p>
       </div>
 
-      {/* Curated questions */}
       <div className="mb-6">
-        <span className="font-mono text-xs tracking-[0.06em] uppercase text-text-muted block mb-2">
-          Curated questions
-        </span>
+        <span className="font-mono text-xs tracking-[0.06em] uppercase text-text-muted block mb-2">Suggestions</span>
         <div className="flex flex-wrap gap-2">
-          {CURATED.map(q => (
+          {SUGGESTIONS.map(s => (
             <button
-              key={q.label}
-              onClick={() => applyCurated(q)}
-              className={`group flex items-center gap-2 px-4 py-2.5 text-[14px] rounded-button border transition-colors ${
-                isCuratedActive(q)
+              key={s.label}
+              onClick={() => applySuggestion(s)}
+              className={`flex items-center gap-2 px-4 py-2.5 text-[14px] rounded-button border transition-colors ${
+                isSuggestionActive(s)
                   ? 'bg-navy text-white border-navy font-bold'
                   : 'text-text-muted border-border hover:border-border-strong hover:bg-surface-sunk'
               }`}
             >
               <span className={`text-[11px] font-bold tracking-wide uppercase shrink-0 ${
-                isCuratedActive(q) ? 'text-sand' : 'text-action'
-              }`}>
-                Show&nbsp;me
-              </span>
-              {q.label}
+                isSuggestionActive(s) ? 'text-sand' : 'text-action'
+              }`}>Show&nbsp;me</span>
+              {s.label}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Axes */}
       <div className="card mb-4">
-        <span className="font-mono text-xs tracking-[0.06em] uppercase text-text-muted block mb-3">Axes</span>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
-          <Select
-            label="Y-axis · the question"
-            value={metric}
-            onChange={handleMetricChange}
-            options={metricOptions}
-          />
-          <Select
-            label="X-axis · cross-tabulate by"
-            value={xAxis}
-            onChange={handleXAxisChange}
-            options={xAxisOptions}
-          />
-          <Select
-            label="Split by"
-            value={splitBy ?? ''}
-            onChange={handleSplitByChange}
-            options={[{ value: '', label: '(none)' }, ...splitByOptions]}
-          />
+        <span className="font-mono text-xs tracking-[0.06em] uppercase text-text-muted block mb-3">Y-axis · data points</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Select label="Category" value={groupKey} onChange={handleGroupChange} options={groupOptions} />
+          <Select label="Data point" value={itemKey ?? ''} onChange={handleItemChange} options={itemOptions} />
+        </div>
+        {isResearch && (
+          <div className="flex gap-3 mt-3">
+            <button
+              onClick={() => setMetric('participants')}
+              className={`px-3 py-1.5 text-[13px] rounded-pill border transition-colors ${
+                metric === 'participants' ? 'bg-navy text-white border-navy font-bold' : 'text-text-muted border-border'
+              }`}
+            >Count participants</button>
+            <button
+              onClick={() => setMetric('total')}
+              className={`px-3 py-1.5 text-[13px] rounded-pill border transition-colors ${
+                metric === 'total' ? 'bg-navy text-white border-navy font-bold' : 'text-text-muted border-border'
+              }`}
+            >Sum of values</button>
+          </div>
+        )}
+      </div>
+
+      <div className="card mb-4">
+        <span className="font-mono text-xs tracking-[0.06em] uppercase text-text-muted block mb-3">X-axis · cross-tabulate by</span>
+        <div className="flex gap-4 items-end">
+          <div className="flex-1">
+            <Select label="Demographic variable" value={crossTab ?? ''} onChange={handleCrossTabChange} options={crossTabOptions} />
+          </div>
           <button
-            onClick={handleSwap}
-            disabled={!splitBy}
+            onClick={() => setSwapped(s => !s)}
+            disabled={!canSwap}
             className="min-h-12 px-4 py-2.5 rounded-button border border-border-strong text-text-muted hover:bg-surface-sunk hover:text-text disabled:opacity-30 disabled:cursor-not-allowed transition-colors font-mono text-sm"
-            title="Swap X-axis and Split by"
+            title="Swap data points and demographics on the axes"
             aria-label="Swap axes"
-          >
-            ⇄ Swap
-          </button>
+          >&#8644; Swap</button>
         </div>
       </div>
 
-      {/* Chart type */}
-      <div className="mb-4">
+      <div className="mb-4 flex flex-wrap items-center gap-3">
         <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-label="Chart type">
           {chartKindOptions.map(t => (
             <button
@@ -559,52 +542,50 @@ export function DataExplorer() {
                   ? 'bg-navy text-white font-bold border-navy'
                   : 'text-text-muted hover:bg-surface-sunk border-border hover:border-border-strong'
               }`}
-            >
-              {t.label}
-            </button>
+            >{t.label}</button>
           ))}
         </div>
+        {isGroupView && group.items.length > 10 && (
+          <label className="flex items-center gap-2 ml-auto">
+            <span className="font-mono text-xs text-text-muted">Show top</span>
+            <input
+              type="number"
+              value={limit}
+              onChange={e => setLimit(Math.max(1, Number(e.target.value) || 30))}
+              className="text-[13px] w-16 border border-border-strong rounded-button px-2 py-1 bg-surface-raised text-text"
+              min={1} max={500}
+            />
+          </label>
+        )}
       </div>
 
-      {/* Filters */}
       <div className="card mb-4">
         <button
           onClick={() => setShowFilters(!showFilters)}
           className="flex items-center gap-2 font-mono text-xs tracking-[0.06em] uppercase text-text-muted hover:text-text w-full text-left py-1"
           aria-expanded={showFilters}
         >
-          <span className={`inline-block transition-transform duration-150 ${showFilters ? 'rotate-90' : ''}`} aria-hidden="true">▶</span>
+          <span className={`inline-block transition-transform duration-150 ${showFilters ? 'rotate-90' : ''}`} aria-hidden="true">&#9654;</span>
           Filters
-          {hasActiveFilters && (
-            <span className="text-action font-bold normal-case tracking-normal">
-              {Object.keys(demoFilters).length} active
-            </span>
-          )}
+          {hasActiveFilters && <span className="text-action font-bold normal-case tracking-normal">{Object.keys(demoFilters).length} active</span>}
         </button>
         {showFilters && (
           <div className="mt-4 pt-4 border-t border-border space-y-4">
-            {DEMO_KEYS.filter(k => k !== xAxis && k !== splitBy).map(demoKey => {
-              const varDef = VAR_MAP.get(demoKey)!
-              const values = demoUniqueValues[demoKey] ?? []
+            {DEMO_KEYS.filter(k => k !== crossTab).map(demoKey => {
+              const values = DEMO_VALUES[demoKey]
               const active = demoFilters[demoKey]
               return (
                 <div key={demoKey}>
-                  <span className="text-[13px] font-bold text-navy block mb-1.5">{varDef.label}</span>
+                  <span className="text-[13px] font-bold text-navy block mb-1.5">{DEMO_LABELS[demoKey]}</span>
                   <div className="flex flex-wrap gap-1.5">
                     <button
-                      onClick={() => setDemoFilters(prev => {
-                        const next = { ...prev }
-                        delete next[demoKey]
-                        return next
-                      })}
+                      onClick={() => setDemoFilters(prev => { const n = { ...prev }; delete n[demoKey]; return n })}
                       className={`px-3 py-1.5 text-[13px] rounded-pill border transition-colors ${
                         !active || active.size === 0
                           ? 'bg-navy text-white border-navy font-bold'
                           : 'text-text-muted border-border hover:border-border-strong'
                       }`}
-                    >
-                      All
-                    </button>
+                    >All</button>
                     {values.map(val => (
                       <button
                         key={val}
@@ -614,97 +595,74 @@ export function DataExplorer() {
                             ? 'bg-amethyst-800 text-white border-amethyst-800 font-bold'
                             : 'text-text-muted border-border hover:border-border-strong'
                         }`}
-                      >
-                        {val}
-                      </button>
+                      >{val}</button>
                     ))}
                   </div>
                 </div>
               )
             })}
             <label className="inline-flex items-center gap-2 cursor-pointer text-[13px] text-text select-none">
-              <input
-                type="checkbox"
-                checked={includeP011}
-                onChange={e => setIncludeP011(e.target.checked)}
-                className="w-3.5 h-3.5 accent-amethyst"
-              />
+              <input type="checkbox" checked={includeP011} onChange={e => setIncludeP011(e.target.checked)} className="w-3.5 h-3.5 accent-amethyst" />
               Include P011 (EchoVision, not Ray-Ban Meta)
             </label>
             {hasActiveFilters && (
               <div>
-                <button
-                  onClick={clearFilters}
-                  className="text-[13px] font-bold text-action hover:text-action-hover hover:underline"
-                >
-                  Clear all filters
-                </button>
+                <button onClick={clearFilters} className="text-[13px] font-bold text-action hover:text-action-hover hover:underline">Clear all filters</button>
               </div>
             )}
           </div>
         )}
       </div>
 
-      {/* Chart */}
       <div ref={ref} className="card mb-4">
         <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
           <span className="font-mono text-xs text-text-muted">
-            {total.toLocaleString()} rows · {uniqueParticipants} participant{uniqueParticipants !== 1 ? 's' : ''}
+            {pids.length} participant{pids.length !== 1 ? 's' : ''}
+            {isGroupView && <> &middot; {Math.min(group.items.length, limit)} of {group.items.length} data points</>}
           </span>
-          {needsLimit && (
-            <label className="flex items-center gap-2">
-              <span className="font-mono text-xs text-text-muted">Show top</span>
-              <input
-                type="number"
-                value={limit}
-                onChange={e => setLimit(Math.max(1, Number(e.target.value) || 25))}
-                className="text-[13px] w-16 border border-border-strong rounded-button px-2 py-1 bg-surface-raised text-text"
-                min={1} max={500}
-              />
-            </label>
-          )}
         </div>
         {chart}
       </div>
 
-      {/* Summary */}
       <div className="card mb-4">
         <button
           onClick={() => setShowSummary(!showSummary)}
           className="flex items-center gap-2 font-mono text-xs tracking-[0.06em] uppercase text-text-muted hover:text-text w-full text-left py-1"
           aria-expanded={showSummary}
         >
-          <span className={`inline-block transition-transform duration-150 ${showSummary ? 'rotate-90' : ''}`} aria-hidden="true">▶</span>
+          <span className={`inline-block transition-transform duration-150 ${showSummary ? 'rotate-90' : ''}`} aria-hidden="true">&#9654;</span>
           Summary
         </button>
         {showSummary && (
           <div className="mt-4 pt-4 border-t border-border space-y-3 text-[14px] text-text">
             <div>
-              <span className="font-bold text-navy">Y-axis:</span>{' '}
-              <span className="font-bold">{metricDef.label}</span> — {metricDef.description}
+              <span className="font-bold text-navy">Category:</span>{' '}
+              {group.label}
+              {group.source === 'comparison' && <span className="text-text-muted"> — participant attributes from the comparison matrix</span>}
+              {group.source === 'research' && <span className="text-text-muted"> — coded from 17 semi-structured interviews</span>}
             </div>
-            <div>
-              <span className="font-bold text-navy">X-axis:</span>{' '}
-              <span className="font-bold">{xAxisDef.label}</span> — {xAxisDef.description}
-              <br />
-              <span className="text-text-muted text-[13px]">Measured: {xAxisDef.measurement}</span>
-            </div>
-            {splitByDef && (
+            {selectedItem && (
               <div>
-                <span className="font-bold text-navy">Split by:</span>{' '}
-                <span className="font-bold">{splitByDef.label}</span> — {splitByDef.description}
-                <br />
-                <span className="text-text-muted text-[13px]">Measured: {splitByDef.measurement}</span>
+                <span className="font-bold text-navy">Data point:</span>{' '}
+                {selectedItem.label}
+                <span className="text-text-muted"> — {itemMetric(selectedItem, pids, 'participants')} of {pids.length} participants</span>
+              </div>
+            )}
+            {crossTab && (
+              <div>
+                <span className="font-bold text-navy">Cross-tabulated by:</span>{' '}
+                {DEMO_LABELS[crossTab]}
+                <span className="text-text-muted"> — self-reported during interview</span>
               </div>
             )}
             <p className="text-text-muted text-[13px]">
-              Based on {evidence.length.toLocaleString()} evidence segments from 17 semi-structured interviews with blind and low-vision users of consumer AI smart glasses.
+              Based on 17 semi-structured interviews with blind and low-vision users of consumer AI smart glasses.
+              {group.source === 'comparison' && ' Values are classified as Yes, Partly (counted as present), or No from participant responses.'}
             </p>
           </div>
         )}
       </div>
 
-      {/* Data table */}
       <button
         onClick={() => setShowTable(!showTable)}
         className="text-[15px] font-bold text-action hover:text-action-hover hover:underline min-h-12 px-4 py-3 rounded-button border border-transparent hover:border-border"
@@ -719,8 +677,10 @@ export function DataExplorer() {
             <table className="text-[15px] w-full" style={{ borderCollapse: 'collapse' }}>
               <thead className="sticky top-0 bg-surface-sunk z-10">
                 <tr className="border-b-2 border-border-strong">
-                  <th scope="col" className="text-left px-4 py-3 font-bold text-navy-900 whitespace-nowrap">{xAxisDef.label}</th>
-                  <th scope="col" className="text-left px-4 py-3 font-bold text-navy-900 whitespace-nowrap">{metricDef.label}</th>
+                  <th scope="col" className="text-left px-4 py-3 font-bold text-navy-900 whitespace-nowrap">
+                    {selectedItem && crossTab ? DEMO_LABELS[crossTab] : 'Data point'}
+                  </th>
+                  <th scope="col" className="text-left px-4 py-3 font-bold text-navy-900 whitespace-nowrap">{valueLabel}</th>
                 </tr>
               </thead>
               <tbody>
@@ -742,7 +702,9 @@ export function DataExplorer() {
             <table className="text-[15px] w-full" style={{ borderCollapse: 'collapse' }}>
               <thead className="sticky top-0 bg-surface-sunk z-10">
                 <tr className="border-b-2 border-border-strong">
-                  <th scope="col" className="text-left px-4 py-3 font-bold text-navy-900 whitespace-nowrap">{xAxisDef.label}</th>
+                  <th scope="col" className="text-left px-4 py-3 font-bold text-navy-900 whitespace-nowrap">
+                    {swapped ? DEMO_LABELS[crossTab!] : 'Data point'}
+                  </th>
                   {segKeys.map(k => (
                     <th key={k} scope="col" className="text-left px-4 py-3 font-bold text-navy-900 whitespace-nowrap">{k}</th>
                   ))}
