@@ -27,6 +27,10 @@
   --color-action: #75276F;
   --color-action-hover: #5C1F58;
   --color-positive: #4E521C;
+
+  --radius-card: 14px;
+  --radius-button: 9px;
+  --radius-pill: 999px;
 }
 
 .sr-only {
@@ -50,4 +54,55 @@ blockquote {
   border-left: 3px solid var(--color-border-strong);
   padding-left: 1rem;
   font-style: italic;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-action);
+  margin: 0 0 0.875rem;
+}
+
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.625rem, 3.6vw, 2.875rem);
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  font-weight: 400;
+  color: var(--color-navy-900);
+  margin: 0 0 1rem;
+  max-width: 24ch;
+  text-wrap: balance;
+}
+
+.body-lg {
+  font-size: clamp(1rem, 1.3vw, 1.1875rem);
+  line-height: 1.68;
+  color: var(--color-text-muted);
+  max-width: 62ch;
+  text-wrap: pretty;
+  margin: 0 0 2rem;
+}
+
+.card {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.card-flush {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.table-wrap {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface-raised);
+  overflow: hidden;
 }

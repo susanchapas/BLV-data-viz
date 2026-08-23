@@ -82,28 +82,31 @@ export function EvidenceExplorer() {
 
   return (
     <section aria-labelledby="evidence-heading">
-      <div className="flex items-baseline justify-between mb-4">
-        <div>
-          <h1 id="evidence-heading" className="text-xl font-semibold text-text">
-            Evidence explorer
-          </h1>
-          <p className="text-sm text-text-muted">
-            {sorted.length.toLocaleString()} of {evidence.length.toLocaleString()} rows
-          </p>
-          <DeviceNote total={new Set(sorted.map((r) => r.Who)).size} />
-        </div>
+      <div className="mb-6">
+        <p className="section-label">01 — Evidence explorer</p>
+        <h1 id="evidence-heading" className="section-heading">
+          Every coded quote, searchable.
+        </h1>
+        <p className="body-lg">
+          {sorted.length.toLocaleString()} of {evidence.length.toLocaleString()} evidence rows.
+          Sort by any column, toggle column visibility, and filter from the bar above.
+        </p>
+        <DeviceNote total={new Set(sorted.map((r) => r.Who)).size} />
+      </div>
+
+      <div className="flex items-center justify-end mb-3">
         <details className="relative">
-          <summary className="cursor-pointer text-sm text-action hover:underline min-h-[2.75rem] flex items-center">
+          <summary className="cursor-pointer text-[15px] font-bold text-action hover:underline min-h-12 flex items-center px-4 py-3 rounded-button border border-transparent hover:border-border">
             Columns
           </summary>
-          <div className="absolute right-0 z-50 mt-1 bg-surface-raised border border-border-strong rounded shadow-lg p-2 min-w-[10rem]">
+          <div className="absolute right-0 z-50 mt-1 bg-surface-raised border border-border-strong rounded-card shadow-lg p-3 min-w-[12rem]">
             {COLUMNS.map((c) => (
-              <label key={c.key} className="flex items-center gap-2 py-1 text-sm cursor-pointer">
+              <label key={c.key} className="flex items-center gap-3 py-2 text-[15px] cursor-pointer">
                 <input
                   type="checkbox"
                   checked={visibleCols.has(c.key)}
                   onChange={() => toggleCol(c.key)}
-                  className="min-w-[1rem] min-h-[1rem]"
+                  className="min-w-[1.125rem] min-h-[1.125rem]"
                 />
                 {c.label}
               </label>
@@ -114,19 +117,19 @@ export function EvidenceExplorer() {
 
       <div
         ref={parentRef}
-        className="border border-border rounded overflow-auto"
-        style={{ height: 'calc(100vh - 14rem)' }}
+        className="table-wrap overflow-auto"
+        style={{ height: 'calc(100vh - 20rem)' }}
         role="region"
         aria-label="Evidence table"
         tabIndex={0}
       >
-        <table className="w-full text-sm" role="grid">
-          <thead className="sticky top-0 bg-surface-raised z-10">
-            <tr>
+        <table className="w-full text-[15px]" role="grid">
+          <thead className="sticky top-0 bg-surface-sunk z-10">
+            <tr className="border-b-2 border-border-strong">
               {activeColumns.map((c) => (
                 <th
                   key={c.key}
-                  className={`text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted cursor-pointer hover:text-text ${c.width}`}
+                  className={`text-left px-4 py-3 font-bold text-navy-900 cursor-pointer hover:text-action ${c.width}`}
                   onClick={() => handleSort(c.key)}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSort(c.key) } }}
                   aria-sort={sortKey === c.key ? (sortDir === 'asc' ? 'ascending' : 'descending') : undefined}
@@ -145,7 +148,7 @@ export function EvidenceExplorer() {
               return (
                 <tr
                   key={vi.key}
-                  className="hover:bg-surface-sunk"
+                  className="hover:bg-surface-sunk border-b border-border"
                   style={{
                     position: 'absolute',
                     top: 0,
@@ -156,7 +159,7 @@ export function EvidenceExplorer() {
                   }}
                 >
                   {activeColumns.map((c) => (
-                    <td key={c.key} className={`px-2 py-1.5 text-text truncate max-w-md ${c.width}`}>
+                    <td key={c.key} className={`px-4 py-3 text-text truncate max-w-md ${c.width}`}>
                       {c.key === 'Quote' ? (
                         <QuoteCell text={String(row[c.key] ?? '')} who={row.Who} line={row.Line} />
                       ) : (
@@ -182,7 +185,7 @@ function QuoteCell({ text, who, line }: { text: string; who: string; line: strin
     return (
       <blockquote className="not-italic text-text">
         {text}
-        <cite className="text-xs text-text-muted ml-1 not-italic">{who} {line}</cite>
+        <cite className="text-xs text-text-muted ml-1 not-italic font-mono">{who} {line}</cite>
       </blockquote>
     )
   }
@@ -192,7 +195,7 @@ function QuoteCell({ text, who, line }: { text: string; who: string; line: strin
       {text.slice(0, 120)}…{' '}
       <button
         onClick={() => setExpanded(true)}
-        className="text-action text-xs hover:underline"
+        className="text-action text-xs font-bold hover:underline"
         aria-label={`Expand quote from ${who} at ${line}`}
       >
         more

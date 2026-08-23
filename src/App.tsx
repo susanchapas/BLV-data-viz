@@ -12,6 +12,7 @@ const SignalLedger = lazy(() => import('@/views/SignalLedger').then(m => ({ defa
 const ThemeBrowser = lazy(() => import('@/views/ThemeBrowser').then(m => ({ default: m.ThemeBrowser })))
 const ParticipantProfiles = lazy(() => import('@/views/ParticipantProfiles').then(m => ({ default: m.ParticipantProfiles })))
 const ChartGallery = lazy(() => import('@/views/ChartGallery').then(m => ({ default: m.ChartGallery })))
+const DataExplorer = lazy(() => import('@/views/DataExplorer').then(m => ({ default: m.DataExplorer })))
 
 export default function App() {
   return (
@@ -21,7 +22,12 @@ export default function App() {
           <div className="min-h-screen bg-surface text-text font-sans">
             <Nav />
             <FilterBar />
-            <main id="main" className="max-w-screen-2xl mx-auto px-4 py-6" tabIndex={-1}>
+            <main
+              id="main"
+              className="max-w-[1240px] mx-auto"
+              style={{ padding: 'clamp(24px, 4vw, 48px) clamp(20px, 4vw, 48px)' }}
+              tabIndex={-1}
+            >
               <Suspense fallback={<div className="py-12 text-center text-text-muted">Loading…</div>}>
                 <Routes>
                   <Route path="/" element={<EvidenceExplorer />} />
@@ -31,6 +37,7 @@ export default function App() {
                   <Route path="/participants" element={<ParticipantProfiles />} />
                   <Route path="/participants/:pid" element={<ParticipantProfiles />} />
                   <Route path="/charts" element={<ChartGallery />} />
+                  <Route path="/explore" element={<DataExplorer />} />
                 </Routes>
               </Suspense>
             </main>

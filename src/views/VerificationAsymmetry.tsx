@@ -136,72 +136,81 @@ export function VerificationAsymmetry() {
 
   return (
     <section aria-labelledby="va-heading">
-      <h1 id="va-heading" className="text-xl font-semibold text-text mb-1">
-        Verification asymmetry
-      </h1>
-      <p className="text-sm text-text-muted mb-1">
-        {data.length} of {verificationModes.length} failure modes
-      </p>
-      <DeviceNote total={uniqueParticipants.size} />
-
-      <div className="mt-4">
-        <ChartWrapper
-          title="Failure modes by weight of evidence"
-          caption="Horizontal bar. Each failure mode coloured by detectability class."
-          source="Verification Asymmetry tab, rows 4–31"
-          altText={`${data.length} failure modes. Bars show evidence row counts. Darkest bars are undetectable failures.`}
-          deviceNote={!filters.includeP011 ? 'P011 (EchoVision) excluded from pooled counts' : undefined}
-          dataTable={
-            <DataTable
-              columns={['Tag', 'Failure mode', 'Detectability', 'Evidence rows', 'Participants']}
-              rows={data.map((d) => [
-                d.Tag,
-                d['Failure mode'],
-                d['Detectable without sight'],
-                d['Rows (n=17)'],
-                d['Participants (n=17)'],
-              ])}
-            />
-          }
-        >
-          <ResponsiveModeChart data={data} />
-        </ChartWrapper>
+      <div className="mb-6">
+        <p className="section-label">02 — Verification asymmetry</p>
+        <h1 id="va-heading" className="section-heading">
+          Failures the user cannot detect.
+        </h1>
+        <p className="body-lg">
+          {data.length} of {verificationModes.length} failure modes shown.
+          Bars coloured by detectability class — darkest bars are undetectable without sight.
+        </p>
+        <DeviceNote total={uniqueParticipants.size} />
       </div>
 
-      <h2 className="text-lg font-semibold text-text mt-8 mb-3">All failure modes</h2>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm border-collapse">
-          <thead>
-            <tr>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Tag</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Failure mode</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Failure class</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Detectability</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Cost to detect</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted text-right" scope="col">Rows</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted text-right" scope="col">Participants</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((d) => (
-              <tr key={d.Tag} className="hover:bg-surface-sunk">
-                <td className="px-2 py-1.5 border-b border-border font-mono text-xs">{d.Tag}</td>
-                <td className="px-2 py-1.5 border-b border-border">{d['Failure mode']}</td>
-                <td className="px-2 py-1.5 border-b border-border">{d['Failure class']}</td>
-                <td className="px-2 py-1.5 border-b border-border">
-                  <span
-                    className="inline-block w-3 h-3 rounded-full mr-1.5 align-middle border border-text-muted"
-                    style={{ backgroundColor: DETECT_FILLS[d['Detectable without sight']] ?? color.textMuted }}
-                  />
-                  {d['Detectable without sight']}
-                </td>
-                <td className="px-2 py-1.5 border-b border-border">{d['Cost to detect']}</td>
-                <td className="px-2 py-1.5 border-b border-border text-right">{d['Rows (n=17)']}</td>
-                <td className="px-2 py-1.5 border-b border-border text-right">{d['Participants (n=17)']}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <ChartWrapper
+        title="Failure modes by weight of evidence"
+        figureLabel="Figure — detectability breakdown"
+        caption="Horizontal bar. Each failure mode coloured by detectability class."
+        source="Verification Asymmetry tab, rows 4–31"
+        altText={`${data.length} failure modes. Bars show evidence row counts. Darkest bars are undetectable failures.`}
+        deviceNote={!filters.includeP011 ? 'P011 (EchoVision) excluded from pooled counts' : undefined}
+        dataTable={
+          <DataTable
+            columns={['Tag', 'Failure mode', 'Detectability', 'Evidence rows', 'Participants']}
+            rows={data.map((d) => [
+              d.Tag,
+              d['Failure mode'],
+              d['Detectable without sight'],
+              d['Rows (n=17)'],
+              d['Participants (n=17)'],
+            ])}
+          />
+        }
+      >
+        <ResponsiveModeChart data={data} />
+      </ChartWrapper>
+
+      <div className="mt-10">
+        <h2 className="font-heading text-[22px] font-normal text-navy-900 mb-4">All failure modes</h2>
+        <div className="table-wrap">
+          <div className="overflow-x-auto">
+            <table className="w-full text-[15px]" style={{ borderCollapse: 'collapse' }}>
+              <thead>
+                <tr className="border-b-2 border-border-strong bg-surface-sunk">
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Tag</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Failure mode</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Failure class</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Detectability</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Cost to detect</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900 text-right" scope="col">Rows</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900 text-right" scope="col">Participants</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((d) => (
+                  <tr key={d.Tag} className="border-b border-border hover:bg-surface-sunk">
+                    <td className="px-4 py-3 font-mono text-xs">{d.Tag}</td>
+                    <td className="px-4 py-3">{d['Failure mode']}</td>
+                    <td className="px-4 py-3">{d['Failure class']}</td>
+                    <td className="px-4 py-3">
+                      <span className="flex items-center gap-2">
+                        <span
+                          className="inline-block w-3.5 h-3.5 rounded-full border border-navy"
+                          style={{ backgroundColor: DETECT_FILLS[d['Detectable without sight']] ?? color.textMuted }}
+                        />
+                        {d['Detectable without sight']}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">{d['Cost to detect']}</td>
+                    <td className="px-4 py-3 text-right font-mono">{d['Rows (n=17)']}</td>
+                    <td className="px-4 py-3 text-right font-mono">{d['Participants (n=17)']}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </section>
   )

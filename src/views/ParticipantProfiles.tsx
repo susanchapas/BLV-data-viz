@@ -12,17 +12,21 @@ function ProfileCard({ p, evidenceCount }: { p: Participant; evidenceCount: numb
   return (
     <Link
       to={`/participants/${p.id}`}
-      className={`block p-4 border rounded hover:border-navy motion-safe:transition-colors ${
-        isEcho ? 'border-amethyst bg-surface-sunk' : 'border-border'
+      className={`block card hover:border-navy motion-safe:transition-colors ${
+        isEcho ? 'border-amethyst bg-surface-sunk' : ''
       }`}
     >
-      <div className="flex items-baseline justify-between mb-1">
-        <span className="font-semibold text-text">{p.id}</span>
-        <span className="text-sm text-text-muted">{evidenceCount} rows</span>
+      <div className="flex items-baseline justify-between mb-2">
+        <span className="font-heading text-lg text-navy-900">{p.id}</span>
+        <span className="font-mono text-xs text-text-muted">{evidenceCount} rows</span>
       </div>
-      <p className="text-sm text-text-muted mb-1">{p.Persona}</p>
-      <p className="text-xs text-text-muted">{p.Device}</p>
-      {isEcho && <p className="text-xs text-action mt-1">EchoVision by AGIGA</p>}
+      <p className="text-[15px] text-text-muted mb-1">{p.Persona}</p>
+      <p className="font-mono text-xs text-text-muted">{p.Device}</p>
+      {isEcho && (
+        <p className="font-mono text-xs tracking-[0.06em] text-action mt-2 px-3 py-1.5 bg-surface-sunk rounded-pill inline-block">
+          EchoVision by AGIGA
+        </p>
+      )}
     </Link>
   )
 }
@@ -43,56 +47,67 @@ function ProfileDetail({ pid }: { pid: string }) {
 
   return (
     <div>
-      <Link to="/participants" className="text-sm text-action hover:underline mb-4 inline-block min-h-[2.75rem] flex items-center">
+      <Link
+        to="/participants"
+        className="text-[15px] font-bold text-action hover:text-action-hover hover:underline mb-6 inline-flex items-center min-h-12 px-4 py-3 rounded-button border border-transparent hover:border-border"
+      >
         ← All participants
       </Link>
-      <h1 className="text-xl font-semibold text-text mb-1">{pid}</h1>
-      <p className="text-sm text-text-muted mb-4">{p.Persona}</p>
-      {isP011(pid) && (
-        <p className="text-sm text-action mb-4">
-          This participant uses EchoVision by AGIGA, not Ray-Ban Meta.
-        </p>
-      )}
 
-      <h2 className="text-lg font-semibold text-text mb-2">Attributes</h2>
-      <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 mb-8">
-        {attrs.map(([key, val]) => (
-          <div key={key} className="border-b border-border pb-1">
-            <dt className="text-xs text-text-muted font-medium">{key}</dt>
-            <dd className="text-sm text-text">{val != null ? String(val) : '—'}</dd>
-          </div>
-        ))}
-      </dl>
+      <div className="mb-6">
+        <p className="section-label">05 — Participant profile</p>
+        <h1 className="section-heading">{pid}</h1>
+        <p className="body-lg">{p.Persona}</p>
+        {isP011(pid) && (
+          <p className="font-mono text-xs tracking-[0.06em] text-action mt-2 px-3 py-1.5 bg-surface-sunk border border-border rounded-pill inline-block">
+            This participant uses EchoVision by AGIGA, not Ray-Ban Meta.
+          </p>
+        )}
+      </div>
 
-      <h2 className="text-lg font-semibold text-text mb-2">
+      <div className="card mb-8">
+        <h2 className="font-mono text-xs tracking-[0.14em] uppercase text-navy-900 mb-4">Attributes</h2>
+        <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
+          {attrs.map(([key, val]) => (
+            <div key={key} className="border-b border-border pb-2">
+              <dt className="font-mono text-xs text-text-muted font-medium tracking-[0.06em] uppercase">{key}</dt>
+              <dd className="text-[15px] text-text mt-0.5">{val != null ? String(val) : '—'}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <h2 className="font-heading text-[22px] font-normal text-navy-900 mb-4">
         Evidence ({rows.length} rows)
       </h2>
-      <div className="overflow-x-auto max-h-[60vh] overflow-y-auto border border-border rounded">
-        <table className="w-full text-sm border-collapse">
-          <thead className="sticky top-0 bg-surface-raised">
-            <tr>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Line</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Code</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Theme</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Quote</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((r: EvidenceRow, i: number) => (
-              <tr key={i} className="hover:bg-surface-sunk">
-                <td className="px-2 py-1.5 border-b border-border font-mono text-xs">{r.Line}</td>
-                <td className="px-2 py-1.5 border-b border-border font-mono text-xs">{r.Code}</td>
-                <td className="px-2 py-1.5 border-b border-border">{r.Theme}</td>
-                <td className="px-2 py-1.5 border-b border-border">
-                  <blockquote className="not-italic">
-                    {r.Quote}
-                    <cite className="text-xs text-text-muted ml-1 not-italic">{r.Who} {r.Line}</cite>
-                  </blockquote>
-                </td>
+      <div className="table-wrap overflow-y-auto" style={{ maxHeight: '60vh' }}>
+        <div className="overflow-x-auto">
+          <table className="w-full text-[15px]" style={{ borderCollapse: 'collapse' }}>
+            <thead className="sticky top-0 bg-surface-sunk z-10">
+              <tr className="border-b-2 border-border-strong">
+                <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Line</th>
+                <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Code</th>
+                <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Theme</th>
+                <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Quote</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {rows.map((r: EvidenceRow, i: number) => (
+                <tr key={i} className="border-b border-border hover:bg-surface-sunk">
+                  <td className="px-4 py-3 font-mono text-xs">{r.Line}</td>
+                  <td className="px-4 py-3 font-mono text-xs">{r.Code}</td>
+                  <td className="px-4 py-3">{r.Theme}</td>
+                  <td className="px-4 py-3">
+                    <blockquote className="not-italic">
+                      {r.Quote}
+                      <cite className="text-xs text-text-muted ml-1 not-italic font-mono">{r.Who} {r.Line}</cite>
+                    </blockquote>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   )
@@ -119,12 +134,18 @@ export function ParticipantProfiles() {
 
   return (
     <section aria-labelledby="participants-heading">
-      <h1 id="participants-heading" className="text-xl font-semibold text-text mb-1">
-        Participant profiles
-      </h1>
-      <DeviceNote total={visibleParticipants.length} />
+      <div className="mb-6">
+        <p className="section-label">05 — Participant profiles</p>
+        <h1 id="participants-heading" className="section-heading">
+          Who took part in the study.
+        </h1>
+        <p className="body-lg">
+          {visibleParticipants.length} participants. Click a card to see their full profile and evidence.
+        </p>
+        <DeviceNote total={visibleParticipants.length} />
+      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {visibleParticipants.map((p) => (
           <ProfileCard key={p.id} p={p} evidenceCount={countByPid[p.id] ?? 0} />
         ))}

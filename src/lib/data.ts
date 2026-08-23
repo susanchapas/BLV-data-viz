@@ -23,7 +23,11 @@ import painPointsJson from '../../data/pain_points.json'
 import opportunitiesJson from '../../data/opportunities.json'
 import contradictionsJson from '../../data/contradictions.json'
 import nonUseJson from '../../data/non_use.json'
+import comparisonJson from '../../data/comparison.json'
 import insightsJson from '../../data/insights.json'
+import researchLimitsJson from '../../data/research_limits.json'
+import round3Json from '../../data/round3_results.json'
+import round4Json from '../../data/round4_results.json'
 import headlineJson from '../../data/headline.json'
 import altTextJson from '../../data/alt_text.json'
 
@@ -59,7 +63,11 @@ export const painPoints = painPointsJson as PainPoint[]
 export const opportunities = opportunitiesJson as Opportunity[]
 export const contradictions = contradictionsJson as Record<string, unknown>[]
 export const nonUse = nonUseJson as Record<string, unknown>[]
+export const comparison = comparisonJson as Record<string, unknown>[]
 export const insights = insightsJson as Record<string, unknown>[]
+export const researchLimits = researchLimitsJson as Record<string, unknown>[]
+export const round3Results = round3Json as Record<string, unknown>[]
+export const round4Results = round4Json as Record<string, unknown>[]
 export const headline = headlineJson as HeadlineBlock[]
 export const altText = altTextJson as Record<string, string | null>
 

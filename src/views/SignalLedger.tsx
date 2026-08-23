@@ -19,6 +19,12 @@ const STATUS_FILLS: Record<string, string> = {
   Consequence: color.textMuted,
 }
 
+const STATUS_ACCENT: Record<string, string> = {
+  Announced: '#4E521C',
+  Silent: '#102F5D',
+  Consequence: '#75276F',
+}
+
 const margin = { top: 20, right: 20, bottom: 60, left: 280 }
 
 function SignalChart({
@@ -141,32 +147,41 @@ export function SignalLedger() {
 
   return (
     <section aria-labelledby="signals-heading">
-      <h1 id="signals-heading" className="text-xl font-semibold text-text mb-1">
-        Signal ledger
-      </h1>
-      <p className="text-sm text-text-muted mb-1">
-        {data.length} of {feedbackSignals.length} signals
-      </p>
-      <DeviceNote total={uniqueParticipants.size} />
+      <div className="mb-6">
+        <p className="section-label">03 — Signal ledger</p>
+        <h1 id="signals-heading" className="section-heading">
+          What the device tells, and what it withholds.
+        </h1>
+        <p className="body-lg">
+          {data.length} of {feedbackSignals.length} feedback signals.
+          Signals classified by status: announced (the device says something), silent (it says nothing), or consequence (the user discovers later).
+        </p>
+        <DeviceNote total={uniqueParticipants.size} />
+      </div>
 
-      <div className="grid grid-cols-3 gap-4 my-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
         {Object.entries(byStatus).map(([status, { count, rows }]) => (
-          <div key={status} className="p-4 border border-border rounded">
-            <div className="flex items-center gap-2 mb-1">
+          <div
+            key={status}
+            className="card"
+            style={{ borderTopWidth: '4px', borderTopColor: STATUS_ACCENT[status] ?? color.textMuted }}
+          >
+            <div className="flex items-center gap-2.5 mb-2">
               <span
-                className="w-3 h-3 rounded-full border border-text-muted"
+                className="w-4 h-4 rounded-full border border-navy"
                 style={{ backgroundColor: STATUS_FILLS[status] ?? color.textMuted }}
               />
-              <span className="font-medium text-text">{status}</span>
+              <span className="font-mono text-xs tracking-[0.14em] uppercase text-navy-900">{status}</span>
             </div>
-            <p className="text-2xl font-semibold text-text">{count}</p>
-            <p className="text-sm text-text-muted">{rows} evidence rows</p>
+            <p className="font-heading text-[32px] text-navy-900 leading-none mb-1">{count}</p>
+            <p className="text-[15px] text-text-muted">{rows} evidence rows</p>
           </div>
         ))}
       </div>
 
       <ChartWrapper
         title="Every signal the user needs, by weight of evidence"
+        figureLabel="Figure — signal status breakdown"
         caption="Horizontal bar. Signals coloured by status: announced, silent, consequence."
         source="Feedback & Signal tab"
         altText={`${data.length} signals. ${byStatus['Silent']?.count ?? 0} silent signals carry ${byStatus['Silent']?.rows ?? 0} evidence rows.`}

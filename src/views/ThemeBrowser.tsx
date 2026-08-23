@@ -119,62 +119,71 @@ export function ThemeBrowser() {
 
   return (
     <section aria-labelledby="themes-heading">
-      <h1 id="themes-heading" className="text-xl font-semibold text-text mb-1">
-        Themes and codes
-      </h1>
-      <p className="text-sm text-text-muted mb-1">
-        {themes.length} themes, {filteredCodes.length} of {codebook.length} codes shown
-      </p>
-      <DeviceNote total={uniqueParticipants.size} />
-
-      <div className="mt-4">
-        <ChartWrapper
-          title="Theme weight and breadth"
-          caption="Horizontal bar. Evidence rows per theme."
-          source="Findings tab"
-          altText={`22 themes. T2 Reading & Text has the most evidence rows at ${themes.find((t) => t.Theme === 'T2')?.Total ?? '?'}.`}
-          dataTable={
-            <DataTable
-              columns={['Theme', 'Name', 'Evidence rows', 'Sub-themes']}
-              rows={themes.map((t) => [t.Theme, t.Name, t.Total, t['Sub-themes']])}
-            />
-          }
-        >
-          <ResponsiveThemeChart />
-        </ChartWrapper>
+      <div className="mb-6">
+        <p className="section-label">04 — Themes and codes</p>
+        <h1 id="themes-heading" className="section-heading">
+          The taxonomy of what participants said.
+        </h1>
+        <p className="body-lg">
+          {themes.length} themes, {filteredCodes.length} of {codebook.length} codes shown.
+          Click a bar to filter the codebook below.
+        </p>
+        <DeviceNote total={uniqueParticipants.size} />
       </div>
 
-      <h2 className="text-lg font-semibold text-text mt-8 mb-3">Codebook ({filteredCodes.length} codes)</h2>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm border-collapse">
-          <thead>
-            <tr>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Code</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Label</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Theme</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted text-right" scope="col">Total</th>
-              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredCodes.map((c) => (
-              <tr
-                key={c.Code}
-                className="hover:bg-surface-sunk cursor-pointer"
-                onClick={() => setExpandedTheme(expandedTheme === c.Code ? null : c.Code)}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpandedTheme(expandedTheme === c.Code ? null : c.Code) } }}
-                tabIndex={0}
-                aria-expanded={expandedTheme === c.Code}
-              >
-                <td className="px-2 py-1.5 border-b border-border font-mono text-xs">{c.Code}</td>
-                <td className="px-2 py-1.5 border-b border-border">{c.Label}</td>
-                <td className="px-2 py-1.5 border-b border-border">{c.Theme} {c['Theme name']}</td>
-                <td className="px-2 py-1.5 border-b border-border text-right">{c.Total}</td>
-                <td className="px-2 py-1.5 border-b border-border text-xs text-text-muted">{c.Status}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <ChartWrapper
+        title="Theme weight and breadth"
+        figureLabel="Figure — evidence distribution"
+        caption="Horizontal bar. Evidence rows per theme."
+        source="Findings tab"
+        altText={`22 themes. T2 Reading & Text has the most evidence rows at ${themes.find((t) => t.Theme === 'T2')?.Total ?? '?'}.`}
+        dataTable={
+          <DataTable
+            columns={['Theme', 'Name', 'Evidence rows', 'Sub-themes']}
+            rows={themes.map((t) => [t.Theme, t.Name, t.Total, t['Sub-themes']])}
+          />
+        }
+      >
+        <ResponsiveThemeChart />
+      </ChartWrapper>
+
+      <div className="mt-10">
+        <h2 className="font-heading text-[22px] font-normal text-navy-900 mb-4">
+          Codebook ({filteredCodes.length} codes)
+        </h2>
+        <div className="table-wrap">
+          <div className="overflow-x-auto">
+            <table className="w-full text-[15px]" style={{ borderCollapse: 'collapse' }}>
+              <thead>
+                <tr className="border-b-2 border-border-strong bg-surface-sunk">
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Code</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Label</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Theme</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900 text-right" scope="col">Total</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredCodes.map((c) => (
+                  <tr
+                    key={c.Code}
+                    className="border-b border-border hover:bg-surface-sunk cursor-pointer"
+                    onClick={() => setExpandedTheme(expandedTheme === c.Code ? null : c.Code)}
+                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpandedTheme(expandedTheme === c.Code ? null : c.Code) } }}
+                    tabIndex={0}
+                    aria-expanded={expandedTheme === c.Code}
+                  >
+                    <td className="px-4 py-3 font-mono text-xs">{c.Code}</td>
+                    <td className="px-4 py-3">{c.Label}</td>
+                    <td className="px-4 py-3">{c.Theme} {c['Theme name']}</td>
+                    <td className="px-4 py-3 text-right font-mono">{c.Total}</td>
+                    <td className="px-4 py-3 text-text-muted">{c.Status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </section>
   )

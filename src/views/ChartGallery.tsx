@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { Group } from '@visx/group'
 import { AxisBottom, AxisLeft } from '@visx/axis'
@@ -9,16 +9,40 @@ import { useContainerWidth } from '@/lib/useContainerWidth'
 import { charts } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { color, categorical, motion as motionTokens } from '@/tokens/design'
+import { BarChart, PieChart, TreeMap, StackedBarChart, ScatterPlot } from '@/charts'
+import type { BarDatum } from '@/charts'
 import type { ChartSpec } from '@/lib/types'
 
+type ViewType = 'original' | 'bar' | 'pie' | 'treemap' | 'stacked' | 'scatter'
+
+const VIEW_OPTIONS: { key: ViewType; label: string }[] = [
+  { key: 'original', label: 'Original' },
+  { key: 'bar', label: 'Bar' },
+  { key: 'pie', label: 'Pie' },
+  { key: 'treemap', label: 'Treemap' },
+  { key: 'stacked', label: 'Stacked' },
+  { key: 'scatter', label: 'Scatter' },
+]
+
 const margin = { top: 20, right: 20, bottom: 60, left: 200 }
+
+function getValueCol(spec: ChartSpec): string {
+  return spec.columns.find((c) =>
+    ['Evidence rows', 'Participants (of 17)', 'Distinct reasons', 'Participant mentions', 'Uses it', 'Signal types'].includes(c),
+  ) ?? spec.columns[1]
+}
+
+function specToBarData(spec: ChartSpec): BarDatum[] {
+  const valueIdx = spec.columns.indexOf(getValueCol(spec))
+  return spec.rows
+    .filter((r) => r[0] != null && !String(r[0]).startsWith('All'))
+    .map((r) => ({ label: String(r[0]), value: Number(r[valueIdx]) || 0 }))
+}
 
 function GenericBarChart({ spec, width }: { spec: ChartSpec; width: number }) {
   const { shouldAnimate } = useMotion()
   const announce = useAnnounce()
-  const valueCol = spec.columns.find((c) =>
-    ['Evidence rows', 'Participants (of 17)', 'Distinct reasons', 'Participant mentions', 'Uses it', 'Signal types'].includes(c),
-  ) ?? spec.columns[1]
+  const valueCol = getValueCol(spec)
   const valueIdx = spec.columns.indexOf(valueCol)
   const dataRows = spec.rows.filter((r) => r[0] != null && !String(r[0]).startsWith('All'))
 
@@ -56,13 +80,7 @@ function GenericBarChart({ spec, width }: { spec: ChartSpec; width: number }) {
                 tabIndex={0}
                 onFocus={() => announce(`${label}, ${val} ${valueCol}`)}
               />
-              <text
-                x={barW + 4}
-                y={y + yScale.bandwidth() / 2}
-                dy="0.35em"
-                fontSize={10}
-                fill={color.textMuted}
-              >
+              <text x={barW + 4} y={y + yScale.bandwidth() / 2} dy="0.35em" fontSize={10} fill={color.textMuted}>
                 {val}
               </text>
             </g>
@@ -93,29 +111,87 @@ function GenericBarChart({ spec, width }: { spec: ChartSpec; width: number }) {
   )
 }
 
-function ResponsiveBarChart({ spec }: { spec: ChartSpec }) {
+function ChartRenderer({ spec, width, viewType }: { spec: ChartSpec; width: number; viewType: ViewType }) {
+  if (viewType === 'original') return <GenericBarChart spec={spec} width={width} />
+
+  const barData = specToBarData(spec)
+  const valueCol = getValueCol(spec)
+
+  switch (viewType) {
+    case 'bar':
+      return <BarChart data={barData} width={width} valueLabel={valueCol} />
+    case 'pie':
+      return <PieChart data={barData} width={width} />
+    case 'treemap':
+      return <TreeMap data={barData} width={width} />
+    case 'stacked': {
+      const numericIdxs = spec.columns.slice(1).map((c, i) => ({ name: c, idx: i + 1 })).filter(c =>
+        spec.rows.some(r => typeof r[c.idx] === 'number'),
+      )
+      if (numericIdxs.length < 2) {
+        return <StackedBarChart data={barData.map(d => ({ label: d.label, segments: [{ key: 'value', value: d.value }] }))} width={width} valueLabel={valueCol} />
+      }
+      const stacked = spec.rows
+        .filter(r => r[0] != null && !String(r[0]).startsWith('All'))
+        .map(r => ({
+          label: String(r[0]),
+          segments: numericIdxs.map(c => ({ key: c.name, value: Number(r[c.idx]) || 0 })),
+        }))
+      return <StackedBarChart data={stacked} width={width} valueLabel={valueCol} />
+    }
+    case 'scatter': {
+      const numCols = spec.columns.map((c, i) => ({ name: c, idx: i })).filter(c =>
+        spec.rows.some(r => typeof r[c.idx] === 'number'),
+      )
+      if (numCols.length < 2) return <p className="text-sm text-text-muted py-4">Need at least 2 numeric columns for scatter.</p>
+      const points = spec.rows
+        .filter(r => r[0] != null)
+        .map(r => ({ x: Number(r[numCols[0].idx]) || 0, y: Number(r[numCols[1].idx]) || 0, label: String(r[0]) }))
+      return <ScatterPlot data={points} width={width} xLabel={numCols[0].name} yLabel={numCols[1].name} />
+    }
+  }
+}
+
+function ResponsiveChart({ spec, viewType }: { spec: ChartSpec; viewType: ViewType }) {
   const [ref, width] = useContainerWidth()
   return (
     <div ref={ref}>
-      {width > 0 && <GenericBarChart spec={spec} width={width} />}
+      {width > 0 && <ChartRenderer spec={spec} width={width} viewType={viewType} />}
     </div>
   )
 }
 
 function ChartCard({ spec }: { spec: ChartSpec }) {
+  const [viewType, setViewType] = useState<ViewType>('original')
   const altText = spec.alt_text ?? `Chart ${spec.number}: ${spec.title}. ${spec.rows.length} data rows.`
 
   return (
     <ChartWrapper
       title={`Chart ${spec.number}. ${spec.title}`}
+      figureLabel={`Chart ${String(spec.number).padStart(2, '0')}`}
       caption={spec.caption}
       source={spec.source_tab ? `${spec.source_tab} tab` : 'Chart Data tab'}
       altText={altText}
       dataTable={<DataTable columns={spec.columns} rows={spec.rows} />}
     >
-      <ResponsiveBarChart spec={spec} />
+      <div className="flex gap-1.5 mb-4 flex-wrap">
+        {VIEW_OPTIONS.map(opt => (
+          <button
+            key={opt.key}
+            onClick={() => setViewType(opt.key)}
+            className={`px-4 py-2.5 text-sm rounded-button min-h-12 border transition-colors ${
+              viewType === opt.key
+                ? 'bg-navy text-white font-bold border-navy'
+                : 'bg-surface-sunk text-text-muted border-border hover:border-navy hover:text-text'
+            }`}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
+      <ResponsiveChart spec={spec} viewType={viewType} />
       {spec.footnote && (
-        <p className="text-xs text-text-muted mt-1 italic">{spec.footnote}</p>
+        <p className="text-sm text-text-muted mt-2 italic max-w-[62ch]">{spec.footnote}</p>
       )}
     </ChartWrapper>
   )
@@ -126,12 +202,19 @@ export function ChartGallery() {
 
   return (
     <section aria-labelledby="charts-heading">
-      <h1 id="charts-heading" className="text-xl font-semibold text-text mb-1">
-        Chart gallery
-      </h1>
-      <p className="text-sm text-text-muted mb-4">{sortedCharts.length} pre-specified charts</p>
+      <div className="mb-6">
+        <p className="section-label">06 — Chart gallery</p>
+        <h1 id="charts-heading" className="section-heading">
+          Every chart ships in four forms.
+        </h1>
+        <p className="body-lg">
+          {sortedCharts.length} pre-specified charts. Each chart includes the visualization,
+          a text summary, an accessible data table, and a downloadable CSV.
+          Switch between bar, pie, treemap, stacked, and scatter views per chart.
+        </p>
+      </div>
 
-      <div className="space-y-12">
+      <div className="space-y-10">
         {sortedCharts.map((spec) => (
           <ChartCard key={spec.id} spec={spec} />
         ))}
