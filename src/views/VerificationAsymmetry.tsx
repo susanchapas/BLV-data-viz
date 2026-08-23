@@ -10,7 +10,7 @@ import { useContainerWidth } from '@/lib/useContainerWidth'
 import { verificationModes, evidence } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { DeviceNote } from '@/components/DeviceNote'
-import { grey } from '@/tokens/design'
+import { grey, motion as motionTokens } from '@/tokens/design'
 import type { VerificationMode } from '@/lib/types'
 
 const DETECT_FILLS: Record<string, string> = {
@@ -50,7 +50,7 @@ function ModeChart({
   })
 
   return (
-    <svg width={width} height={height} role="img" aria-label="Failure modes by evidence weight">
+    <svg width={width} height={height} aria-hidden="true">
       <Group top={margin.top} left={margin.left}>
         {data.map((d, i) => {
           const rows = Number(d['Rows (n=17)']) || 0
@@ -62,13 +62,13 @@ function ModeChart({
               key={d.Tag}
               x={0}
               y={y}
-              height={yScale.bandwidth()}
+              height={Math.max(yScale.bandwidth(), 24)}
               fill={fill}
               stroke={grey[4]}
               strokeWidth={0.5}
               initial={shouldAnimate ? { width: 0 } : { width: barW }}
               animate={{ width: barW }}
-              transition={{ duration: 0.3, delay: i * 0.03, ease: [0, 0, 0.2, 1] }}
+              transition={{ duration: motionTokens.duration / 1000, delay: i * motionTokens.stagger / 1000, ease: [...motionTokens.ease] }}
               role="graphics-symbol"
               aria-label={`${d['Failure mode']}: ${rows} evidence rows, ${d['Detectable without sight']}`}
               tabIndex={0}

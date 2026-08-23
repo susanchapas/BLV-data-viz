@@ -34,7 +34,7 @@ export function ChartWrapper({
         <p className="text-xs text-grey-3 mt-1">Source: {source}</p>
       </figcaption>
       <div
-        role="img"
+        role="figure"
         aria-labelledby={titleId}
         aria-describedby={descId}
         className="w-full"

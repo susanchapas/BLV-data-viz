@@ -9,7 +9,6 @@ export const grey = {
 
 export const accent = {
   emphasis: '#1d4ed8',
-  emphasisLight: '#3b82f6',
 } as const
 
 export const font = {

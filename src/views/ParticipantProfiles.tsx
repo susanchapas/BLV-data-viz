@@ -12,8 +12,8 @@ function ProfileCard({ p, evidenceCount }: { p: Participant; evidenceCount: numb
   return (
     <Link
       to={`/participants/${p.id}`}
-      className={`block p-4 border rounded hover:border-grey-4 transition-colors ${
-        isEcho ? 'border-accent bg-blue-50/30' : 'border-grey-1'
+      className={`block p-4 border rounded hover:border-grey-4 motion-safe:transition-colors ${
+        isEcho ? 'border-accent bg-grey-0' : 'border-grey-1'
       }`}
     >
       <div className="flex items-baseline justify-between mb-1">
