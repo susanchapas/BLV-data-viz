@@ -64,9 +64,13 @@ export function ChartWrapper({
 export function DataTable({
   columns,
   rows,
+  highlightedLabels,
+  labelColumn = 0,
 }: {
   columns: string[]
   rows: (string | number | null)[][]
+  highlightedLabels?: string[] | null
+  labelColumn?: number
 }) {
   return (
     <div className="table-wrap">
@@ -82,15 +86,18 @@ export function DataTable({
             </tr>
           </thead>
           <tbody>
-            {rows.map((row, i) => (
-              <tr key={i} className="border-b border-border hover:bg-surface-sunk">
-                {row.map((cell, j) => (
-                  <td key={j} className="px-4 py-3 text-text">
-                    {cell ?? '—'}
-                  </td>
-                ))}
-              </tr>
-            ))}
+            {rows.map((row, i) => {
+              const isHighlighted = highlightedLabels?.length && highlightedLabels.includes(String(row[labelColumn]))
+              return (
+                <tr key={i} className={`border-b border-border hover:bg-surface-sunk ${isHighlighted ? 'bg-cornflower/10' : ''}`}>
+                  {row.map((cell, j) => (
+                    <td key={j} className="px-4 py-3 text-text">
+                      {cell ?? '—'}
+                    </td>
+                  ))}
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>

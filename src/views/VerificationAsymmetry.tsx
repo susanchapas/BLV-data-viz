@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { Group } from '@visx/group'
 import { AxisBottom, AxisLeft } from '@visx/axis'
@@ -6,7 +7,9 @@ import { motion } from 'framer-motion'
 import { useFilters } from '@/lib/filters'
 import { useMotion } from '@/lib/motion'
 import { useAnnounce } from '@/lib/announce'
+import { useSelection } from '@/lib/selection'
 import { useContainerWidth } from '@/lib/useContainerWidth'
+import { buildDrillUrl } from '@/lib/drilldown'
 import { verificationModes, evidence } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { DeviceNote } from '@/components/DeviceNote'
@@ -25,13 +28,18 @@ function ModeChart({
   data,
   width,
   height,
+  highlightedLabels,
+  onItemHover,
 }: {
   data: VerificationMode[]
   width: number
   height: number
+  highlightedLabels?: string[] | null
+  onItemHover?: (label: string | null) => void
 }) {
   const { shouldAnimate } = useMotion()
   const announce = useAnnounce()
+  const navigate = useNavigate()
   const { toggleArrayFilter } = useFilters()
   const innerW = Math.max(width - margin.left - margin.right, 0)
   const innerH = Math.max(height - margin.top - margin.bottom, 0)
@@ -69,11 +77,20 @@ function ModeChart({
               initial={shouldAnimate ? { width: 0 } : { width: barW }}
               animate={{ width: barW }}
               transition={{ duration: motionTokens.duration / 1000, delay: i * motionTokens.stagger / 1000, ease: [...motionTokens.ease] }}
+              style={{
+                opacity: highlightedLabels?.length ? (highlightedLabels.includes(d.Tag) ? 1 : 0.15) : 1,
+                transition: 'opacity 150ms ease',
+              }}
               role="graphics-symbol"
               aria-label={`${d['Failure mode']}: ${rows} evidence rows, ${d['Detectable without sight']}`}
               tabIndex={0}
               onFocus={() => announce(`${d['Failure mode']}, ${rows} rows, ${d['Detectable without sight']}`)}
-              onClick={() => toggleArrayFilter('detectability', d['Detectable without sight'])}
+              onMouseEnter={() => onItemHover?.(d.Tag)}
+              onMouseLeave={() => onItemHover?.(null)}
+              onClick={() => {
+                toggleArrayFilter('detectability', d['Detectable without sight'])
+                navigate(buildDrillUrl({ search: d['Failure mode'] }))
+              }}
               className="cursor-pointer"
             />
           )
@@ -104,18 +121,27 @@ function ModeChart({
   )
 }
 
-function ResponsiveModeChart({ data }: { data: VerificationMode[] }) {
+function ResponsiveModeChart({
+  data,
+  highlightedLabels,
+  onItemHover,
+}: {
+  data: VerificationMode[]
+  highlightedLabels?: string[] | null
+  onItemHover?: (label: string | null) => void
+}) {
   const [ref, width] = useContainerWidth()
   const height = Math.max(data.length * 28 + 100, 400)
   return (
     <div ref={ref}>
-      {width > 0 && <ModeChart data={data} width={width} height={height} />}
+      {width > 0 && <ModeChart data={data} width={width} height={height} highlightedLabels={highlightedLabels} onItemHover={onItemHover} />}
     </div>
   )
 }
 
 export function VerificationAsymmetry() {
   const { filters, filterEvidence } = useFilters()
+  const { selection, setSelection, clearSelection } = useSelection()
 
   const filteredEvidence = useMemo(() => filterEvidence(evidence), [filterEvidence])
 
@@ -168,7 +194,11 @@ export function VerificationAsymmetry() {
           />
         }
       >
-        <ResponsiveModeChart data={data} />
+        <ResponsiveModeChart
+          data={data}
+          highlightedLabels={selection.labels.length ? selection.labels : null}
+          onItemHover={(label) => label ? setSelection([label], 'verification-chart') : clearSelection()}
+        />
       </ChartWrapper>
 
       <div className="mt-10">
@@ -189,7 +219,7 @@ export function VerificationAsymmetry() {
               </thead>
               <tbody>
                 {data.map((d) => (
-                  <tr key={d.Tag} className="border-b border-border hover:bg-surface-sunk">
+                  <tr key={d.Tag} className={`border-b border-border hover:bg-surface-sunk ${selection.labels.includes(d.Tag) ? 'bg-cornflower/10' : ''}`}>
                     <td className="px-4 py-3 font-mono text-xs">{d.Tag}</td>
                     <td className="px-4 py-3">{d['Failure mode']}</td>
                     <td className="px-4 py-3">{d['Failure class']}</td>

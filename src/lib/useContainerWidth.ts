@@ -1,20 +1,19 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
-export function useContainerWidth(): [React.RefObject<HTMLDivElement>, number] {
-  const ref = useRef<HTMLDivElement>(null!)
+export function useContainerWidth(): [(node: HTMLDivElement | null) => void, number] {
+  const [node, setNode] = useState<HTMLDivElement | null>(null)
   const [width, setWidth] = useState(0)
 
-  const update = useCallback(() => {
-    if (ref.current) setWidth(ref.current.clientWidth)
-  }, [])
+  const ref = useCallback((el: HTMLDivElement | null) => setNode(el), [])
 
   useEffect(() => {
+    if (!node) return
+    const update = () => setWidth(node.clientWidth)
     update()
-    if (!ref.current) return
     const ro = new ResizeObserver(update)
-    ro.observe(ref.current)
+    ro.observe(node)
     return () => ro.disconnect()
-  }, [update])
+  }, [node])
 
   return [ref, width]
 }

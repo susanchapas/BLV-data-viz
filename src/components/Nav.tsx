@@ -1,14 +1,14 @@
-import { NavLink, useSearchParams } from 'react-router-dom'
+import { Link, NavLink, useSearchParams } from 'react-router-dom'
 import { useMotion } from '@/lib/motion'
 
 const links = [
-  { to: '/', label: 'Evidence' },
+  { to: '/', label: 'Generator' },
+  { to: '/evidence', label: 'Evidence' },
   { to: '/verification', label: 'Verification' },
   { to: '/signals', label: 'Signals' },
   { to: '/themes', label: 'Themes' },
   { to: '/participants', label: 'Participants' },
   { to: '/charts', label: 'Charts' },
-  { to: '/explore', label: 'Generator' },
 ]
 
 function Logo() {
@@ -36,7 +36,7 @@ export function Nav() {
       <header className="border-b border-border-strong bg-surface-raised">
         <div className="max-w-[1240px] mx-auto" style={{ padding: '0 clamp(20px, 4vw, 48px)' }}>
           <div className="flex items-center justify-between" style={{ padding: 'clamp(16px, 3vw, 24px) 0' }}>
-            <div className="flex items-center gap-4">
+            <Link to="/" className="flex items-center gap-4 no-underline">
               <Logo />
               <div className="flex flex-col gap-0.5">
                 <span className="font-heading text-[21px] leading-none tracking-[-0.01em] text-navy">
@@ -46,7 +46,7 @@ export function Nav() {
                   Interactive Data Explorer
                 </span>
               </div>
-            </div>
+            </Link>
             <button
               onClick={() => setReduceMotion(!reduceMotion)}
               className="group flex items-center gap-2 font-mono text-xs tracking-[0.06em] text-text-muted hover:text-text px-4 py-2 min-h-12 rounded-button border border-transparent hover:border-border hover:bg-surface-sunk"

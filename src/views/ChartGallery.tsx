@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { Group } from '@visx/group'
 import { AxisBottom, AxisLeft } from '@visx/axis'
@@ -6,11 +7,12 @@ import { motion } from 'framer-motion'
 import { useMotion } from '@/lib/motion'
 import { useAnnounce } from '@/lib/announce'
 import { useContainerWidth } from '@/lib/useContainerWidth'
+import { buildDrillUrl } from '@/lib/drilldown'
 import { charts } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { color, categorical, motion as motionTokens } from '@/tokens/design'
 import { BarChart, PieChart, TreeMap, StackedBarChart, ScatterPlot } from '@/charts'
-import type { BarDatum } from '@/charts'
+import type { BarDatum, ChartClickItem } from '@/charts'
 import type { ChartSpec } from '@/lib/types'
 
 type ViewType = 'original' | 'bar' | 'pie' | 'treemap' | 'stacked' | 'scatter'
@@ -112,6 +114,9 @@ function GenericBarChart({ spec, width }: { spec: ChartSpec; width: number }) {
 }
 
 function ChartRenderer({ spec, width, viewType }: { spec: ChartSpec; width: number; viewType: ViewType }) {
+  const navigate = useNavigate()
+  const onItemClick = (item: ChartClickItem) => navigate(buildDrillUrl({ search: item.label }))
+
   if (viewType === 'original') return <GenericBarChart spec={spec} width={width} />
 
   const barData = specToBarData(spec)
@@ -119,17 +124,17 @@ function ChartRenderer({ spec, width, viewType }: { spec: ChartSpec; width: numb
 
   switch (viewType) {
     case 'bar':
-      return <BarChart data={barData} width={width} valueLabel={valueCol} />
+      return <BarChart data={barData} width={width} valueLabel={valueCol} onItemClick={onItemClick} />
     case 'pie':
-      return <PieChart data={barData} width={width} />
+      return <PieChart data={barData} width={width} onItemClick={onItemClick} />
     case 'treemap':
-      return <TreeMap data={barData} width={width} />
+      return <TreeMap data={barData} width={width} onItemClick={onItemClick} />
     case 'stacked': {
       const numericIdxs = spec.columns.slice(1).map((c, i) => ({ name: c, idx: i + 1 })).filter(c =>
         spec.rows.some(r => typeof r[c.idx] === 'number'),
       )
       if (numericIdxs.length < 2) {
-        return <StackedBarChart data={barData.map(d => ({ label: d.label, segments: [{ key: 'value', value: d.value }] }))} width={width} valueLabel={valueCol} />
+        return <StackedBarChart data={barData.map(d => ({ label: d.label, segments: [{ key: 'value', value: d.value }] }))} width={width} valueLabel={valueCol} onItemClick={onItemClick} />
       }
       const stacked = spec.rows
         .filter(r => r[0] != null && !String(r[0]).startsWith('All'))
@@ -137,7 +142,7 @@ function ChartRenderer({ spec, width, viewType }: { spec: ChartSpec; width: numb
           label: String(r[0]),
           segments: numericIdxs.map(c => ({ key: c.name, value: Number(r[c.idx]) || 0 })),
         }))
-      return <StackedBarChart data={stacked} width={width} valueLabel={valueCol} />
+      return <StackedBarChart data={stacked} width={width} valueLabel={valueCol} onItemClick={onItemClick} />
     }
     case 'scatter': {
       const numCols = spec.columns.map((c, i) => ({ name: c, idx: i })).filter(c =>
@@ -147,7 +152,7 @@ function ChartRenderer({ spec, width, viewType }: { spec: ChartSpec; width: numb
       const points = spec.rows
         .filter(r => r[0] != null)
         .map(r => ({ x: Number(r[numCols[0].idx]) || 0, y: Number(r[numCols[1].idx]) || 0, label: String(r[0]) }))
-      return <ScatterPlot data={points} width={width} xLabel={numCols[0].name} yLabel={numCols[1].name} />
+      return <ScatterPlot data={points} width={width} xLabel={numCols[0].name} yLabel={numCols[1].name} onItemClick={onItemClick} />
     }
   }
 }

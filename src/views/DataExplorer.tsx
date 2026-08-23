@@ -1,8 +1,12 @@
-import { useState, useMemo, useCallback } from 'react'
+import { useState, useMemo, useCallback, useEffect, type Dispatch, type SetStateAction } from 'react'
+import { useSearchParams, useNavigate } from 'react-router-dom'
+import { buildDrillUrl } from '@/lib/drilldown'
+import { useSelection } from '@/lib/selection'
 import { useContainerWidth } from '@/lib/useContainerWidth'
 import { participants, themes, feedbackSignals, verificationModes, codebook, subthemes, comparison } from '@/lib/data'
 import { BarChart, PieChart, StackedBarChart, ClusteredBarChart, TreeMap } from '@/charts'
-import type { BarDatum, StackedDatum } from '@/charts'
+import type { BarDatum, StackedDatum, ChartClickItem } from '@/charts'
+import { AxisPicker } from '@/components/AxisPicker'
 
 type ChartKind = 'bar' | 'stacked' | 'clustered' | 'pie' | 'donut' | 'treemap'
 type Metric = 'participants' | 'total'
@@ -297,36 +301,186 @@ function sortStacked(data: StackedDatum[], ordered?: string[]): StackedDatum[] {
   return [...data].sort((a, b) => total(b) - total(a))
 }
 
-function Select({ value, onChange, options, label }: { value: string; onChange: (v: string) => void; options: { value: string; label: string }[]; label: string }) {
+const DEFAULT_LIMIT = 30
+const CHART_KINDS: ChartKind[] = ['bar', 'stacked', 'clustered', 'pie', 'donut', 'treemap']
+
+interface ExplorerData {
+  barData: BarDatum[] | null
+  stackedData: StackedDatum[] | null
+  valueLabel: string
+}
+
+function computeExplorerData(
+  group: DataGroup,
+  selectedItem: DataItem | null,
+  crossTab: DemoKey | null,
+  swapped: boolean,
+  metric: Metric,
+  pids: string[],
+  limit: number,
+): ExplorerData {
+  const vLabel = metric === 'participants' ? 'Participants' : 'Total count'
+
+  if (selectedItem) {
+    if (crossTab) {
+      let data = computeItemCrossTab(selectedItem, pids, crossTab, metric)
+      data = sortBar(data, DEMO_ORDER[crossTab])
+      return { barData: data, stackedData: null, valueLabel: vLabel }
+    }
+    return { barData: [{ label: selectedItem.label, value: itemMetric(selectedItem, pids, metric) }], stackedData: null, valueLabel: vLabel }
+  }
+
+  let items = group.items
+  if (items.length > limit) items = items.slice(0, limit)
+
+  if (crossTab) {
+    let data = computeGroupStacked(items, pids, crossTab, metric, swapped)
+    const order = swapped ? DEMO_ORDER[crossTab] : undefined
+    data = sortStacked(data, order)
+    return { barData: null, stackedData: data, valueLabel: vLabel }
+  }
+
+  let data = computeGroupBars(items, pids, metric)
+  data = sortBar(data)
+  return { barData: data, stackedData: null, valueLabel: vLabel }
+}
+
+function renderChart(
+  data: ExplorerData,
+  chartKind: ChartKind,
+  width: number,
+  opts?: { onItemClick?: (item: ChartClickItem) => void; highlightedLabels?: string[] | null; onItemHover?: (label: string | null) => void },
+) {
+  if (width <= 0) return null
+  const { barData, stackedData, valueLabel } = data
+  const click = opts?.onItemClick
+  const hl = opts?.highlightedLabels
+  const hover = opts?.onItemHover
+  if (stackedData) {
+    if (chartKind === 'clustered') return <ClusteredBarChart data={stackedData} width={width} valueLabel={valueLabel} onItemClick={click} highlightedLabels={hl} />
+    return <StackedBarChart data={stackedData} width={width} valueLabel={valueLabel} onItemClick={click} highlightedLabels={hl} />
+  }
+  if (barData && barData.length > 0) {
+    if (chartKind === 'pie') return <PieChart data={barData} width={width} onItemClick={click} highlightedLabels={hl} onItemHover={hover} />
+    if (chartKind === 'donut') return <PieChart data={barData} width={width} donut onItemClick={click} highlightedLabels={hl} onItemHover={hover} />
+    if (chartKind === 'treemap') return <TreeMap data={barData} width={width} onItemClick={click} highlightedLabels={hl} onItemHover={hover} />
+    return <BarChart data={barData} width={width} valueLabel={valueLabel} onItemClick={click} highlightedLabels={hl} onItemHover={hover} />
+  }
+  return <p className="text-[15px] text-text-muted">No data for this selection.</p>
+}
+
+function parseDemoFilters(params: URLSearchParams, prefix: string): Record<string, Set<string>> {
+  const result: Record<string, Set<string>> = {}
+  for (const key of DEMO_KEYS) {
+    const raw = params.get(`${prefix}${key}`)
+    if (raw) result[key] = new Set(raw.split(',').filter(Boolean))
+  }
+  return result
+}
+
+function parseExplorerParams(params: URLSearchParams) {
+  const grp = params.get('grp')
+  const groupKey = grp && GROUP_MAP.has(grp) ? grp : ALL_GROUPS[0].key
+  const group = GROUP_MAP.get(groupKey) ?? ALL_GROUPS[0]
+
+  const itemParam = params.get('item')
+  const itemKey = itemParam && group.items.some(i => i.key === itemParam) ? itemParam : null
+
+  const xt = params.get('xt')
+  const crossTab = xt && (DEMO_KEYS as string[]).includes(xt) ? (xt as DemoKey) : null
+
+  const ck = params.get('ck')
+  const chartKind: ChartKind = ck && (CHART_KINDS as string[]).includes(ck) ? (ck as ChartKind) : 'bar'
+
+  const metric: Metric = params.get('met') === 'total' ? 'total' : 'participants'
+
+  const limParam = params.get('lim')
+  const limit = limParam ? Math.max(1, Number(limParam) || DEFAULT_LIMIT) : DEFAULT_LIMIT
+
+  return {
+    groupKey,
+    itemKey,
+    crossTab,
+    chartKind,
+    metric,
+    limit,
+    swapped: params.get('sw') === '1',
+    comparing: params.get('cmp') === '1',
+    includeP011: params.get('dp011') === '1',
+    includeP011B: params.get('dp011b') === '1',
+    demoFilters: parseDemoFilters(params, 'df.'),
+    demoFiltersB: parseDemoFilters(params, 'dfb.'),
+  }
+}
+
+function CompactFilters({ demoFilters, setDemoFilters, includeP011, setIncludeP011, crossTab }: {
+  demoFilters: Record<string, Set<string>>
+  setDemoFilters: Dispatch<SetStateAction<Record<string, Set<string>>>>
+  includeP011: boolean
+  setIncludeP011: (v: boolean) => void
+  crossTab: DemoKey | null
+}) {
+  const toggle = useCallback((key: string, value: string) => {
+    setDemoFilters(prev => {
+      const next = { ...prev }
+      const current = next[key] ? new Set(next[key]) : new Set<string>()
+      if (current.has(value)) current.delete(value)
+      else current.add(value)
+      if (current.size === 0) delete next[key]
+      else next[key] = current
+      return next
+    })
+  }, [setDemoFilters])
+
   return (
-    <label className="flex flex-col gap-1.5">
-      <span className="font-mono text-xs tracking-[0.06em] uppercase text-text-muted">{label}</span>
-      <select
-        value={value}
-        onChange={e => onChange(e.target.value)}
-        className="text-[15px] border border-border-strong rounded-button px-4 py-3 bg-surface-raised text-text min-h-12"
-      >
-        {options.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
-      </select>
-    </label>
+    <div className="flex flex-wrap gap-1.5">
+      {DEMO_KEYS.filter(k => k !== crossTab).flatMap(demoKey =>
+        DEMO_VALUES[demoKey].map(val => {
+          const active = demoFilters[demoKey]?.has(val)
+          return (
+            <button
+              key={`${demoKey}-${val}`}
+              onClick={() => toggle(demoKey, val)}
+              title={DEMO_LABELS[demoKey]}
+              className={`px-2.5 py-1 text-[12px] rounded-pill border transition-colors ${
+                active ? 'bg-amethyst-800 text-white border-amethyst-800 font-bold' : 'text-text-muted border-border hover:border-border-strong'
+              }`}
+            >{val}</button>
+          )
+        }),
+      )}
+      <label className="inline-flex items-center gap-1.5 cursor-pointer text-[12px] text-text-muted select-none ml-1">
+        <input type="checkbox" checked={includeP011} onChange={e => setIncludeP011(e.target.checked)} className="w-3 h-3 accent-amethyst" />
+        +P011
+      </label>
+    </div>
   )
 }
 
 export function DataExplorer() {
-  const [ref, width] = useContainerWidth()
+  const navigate = useNavigate()
+  const { selection, setSelection, clearSelection } = useSelection()
+  const [refA, widthA] = useContainerWidth()
+  const [refB, widthB] = useContainerWidth()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [initial] = useState(() => parseExplorerParams(searchParams))
 
-  const [groupKey, setGroupKey] = useState(ALL_GROUPS[0].key)
-  const [itemKey, setItemKey] = useState<string | null>(null)
-  const [crossTab, setCrossTab] = useState<DemoKey | null>(null)
-  const [swapped, setSwapped] = useState(false)
-  const [chartKind, setChartKind] = useState<ChartKind>('bar')
-  const [metric, setMetric] = useState<Metric>('participants')
-  const [demoFilters, setDemoFilters] = useState<Record<string, Set<string>>>({})
-  const [includeP011, setIncludeP011] = useState(false)
+  const [groupKey, setGroupKey] = useState(initial.groupKey)
+  const [itemKey, setItemKey] = useState<string | null>(initial.itemKey)
+  const [crossTab, setCrossTab] = useState<DemoKey | null>(initial.crossTab)
+  const [swapped, setSwapped] = useState(initial.swapped)
+  const [chartKind, setChartKind] = useState<ChartKind>(initial.chartKind)
+  const [metric, setMetric] = useState<Metric>(initial.metric)
+  const [demoFilters, setDemoFilters] = useState<Record<string, Set<string>>>(initial.demoFilters)
+  const [includeP011, setIncludeP011] = useState(initial.includeP011)
+  const [comparing, setComparing] = useState(initial.comparing)
+  const [demoFiltersB, setDemoFiltersB] = useState<Record<string, Set<string>>>(initial.demoFiltersB)
+  const [includeP011B, setIncludeP011B] = useState(initial.includeP011B)
   const [showFilters, setShowFilters] = useState(false)
   const [showSummary, setShowSummary] = useState(false)
   const [showTable, setShowTable] = useState(false)
-  const [limit, setLimit] = useState(30)
+  const [limit, setLimit] = useState(initial.limit)
+  const [copied, setCopied] = useState(false)
 
   const group = GROUP_MAP.get(groupKey) ?? ALL_GROUPS[0]
   const selectedItem = itemKey ? group.items.find(i => i.key === itemKey) ?? null : null
@@ -377,10 +531,52 @@ export function DataExplorer() {
   const clearFilters = useCallback(() => { setDemoFilters({}); setIncludeP011(false) }, [])
   const hasActiveFilters = Object.keys(demoFilters).length > 0 || includeP011
 
-  const pids = useMemo(() => getFilteredPids(demoFilters, includeP011), [demoFilters, includeP011])
+  const resetB = useCallback(() => {
+    setDemoFiltersB(Object.fromEntries(Object.entries(demoFilters).map(([k, v]) => [k, new Set(v)])))
+    setIncludeP011B(includeP011)
+  }, [demoFilters, includeP011])
+
+  const handleShare = useCallback(() => {
+    navigator.clipboard.writeText(window.location.href)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }, [])
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams)
+    for (const k of ['grp', 'item', 'xt', 'ck', 'met', 'lim', 'sw', 'cmp', 'dp011', 'dp011b']) params.delete(k)
+    for (const k of DEMO_KEYS) { params.delete(`df.${k}`); params.delete(`dfb.${k}`) }
+
+    params.set('grp', groupKey)
+    if (itemKey) params.set('item', itemKey)
+    if (crossTab) params.set('xt', crossTab)
+    params.set('ck', chartKind)
+    params.set('met', metric)
+    if (limit !== DEFAULT_LIMIT) params.set('lim', String(limit))
+    if (swapped) params.set('sw', '1')
+    if (comparing) params.set('cmp', '1')
+    for (const [key, values] of Object.entries(demoFilters)) {
+      if (values.size > 0) params.set(`df.${key}`, [...values].join(','))
+    }
+    if (includeP011) params.set('dp011', '1')
+    if (comparing) {
+      for (const [key, values] of Object.entries(demoFiltersB)) {
+        if (values.size > 0) params.set(`dfb.${key}`, [...values].join(','))
+      }
+      if (includeP011B) params.set('dp011b', '1')
+    }
+    setSearchParams(params, { replace: true })
+  }, [groupKey, itemKey, crossTab, chartKind, metric, limit, swapped, comparing, demoFilters, includeP011, demoFiltersB, includeP011B, setSearchParams])
+
+  const pidsA = useMemo(() => getFilteredPids(demoFilters, includeP011), [demoFilters, includeP011])
+  const pidsB = useMemo(() => getFilteredPids(demoFiltersB, includeP011B), [demoFiltersB, includeP011B])
 
   const groupOptions = useMemo(() =>
-    ALL_GROUPS.map(g => ({ value: g.key, label: `${g.label} (${g.items.length})` })),
+    ALL_GROUPS.map(g => ({
+      value: g.key,
+      label: `${g.label} (${g.items.length})`,
+      group: g.source === 'comparison' ? 'Participant attributes' : 'Research data',
+    })),
   [])
 
   const itemOptions = useMemo(() => [
@@ -393,32 +589,15 @@ export function DataExplorer() {
     ...DEMO_KEYS.map(k => ({ value: k, label: DEMO_LABELS[k] })),
   ], [])
 
-  const { barData, stackedData, valueLabel } = useMemo(() => {
-    const vLabel = metric === 'participants' ? 'Participants' : 'Total count'
-
-    if (selectedItem) {
-      if (crossTab) {
-        let data = computeItemCrossTab(selectedItem, pids, crossTab, metric)
-        data = sortBar(data, DEMO_ORDER[crossTab])
-        return { barData: data, stackedData: null, valueLabel: vLabel }
-      }
-      return { barData: [{ label: selectedItem.label, value: itemMetric(selectedItem, pids, metric) }], stackedData: null, valueLabel: vLabel }
-    }
-
-    let items = group.items
-    if (items.length > limit) items = items.slice(0, limit)
-
-    if (crossTab) {
-      let data = computeGroupStacked(items, pids, crossTab, metric, swapped)
-      const order = swapped ? DEMO_ORDER[crossTab] : undefined
-      data = sortStacked(data, order)
-      return { barData: null, stackedData: data, valueLabel: vLabel }
-    }
-
-    let data = computeGroupBars(items, pids, metric)
-    data = sortBar(data)
-    return { barData: data, stackedData: null, valueLabel: vLabel }
-  }, [group, selectedItem, crossTab, swapped, metric, pids, limit])
+  const dataA = useMemo(
+    () => computeExplorerData(group, selectedItem, crossTab, swapped, metric, pidsA, limit),
+    [group, selectedItem, crossTab, swapped, metric, pidsA, limit],
+  )
+  const dataB = useMemo(
+    () => comparing ? computeExplorerData(group, selectedItem, crossTab, swapped, metric, pidsB, limit) : null,
+    [comparing, group, selectedItem, crossTab, swapped, metric, pidsB, limit],
+  )
+  const { barData, stackedData, valueLabel } = dataA
 
   const segKeys = useMemo(() => {
     if (!stackedData) return []
@@ -437,20 +616,26 @@ export function DataExplorer() {
     ? [{ key: 'stacked', label: 'Stacked' }, { key: 'clustered', label: 'Clustered' }]
     : [{ key: 'bar', label: 'Bar' }, { key: 'pie', label: 'Pie' }, { key: 'donut', label: 'Donut' }, { key: 'treemap', label: 'Treemap' }]
 
-  const chart = useMemo(() => {
-    if (width <= 0) return null
-    if (stackedData) {
-      if (chartKind === 'clustered') return <ClusteredBarChart data={stackedData} width={width} valueLabel={valueLabel} />
-      return <StackedBarChart data={stackedData} width={width} valueLabel={valueLabel} />
-    }
-    if (barData && barData.length > 0) {
-      if (chartKind === 'pie') return <PieChart data={barData} width={width} />
-      if (chartKind === 'donut') return <PieChart data={barData} width={width} donut />
-      if (chartKind === 'treemap') return <TreeMap data={barData} width={width} />
-      return <BarChart data={barData} width={width} valueLabel={valueLabel} />
-    }
-    return <p className="text-[15px] text-text-muted">No data for this selection.</p>
-  }, [barData, stackedData, chartKind, width, valueLabel])
+  const handleItemClick = useCallback((item: ChartClickItem) => {
+    navigate(buildDrillUrl({ search: item.label }))
+  }, [navigate])
+
+  const handleItemHover = useCallback((label: string | null) => {
+    if (label) setSelection([label], 'explorer')
+    else clearSelection()
+  }, [setSelection, clearSelection])
+
+  const highlightedLabels = selection.labels.length > 0 ? selection.labels : null
+
+  const chartA = useMemo(() => renderChart(dataA, chartKind, widthA, {
+    onItemClick: handleItemClick, highlightedLabels, onItemHover: handleItemHover,
+  }), [dataA, chartKind, widthA, handleItemClick, highlightedLabels, handleItemHover])
+  const chartB = useMemo(
+    () => comparing && dataB ? renderChart(dataB, chartKind, widthB, {
+      onItemClick: handleItemClick, highlightedLabels, onItemHover: handleItemHover,
+    }) : null,
+    [comparing, dataB, chartKind, widthB, handleItemClick, highlightedLabels, handleItemHover],
+  )
 
   const isSuggestionActive = (s: Suggestion) => groupKey === s.groupKey && itemKey === s.itemKey && crossTab === s.crossTab
 
@@ -492,8 +677,8 @@ export function DataExplorer() {
       <div className="card mb-4">
         <span className="font-mono text-xs tracking-[0.06em] uppercase text-text-muted block mb-3">Y-axis · data points</span>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Select label="Category" value={groupKey} onChange={handleGroupChange} options={groupOptions} />
-          <Select label="Data point" value={itemKey ?? ''} onChange={handleItemChange} options={itemOptions} />
+          <AxisPicker label="Category" value={groupKey} onChange={handleGroupChange} options={groupOptions} placeholder="Search categories…" />
+          <AxisPicker label="Data point" value={itemKey ?? ''} onChange={handleItemChange} options={itemOptions} placeholder="Search data points…" />
         </div>
         {isResearch && (
           <div className="flex gap-3 mt-3">
@@ -517,7 +702,7 @@ export function DataExplorer() {
         <span className="font-mono text-xs tracking-[0.06em] uppercase text-text-muted block mb-3">X-axis · cross-tabulate by</span>
         <div className="flex gap-4 items-end">
           <div className="flex-1">
-            <Select label="Demographic variable" value={crossTab ?? ''} onChange={handleCrossTabChange} options={crossTabOptions} />
+            <AxisPicker label="Demographic variable" value={crossTab ?? ''} onChange={handleCrossTabChange} options={crossTabOptions} placeholder="Search demographics…" />
           </div>
           <button
             onClick={() => setSwapped(s => !s)}
@@ -545,84 +730,130 @@ export function DataExplorer() {
             >{t.label}</button>
           ))}
         </div>
-        {isGroupView && group.items.length > 10 && (
-          <label className="flex items-center gap-2 ml-auto">
-            <span className="font-mono text-xs text-text-muted">Show top</span>
-            <input
-              type="number"
-              value={limit}
-              onChange={e => setLimit(Math.max(1, Number(e.target.value) || 30))}
-              className="text-[13px] w-16 border border-border-strong rounded-button px-2 py-1 bg-surface-raised text-text"
-              min={1} max={500}
-            />
-          </label>
+        <button
+          onClick={() => setComparing(c => !c)}
+          aria-pressed={comparing}
+          className={`px-4 py-2 text-[14px] rounded-button min-h-9 border transition-colors ${
+            comparing
+              ? 'bg-navy text-white font-bold border-navy'
+              : 'text-text-muted hover:bg-surface-sunk border-border hover:border-border-strong'
+          }`}
+        >Compare</button>
+        {comparing && (
+          <button
+            onClick={resetB}
+            className="px-4 py-2 text-[14px] rounded-button min-h-9 border border-border text-text-muted hover:bg-surface-sunk hover:border-border-strong transition-colors"
+          >Reset B</button>
         )}
+        <div className="ml-auto flex items-center gap-3">
+          {isGroupView && group.items.length > 10 && (
+            <label className="flex items-center gap-2">
+              <span className="font-mono text-xs text-text-muted">Show top</span>
+              <input
+                type="number"
+                value={limit}
+                onChange={e => setLimit(Math.max(1, Number(e.target.value) || 30))}
+                className="text-[13px] w-16 border border-border-strong rounded-button px-2 py-1 bg-surface-raised text-text"
+                min={1} max={500}
+              />
+            </label>
+          )}
+          <button
+            onClick={handleShare}
+            className="min-h-9 px-4 py-2 text-[14px] rounded-button border border-border-strong text-action hover:text-action-hover hover:bg-surface-sunk transition-colors"
+          >{copied ? 'Copied!' : 'Share'}</button>
+        </div>
       </div>
 
-      <div className="card mb-4">
-        <button
-          onClick={() => setShowFilters(!showFilters)}
-          className="flex items-center gap-2 font-mono text-xs tracking-[0.06em] uppercase text-text-muted hover:text-text w-full text-left py-1"
-          aria-expanded={showFilters}
-        >
-          <span className={`inline-block transition-transform duration-150 ${showFilters ? 'rotate-90' : ''}`} aria-hidden="true">&#9654;</span>
-          Filters
-          {hasActiveFilters && <span className="text-action font-bold normal-case tracking-normal">{Object.keys(demoFilters).length} active</span>}
-        </button>
-        {showFilters && (
-          <div className="mt-4 pt-4 border-t border-border space-y-4">
-            {DEMO_KEYS.filter(k => k !== crossTab).map(demoKey => {
-              const values = DEMO_VALUES[demoKey]
-              const active = demoFilters[demoKey]
-              return (
-                <div key={demoKey}>
-                  <span className="text-[13px] font-bold text-navy block mb-1.5">{DEMO_LABELS[demoKey]}</span>
-                  <div className="flex flex-wrap gap-1.5">
-                    <button
-                      onClick={() => setDemoFilters(prev => { const n = { ...prev }; delete n[demoKey]; return n })}
-                      className={`px-3 py-1.5 text-[13px] rounded-pill border transition-colors ${
-                        !active || active.size === 0
-                          ? 'bg-navy text-white border-navy font-bold'
-                          : 'text-text-muted border-border hover:border-border-strong'
-                      }`}
-                    >All</button>
-                    {values.map(val => (
+      {!comparing && (
+        <div className="card mb-4">
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className="flex items-center gap-2 font-mono text-xs tracking-[0.06em] uppercase text-text-muted hover:text-text w-full text-left py-1"
+            aria-expanded={showFilters}
+          >
+            <span className={`inline-block transition-transform duration-150 ${showFilters ? 'rotate-90' : ''}`} aria-hidden="true">&#9654;</span>
+            Filters
+            {hasActiveFilters && <span className="text-action font-bold normal-case tracking-normal">{Object.keys(demoFilters).length} active</span>}
+          </button>
+          {showFilters && (
+            <div className="mt-4 pt-4 border-t border-border space-y-4">
+              {DEMO_KEYS.filter(k => k !== crossTab).map(demoKey => {
+                const values = DEMO_VALUES[demoKey]
+                const active = demoFilters[demoKey]
+                return (
+                  <div key={demoKey}>
+                    <span className="text-[13px] font-bold text-navy block mb-1.5">{DEMO_LABELS[demoKey]}</span>
+                    <div className="flex flex-wrap gap-1.5">
                       <button
-                        key={val}
-                        onClick={() => toggleDemoFilter(demoKey, val)}
+                        onClick={() => setDemoFilters(prev => { const n = { ...prev }; delete n[demoKey]; return n })}
                         className={`px-3 py-1.5 text-[13px] rounded-pill border transition-colors ${
-                          active?.has(val)
-                            ? 'bg-amethyst-800 text-white border-amethyst-800 font-bold'
+                          !active || active.size === 0
+                            ? 'bg-navy text-white border-navy font-bold'
                             : 'text-text-muted border-border hover:border-border-strong'
                         }`}
-                      >{val}</button>
-                    ))}
+                      >All</button>
+                      {values.map(val => (
+                        <button
+                          key={val}
+                          onClick={() => toggleDemoFilter(demoKey, val)}
+                          className={`px-3 py-1.5 text-[13px] rounded-pill border transition-colors ${
+                            active?.has(val)
+                              ? 'bg-amethyst-800 text-white border-amethyst-800 font-bold'
+                              : 'text-text-muted border-border hover:border-border-strong'
+                          }`}
+                        >{val}</button>
+                      ))}
+                    </div>
                   </div>
+                )
+              })}
+              <label className="inline-flex items-center gap-2 cursor-pointer text-[13px] text-text select-none">
+                <input type="checkbox" checked={includeP011} onChange={e => setIncludeP011(e.target.checked)} className="w-3.5 h-3.5 accent-amethyst" />
+                Include P011 (EchoVision, not Ray-Ban Meta)
+              </label>
+              {hasActiveFilters && (
+                <div>
+                  <button onClick={clearFilters} className="text-[13px] font-bold text-action hover:text-action-hover hover:underline">Clear all filters</button>
                 </div>
-              )
-            })}
-            <label className="inline-flex items-center gap-2 cursor-pointer text-[13px] text-text select-none">
-              <input type="checkbox" checked={includeP011} onChange={e => setIncludeP011(e.target.checked)} className="w-3.5 h-3.5 accent-amethyst" />
-              Include P011 (EchoVision, not Ray-Ban Meta)
-            </label>
-            {hasActiveFilters && (
-              <div>
-                <button onClick={clearFilters} className="text-[13px] font-bold text-action hover:text-action-hover hover:underline">Clear all filters</button>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-
-      <div ref={ref} className="card mb-4">
-        <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
-          <span className="font-mono text-xs text-text-muted">
-            {pids.length} participant{pids.length !== 1 ? 's' : ''}
-            {isGroupView && <> &middot; {Math.min(group.items.length, limit)} of {group.items.length} data points</>}
-          </span>
+              )}
+            </div>
+          )}
         </div>
-        {chart}
-      </div>
+      )}
+
+      {comparing ? (
+        <div className="card mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div ref={refA}>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-navy text-white text-[11px] font-bold shrink-0">A</span>
+                <span className="font-mono text-xs text-text-muted">{pidsA.length} participant{pidsA.length !== 1 ? 's' : ''}</span>
+              </div>
+              <CompactFilters demoFilters={demoFilters} setDemoFilters={setDemoFilters} includeP011={includeP011} setIncludeP011={setIncludeP011} crossTab={crossTab} />
+              <div className="mt-3">{chartA}</div>
+            </div>
+            <div ref={refB}>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amethyst-800 text-white text-[11px] font-bold shrink-0">B</span>
+                <span className="font-mono text-xs text-text-muted">{pidsB.length} participant{pidsB.length !== 1 ? 's' : ''}</span>
+              </div>
+              <CompactFilters demoFilters={demoFiltersB} setDemoFilters={setDemoFiltersB} includeP011={includeP011B} setIncludeP011={setIncludeP011B} crossTab={crossTab} />
+              <div className="mt-3">{chartB}</div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div ref={refA} className="card mb-4">
+          <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
+            <span className="font-mono text-xs text-text-muted">
+              {pidsA.length} participant{pidsA.length !== 1 ? 's' : ''}
+              {isGroupView && <> &middot; {Math.min(group.items.length, limit)} of {group.items.length} data points</>}
+            </span>
+          </div>
+          {chartA}
+        </div>
+      )}
 
       <div className="card mb-4">
         <button
@@ -645,7 +876,7 @@ export function DataExplorer() {
               <div>
                 <span className="font-bold text-navy">Data point:</span>{' '}
                 {selectedItem.label}
-                <span className="text-text-muted"> — {itemMetric(selectedItem, pids, 'participants')} of {pids.length} participants</span>
+                <span className="text-text-muted"> — {itemMetric(selectedItem, pidsA, 'participants')} of {pidsA.length} participants</span>
               </div>
             )}
             {crossTab && (
@@ -685,7 +916,7 @@ export function DataExplorer() {
               </thead>
               <tbody>
                 {barData.map((row, i) => (
-                  <tr key={i} className="border-b border-border hover:bg-surface-sunk">
+                  <tr key={i} className={`border-b border-border hover:bg-surface-sunk${highlightedLabels?.includes(row.label) ? ' bg-cornflower/10' : ''}`}>
                     <td className="px-4 py-3 text-text max-w-xs truncate">{row.label}</td>
                     <td className="px-4 py-3 text-text tabular-nums">{row.value}</td>
                   </tr>
@@ -716,7 +947,7 @@ export function DataExplorer() {
                   const segMap = new Map(row.segments.map(s => [s.key, s.value]))
                   const rowTotal = row.segments.reduce((s, seg) => s + seg.value, 0)
                   return (
-                    <tr key={i} className="border-b border-border hover:bg-surface-sunk">
+                    <tr key={i} className={`border-b border-border hover:bg-surface-sunk${highlightedLabels?.includes(row.label) ? ' bg-cornflower/10' : ''}`}>
                       <td className="px-4 py-3 text-text max-w-xs truncate">{row.label}</td>
                       {segKeys.map(k => (
                         <td key={k} className="px-4 py-3 text-text tabular-nums">{segMap.get(k) ?? 0}</td>

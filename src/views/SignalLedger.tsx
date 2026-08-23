@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { Group } from '@visx/group'
 import { AxisBottom, AxisLeft } from '@visx/axis'
@@ -6,7 +7,9 @@ import { motion } from 'framer-motion'
 import { useFilters } from '@/lib/filters'
 import { useMotion } from '@/lib/motion'
 import { useAnnounce } from '@/lib/announce'
+import { useSelection } from '@/lib/selection'
 import { useContainerWidth } from '@/lib/useContainerWidth'
+import { buildDrillUrl } from '@/lib/drilldown'
 import { feedbackSignals, evidence } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { DeviceNote } from '@/components/DeviceNote'
@@ -31,13 +34,18 @@ function SignalChart({
   data,
   width,
   height,
+  highlightedLabels,
+  onItemHover,
 }: {
   data: FeedbackSignal[]
   width: number
   height: number
+  highlightedLabels?: string[] | null
+  onItemHover?: (label: string | null) => void
 }) {
   const { shouldAnimate } = useMotion()
   const announce = useAnnounce()
+  const navigate = useNavigate()
   const innerW = Math.max(width - margin.left - margin.right, 0)
   const innerH = Math.max(height - margin.top - margin.bottom, 0)
 
@@ -74,12 +82,20 @@ function SignalChart({
               initial={shouldAnimate ? { width: 0 } : { width: barW }}
               animate={{ width: barW }}
               transition={{ duration: motionTokens.duration / 1000, delay: i * motionTokens.stagger / 1000, ease: [...motionTokens.ease] }}
+              style={{
+                opacity: highlightedLabels?.length ? (highlightedLabels.includes(d.Tag) ? 1 : 0.15) : 1,
+                transition: 'opacity 150ms ease',
+              }}
               role="graphics-symbol"
               aria-label={`${d['Signal the user needs']}: ${rows} rows, ${d['Signal status']}`}
               tabIndex={0}
               onFocus={() =>
                 announce(`${d['Signal the user needs']}, ${rows} rows, ${d['Signal status']}`)
               }
+              onMouseEnter={() => onItemHover?.(d.Tag)}
+              onMouseLeave={() => onItemHover?.(null)}
+              onClick={() => navigate(buildDrillUrl({ search: d['Signal the user needs'] }))}
+              className="cursor-pointer"
             />
           )
         })}
@@ -109,18 +125,27 @@ function SignalChart({
   )
 }
 
-function ResponsiveSignalChart({ data }: { data: FeedbackSignal[] }) {
+function ResponsiveSignalChart({
+  data,
+  highlightedLabels,
+  onItemHover,
+}: {
+  data: FeedbackSignal[]
+  highlightedLabels?: string[] | null
+  onItemHover?: (label: string | null) => void
+}) {
   const [ref, width] = useContainerWidth()
   const height = Math.max(data.length * 28 + 80, 400)
   return (
     <div ref={ref}>
-      {width > 0 && <SignalChart data={data} width={width} height={height} />}
+      {width > 0 && <SignalChart data={data} width={width} height={height} highlightedLabels={highlightedLabels} onItemHover={onItemHover} />}
     </div>
   )
 }
 
 export function SignalLedger() {
   const { filters, filterEvidence } = useFilters()
+  const { selection, setSelection, clearSelection } = useSelection()
 
   const filteredEvidence = useMemo(() => filterEvidence(evidence), [filterEvidence])
   const uniqueParticipants = new Set(filteredEvidence.map((r) => r.Who))
@@ -199,7 +224,11 @@ export function SignalLedger() {
           />
         }
       >
-          <ResponsiveSignalChart data={data} />
+          <ResponsiveSignalChart
+            data={data}
+            highlightedLabels={selection.labels.length && selection.source !== 'signal-chart' ? selection.labels : null}
+            onItemHover={(label) => label ? setSelection([label], 'signal-chart') : clearSelection()}
+          />
       </ChartWrapper>
     </section>
   )

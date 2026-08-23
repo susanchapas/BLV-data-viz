@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { Group } from '@visx/group'
 import { AxisBottom, AxisLeft } from '@visx/axis'
@@ -6,7 +7,9 @@ import { motion } from 'framer-motion'
 import { useFilters } from '@/lib/filters'
 import { useMotion } from '@/lib/motion'
 import { useAnnounce } from '@/lib/announce'
+import { useSelection } from '@/lib/selection'
 import { useContainerWidth } from '@/lib/useContainerWidth'
+import { buildDrillUrl } from '@/lib/drilldown'
 import { themes, codebook, evidence } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { DeviceNote } from '@/components/DeviceNote'
@@ -14,9 +17,20 @@ import { color, categorical, motion as motionTokens } from '@/tokens/design'
 
 const margin = { top: 20, right: 20, bottom: 60, left: 200 }
 
-function ThemeChart({ width, height }: { width: number; height: number }) {
+function ThemeChart({
+  width,
+  height,
+  highlightedLabels,
+  onItemHover,
+}: {
+  width: number
+  height: number
+  highlightedLabels?: string[] | null
+  onItemHover?: (label: string | null) => void
+}) {
   const { shouldAnimate } = useMotion()
   const announce = useAnnounce()
+  const navigate = useNavigate()
   const { toggleArrayFilter } = useFilters()
   const innerW = Math.max(width - margin.left - margin.right, 0)
   const innerH = Math.max(height - margin.top - margin.bottom, 0)
@@ -52,11 +66,20 @@ function ThemeChart({ width, height }: { width: number; height: number }) {
               initial={shouldAnimate ? { width: 0 } : { width: barW }}
               animate={{ width: barW }}
               transition={{ duration: motionTokens.duration / 1000, delay: i * motionTokens.stagger / 1000, ease: [...motionTokens.ease] }}
+              style={{
+                opacity: highlightedLabels?.length ? (highlightedLabels.includes(t.Theme) ? 1 : 0.15) : 1,
+                transition: 'opacity 150ms ease',
+              }}
               role="graphics-symbol"
               aria-label={`${t.Name}: ${t.Total} evidence rows`}
               tabIndex={0}
               onFocus={() => announce(`${t.Name}, ${t.Total} evidence rows`)}
-              onClick={() => toggleArrayFilter('themes', t.Theme)}
+              onMouseEnter={() => onItemHover?.(t.Theme)}
+              onMouseLeave={() => onItemHover?.(null)}
+              onClick={() => {
+                toggleArrayFilter('themes', t.Theme)
+                navigate(buildDrillUrl({ theme: t.Theme }))
+              }}
               className="cursor-pointer"
             />
           )
@@ -87,18 +110,25 @@ function ThemeChart({ width, height }: { width: number; height: number }) {
   )
 }
 
-function ResponsiveThemeChart() {
+function ResponsiveThemeChart({
+  highlightedLabels,
+  onItemHover,
+}: {
+  highlightedLabels?: string[] | null
+  onItemHover?: (label: string | null) => void
+}) {
   const [ref, width] = useContainerWidth()
   const height = themes.length * 28 + 80
   return (
     <div ref={ref}>
-      {width > 0 && <ThemeChart width={width} height={height} />}
+      {width > 0 && <ThemeChart width={width} height={height} highlightedLabels={highlightedLabels} onItemHover={onItemHover} />}
     </div>
   )
 }
 
 export function ThemeBrowser() {
   const { filters, filterEvidence } = useFilters()
+  const { selection, setSelection, clearSelection } = useSelection()
   const [expandedTheme, setExpandedTheme] = useState<string | null>(null)
 
   const filteredEvidence = useMemo(() => filterEvidence(evidence), [filterEvidence])
@@ -144,7 +174,10 @@ export function ThemeBrowser() {
           />
         }
       >
-        <ResponsiveThemeChart />
+        <ResponsiveThemeChart
+          highlightedLabels={selection.labels.length && selection.source !== 'theme-chart' ? selection.labels : null}
+          onItemHover={(label) => label ? setSelection([label], 'theme-chart') : clearSelection()}
+        />
       </ChartWrapper>
 
       <div className="mt-10">
@@ -167,7 +200,7 @@ export function ThemeBrowser() {
                 {filteredCodes.map((c) => (
                   <tr
                     key={c.Code}
-                    className="border-b border-border hover:bg-surface-sunk cursor-pointer"
+                    className={`border-b border-border hover:bg-surface-sunk cursor-pointer ${selection.labels.includes(c.Theme) ? 'bg-cornflower/10' : ''}`}
                     onClick={() => setExpandedTheme(expandedTheme === c.Code ? null : c.Code)}
                     onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpandedTheme(expandedTheme === c.Code ? null : c.Code) } }}
                     tabIndex={0}

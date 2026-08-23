@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { FilterProvider } from '@/lib/filters'
+import { SelectionProvider } from '@/lib/selection'
 import { MotionProvider } from '@/lib/motion'
 import { AnnounceProvider } from '@/lib/announce'
 import { Nav } from '@/components/Nav'
@@ -19,6 +20,7 @@ export default function App() {
     <MotionProvider>
       <AnnounceProvider>
         <FilterProvider>
+          <SelectionProvider>
           <div className="min-h-screen bg-surface text-text font-sans">
             <Nav />
             <FilterBar />
@@ -30,18 +32,19 @@ export default function App() {
             >
               <Suspense fallback={<div className="py-12 text-center text-text-muted">Loading…</div>}>
                 <Routes>
-                  <Route path="/" element={<EvidenceExplorer />} />
+                  <Route path="/" element={<DataExplorer />} />
+                  <Route path="/evidence" element={<EvidenceExplorer />} />
                   <Route path="/verification" element={<VerificationAsymmetry />} />
                   <Route path="/signals" element={<SignalLedger />} />
                   <Route path="/themes" element={<ThemeBrowser />} />
                   <Route path="/participants" element={<ParticipantProfiles />} />
                   <Route path="/participants/:pid" element={<ParticipantProfiles />} />
                   <Route path="/charts" element={<ChartGallery />} />
-                  <Route path="/explore" element={<DataExplorer />} />
                 </Routes>
               </Suspense>
             </main>
           </div>
+          </SelectionProvider>
         </FilterProvider>
       </AnnounceProvider>
     </MotionProvider>
