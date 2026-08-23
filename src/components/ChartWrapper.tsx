@@ -24,7 +24,7 @@ export function ChartWrapper({
   const descId = useId()
 
   return (
-    <figure className="mb-8">
+    <figure className="mb-8" aria-labelledby={titleId} aria-describedby={descId}>
       <figcaption className="mb-2">
         <h2 id={titleId} className="text-base font-semibold text-grey-5">
           {title}
@@ -33,12 +33,7 @@ export function ChartWrapper({
         {deviceNote && <p className="text-sm text-grey-3 italic">{deviceNote}</p>}
         <p className="text-xs text-grey-3 mt-1">Source: {source}</p>
       </figcaption>
-      <div
-        role="figure"
-        aria-labelledby={titleId}
-        aria-describedby={descId}
-        className="w-full"
-      >
+      <div className="w-full">
         <span id={descId} className="sr-only">{altText}</span>
         {children}
       </div>

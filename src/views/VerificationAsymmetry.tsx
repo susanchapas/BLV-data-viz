@@ -50,7 +50,7 @@ function ModeChart({
   })
 
   return (
-    <svg width={width} height={height} aria-hidden="true">
+    <svg width={width} height={height} role="img" aria-label="Failure modes by weight of evidence">
       <Group top={margin.top} left={margin.left}>
         {data.map((d, i) => {
           const rows = Number(d['Rows (n=17)']) || 0

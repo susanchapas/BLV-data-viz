@@ -1,0 +1,2426 @@
+{
+  "themes": [
+    {
+      "Theme": "T1",
+      "Name": "Reliability & Connectivity",
+      "examples": "Works, then quits partway through. No warning. No resuming convo. Wake word misses. Weak Wi-Fi and short battery pile on top.",
+      "why it matters": "The adoption ceiling. Fix graceful failure first. New features after that.",
+      "Sub-themes": 16,
+      "P001": 12,
+      "P002": 3,
+      "P003": 5,
+      "P004": 6,
+      "P005": 7,
+      "P006": 1,
+      "P007": 3,
+      "P008": 2,
+      "P009": 10,
+      "P010": 5,
+      "P011": 17,
+      "P012": 4,
+      "P013": 1,
+      "P014": 7,
+      "P015": 5,
+      "P016": 19,
+      "P017": 3,
+      "Total": 110
+    },
+    {
+      "Theme": "T2",
+      "Name": "Reading & Text",
+      "examples": "Plain labels and mail: good. Digits, money, handwriting: misread. Summarizes on its own, then stays quiet about what it dropped.",
+      "why it matters": "Silent omission kills trust. Need an honest read-everything mode. Flag low confidence.",
+      "Sub-themes": 30,
+      "P001": 7,
+      "P002": 11,
+      "P003": 4,
+      "P004": 3,
+      "P005": 9,
+      "P006": 6,
+      "P007": 8,
+      "P008": 15,
+      "P009": 12,
+      "P010": 2,
+      "P011": 16,
+      "P012": 13,
+      "P013": 10,
+      "P014": 18,
+      "P015": 14,
+      "P016": 13,
+      "P017": 10,
+      "Total": 171
+    },
+    {
+      "Theme": "T3",
+      "Name": "Object & Scene Description",
+      "examples": "Room and scene overviews: good. Specifics fail. Sugar mistaken for flour. Condition and cleanliness. Low light. Anything outside the frame.",
+      "why it matters": "Wrong answers sound just as confident as right ones. Add confidence signals.",
+      "Sub-themes": 26,
+      "P001": 9,
+      "P002": 10,
+      "P003": 4,
+      "P004": 15,
+      "P005": 5,
+      "P006": 9,
+      "P007": 2,
+      "P008": 6,
+      "P009": 16,
+      "P010": 7,
+      "P011": 17,
+      "P012": 16,
+      "P013": 5,
+      "P014": 13,
+      "P015": 14,
+      "P016": 2,
+      "P017": 14,
+      "Total": 164
+    },
+    {
+      "Theme": "T4",
+      "Name": "People & Social",
+      "examples": "Appearance and expression descriptions: good. No face enrollment. No way to locate a person. Noise blocks commands. Speaking aloud in public feels awkward.",
+      "why it matters": "Person recognition is P002's top ask. Discreet input opens up social settings.",
+      "Sub-themes": 26,
+      "P001": 9,
+      "P002": 9,
+      "P003": 7,
+      "P004": 8,
+      "P005": 3,
+      "P006": 4,
+      "P007": 10,
+      "P008": 18,
+      "P009": 27,
+      "P010": 10,
+      "P011": 9,
+      "P012": 12,
+      "P013": 17,
+      "P014": 18,
+      "P015": 4,
+      "P016": 4,
+      "P017": 12,
+      "Total": 181
+    },
+    {
+      "Theme": "T5",
+      "Name": "Interaction Model",
+      "examples": "Wake word repeated up to 10 times. Question cut off before it is fully asked. No memory between sessions. Rapid follow-ups work fine when connected.",
+      "why it matters": "Lower the cost of asking. Other ways to activate. Session continuity. Resume last conversation.",
+      "Sub-themes": 28,
+      "P001": 6,
+      "P002": 8,
+      "P003": 3,
+      "P004": 12,
+      "P005": 5,
+      "P006": 4,
+      "P007": 5,
+      "P008": 3,
+      "P009": 12,
+      "P010": 4,
+      "P011": 11,
+      "P012": 11,
+      "P013": 10,
+      "P014": 9,
+      "P015": 4,
+      "P016": 0,
+      "P017": 9,
+      "Total": 116
+    },
+    {
+      "Theme": "T6",
+      "Name": "Phone and Glasses Conflict",
+      "examples": "Glasses go dead while the app-phone is in use. Blocks reading notes during calls. Workaround: a second phone.",
+      "why it matters": "P001's named top fix.",
+      "Sub-themes": 6,
+      "P001": 8,
+      "P002": 0,
+      "P003": 2,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 3,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 4,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Total": 17
+    },
+    {
+      "Theme": "T7",
+      "Name": "Assistive Ecosystem",
+      "examples": "move down to Be My Eyes, Aira, Seeing AI, sighted help when accuracy matters. Cane and screen reader stay primary.",
+      "why it matters": "Hands-free is the standout advantage over phone camera apps.",
+      "Sub-themes": 29,
+      "P001": 7,
+      "P002": 8,
+      "P003": 10,
+      "P004": 20,
+      "P005": 11,
+      "P006": 16,
+      "P007": 27,
+      "P008": 13,
+      "P009": 15,
+      "P010": 8,
+      "P011": 11,
+      "P012": 12,
+      "P013": 13,
+      "P014": 18,
+      "P015": 18,
+      "P016": 21,
+      "P017": 12,
+      "Total": 240
+    },
+    {
+      "Theme": "T8",
+      "Name": "Support & Onboarding",
+      "examples": "Purchase channel decides the outcome. Online buyer stranded over a year, no reply from support.",
+      "why it matters": "Support counts as an accessibility feature. Text-only support with no reply: dead end for a blind buyer.",
+      "Sub-themes": 13,
+      "P001": 6,
+      "P002": 1,
+      "P003": 4,
+      "P004": 2,
+      "P005": 3,
+      "P006": 2,
+      "P007": 3,
+      "P008": 1,
+      "P009": 13,
+      "P010": 1,
+      "P011": 8,
+      "P012": 0,
+      "P013": 2,
+      "P014": 4,
+      "P015": 2,
+      "P016": 7,
+      "P017": 0,
+      "Total": 59
+    },
+    {
+      "Theme": "T9",
+      "Name": "Privacy",
+      "examples": "Low personal concern from both. Aware of bystander privacy. Interested in auto-redaction of sensitive numbers.",
+      "why it matters": "Low priority here. Keep consent friction light.",
+      "Sub-themes": 19,
+      "P001": 5,
+      "P002": 2,
+      "P003": 1,
+      "P004": 9,
+      "P005": 10,
+      "P006": 4,
+      "P007": 7,
+      "P008": 6,
+      "P009": 11,
+      "P010": 4,
+      "P011": 9,
+      "P012": 4,
+      "P013": 6,
+      "P014": 10,
+      "P015": 4,
+      "P016": 7,
+      "P017": 4,
+      "Total": 103
+    },
+    {
+      "Theme": "T10",
+      "Name": "Empowerment & Emergent Value",
+      "examples": "Independence and dignity. Novel uses: license plates, checking food deliveries, sorting products, hair and braid how-tos, language learning.",
+      "why it matters": "Real upside, under-marketed. Emergent uses point at the roadmap.",
+      "Sub-themes": 14,
+      "P001": 6,
+      "P002": 7,
+      "P003": 4,
+      "P004": 2,
+      "P005": 3,
+      "P006": 3,
+      "P007": 2,
+      "P008": 2,
+      "P009": 7,
+      "P010": 6,
+      "P011": 9,
+      "P012": 19,
+      "P013": 6,
+      "P014": 9,
+      "P015": 6,
+      "P016": 7,
+      "P017": 11,
+      "Total": 109
+    },
+    {
+      "Theme": "T11",
+      "Name": "Device Form & Fit",
+      "examples": "Frames slide off all day. Smallest size still too wide. A long-distance prescription blocks desk work. Tint darkens what vision is left. Case beep too loud for a library.",
+      "why it matters": "Hardware decides whether it gets worn at all. A device that will not stay on a face gets left at home.",
+      "Sub-themes": 21,
+      "P001": 1,
+      "P002": 4,
+      "P003": 1,
+      "P004": 6,
+      "P005": 2,
+      "P006": 4,
+      "P007": 1,
+      "P008": 5,
+      "P009": 2,
+      "P010": 7,
+      "P011": 13,
+      "P012": 1,
+      "P013": 9,
+      "P014": 1,
+      "P015": 3,
+      "P016": 8,
+      "P017": 4,
+      "Total": 72
+    },
+    {
+      "Theme": "T12",
+      "Name": "Adoption & Non-Use",
+      "examples": "Did not know it could do that. Never thought to try. A little AI shy. Forgot to bring them. The aide already does it.",
+      "why it matters": "The largest gap in the study is between capability and use. Cheapest lever on the whole list.",
+      "Sub-themes": 28,
+      "P001": 8,
+      "P002": 1,
+      "P003": 11,
+      "P004": 6,
+      "P005": 14,
+      "P006": 15,
+      "P007": 8,
+      "P008": 11,
+      "P009": 36,
+      "P010": 25,
+      "P011": 5,
+      "P012": 14,
+      "P013": 22,
+      "P014": 25,
+      "P015": 14,
+      "P016": 6,
+      "P017": 15,
+      "Total": 236
+    },
+    {
+      "Theme": "T13",
+      "Name": "Cost & Vendor Viability",
+      "examples": "Cross-shopped on price. Monthly live AI fee accepted as fair. Free hardware upgrade for early buyers. Worry that a niche vendor folds and the glasses stop working.",
+      "why it matters": "Purchase price and vendor survival shape adoption in the blind-market segment.",
+      "Sub-themes": 7,
+      "P001": 2,
+      "P002": 0,
+      "P003": 3,
+      "P004": 0,
+      "P005": 0,
+      "P006": 1,
+      "P007": 0,
+      "P008": 0,
+      "P009": 2,
+      "P010": 0,
+      "P011": 10,
+      "P012": 0,
+      "P013": 0,
+      "P014": 1,
+      "P015": 2,
+      "P016": 2,
+      "P017": 0,
+      "Total": 23
+    },
+    {
+      "Theme": "T14",
+      "Name": "Safety & Physical Risk",
+      "examples": "Fell off a treadmill troubleshooting dropped audio. Hands-free means no phone held out in public. Cannot see the flame. AI defers on doneness.",
+      "why it matters": "Failure recovery and hands-free operation are safety questions, not convenience questions.",
+      "Sub-themes": 11,
+      "P001": 1,
+      "P002": 1,
+      "P003": 1,
+      "P004": 2,
+      "P005": 2,
+      "P006": 2,
+      "P007": 2,
+      "P008": 0,
+      "P009": 5,
+      "P010": 5,
+      "P011": 2,
+      "P012": 6,
+      "P013": 5,
+      "P014": 4,
+      "P015": 0,
+      "P016": 2,
+      "P017": 3,
+      "Total": 43
+    },
+    {
+      "Theme": "T15",
+      "Name": "Trust & Verification",
+      "examples": "Ratings run 3.5 to 5. Verification by prior knowledge or nothing at all. Confident wrong answers. One chatbot used to check another.",
+      "why it matters": "High trust with no verification behind it is exposure, not endorsement. Add confidence signals.",
+      "Sub-themes": 25,
+      "P001": 3,
+      "P002": 10,
+      "P003": 15,
+      "P004": 9,
+      "P005": 10,
+      "P006": 8,
+      "P007": 13,
+      "P008": 9,
+      "P009": 26,
+      "P010": 5,
+      "P011": 21,
+      "P012": 14,
+      "P013": 9,
+      "P014": 11,
+      "P015": 6,
+      "P016": 20,
+      "P017": 10,
+      "Total": 199
+    },
+    {
+      "Theme": "T16",
+      "Name": "Navigation & Wayfinding",
+      "examples": "Signs, store windows and museum placards read well in place. Addresses land in the area, not at the door. Nearby places and weather come back wrong while the device knows the street address. Two participants bar it from travel outright.",
+      "why it matters": "Wrong location answers arrive in the same confident voice as right ones. Fix geolocation grounding before adding travel features.",
+      "Sub-themes": 14,
+      "P001": 3,
+      "P002": 3,
+      "P003": 0,
+      "P004": 2,
+      "P005": 1,
+      "P006": 4,
+      "P007": 3,
+      "P008": 11,
+      "P009": 10,
+      "P010": 1,
+      "P011": 1,
+      "P012": 16,
+      "P013": 14,
+      "P014": 15,
+      "P015": 4,
+      "P016": 4,
+      "P017": 13,
+      "Total": 105
+    },
+    {
+      "Theme": "T17",
+      "Name": "Content Creation & Capture",
+      "examples": "Point of view video is one participant's whole reason for owning them. Aiming by head, no framing check, no reliable record state, clip names unusable in an editor, screen reader audio bleeding into the take.",
+      "why it matters": "A use case the guide never asked about. The camera is an output device here. Every capture affordance sighted creators take for granted is missing.",
+      "Sub-themes": 11,
+      "P001": 0,
+      "P002": 1,
+      "P003": 2,
+      "P004": 0,
+      "P005": 15,
+      "P006": 4,
+      "P007": 0,
+      "P008": 0,
+      "P009": 2,
+      "P010": 0,
+      "P011": 0,
+      "P012": 1,
+      "P013": 0,
+      "P014": 4,
+      "P015": 5,
+      "P016": 3,
+      "P017": 2,
+      "Total": 39
+    },
+    {
+      "Theme": "T18",
+      "Name": "Work & Vocational Use",
+      "examples": "Product inventory, shade codes, board agendas, brokerage letters, PDFs, cover letters, automated job interviews. Retry budget set by an employer, not by curiosity.",
+      "why it matters": "Home use tolerates a third attempt. Paid work does not. Time to first correct read is the metric that decides workplace adoption.",
+      "Sub-themes": 7,
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 1,
+      "P005": 0,
+      "P006": 5,
+      "P007": 4,
+      "P008": 4,
+      "P009": 0,
+      "P010": 0,
+      "P011": 1,
+      "P012": 0,
+      "P013": 1,
+      "P014": 4,
+      "P015": 1,
+      "P016": 5,
+      "P017": 1,
+      "Total": 27
+    },
+    {
+      "Theme": "T19",
+      "Name": "Environmental & Information Design",
+      "examples": "Light fonts, white on pink, text baked into catalogue images, laminated menus, QR codes to unreadable pages, dark restaurants, flush appliance panels. Sighted companions cannot read them either.",
+      "why it matters": "Half the failures are the world's design, not the device. Users already vote with their wallets, choosing banks and appliances by readability.",
+      "Sub-themes": 12,
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 2,
+      "P005": 3,
+      "P006": 5,
+      "P007": 0,
+      "P008": 16,
+      "P009": 3,
+      "P010": 1,
+      "P011": 1,
+      "P012": 4,
+      "P013": 6,
+      "P014": 13,
+      "P015": 0,
+      "P016": 2,
+      "P017": 0,
+      "Total": 56
+    },
+    {
+      "Theme": "T20",
+      "Name": "Continuous Narration & Attention",
+      "examples": "Always-on description. Filtering what gets said. Narration talking over a live conversation. No pause gesture. Speech rate.",
+      "why it matters": "Continuous modes arrive as one setting: on or off. Users want a filter, a pause and a priority list.",
+      "Sub-themes": 8,
+      "P001": 0,
+      "P002": 1,
+      "P003": 0,
+      "P004": 1,
+      "P005": 0,
+      "P006": 2,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 5,
+      "P013": 2,
+      "P014": 0,
+      "P015": 1,
+      "P016": 0,
+      "P017": 14,
+      "Total": 26
+    },
+    {
+      "Theme": "T21",
+      "Name": "Remote Sighted Guidance",
+      "examples": "A volunteer looking through the camera and steering a hand, a menu, a bottle, a game. Call setup time. Nobody answering. Camera too grainy for the helper.",
+      "why it matters": "The camera's highest-value job is often carrying a human, not an AI. Connect time is the whole cost.",
+      "Sub-themes": 6,
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 4,
+      "P005": 5,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 3,
+      "P010": 2,
+      "P011": 3,
+      "P012": 0,
+      "P013": 1,
+      "P014": 0,
+      "P015": 0,
+      "P016": 16,
+      "P017": 2,
+      "Total": 36
+    },
+    {
+      "Theme": "T22",
+      "Name": "Device Lifecycle & Repairability",
+      "examples": "Battery degrades, cannot be replaced, so the whole pair is disposable. Settings re-enabled per pair. Aftermarket battery packs. Breakage and loss risk.",
+      "why it matters": "A sealed battery turns a $300 accessibility device into a two-year consumable.",
+      "Sub-themes": 4,
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 1,
+      "P013": 1,
+      "P014": 0,
+      "P015": 2,
+      "P016": 8,
+      "P017": 2,
+      "Total": 14
+    }
+  ],
+  "participant_counts": [
+    {
+      "Theme": "T1",
+      "participant": "P001",
+      "count": 12
+    },
+    {
+      "Theme": "T1",
+      "participant": "P002",
+      "count": 3
+    },
+    {
+      "Theme": "T1",
+      "participant": "P003",
+      "count": 5
+    },
+    {
+      "Theme": "T1",
+      "participant": "P004",
+      "count": 6
+    },
+    {
+      "Theme": "T1",
+      "participant": "P005",
+      "count": 7
+    },
+    {
+      "Theme": "T1",
+      "participant": "P006",
+      "count": 1
+    },
+    {
+      "Theme": "T1",
+      "participant": "P007",
+      "count": 3
+    },
+    {
+      "Theme": "T1",
+      "participant": "P008",
+      "count": 2
+    },
+    {
+      "Theme": "T1",
+      "participant": "P009",
+      "count": 10
+    },
+    {
+      "Theme": "T1",
+      "participant": "P010",
+      "count": 5
+    },
+    {
+      "Theme": "T1",
+      "participant": "P011",
+      "count": 17
+    },
+    {
+      "Theme": "T1",
+      "participant": "P012",
+      "count": 4
+    },
+    {
+      "Theme": "T1",
+      "participant": "P013",
+      "count": 1
+    },
+    {
+      "Theme": "T1",
+      "participant": "P014",
+      "count": 7
+    },
+    {
+      "Theme": "T1",
+      "participant": "P015",
+      "count": 5
+    },
+    {
+      "Theme": "T1",
+      "participant": "P016",
+      "count": 19
+    },
+    {
+      "Theme": "T1",
+      "participant": "P017",
+      "count": 3
+    },
+    {
+      "Theme": "T2",
+      "participant": "P001",
+      "count": 7
+    },
+    {
+      "Theme": "T2",
+      "participant": "P002",
+      "count": 11
+    },
+    {
+      "Theme": "T2",
+      "participant": "P003",
+      "count": 4
+    },
+    {
+      "Theme": "T2",
+      "participant": "P004",
+      "count": 3
+    },
+    {
+      "Theme": "T2",
+      "participant": "P005",
+      "count": 9
+    },
+    {
+      "Theme": "T2",
+      "participant": "P006",
+      "count": 6
+    },
+    {
+      "Theme": "T2",
+      "participant": "P007",
+      "count": 8
+    },
+    {
+      "Theme": "T2",
+      "participant": "P008",
+      "count": 15
+    },
+    {
+      "Theme": "T2",
+      "participant": "P009",
+      "count": 12
+    },
+    {
+      "Theme": "T2",
+      "participant": "P010",
+      "count": 2
+    },
+    {
+      "Theme": "T2",
+      "participant": "P011",
+      "count": 16
+    },
+    {
+      "Theme": "T2",
+      "participant": "P012",
+      "count": 13
+    },
+    {
+      "Theme": "T2",
+      "participant": "P013",
+      "count": 10
+    },
+    {
+      "Theme": "T2",
+      "participant": "P014",
+      "count": 18
+    },
+    {
+      "Theme": "T2",
+      "participant": "P015",
+      "count": 14
+    },
+    {
+      "Theme": "T2",
+      "participant": "P016",
+      "count": 13
+    },
+    {
+      "Theme": "T2",
+      "participant": "P017",
+      "count": 10
+    },
+    {
+      "Theme": "T3",
+      "participant": "P001",
+      "count": 9
+    },
+    {
+      "Theme": "T3",
+      "participant": "P002",
+      "count": 10
+    },
+    {
+      "Theme": "T3",
+      "participant": "P003",
+      "count": 4
+    },
+    {
+      "Theme": "T3",
+      "participant": "P004",
+      "count": 15
+    },
+    {
+      "Theme": "T3",
+      "participant": "P005",
+      "count": 5
+    },
+    {
+      "Theme": "T3",
+      "participant": "P006",
+      "count": 9
+    },
+    {
+      "Theme": "T3",
+      "participant": "P007",
+      "count": 2
+    },
+    {
+      "Theme": "T3",
+      "participant": "P008",
+      "count": 6
+    },
+    {
+      "Theme": "T3",
+      "participant": "P009",
+      "count": 16
+    },
+    {
+      "Theme": "T3",
+      "participant": "P010",
+      "count": 7
+    },
+    {
+      "Theme": "T3",
+      "participant": "P011",
+      "count": 17
+    },
+    {
+      "Theme": "T3",
+      "participant": "P012",
+      "count": 16
+    },
+    {
+      "Theme": "T3",
+      "participant": "P013",
+      "count": 5
+    },
+    {
+      "Theme": "T3",
+      "participant": "P014",
+      "count": 13
+    },
+    {
+      "Theme": "T3",
+      "participant": "P015",
+      "count": 14
+    },
+    {
+      "Theme": "T3",
+      "participant": "P016",
+      "count": 2
+    },
+    {
+      "Theme": "T3",
+      "participant": "P017",
+      "count": 14
+    },
+    {
+      "Theme": "T4",
+      "participant": "P001",
+      "count": 9
+    },
+    {
+      "Theme": "T4",
+      "participant": "P002",
+      "count": 9
+    },
+    {
+      "Theme": "T4",
+      "participant": "P003",
+      "count": 7
+    },
+    {
+      "Theme": "T4",
+      "participant": "P004",
+      "count": 8
+    },
+    {
+      "Theme": "T4",
+      "participant": "P005",
+      "count": 3
+    },
+    {
+      "Theme": "T4",
+      "participant": "P006",
+      "count": 4
+    },
+    {
+      "Theme": "T4",
+      "participant": "P007",
+      "count": 10
+    },
+    {
+      "Theme": "T4",
+      "participant": "P008",
+      "count": 18
+    },
+    {
+      "Theme": "T4",
+      "participant": "P009",
+      "count": 27
+    },
+    {
+      "Theme": "T4",
+      "participant": "P010",
+      "count": 10
+    },
+    {
+      "Theme": "T4",
+      "participant": "P011",
+      "count": 9
+    },
+    {
+      "Theme": "T4",
+      "participant": "P012",
+      "count": 12
+    },
+    {
+      "Theme": "T4",
+      "participant": "P013",
+      "count": 17
+    },
+    {
+      "Theme": "T4",
+      "participant": "P014",
+      "count": 18
+    },
+    {
+      "Theme": "T4",
+      "participant": "P015",
+      "count": 4
+    },
+    {
+      "Theme": "T4",
+      "participant": "P016",
+      "count": 4
+    },
+    {
+      "Theme": "T4",
+      "participant": "P017",
+      "count": 12
+    },
+    {
+      "Theme": "T5",
+      "participant": "P001",
+      "count": 6
+    },
+    {
+      "Theme": "T5",
+      "participant": "P002",
+      "count": 8
+    },
+    {
+      "Theme": "T5",
+      "participant": "P003",
+      "count": 3
+    },
+    {
+      "Theme": "T5",
+      "participant": "P004",
+      "count": 12
+    },
+    {
+      "Theme": "T5",
+      "participant": "P005",
+      "count": 5
+    },
+    {
+      "Theme": "T5",
+      "participant": "P006",
+      "count": 4
+    },
+    {
+      "Theme": "T5",
+      "participant": "P007",
+      "count": 5
+    },
+    {
+      "Theme": "T5",
+      "participant": "P008",
+      "count": 3
+    },
+    {
+      "Theme": "T5",
+      "participant": "P009",
+      "count": 12
+    },
+    {
+      "Theme": "T5",
+      "participant": "P010",
+      "count": 4
+    },
+    {
+      "Theme": "T5",
+      "participant": "P011",
+      "count": 11
+    },
+    {
+      "Theme": "T5",
+      "participant": "P012",
+      "count": 11
+    },
+    {
+      "Theme": "T5",
+      "participant": "P013",
+      "count": 10
+    },
+    {
+      "Theme": "T5",
+      "participant": "P014",
+      "count": 9
+    },
+    {
+      "Theme": "T5",
+      "participant": "P015",
+      "count": 4
+    },
+    {
+      "Theme": "T5",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Theme": "T5",
+      "participant": "P017",
+      "count": 9
+    },
+    {
+      "Theme": "T6",
+      "participant": "P001",
+      "count": 8
+    },
+    {
+      "Theme": "T6",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P003",
+      "count": 2
+    },
+    {
+      "Theme": "T6",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P008",
+      "count": 3
+    },
+    {
+      "Theme": "T6",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P014",
+      "count": 4
+    },
+    {
+      "Theme": "T6",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Theme": "T6",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Theme": "T7",
+      "participant": "P001",
+      "count": 7
+    },
+    {
+      "Theme": "T7",
+      "participant": "P002",
+      "count": 8
+    },
+    {
+      "Theme": "T7",
+      "participant": "P003",
+      "count": 10
+    },
+    {
+      "Theme": "T7",
+      "participant": "P004",
+      "count": 20
+    },
+    {
+      "Theme": "T7",
+      "participant": "P005",
+      "count": 11
+    },
+    {
+      "Theme": "T7",
+      "participant": "P006",
+      "count": 16
+    },
+    {
+      "Theme": "T7",
+      "participant": "P007",
+      "count": 27
+    },
+    {
+      "Theme": "T7",
+      "participant": "P008",
+      "count": 13
+    },
+    {
+      "Theme": "T7",
+      "participant": "P009",
+      "count": 15
+    },
+    {
+      "Theme": "T7",
+      "participant": "P010",
+      "count": 8
+    },
+    {
+      "Theme": "T7",
+      "participant": "P011",
+      "count": 11
+    },
+    {
+      "Theme": "T7",
+      "participant": "P012",
+      "count": 12
+    },
+    {
+      "Theme": "T7",
+      "participant": "P013",
+      "count": 13
+    },
+    {
+      "Theme": "T7",
+      "participant": "P014",
+      "count": 18
+    },
+    {
+      "Theme": "T7",
+      "participant": "P015",
+      "count": 18
+    },
+    {
+      "Theme": "T7",
+      "participant": "P016",
+      "count": 21
+    },
+    {
+      "Theme": "T7",
+      "participant": "P017",
+      "count": 12
+    },
+    {
+      "Theme": "T8",
+      "participant": "P001",
+      "count": 6
+    },
+    {
+      "Theme": "T8",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Theme": "T8",
+      "participant": "P003",
+      "count": 4
+    },
+    {
+      "Theme": "T8",
+      "participant": "P004",
+      "count": 2
+    },
+    {
+      "Theme": "T8",
+      "participant": "P005",
+      "count": 3
+    },
+    {
+      "Theme": "T8",
+      "participant": "P006",
+      "count": 2
+    },
+    {
+      "Theme": "T8",
+      "participant": "P007",
+      "count": 3
+    },
+    {
+      "Theme": "T8",
+      "participant": "P008",
+      "count": 1
+    },
+    {
+      "Theme": "T8",
+      "participant": "P009",
+      "count": 13
+    },
+    {
+      "Theme": "T8",
+      "participant": "P010",
+      "count": 1
+    },
+    {
+      "Theme": "T8",
+      "participant": "P011",
+      "count": 8
+    },
+    {
+      "Theme": "T8",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Theme": "T8",
+      "participant": "P013",
+      "count": 2
+    },
+    {
+      "Theme": "T8",
+      "participant": "P014",
+      "count": 4
+    },
+    {
+      "Theme": "T8",
+      "participant": "P015",
+      "count": 2
+    },
+    {
+      "Theme": "T8",
+      "participant": "P016",
+      "count": 7
+    },
+    {
+      "Theme": "T8",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Theme": "T9",
+      "participant": "P001",
+      "count": 5
+    },
+    {
+      "Theme": "T9",
+      "participant": "P002",
+      "count": 2
+    },
+    {
+      "Theme": "T9",
+      "participant": "P003",
+      "count": 1
+    },
+    {
+      "Theme": "T9",
+      "participant": "P004",
+      "count": 9
+    },
+    {
+      "Theme": "T9",
+      "participant": "P005",
+      "count": 10
+    },
+    {
+      "Theme": "T9",
+      "participant": "P006",
+      "count": 4
+    },
+    {
+      "Theme": "T9",
+      "participant": "P007",
+      "count": 7
+    },
+    {
+      "Theme": "T9",
+      "participant": "P008",
+      "count": 6
+    },
+    {
+      "Theme": "T9",
+      "participant": "P009",
+      "count": 11
+    },
+    {
+      "Theme": "T9",
+      "participant": "P010",
+      "count": 4
+    },
+    {
+      "Theme": "T9",
+      "participant": "P011",
+      "count": 9
+    },
+    {
+      "Theme": "T9",
+      "participant": "P012",
+      "count": 4
+    },
+    {
+      "Theme": "T9",
+      "participant": "P013",
+      "count": 6
+    },
+    {
+      "Theme": "T9",
+      "participant": "P014",
+      "count": 10
+    },
+    {
+      "Theme": "T9",
+      "participant": "P015",
+      "count": 4
+    },
+    {
+      "Theme": "T9",
+      "participant": "P016",
+      "count": 7
+    },
+    {
+      "Theme": "T9",
+      "participant": "P017",
+      "count": 4
+    },
+    {
+      "Theme": "T10",
+      "participant": "P001",
+      "count": 6
+    },
+    {
+      "Theme": "T10",
+      "participant": "P002",
+      "count": 7
+    },
+    {
+      "Theme": "T10",
+      "participant": "P003",
+      "count": 4
+    },
+    {
+      "Theme": "T10",
+      "participant": "P004",
+      "count": 2
+    },
+    {
+      "Theme": "T10",
+      "participant": "P005",
+      "count": 3
+    },
+    {
+      "Theme": "T10",
+      "participant": "P006",
+      "count": 3
+    },
+    {
+      "Theme": "T10",
+      "participant": "P007",
+      "count": 2
+    },
+    {
+      "Theme": "T10",
+      "participant": "P008",
+      "count": 2
+    },
+    {
+      "Theme": "T10",
+      "participant": "P009",
+      "count": 7
+    },
+    {
+      "Theme": "T10",
+      "participant": "P010",
+      "count": 6
+    },
+    {
+      "Theme": "T10",
+      "participant": "P011",
+      "count": 9
+    },
+    {
+      "Theme": "T10",
+      "participant": "P012",
+      "count": 19
+    },
+    {
+      "Theme": "T10",
+      "participant": "P013",
+      "count": 6
+    },
+    {
+      "Theme": "T10",
+      "participant": "P014",
+      "count": 9
+    },
+    {
+      "Theme": "T10",
+      "participant": "P015",
+      "count": 6
+    },
+    {
+      "Theme": "T10",
+      "participant": "P016",
+      "count": 7
+    },
+    {
+      "Theme": "T10",
+      "participant": "P017",
+      "count": 11
+    },
+    {
+      "Theme": "T11",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Theme": "T11",
+      "participant": "P002",
+      "count": 4
+    },
+    {
+      "Theme": "T11",
+      "participant": "P003",
+      "count": 1
+    },
+    {
+      "Theme": "T11",
+      "participant": "P004",
+      "count": 6
+    },
+    {
+      "Theme": "T11",
+      "participant": "P005",
+      "count": 2
+    },
+    {
+      "Theme": "T11",
+      "participant": "P006",
+      "count": 4
+    },
+    {
+      "Theme": "T11",
+      "participant": "P007",
+      "count": 1
+    },
+    {
+      "Theme": "T11",
+      "participant": "P008",
+      "count": 5
+    },
+    {
+      "Theme": "T11",
+      "participant": "P009",
+      "count": 2
+    },
+    {
+      "Theme": "T11",
+      "participant": "P010",
+      "count": 7
+    },
+    {
+      "Theme": "T11",
+      "participant": "P011",
+      "count": 13
+    },
+    {
+      "Theme": "T11",
+      "participant": "P012",
+      "count": 1
+    },
+    {
+      "Theme": "T11",
+      "participant": "P013",
+      "count": 9
+    },
+    {
+      "Theme": "T11",
+      "participant": "P014",
+      "count": 1
+    },
+    {
+      "Theme": "T11",
+      "participant": "P015",
+      "count": 3
+    },
+    {
+      "Theme": "T11",
+      "participant": "P016",
+      "count": 8
+    },
+    {
+      "Theme": "T11",
+      "participant": "P017",
+      "count": 4
+    },
+    {
+      "Theme": "T12",
+      "participant": "P001",
+      "count": 8
+    },
+    {
+      "Theme": "T12",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Theme": "T12",
+      "participant": "P003",
+      "count": 11
+    },
+    {
+      "Theme": "T12",
+      "participant": "P004",
+      "count": 6
+    },
+    {
+      "Theme": "T12",
+      "participant": "P005",
+      "count": 14
+    },
+    {
+      "Theme": "T12",
+      "participant": "P006",
+      "count": 15
+    },
+    {
+      "Theme": "T12",
+      "participant": "P007",
+      "count": 8
+    },
+    {
+      "Theme": "T12",
+      "participant": "P008",
+      "count": 11
+    },
+    {
+      "Theme": "T12",
+      "participant": "P009",
+      "count": 36
+    },
+    {
+      "Theme": "T12",
+      "participant": "P010",
+      "count": 25
+    },
+    {
+      "Theme": "T12",
+      "participant": "P011",
+      "count": 5
+    },
+    {
+      "Theme": "T12",
+      "participant": "P012",
+      "count": 14
+    },
+    {
+      "Theme": "T12",
+      "participant": "P013",
+      "count": 22
+    },
+    {
+      "Theme": "T12",
+      "participant": "P014",
+      "count": 25
+    },
+    {
+      "Theme": "T12",
+      "participant": "P015",
+      "count": 14
+    },
+    {
+      "Theme": "T12",
+      "participant": "P016",
+      "count": 6
+    },
+    {
+      "Theme": "T12",
+      "participant": "P017",
+      "count": 15
+    },
+    {
+      "Theme": "T13",
+      "participant": "P001",
+      "count": 2
+    },
+    {
+      "Theme": "T13",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Theme": "T13",
+      "participant": "P003",
+      "count": 3
+    },
+    {
+      "Theme": "T13",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Theme": "T13",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Theme": "T13",
+      "participant": "P006",
+      "count": 1
+    },
+    {
+      "Theme": "T13",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Theme": "T13",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Theme": "T13",
+      "participant": "P009",
+      "count": 2
+    },
+    {
+      "Theme": "T13",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Theme": "T13",
+      "participant": "P011",
+      "count": 10
+    },
+    {
+      "Theme": "T13",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Theme": "T13",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Theme": "T13",
+      "participant": "P014",
+      "count": 1
+    },
+    {
+      "Theme": "T13",
+      "participant": "P015",
+      "count": 2
+    },
+    {
+      "Theme": "T13",
+      "participant": "P016",
+      "count": 2
+    },
+    {
+      "Theme": "T13",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Theme": "T14",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Theme": "T14",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Theme": "T14",
+      "participant": "P003",
+      "count": 1
+    },
+    {
+      "Theme": "T14",
+      "participant": "P004",
+      "count": 2
+    },
+    {
+      "Theme": "T14",
+      "participant": "P005",
+      "count": 2
+    },
+    {
+      "Theme": "T14",
+      "participant": "P006",
+      "count": 2
+    },
+    {
+      "Theme": "T14",
+      "participant": "P007",
+      "count": 2
+    },
+    {
+      "Theme": "T14",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Theme": "T14",
+      "participant": "P009",
+      "count": 5
+    },
+    {
+      "Theme": "T14",
+      "participant": "P010",
+      "count": 5
+    },
+    {
+      "Theme": "T14",
+      "participant": "P011",
+      "count": 2
+    },
+    {
+      "Theme": "T14",
+      "participant": "P012",
+      "count": 6
+    },
+    {
+      "Theme": "T14",
+      "participant": "P013",
+      "count": 5
+    },
+    {
+      "Theme": "T14",
+      "participant": "P014",
+      "count": 4
+    },
+    {
+      "Theme": "T14",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Theme": "T14",
+      "participant": "P016",
+      "count": 2
+    },
+    {
+      "Theme": "T14",
+      "participant": "P017",
+      "count": 3
+    },
+    {
+      "Theme": "T15",
+      "participant": "P001",
+      "count": 3
+    },
+    {
+      "Theme": "T15",
+      "participant": "P002",
+      "count": 10
+    },
+    {
+      "Theme": "T15",
+      "participant": "P003",
+      "count": 15
+    },
+    {
+      "Theme": "T15",
+      "participant": "P004",
+      "count": 9
+    },
+    {
+      "Theme": "T15",
+      "participant": "P005",
+      "count": 10
+    },
+    {
+      "Theme": "T15",
+      "participant": "P006",
+      "count": 8
+    },
+    {
+      "Theme": "T15",
+      "participant": "P007",
+      "count": 13
+    },
+    {
+      "Theme": "T15",
+      "participant": "P008",
+      "count": 9
+    },
+    {
+      "Theme": "T15",
+      "participant": "P009",
+      "count": 26
+    },
+    {
+      "Theme": "T15",
+      "participant": "P010",
+      "count": 5
+    },
+    {
+      "Theme": "T15",
+      "participant": "P011",
+      "count": 21
+    },
+    {
+      "Theme": "T15",
+      "participant": "P012",
+      "count": 14
+    },
+    {
+      "Theme": "T15",
+      "participant": "P013",
+      "count": 9
+    },
+    {
+      "Theme": "T15",
+      "participant": "P014",
+      "count": 11
+    },
+    {
+      "Theme": "T15",
+      "participant": "P015",
+      "count": 6
+    },
+    {
+      "Theme": "T15",
+      "participant": "P016",
+      "count": 20
+    },
+    {
+      "Theme": "T15",
+      "participant": "P017",
+      "count": 10
+    },
+    {
+      "Theme": "T16",
+      "participant": "P001",
+      "count": 3
+    },
+    {
+      "Theme": "T16",
+      "participant": "P002",
+      "count": 3
+    },
+    {
+      "Theme": "T16",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Theme": "T16",
+      "participant": "P004",
+      "count": 2
+    },
+    {
+      "Theme": "T16",
+      "participant": "P005",
+      "count": 1
+    },
+    {
+      "Theme": "T16",
+      "participant": "P006",
+      "count": 4
+    },
+    {
+      "Theme": "T16",
+      "participant": "P007",
+      "count": 3
+    },
+    {
+      "Theme": "T16",
+      "participant": "P008",
+      "count": 11
+    },
+    {
+      "Theme": "T16",
+      "participant": "P009",
+      "count": 10
+    },
+    {
+      "Theme": "T16",
+      "participant": "P010",
+      "count": 1
+    },
+    {
+      "Theme": "T16",
+      "participant": "P011",
+      "count": 1
+    },
+    {
+      "Theme": "T16",
+      "participant": "P012",
+      "count": 16
+    },
+    {
+      "Theme": "T16",
+      "participant": "P013",
+      "count": 14
+    },
+    {
+      "Theme": "T16",
+      "participant": "P014",
+      "count": 15
+    },
+    {
+      "Theme": "T16",
+      "participant": "P015",
+      "count": 4
+    },
+    {
+      "Theme": "T16",
+      "participant": "P016",
+      "count": 4
+    },
+    {
+      "Theme": "T16",
+      "participant": "P017",
+      "count": 13
+    },
+    {
+      "Theme": "T17",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Theme": "T17",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Theme": "T17",
+      "participant": "P003",
+      "count": 2
+    },
+    {
+      "Theme": "T17",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Theme": "T17",
+      "participant": "P005",
+      "count": 15
+    },
+    {
+      "Theme": "T17",
+      "participant": "P006",
+      "count": 4
+    },
+    {
+      "Theme": "T17",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Theme": "T17",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Theme": "T17",
+      "participant": "P009",
+      "count": 2
+    },
+    {
+      "Theme": "T17",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Theme": "T17",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Theme": "T17",
+      "participant": "P012",
+      "count": 1
+    },
+    {
+      "Theme": "T17",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Theme": "T17",
+      "participant": "P014",
+      "count": 4
+    },
+    {
+      "Theme": "T17",
+      "participant": "P015",
+      "count": 5
+    },
+    {
+      "Theme": "T17",
+      "participant": "P016",
+      "count": 3
+    },
+    {
+      "Theme": "T17",
+      "participant": "P017",
+      "count": 2
+    },
+    {
+      "Theme": "T18",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Theme": "T18",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Theme": "T18",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Theme": "T18",
+      "participant": "P004",
+      "count": 1
+    },
+    {
+      "Theme": "T18",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Theme": "T18",
+      "participant": "P006",
+      "count": 5
+    },
+    {
+      "Theme": "T18",
+      "participant": "P007",
+      "count": 4
+    },
+    {
+      "Theme": "T18",
+      "participant": "P008",
+      "count": 4
+    },
+    {
+      "Theme": "T18",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Theme": "T18",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Theme": "T18",
+      "participant": "P011",
+      "count": 1
+    },
+    {
+      "Theme": "T18",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Theme": "T18",
+      "participant": "P013",
+      "count": 1
+    },
+    {
+      "Theme": "T18",
+      "participant": "P014",
+      "count": 4
+    },
+    {
+      "Theme": "T18",
+      "participant": "P015",
+      "count": 1
+    },
+    {
+      "Theme": "T18",
+      "participant": "P016",
+      "count": 5
+    },
+    {
+      "Theme": "T18",
+      "participant": "P017",
+      "count": 1
+    },
+    {
+      "Theme": "T19",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Theme": "T19",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Theme": "T19",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Theme": "T19",
+      "participant": "P004",
+      "count": 2
+    },
+    {
+      "Theme": "T19",
+      "participant": "P005",
+      "count": 3
+    },
+    {
+      "Theme": "T19",
+      "participant": "P006",
+      "count": 5
+    },
+    {
+      "Theme": "T19",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Theme": "T19",
+      "participant": "P008",
+      "count": 16
+    },
+    {
+      "Theme": "T19",
+      "participant": "P009",
+      "count": 3
+    },
+    {
+      "Theme": "T19",
+      "participant": "P010",
+      "count": 1
+    },
+    {
+      "Theme": "T19",
+      "participant": "P011",
+      "count": 1
+    },
+    {
+      "Theme": "T19",
+      "participant": "P012",
+      "count": 4
+    },
+    {
+      "Theme": "T19",
+      "participant": "P013",
+      "count": 6
+    },
+    {
+      "Theme": "T19",
+      "participant": "P014",
+      "count": 13
+    },
+    {
+      "Theme": "T19",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Theme": "T19",
+      "participant": "P016",
+      "count": 2
+    },
+    {
+      "Theme": "T19",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Theme": "T20",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Theme": "T20",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Theme": "T20",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Theme": "T20",
+      "participant": "P004",
+      "count": 1
+    },
+    {
+      "Theme": "T20",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Theme": "T20",
+      "participant": "P006",
+      "count": 2
+    },
+    {
+      "Theme": "T20",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Theme": "T20",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Theme": "T20",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Theme": "T20",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Theme": "T20",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Theme": "T20",
+      "participant": "P012",
+      "count": 5
+    },
+    {
+      "Theme": "T20",
+      "participant": "P013",
+      "count": 2
+    },
+    {
+      "Theme": "T20",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Theme": "T20",
+      "participant": "P015",
+      "count": 1
+    },
+    {
+      "Theme": "T20",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Theme": "T20",
+      "participant": "P017",
+      "count": 14
+    },
+    {
+      "Theme": "T21",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Theme": "T21",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Theme": "T21",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Theme": "T21",
+      "participant": "P004",
+      "count": 4
+    },
+    {
+      "Theme": "T21",
+      "participant": "P005",
+      "count": 5
+    },
+    {
+      "Theme": "T21",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Theme": "T21",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Theme": "T21",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Theme": "T21",
+      "participant": "P009",
+      "count": 3
+    },
+    {
+      "Theme": "T21",
+      "participant": "P010",
+      "count": 2
+    },
+    {
+      "Theme": "T21",
+      "participant": "P011",
+      "count": 3
+    },
+    {
+      "Theme": "T21",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Theme": "T21",
+      "participant": "P013",
+      "count": 1
+    },
+    {
+      "Theme": "T21",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Theme": "T21",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Theme": "T21",
+      "participant": "P016",
+      "count": 16
+    },
+    {
+      "Theme": "T21",
+      "participant": "P017",
+      "count": 2
+    },
+    {
+      "Theme": "T22",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P012",
+      "count": 1
+    },
+    {
+      "Theme": "T22",
+      "participant": "P013",
+      "count": 1
+    },
+    {
+      "Theme": "T22",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Theme": "T22",
+      "participant": "P015",
+      "count": 2
+    },
+    {
+      "Theme": "T22",
+      "participant": "P016",
+      "count": 8
+    },
+    {
+      "Theme": "T22",
+      "participant": "P017",
+      "count": 2
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "workbook_sha256": "1bfd0a7a4b642dd7660e8eb8c7e43d8e8fc07a3e991d3ccc02c45d5e2d4f62b9",
+  "build_timestamp": "2026-08-22T23:00:14.924375+00:00",
+  "extractor_version": "1.0.0",
+  "tab_counts": {
+    "Evidence": 2146,
+    "Codebook": 361,
+    "Participants": 17,
+    "Findings": 22,
+    "Sub-themes": 361,
+    "Verification Asymmetry": 28,
+    "Mode Codes": 28,
+    "Feedback & Signal": 24,
+    "Pain Points": 110,
+    "Opportunities": 111,
+    "Contradictions": 22,
+    "Non-use": 53,
+    "Comparison": 115,
+    "Insights & Clusters": 110,
+    "Research & Limits": 55,
+    "Headline": 46,
+    "Round 3 Results": 51,
+    "Round 4 Results": 27,
+    "Chart Data": 20
+  }
+}

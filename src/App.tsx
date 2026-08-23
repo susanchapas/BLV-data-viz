@@ -1,15 +1,17 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { FilterProvider } from '@/lib/filters'
 import { MotionProvider } from '@/lib/motion'
 import { AnnounceProvider } from '@/lib/announce'
 import { Nav } from '@/components/Nav'
 import { FilterBar } from '@/components/FilterBar'
-import { EvidenceExplorer } from '@/views/EvidenceExplorer'
-import { VerificationAsymmetry } from '@/views/VerificationAsymmetry'
-import { SignalLedger } from '@/views/SignalLedger'
-import { ThemeBrowser } from '@/views/ThemeBrowser'
-import { ParticipantProfiles } from '@/views/ParticipantProfiles'
-import { ChartGallery } from '@/views/ChartGallery'
+
+const EvidenceExplorer = lazy(() => import('@/views/EvidenceExplorer').then(m => ({ default: m.EvidenceExplorer })))
+const VerificationAsymmetry = lazy(() => import('@/views/VerificationAsymmetry').then(m => ({ default: m.VerificationAsymmetry })))
+const SignalLedger = lazy(() => import('@/views/SignalLedger').then(m => ({ default: m.SignalLedger })))
+const ThemeBrowser = lazy(() => import('@/views/ThemeBrowser').then(m => ({ default: m.ThemeBrowser })))
+const ParticipantProfiles = lazy(() => import('@/views/ParticipantProfiles').then(m => ({ default: m.ParticipantProfiles })))
+const ChartGallery = lazy(() => import('@/views/ChartGallery').then(m => ({ default: m.ChartGallery })))
 
 export default function App() {
   return (
@@ -20,15 +22,17 @@ export default function App() {
             <Nav />
             <FilterBar />
             <main id="main" className="max-w-screen-2xl mx-auto px-4 py-6" tabIndex={-1}>
-              <Routes>
-                <Route path="/" element={<EvidenceExplorer />} />
-                <Route path="/verification" element={<VerificationAsymmetry />} />
-                <Route path="/signals" element={<SignalLedger />} />
-                <Route path="/themes" element={<ThemeBrowser />} />
-                <Route path="/participants" element={<ParticipantProfiles />} />
-                <Route path="/participants/:pid" element={<ParticipantProfiles />} />
-                <Route path="/charts" element={<ChartGallery />} />
-              </Routes>
+              <Suspense fallback={<div className="py-12 text-center text-grey-3">Loading…</div>}>
+                <Routes>
+                  <Route path="/" element={<EvidenceExplorer />} />
+                  <Route path="/verification" element={<VerificationAsymmetry />} />
+                  <Route path="/signals" element={<SignalLedger />} />
+                  <Route path="/themes" element={<ThemeBrowser />} />
+                  <Route path="/participants" element={<ParticipantProfiles />} />
+                  <Route path="/participants/:pid" element={<ParticipantProfiles />} />
+                  <Route path="/charts" element={<ChartGallery />} />
+                </Routes>
+              </Suspense>
             </main>
           </div>
         </FilterProvider>

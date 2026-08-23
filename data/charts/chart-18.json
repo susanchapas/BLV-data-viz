@@ -1,0 +1,40 @@
+{
+  "id": "chart-18",
+  "number": 18,
+  "title": "Under-use and the awareness problem behind it",
+  "caption": "Bar. Participant counts off the Comparison tab and the Evidence tab. The interview itself changed stated intent for five participants, which belongs in the limitations.",
+  "source_tab": null,
+  "chart_type": "bar",
+  "columns": [
+    "Indicator",
+    "Participants (of 17)"
+  ],
+  "rows": [
+    [
+      "Says they did not know it could do that",
+      15
+    ],
+    [
+      "Self-reports under-use",
+      11
+    ],
+    [
+      "Wants training or is unsure of capability",
+      9
+    ],
+    [
+      "A human helper substitutes for the device",
+      13
+    ],
+    [
+      "Never tried it, expects failure",
+      9
+    ],
+    [
+      "Interview changed stated intent",
+      6
+    ]
+  ],
+  "footnote": null,
+  "alt_text": null
+}

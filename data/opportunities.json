@@ -1,0 +1,779 @@
+[
+  {
+    "Tag": "DO-01",
+    "Do this": "Graceful failure and resume",
+    "Detail": "Detect the drop. Hold state. Pick up at the exact point it stopped. Clear spoken status. No looping 'no service'.",
+    "Theme": "T1",
+    "Fixes": "PP-01, PP-04"
+  },
+  {
+    "Tag": "DO-02",
+    "Do this": "Concurrent phone and glasses use",
+    "Detail": "Keep glasses working while the host phone is in use. Or let glasses read on-phone content straight off: notes, documents.",
+    "Theme": "T6",
+    "Fixes": "PP-02"
+  },
+  {
+    "Tag": "DO-03",
+    "Do this": "Low-effort activation",
+    "Detail": "Reliable non-voice wake: button, gesture, tap. Discreet whisper mode. Longer listening window so questions are fully heard.",
+    "Theme": "T1, T5",
+    "Fixes": "PP-03, PP-12"
+  },
+  {
+    "Tag": "DO-04",
+    "Do this": "Persistent conversation context",
+    "Detail": "Prompt on start: 'continue your last conversation or start new?' Remember recent context across a session.",
+    "Theme": "T5",
+    "Fixes": "PP-04"
+  },
+  {
+    "Tag": "DO-05",
+    "Do this": "Noise-robust voice capture",
+    "Detail": "Directional microphones. Bone conduction. Cupped-hand or whisper pickup. Target restaurants, crowds, church.",
+    "Theme": "T4",
+    "Fixes": "PP-05, PP-12"
+  },
+  {
+    "Tag": "DO-06",
+    "Do this": "Efficient continuous mode",
+    "Detail": "Cut the power cost of always-on. Hands-free continuous AI for chores and navigation without the battery hit.",
+    "Theme": "T1, T5",
+    "Fixes": "PP-06"
+  },
+  {
+    "Tag": "DO-07",
+    "Do this": "Opt-in face enrollment and person locating",
+    "Detail": "User-controlled enrollment of known faces to names. Privacy preserving. Plus 'where is she relative to me?' spatial locating.",
+    "Theme": "T4",
+    "Fixes": "PP-08"
+  },
+  {
+    "Tag": "DO-08",
+    "Do this": "Read-mode control",
+    "Detail": "Read in full by default. Confirm before summarizing. Flag any condensing so users know something was left out.",
+    "Theme": "T2",
+    "Fixes": "PP-09"
+  },
+  {
+    "Tag": "DO-09",
+    "Do this": "Domain modes for hard content",
+    "Detail": "Higher-fidelity pipelines for money, rows of numbers, handwriting, color and garment identification. Or auto-handoff to a specialist tool.",
+    "Theme": "T2, T3",
+    "Fixes": "PP-07"
+  },
+  {
+    "Tag": "DO-10",
+    "Do this": "First-run support parity",
+    "Detail": "Guided setup for online buyers at in-store quality. Live human help. Video onboarding. Longer return window. Equip facilitators.",
+    "Theme": "T8",
+    "Fixes": "PP-10"
+  },
+  {
+    "Tag": "DO-11",
+    "Do this": "Resilient connectivity",
+    "Detail": "Cellular or hotspot fallback. Frictionless, safe venue-network switching. Cut the tie to one home Wi-Fi.",
+    "Theme": "T1",
+    "Fixes": "PP-11"
+  },
+  {
+    "Tag": "DO-12",
+    "Do this": "Wider capture and hazard callouts",
+    "Detail": "Wider field or multi-frame stitching. Proactive off-frame callouts: 'table to your right.' Prevent collisions.",
+    "Theme": "T3",
+    "Fixes": "PP-13"
+  },
+  {
+    "Tag": "DO-13",
+    "Do this": "Audible glasses locator",
+    "Detail": "Make the glasses beep. Home in by sound. Last-seen address alone leaves users searching.",
+    "Theme": "T10",
+    "Fixes": "PP-14"
+  },
+  {
+    "Tag": "DO-14",
+    "Do this": "Photo framing assist",
+    "Detail": "Spoken framing and centering guidance while taking photos. Confirm the subject is captured. P002 didn't know this was possible.",
+    "Theme": "T3",
+    "Fixes": "PP-07"
+  },
+  {
+    "Tag": "DO-15",
+    "Do this": "Right-size the hardware",
+    "Detail": "Multiple frame widths and a lighter build. Nose pads as standard. Treat fit as an accessibility requirement, since a device that slides off gets left at home.",
+    "Theme": "T11",
+    "Fixes": "PP-16"
+  },
+  {
+    "Tag": "DO-16",
+    "Do this": "Solve the prescription conflict",
+    "Detail": "Prescription options at purchase without gating on a stable script. Near and far correction in one lens, or a reading mode that survives a second pair. Optional untinted lenses for users with low residual vision.",
+    "Theme": "T11",
+    "Fixes": "PP-17"
+  },
+  {
+    "Tag": "DO-17",
+    "Do this": "Ship an activation and utilisation programme",
+    "Detail": "Owners do not know what they own. Short task-based prompts, a monthly try this, and a facilitator kit. The single cheapest lever on the whole list.",
+    "Theme": "T8",
+    "Fixes": "PP-15"
+  },
+  {
+    "Tag": "DO-18",
+    "Do this": "Speak the framing coaching out loud",
+    "Detail": "Adopt the guided-capture pattern already shipping on one device. Move closer, turn to the light, stay still, got it. Same for photos before they are sent.",
+    "Theme": "T2",
+    "Fixes": "PP-20"
+  },
+  {
+    "Tag": "DO-19",
+    "Do this": "Cut live AI latency and hold the line",
+    "Detail": "Treat lag as a release blocker. Publish a latency budget. Do not regress a working continuous mode in an update.",
+    "Theme": "T1",
+    "Fixes": "PP-18"
+  },
+  {
+    "Tag": "DO-20",
+    "Do this": "Run reading and scene recognition on device",
+    "Detail": "No cloud round trip for the two features that need no world knowledge. Keeps them alive off the grid and out of the venue-network trap.",
+    "Theme": "T1",
+    "Fixes": "PP-19"
+  },
+  {
+    "Tag": "DO-21",
+    "Do this": "Give the user a scope and detail dial",
+    "Detail": "In my hand only. Short version. Skip the background. Pointing already works as a scope cue, so make it explicit and reliable.",
+    "Theme": "T3",
+    "Fixes": "PP-21"
+  },
+  {
+    "Tag": "DO-22",
+    "Do this": "Teach the reader what numbers mean",
+    "Detail": "Context-aware numerals. Appliance display, price, dose, temperature, phone number. Say what kind of number it is, or say it cannot tell.",
+    "Theme": "T2",
+    "Fixes": "PP-22"
+  },
+  {
+    "Tag": "DO-23",
+    "Do this": "Structured document and menu reading",
+    "Detail": "Detect columns, panels and item-plus-description pairs. Read in reading order. Say so when the layout defeats it rather than mismatching silently.",
+    "Theme": "T2",
+    "Fixes": "PP-23"
+  },
+  {
+    "Tag": "DO-24",
+    "Do this": "Recognise the wearer's voice",
+    "Detail": "Speaker enrolment so bystanders do not cancel a reply. Reuse the noise handling already proven in video capture.",
+    "Theme": "T5",
+    "Fixes": "PP-24"
+  },
+  {
+    "Tag": "DO-25",
+    "Do this": "Forgive imperfect commands",
+    "Detail": "Infer intent from a partial command. Ask one clarifying question instead of half-acting. Confirm the listening state without depending on a beep the user may miss.",
+    "Theme": "T5",
+    "Fixes": "PP-25"
+  },
+  {
+    "Tag": "DO-26",
+    "Do this": "Support the user's own language",
+    "Detail": "Wake and command in the user's first language. Ship setup and training material in that language. Keep translation output out of the way of the live speaker.",
+    "Theme": "T5",
+    "Fixes": "PP-26"
+  },
+  {
+    "Tag": "DO-27",
+    "Do this": "Make failure recovery safe and hands-off",
+    "Detail": "Announce a dropped connection, retry automatically, and never require fiddling. Add a do not disturb me now state for exercise, stairs, and street.",
+    "Theme": "T14",
+    "Fixes": "PP-27"
+  },
+  {
+    "Tag": "DO-28",
+    "Do this": "Give the answer a confidence signal",
+    "Detail": "Say how sure it is. Flag anything the user cannot check. Trust ratings sit at 4 to 5 with almost no verification behind them, which is a risk, not a result.",
+    "Theme": "T15",
+    "Fixes": "PP-28"
+  },
+  {
+    "Tag": "DO-29",
+    "Do this": "Make person description a user setting",
+    "Detail": "Let the wearer choose what they receive: ethnicity, gender and age estimates, expression, or appearance only. Best guess with the reason attached, stated as a guess.",
+    "Theme": "T4",
+    "Fixes": "PP-29"
+  },
+  {
+    "Tag": "DO-30",
+    "Do this": "Close the loop from reading to acting",
+    "Detail": "If it can read a control, let it help operate it. Hand off to the screen reader or drive the tap.",
+    "Theme": "T2",
+    "Fixes": "PP-30"
+  },
+  {
+    "Tag": "DO-31",
+    "Do this": "Discreet and directional output",
+    "Detail": "One-ear output, whisper volume, and a quick physical volume control the user can find without the app.",
+    "Theme": "T5",
+    "Fixes": "PP-31"
+  },
+  {
+    "Tag": "DO-32",
+    "Do this": "Simplify the physical controls",
+    "Detail": "No more than three functions per control. Split settings and diagnostics onto a second control. Offer a left or right touchpad.",
+    "Theme": "T11",
+    "Fixes": "PP-32, PP-33"
+  },
+  {
+    "Tag": "DO-33",
+    "Do this": "Quiet the hardware",
+    "Detail": "Volume control on case alerts, or a silent mode. Nobody should be unable to open the case in a library.",
+    "Theme": "T11",
+    "Fixes": "PP-33"
+  },
+  {
+    "Tag": "DO-34",
+    "Do this": "Support self-directed use",
+    "Detail": "Mirror mode, or a way to check hair, makeup and outfit without a second person. Ask how do I look and get a straight answer.",
+    "Theme": "T10",
+    "Fixes": "PP-34"
+  },
+  {
+    "Tag": "DO-35",
+    "Do this": "Open the platform",
+    "Detail": "Third-party assistants and apps, all major messaging platforms, maps and points-of-interest search. On niche hardware, publish a continuity commitment so a shutdown does not brick the device.",
+    "Theme": "T13",
+    "Fixes": "PP-35"
+  },
+  {
+    "Tag": "DO-36",
+    "Do this": "Design for households with helpers",
+    "Detail": "Position the device as the option when nobody is around, and make that case explicit. Otherwise the helper wins by default and the device never gets used.",
+    "Theme": "T12",
+    "Fixes": "PP-36"
+  },
+  {
+    "Tag": "DO-37",
+    "Do this": "State questions, carefully",
+    "Detail": "Doneness, cleanliness, fullness, flame on or off. Where safety is involved, give a reading plus a limit statement rather than refusing outright.",
+    "Theme": "T14",
+    "Fixes": "PP-37"
+  },
+  {
+    "Tag": "DO-38",
+    "Do this": "Proactive watch for a target",
+    "Detail": "Tell me when you see gate 14. Tell me when we reach the cereal aisle. Standing alerts rather than repeated scene scans.",
+    "Theme": "T5",
+    "Fixes": "PP-18"
+  },
+  {
+    "Tag": "DO-39",
+    "Do this": "Design for live events",
+    "Detail": "Sports, concerts, conferences. Leaderboards, crowd scenes, live commentary gaps. Named unprompted as the highest-value future use.",
+    "Theme": "T3",
+    "Fixes": "PP-18"
+  },
+  {
+    "Tag": "DO-40",
+    "Do this": "Say when it cannot see, never invent",
+    "Detail": "Refuse rather than fabricate on a partial or lost frame. Hold the captured image and answer follow-ups from it, or say the frame is gone. A single fabrication costs the whole use case.",
+    "Theme": "T15",
+    "Fixes": "PP-38, PP-39"
+  },
+  {
+    "Tag": "DO-41",
+    "Do this": "Publish time to first correct read",
+    "Detail": "One attempt, not three. Treat retries as the core metric, since patience is what users actually spend and paid work has none to spare.",
+    "Theme": "T12",
+    "Fixes": "PP-40"
+  },
+  {
+    "Tag": "DO-42",
+    "Do this": "Unmistakable capture state",
+    "Detail": "Distinct start and stop tones, a spoken confirmation on request, and a running indicator. Never let a clip fail silently.",
+    "Theme": "T17",
+    "Fixes": "PP-41"
+  },
+  {
+    "Tag": "DO-43",
+    "Do this": "Coach the frame, then confirm the shot",
+    "Detail": "Speak the framing guidance out loud before capture. Confirm what landed in the shot afterwards. The pattern already ships on one device in the study.",
+    "Theme": "T17",
+    "Fixes": "PP-42"
+  },
+  {
+    "Tag": "DO-44",
+    "Do this": "Name clips so they can be found by ear",
+    "Detail": "Timestamp plus a one-line description of the content. Optional spoken label at capture. Preserve capture order on import.",
+    "Theme": "T17",
+    "Fixes": "PP-43"
+  },
+  {
+    "Tag": "DO-45",
+    "Do this": "Keep assistive audio out of the take",
+    "Detail": "Duck or route screen reader speech away from the recording. Creators should not have to choose between hearing their device and using the footage.",
+    "Theme": "T17",
+    "Fixes": "PP-44"
+  },
+  {
+    "Tag": "DO-46",
+    "Do this": "Hand the text off to the phone",
+    "Detail": "Push captured text to the app with a notification. Re-readable, saveable, searchable, brailleable. Let the user jump to a section by name.",
+    "Theme": "T2",
+    "Fixes": "PP-45"
+  },
+  {
+    "Tag": "DO-47",
+    "Do this": "Ground location answers in the actual location",
+    "Detail": "Use the device position, not the metro area or the airport, for weather, transit and nearby places. Say which position it used.",
+    "Theme": "T16",
+    "Fixes": "PP-46"
+  },
+  {
+    "Tag": "DO-48",
+    "Do this": "Make it audible on a loud street",
+    "Detail": "Directional or bone conduction output tuned for noise, a boost mode, and an optional single earbud handoff. Users are already cupping a hand around one ear.",
+    "Theme": "T11",
+    "Fixes": "PP-47"
+  },
+  {
+    "Tag": "DO-49",
+    "Do this": "Close the camera gap",
+    "Detail": "Sensor and low light performance at phone parity. Remote volunteers currently ask people to put the glasses away and use the phone.",
+    "Theme": "T11",
+    "Fixes": "PP-48, PP-50"
+  },
+  {
+    "Tag": "DO-50",
+    "Do this": "Pair to two devices at once",
+    "Detail": "Phone and tablet or computer together, with a spoken switch. Table stakes on a mid-range headset.",
+    "Theme": "T6",
+    "Fixes": "PP-49"
+  },
+  {
+    "Tag": "DO-51",
+    "Do this": "Design for print that was never designed for reading",
+    "Detail": "Low contrast mode, glare and lamination handling, text inside marketing images, and a straight answer when the page defeats it. Publish guidance to brands, since sighted customers are failing on the same pages.",
+    "Theme": "T19",
+    "Fixes": "PP-50"
+  },
+  {
+    "Tag": "DO-52",
+    "Do this": "Ship opt-in face enrollment from the contact list",
+    "Detail": "Name only, from photos the user already has, plus a direction and rough distance. Four participants have now asked unprompted. Scope it narrowly and privacy review gets easier.",
+    "Theme": "T4",
+    "Fixes": "PP-51"
+  },
+  {
+    "Tag": "DO-53",
+    "Do this": "Make integrations set themselves up",
+    "Detail": "Detect the installed partner app and offer the link in one step from either side. Capability sitting unused for eighteen months is capability that was never shipped.",
+    "Theme": "T7",
+    "Fixes": "PP-52"
+  },
+  {
+    "Tag": "DO-54",
+    "Do this": "Stop users blaming themselves",
+    "Detail": "Say what went wrong and what would fix it: move closer, more light, turn the item. Silence gets read as personal failure and ends in lower use.",
+    "Theme": "T15",
+    "Fixes": "PP-53"
+  },
+  {
+    "Tag": "DO-55",
+    "Do this": "Give an answer the user can check alone",
+    "Detail": "Confidence level, source, and a second look on request. For anyone without a sighted person on hand, an unverifiable answer is the same as no answer.",
+    "Theme": "T15",
+    "Fixes": "PP-54"
+  },
+  {
+    "Tag": "DO-56",
+    "Do this": "Never agree to please on a safety question",
+    "Detail": "Doneness, cleanliness, flame, spoilage. Give a reading with its limits, or decline plainly. Suspected flattery is why the whole kitchen use case is off.",
+    "Theme": "T14",
+    "Fixes": "PP-55"
+  },
+  {
+    "Tag": "DO-57",
+    "Do this": "Defend the accommodation case in public",
+    "Detail": "Clear wearer-facing indicator state, a published accessibility position for venues, and support for users challenged over wearing them. Bans and hostility land on blind wearers first.",
+    "Theme": "T4",
+    "Fixes": "PP-56"
+  },
+  {
+    "Tag": "DO-58",
+    "Do this": "Design for partial sight, not only for blindness",
+    "Detail": "Contrast, magnification handoff, and language that does not assume no vision. Half the study now has usable residual sight and gets read as having none.",
+    "Theme": "T4",
+    "Fixes": "PP-57, PP-62"
+  },
+  {
+    "Tag": "DO-59",
+    "Do this": "Separate what it sees from what it sells",
+    "Detail": "State plainly that camera and conversation content is not used for ad targeting, or let users switch it off. This is the only privacy objection in the study that changed behaviour.",
+    "Theme": "T9",
+    "Fixes": "PP-58"
+  },
+  {
+    "Tag": "DO-60",
+    "Do this": "Flag private data at capture",
+    "Detail": "Plates, house numbers, faces, documents. Warn before posting, offer automatic blurring. Bystander protection is what the wearer actually asks for.",
+    "Theme": "T9",
+    "Fixes": "PP-59"
+  },
+  {
+    "Tag": "DO-61",
+    "Do this": "Read the whole message",
+    "Detail": "No truncation to the phone. Long message, long read, with a stop command and a resume point.",
+    "Theme": "T7",
+    "Fixes": "PP-60"
+  },
+  {
+    "Tag": "DO-62",
+    "Do this": "Say why, every time",
+    "Detail": "Too small, too dark, glare, upside down, out of frame. Report the same way on every device and every failure.",
+    "Theme": "T2",
+    "Fixes": "PP-61"
+  },
+  {
+    "Tag": "DO-63",
+    "Do this": "Follow the user's day",
+    "Detail": "Residual sight fades through the day. Let the device lean in later, and stop assuming a fixed level of vision.",
+    "Theme": "T12",
+    "Fixes": "PP-62"
+  },
+  {
+    "Tag": "DO-64",
+    "Do this": "Drive the screens in the world, or admit the gap",
+    "Detail": "Bridge to kiosk and payment terminals, or publish the accessibility position and route the user to a person. This is the barrier one participant ranks above every device defect.",
+    "Theme": "T19",
+    "Fixes": "PP-63"
+  },
+  {
+    "Tag": "DO-65",
+    "Do this": "Never answer from a stale frame",
+    "Detail": "Timestamp the capture. Refuse rather than reuse. Say the frame is gone and take another.",
+    "Theme": "T1",
+    "Fixes": "PP-64"
+  },
+  {
+    "Tag": "DO-66",
+    "Do this": "Separate policy refusals from capture failures",
+    "Detail": "Say plainly that the answer is withheld and why. A refusal that sounds like a failure teaches the user the device is broken.",
+    "Theme": "T2",
+    "Fixes": "PP-65"
+  },
+  {
+    "Tag": "DO-67",
+    "Do this": "Make enrollment consent legible to the enrolled",
+    "Detail": "On-device storage, a visible list, a way for the enrolled person to see and delete their entry. The block is not the wearer's privacy, it is the family's.",
+    "Theme": "T4",
+    "Fixes": "PP-66, PP-51"
+  },
+  {
+    "Tag": "DO-68",
+    "Do this": "Let a capture leave by voice",
+    "Detail": "Send to a saved contact, email or drive with one spoken command. Never answer a capture request with steps for an app the user cannot see.",
+    "Theme": "T17",
+    "Fixes": "PP-67"
+  },
+  {
+    "Tag": "DO-69",
+    "Do this": "Handle curved packaging",
+    "Detail": "Multi-angle capture, cylindrical unwrapping, or say plainly that the shape is defeating it and ask for a turn.",
+    "Theme": "T3",
+    "Fixes": "PP-68, PP-87"
+  },
+  {
+    "Tag": "DO-70",
+    "Do this": "Give it a reach",
+    "Detail": "Digital zoom on request, or a magnification handoff. For residual sight, enlarging is the function, not describing.",
+    "Theme": "T3",
+    "Fixes": "PP-69"
+  },
+  {
+    "Tag": "DO-71",
+    "Do this": "Ship a tool voice",
+    "Detail": "A setting that strips pleasantries, affirmations and conversational framing. Answer, then stop.",
+    "Theme": "T5",
+    "Fixes": "PP-70"
+  },
+  {
+    "Tag": "DO-72",
+    "Do this": "Make the battery serviceable",
+    "Detail": "A replaceable cell or a serviceable arm. Publish an expected capacity curve. A sealed battery turns an accessibility device into a consumable.",
+    "Theme": "T22",
+    "Fixes": "PP-71"
+  },
+  {
+    "Tag": "DO-73",
+    "Do this": "Carry settings across pairs",
+    "Detail": "Bind configuration to the account, not the hardware. Owning a spare should cost nothing.",
+    "Theme": "T8",
+    "Fixes": "PP-72"
+  },
+  {
+    "Tag": "DO-74",
+    "Do this": "Cut time to first useful answer",
+    "Detail": "Keep the link warm, pre-stage the volunteer call, and report the connection state out loud. The clock starts when the user decides, not when the call lands.",
+    "Theme": "T21",
+    "Fixes": "PP-73, PP-74"
+  },
+  {
+    "Tag": "DO-75",
+    "Do this": "Publish volunteer availability",
+    "Detail": "Expected wait, a paid fallback, and a route that does not depend on a stranger being awake.",
+    "Theme": "T21",
+    "Fixes": "PP-74"
+  },
+  {
+    "Tag": "DO-76",
+    "Do this": "Give the remote helper a usable image",
+    "Detail": "Higher resolution on a live assist call, a still capture on request, and a zoom control the helper can drive.",
+    "Theme": "T21",
+    "Fixes": "PP-75, PP-48"
+  },
+  {
+    "Tag": "DO-77",
+    "Do this": "Decline instead of guessing",
+    "Detail": "One consistent low-confidence behaviour. If it cannot name the product, say so. A wrong brand delivered fluently costs the whole use case.",
+    "Theme": "T15",
+    "Fixes": "PP-76, PP-38"
+  },
+  {
+    "Tag": "DO-78",
+    "Do this": "Give narration a pause and a gesture",
+    "Detail": "Tap to pause, tap to resume. Duck automatically when the wearer starts speaking.",
+    "Theme": "T20",
+    "Fixes": "PP-77"
+  },
+  {
+    "Tag": "DO-79",
+    "Do this": "Give narration a content filter",
+    "Detail": "A checklist the user sets: hazards, people, shops, signs, scenery. Default to hazards and people.",
+    "Theme": "T20",
+    "Fixes": "PP-78"
+  },
+  {
+    "Tag": "DO-80",
+    "Do this": "Raise the speech rate ceiling",
+    "Detail": "Match screen reader rates. Blind users read faster than the maximum on offer.",
+    "Theme": "T20",
+    "Fixes": "PP-79"
+  },
+  {
+    "Tag": "DO-81",
+    "Do this": "Answer no with what it does see",
+    "Detail": "Never a bare negative. No escalator, but there is a corridor ahead and a staircase to your left.",
+    "Theme": "T3",
+    "Fixes": "PP-80"
+  },
+  {
+    "Tag": "DO-82",
+    "Do this": "Call head-level hazards",
+    "Detail": "The camera sits where the hazard is. Branches, signs, open cupboards and shelf edges, called early enough to duck.",
+    "Theme": "T14",
+    "Fixes": "PP-81"
+  },
+  {
+    "Tag": "DO-83",
+    "Do this": "Speak the case state",
+    "Detail": "Charge level and pairing announced on open, or reported by the glasses. Never a colour the wearer cannot see.",
+    "Theme": "T11",
+    "Fixes": "PP-82"
+  },
+  {
+    "Tag": "DO-84",
+    "Do this": "Never refuse on a state the user cannot verify",
+    "Detail": "If it thinks a call is active, say so and offer to clear it. Phantom states with no escape are worse than plain failures.",
+    "Theme": "T1",
+    "Fixes": "PP-83"
+  },
+  {
+    "Tag": "DO-85",
+    "Do this": "Fix the reputation, not just the bug",
+    "Detail": "Community demonstrations of corrected failures. A fix nobody hears about does not reopen a retired use case.",
+    "Theme": "T15",
+    "Fixes": "PP-84, PP-39"
+  },
+  {
+    "Tag": "DO-86",
+    "Do this": "Design for a full day on a face",
+    "Detail": "Nose pads, weight distribution and pressure testing across hours, not minutes. Fit and pressure are the two hardware causes of reduced use in this study.",
+    "Theme": "T11",
+    "Fixes": "PP-85, PP-16"
+  },
+  {
+    "Tag": "DO-87",
+    "Do this": "Build for the way blind people move",
+    "Detail": "Impact-rated frames and lenses, a replaceable arm, and an accidental-damage plan. The device is worn by people who walk into things.",
+    "Theme": "T11",
+    "Fixes": "PP-86"
+  },
+  {
+    "Tag": "DO-88",
+    "Do this": "Guide the turn on a medication bottle",
+    "Detail": "Detect a partial label, say which way to rotate, confirm when the name is in view. The volunteer script already exists; automate it.",
+    "Theme": "T2",
+    "Fixes": "PP-87"
+  },
+  {
+    "Tag": "DO-89",
+    "Do this": "Ship a scan mode",
+    "Detail": "Hold the page, take several frames, assemble one reading, say when the page is fully covered.",
+    "Theme": "T2",
+    "Fixes": "PP-88"
+  },
+  {
+    "Tag": "DO-90",
+    "Do this": "Make private-space use possible",
+    "Detail": "On-device processing, a layout-only mode that reports fixtures and suppresses people. The wearer wants to protect bystanders, not to give up the room.",
+    "Theme": "T9",
+    "Fixes": "PP-89"
+  },
+  {
+    "Tag": "DO-91",
+    "Do this": "Rate the hardware for water",
+    "Detail": "Splash and rain resistance at minimum. Water rules out a whole class of outdoor activity that the device is otherwise suited to.",
+    "Theme": "T11",
+    "Fixes": "PP-90"
+  },
+  {
+    "Tag": "DO-92",
+    "Do this": "Handle live screens honestly",
+    "Detail": "Detect a refreshing display, capture a stable frame, or say the screen changed mid-read.",
+    "Theme": "T2",
+    "Fixes": "PP-91"
+  },
+  {
+    "Tag": "DO-93",
+    "Do this": "Support region-level questions",
+    "Detail": "Top left, third row, between my fingers, the total at the bottom. Pointing already works as a cue; make the spoken version work too.",
+    "Theme": "T2",
+    "Fixes": "PP-92, PP-21"
+  },
+  {
+    "Tag": "DO-13",
+    "Do this": "Non-visual spatial language",
+    "Detail": "Answer in body-relative terms by default. Left, right, ahead, and a distance in steps or feet. Suppress right there, this one and in front of you unless a distance is attached.",
+    "Theme": "T5, T16",
+    "Fixes": "PP-13"
+  },
+  {
+    "Tag": "DO-14",
+    "Do this": "A verification affordance",
+    "Detail": "Give the user something to check against. A confidence band, a second independent read, a spoken account of what the frame contained, or a one-tap handoff to a human on the same image.",
+    "Theme": "T15",
+    "Fixes": "PP-14, PP-15"
+  },
+  {
+    "Tag": "DO-15",
+    "Do this": "Treat absence as a low-confidence answer",
+    "Detail": "Never assert that a thing is not present. Say the frame does not show one, name what was in the frame, and offer another capture.",
+    "Theme": "T15, T3",
+    "Fixes": "PP-15"
+  },
+  {
+    "Tag": "DO-16",
+    "Do this": "Motion-tolerant connection",
+    "Detail": "Hold the session through head movement and bending. On a drop, resume where it stopped instead of resetting.",
+    "Theme": "T1",
+    "Fixes": "PP-16, PP-01"
+  },
+  {
+    "Tag": "DO-17",
+    "Do this": "Intent routing with a confirmation",
+    "Detail": "When a read or colour request would return a scene description, say so first. What colour is this should never answer with the room.",
+    "Theme": "T5, T3",
+    "Fixes": "PP-17"
+  },
+  {
+    "Tag": "DO-18",
+    "Do this": "Temporal capture for changing states",
+    "Detail": "Short burst or video sampling for anything that blinks, alternates or moves. Report the change, the colour and the position.",
+    "Theme": "T3",
+    "Fixes": "PP-18"
+  },
+  {
+    "Tag": "DO-19",
+    "Do this": "Coverage for culturally specific items",
+    "Detail": "Foods, garments and objects outside the dominant training distribution. Where confidence is low, describe rather than name.",
+    "Theme": "T3",
+    "Fixes": "PP-19"
+  },
+  {
+    "Tag": "DO-20",
+    "Do this": "A capability changelog users can hear",
+    "Detail": "Announce what changed on update, in the app and on request. Include what was withdrawn and why.",
+    "Theme": "T8",
+    "Fixes": "PP-20"
+  },
+  {
+    "Tag": "DO-21",
+    "Do this": "Consistent voice in continuous mode",
+    "Detail": "Keep the same voice and the same audio profile in live mode, and keep ambient hearing intact.",
+    "Theme": "T20",
+    "Fixes": "PP-21"
+  },
+  {
+    "Tag": "DO-22",
+    "Do this": "No unrequested actions",
+    "Detail": "Never offer or begin a call, a message or a mode change that was not asked for. Live mode should require an explicit start.",
+    "Theme": "T5",
+    "Fixes": "PP-22"
+  },
+  {
+    "Tag": "DO-23",
+    "Do this": "Notification control that is findable",
+    "Detail": "A single spoken command to hold announcements during media, and a plain path to it in setup.",
+    "Theme": "T5",
+    "Fixes": "PP-23"
+  },
+  {
+    "Tag": "DO-24",
+    "Do this": "Report the selection, not only the screen",
+    "Detail": "Name which item is highlighted, and support move to the next one as a spoken action.",
+    "Theme": "T2",
+    "Fixes": "PP-24"
+  },
+  {
+    "Tag": "DO-25",
+    "Do this": "Actionable capture coaching",
+    "Detail": "Coaching the user can follow without sight. Where the fix is impossible, say what the device can do with the frame it already has.",
+    "Theme": "T2",
+    "Fixes": "PP-25"
+  },
+  {
+    "Tag": "DO-26",
+    "Do this": "Design for use in retail",
+    "Detail": "Faster scanning, a discreet mode, and a way to signal to staff that this is an access device rather than surveillance.",
+    "Theme": "T4",
+    "Fixes": "PP-26"
+  },
+  {
+    "Tag": "DO-27",
+    "Do this": "Legibility as a blind person’s device",
+    "Detail": "Frames that do not read as ordinary eyewear to bystanders, or a visible signal that the wearer is not looking back.",
+    "Theme": "T4, T11",
+    "Fixes": "PP-27"
+  },
+  {
+    "Tag": "DO-28",
+    "Do this": "A recording state the wearer can verify",
+    "Detail": "Spoken or haptic confirmation of the indicator, so the wearer can answer a challenge without guessing.",
+    "Theme": "T9, T4",
+    "Fixes": "PP-28"
+  },
+  {
+    "Tag": "DO-29",
+    "Do this": "Rideshare pickup assist",
+    "Detail": "A standing watch on colour, make and plate, announced when the car is close, with a direction and a distance.",
+    "Theme": "T16",
+    "Fixes": "PP-29"
+  },
+  {
+    "Tag": "DO-30",
+    "Do this": "Seat and space availability",
+    "Detail": "Report unoccupied seats with position, in pews, buses and waiting rooms.",
+    "Theme": "T16",
+    "Fixes": "PP-30"
+  }
+]

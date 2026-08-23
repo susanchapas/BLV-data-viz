@@ -1,0 +1,256 @@
+[
+  {
+    "block": "Initial",
+    "block_note": null,
+    "block_detail": null,
+    "superseded": true,
+    "items": [
+      {
+        "label": null,
+        "result": "Result",
+        "detail": "Detail"
+      },
+      {
+        "label": "Sample",
+        "result": "14 participants coded",
+        "detail": "P001 to P008, P010, P011, P014 to P017. Target is about 20. P009, P012 and P013 are not in this workbook."
+      },
+      {
+        "label": "Evidence",
+        "result": "1389 coded rows",
+        "detail": "813 carried forward, 576 added from P014 to P017. Every quote is a verbatim substring of its transcript, cited to a line number."
+      },
+      {
+        "label": "Codes",
+        "result": "290 codes",
+        "detail": "226 carried forward, 64 added this round."
+      },
+      {
+        "label": "Themes",
+        "result": "22 themes",
+        "detail": "19 carried forward. Three added: Continuous Narration and Attention, Remote Sighted Guidance, Device Lifecycle and Repairability."
+      },
+      {
+        "label": "Devices",
+        "result": "13 Ray-Ban Meta, 1 EchoVision",
+        "detail": "All four new participants are on Ray-Ban Meta. Generation is unstated for three of them."
+      },
+      {
+        "label": "Top finding",
+        "result": "The largest gap is still activation, not capability",
+        "detail": "Nine of fourteen now self-report under-use. One daily user of two years has never tried the continuous mode and was unsure it exists. Another found the accessibility detail setting himself."
+      },
+      {
+        "label": "Second finding",
+        "result": "The camera carries a human as often as an AI",
+        "detail": "One participant routes most visual work to a volunteer looking through the glasses and rates the on-board AI 2 of 5. Volunteers steer a hand to a microwave button, a bottle to its label, a game menu. Nothing in the product supports that loop."
+      },
+      {
+        "label": "Third finding",
+        "result": "Guessing is the failure mode, declining is the ask",
+        "detail": "Seltzer named as a cola. A cherry invented on a can. Seven of fourteen now ask, in their own words, for the device to say when it does not know."
+      },
+      {
+        "label": "Fourth finding",
+        "result": "The largest barrier named by any participant is a touchscreen",
+        "detail": "Card readers, ticket machines and bank terminals. The glasses read the world and cannot touch it. Ranked above every device defect by the participant with 48 years of adaptation."
+      },
+      {
+        "label": "Fifth finding",
+        "result": "A sealed battery turns access into a consumable",
+        "detail": "Capacity falls year on year, the cell cannot be replaced, and the whole device goes with it. Named as the direct cause of one participant's drop from heavy to occasional use."
+      },
+      {
+        "label": "Biggest mover",
+        "result": "Person recognition",
+        "detail": "Six of fourteen now ask unprompted. The ask has narrowed to a name from a contact photo plus a direction. The new blocker is consent from the people being enrolled, not from the wearer."
+      },
+      {
+        "label": "Newly visible",
+        "result": "Continuous narration has a specification",
+        "detail": "The first participant to live with an always-on mode arrives with six requirements: filter, pause, priority, speech rate, ducking on speech, and directional answers."
+      },
+      {
+        "label": "Newly visible",
+        "result": "Distrust travels through the community",
+        "detail": "One use case retired on the strength of a failure watched in someone else's video, never personally attempted."
+      },
+      {
+        "label": "Contradiction to resolve",
+        "result": "Does it coach the framing?",
+        "detail": "P014 reports spoken guidance to move right and get more light. P017, P005 and P003 report silence on the same device family. One participant is getting the fix four others are asking for. See Contradictions X-06."
+      },
+      {
+        "label": "Method note",
+        "result": "Every claim traces to a coded row",
+        "detail": "Pain Points, Opportunities, Insights and Contradictions all carry evidence codes. Counts on Findings, Sub-themes and Codebook are formulas over the Evidence tab, not typed values."
+      },
+      {
+        "label": "Method note",
+        "result": "The interview is an intervention",
+        "detail": "Seven participants have now ended a session naming something they intend to try. Reported as a limitation, and as a finding about how thin activation support is."
+      }
+    ]
+  },
+  {
+    "block": "ROUND 3",
+    "block_note": "P009, P012 and P013 added",
+    "block_detail": "Three transcripts supplied and coded. The request named four; only three files were provided.",
+    "superseded": true,
+    "items": [
+      {
+        "label": "Sample",
+        "result": "17 participants coded",
+        "detail": "P001 to P017, complete. This closes the standing discrepancy between the 17 claimed in the outline and the 14 traceable in the workbook."
+      },
+      {
+        "label": "Evidence",
+        "result": "2146 coded rows",
+        "detail": "1,389 carried forward, 505 added this round. Every new quote verified as an exact substring of its participant turn at the cited line."
+      },
+      {
+        "label": "Codes",
+        "result": "361 codes",
+        "detail": "290 carried forward, 69 added this round."
+      },
+      {
+        "label": "Themes",
+        "result": "22 themes",
+        "detail": "No new top-level themes. All 69 new codes land inside the existing 22, which is the first round where that has happened."
+      },
+      {
+        "label": "Devices",
+        "result": "16 Ray-Ban Meta, 1 EchoVision",
+        "detail": "All three new participants are on Ray-Ban Meta. Generation unstated for all three. P011 remains the only non-Meta device and should not be pooled without a visible split."
+      },
+      {
+        "label": "Top finding",
+        "result": "The device answers a sighted user",
+        "detail": "One participant states it directly: the glasses forget she is not sighted. Answers arrive as right in front of you and this one. Three participants ask for the same repair in the same terms: a direction and a distance in feet."
+      },
+      {
+        "label": "Second finding",
+        "result": "Verification is absent rather than skipped",
+        "detail": "Earlier rounds found trust without verification. This round has a participant stating four separate times that no method of checking exists for her. She lives alone, so there is no witness either, and she still rates trust 4."
+      },
+      {
+        "label": "Third finding",
+        "result": "The false negative is a distinct failure class",
+        "detail": "An expiration date reported as missing was there. Wheelchairs reported as not visible were there. An awning reported as nothing there was there. Absence is exactly what a blind user cannot check, so this class is undetectable by definition."
+      },
+      {
+        "label": "Fourth finding",
+        "result": "Satisfaction operates as a ceiling",
+        "detail": "One participant says five times that she is happy with what it does and therefore never asks what else it does. Satisfaction reads highest here where activation is weakest, which inverts the usual reading of the metric."
+      },
+      {
+        "label": "Fifth finding",
+        "result": "One daily user did not know it ran an AI",
+        "detail": "Nine months of use as a one-step reader, no follow-up question ever attempted, and the realisation arrived mid-interview. The activation ceiling in this case is the mental model of what the object is."
+      },
+      {
+        "label": "Biggest mover",
+        "result": "Person recognition, now 9 of 17",
+        "detail": "P009 wants it for relatives and names a cultural etiquette obligation behind the request. P012 receives an explicit spoken refusal. P013 believed it was unavailable in his region and never tried."
+      },
+      {
+        "label": "Newly visible",
+        "result": "Being seen wearing it",
+        "detail": "Read as sighted, read as a shoplifter, challenged by an usher over recording. One participant names bystander perception as her largest barrier to outdoor use, ahead of every capability limit in the study."
+      },
+      {
+        "label": "Newly visible",
+        "result": "The rideshare kerb",
+        "detail": "All three participants raise it independently. One has entered a stranger’s car. Colour, make and plate all sit in the app and none of them survives the walk to the kerb."
+      },
+      {
+        "label": "Newly visible",
+        "result": "The cane as a verification instrument",
+        "detail": "One participant runs every spatial claim through her long cane before acting. It is the only routine, repeatable verification method observed anywhere in seventeen interviews."
+      },
+      {
+        "label": "Contradiction to resolve",
+        "result": "Does it work while the phone is in use?",
+        "detail": "P001 calls this her top fix. P012 uses the glasses to read her own phone screen when VoiceOver fails. P013 runs Maps on the phone and listens through the glasses. Audio routing and camera use may be two problems collapsed into one."
+      },
+      {
+        "label": "Flag",
+        "result": "P013 gender unresolved",
+        "detail": "Transcript renders the answer as Mail at L479. The interviewer uses she at L193 and the participant refers to a husband at L291. Verify before reporting demographics."
+      },
+      {
+        "label": "Method note",
+        "result": "Quotes verified programmatically",
+        "detail": "All 505 new rows checked as exact substrings of the cited line, and confirmed to come from a participant turn rather than an interviewer turn."
+      }
+    ]
+  },
+  {
+    "block": "ROUND 4",
+    "block_note": "Re-verification of P001 to P017",
+    "block_detail": "No new transcripts. Every one of the seventeen was already coded. This round re-read all of them against the mature codebook.",
+    "superseded": false,
+    "items": [
+      {
+        "label": "Sample",
+        "result": "17 participants coded",
+        "detail": "Unchanged. P001 to P017. The fourth transcript queried in round 3 does not exist; the request had already been met."
+      },
+      {
+        "label": "Evidence",
+        "result": "2146 coded rows",
+        "detail": "1,894 carried forward, 252 added. Every added quote is verified as an exact substring of a participant turn at the cited line."
+      },
+      {
+        "label": "Codes",
+        "result": "361 codes",
+        "detail": "359 carried forward, 2 added. PHN-TETHER and DES-FINDDEVICE."
+      },
+      {
+        "label": "Themes",
+        "result": "22 themes",
+        "detail": "No new top-level themes for the second round running."
+      },
+      {
+        "label": "Top finding",
+        "result": "The early transcripts were under-read, not thinly experienced",
+        "detail": "P001 yielded 0.71 coded rows per kilobyte of transcript; P012 yielded 3.06. The difference is when they were coded, not what was said. P001 and P002 roughly double on re-reading."
+      },
+      {
+        "label": "Second finding",
+        "result": "Three round 3 findings were already present in round 1",
+        "detail": "Body-relative directions, rideshare pickup and audio leaking to bystanders all appear in P001, and were invisible because the codes did not exist yet. Recency of coding was being read as recency of phenomenon."
+      },
+      {
+        "label": "Third finding",
+        "result": "Remote sighted guidance is a bigger theme than it looked",
+        "detail": "T21 was created in round 2, so P004, P005, P010 and P011 were never coded for it. All four describe routing visual work through a volunteer looking through the camera."
+      },
+      {
+        "label": "Fourth finding",
+        "result": "Verification has more strategies in it than absence",
+        "detail": "TRU-CALIBRATE, testing the device on an answer the user already knows, is used by P007, P008 and P016. TRU-CANECHECK has two sources, not one."
+      },
+      {
+        "label": "Claim to soften",
+        "result": "The cane is not the only routine verification method",
+        "detail": "P002 at L107 runs the same check as P012. The round 3 wording, only in seventeen interviews, no longer holds."
+      },
+      {
+        "label": "Claim to soften",
+        "result": "Framing coaching is not a single-participant report",
+        "detail": "P001, P002 and P006 all receive spoken coaching. X-06 currently reads as one participant getting the fix four others want."
+      },
+      {
+        "label": "Coding flag",
+        "result": "P005 L59 may be miscoded",
+        "detail": "Coded READ-GUIDANCE, which the codebook defines as coaching succeeding. The quote describes the coaching being absent. Left as found and flagged rather than changed."
+      },
+      {
+        "label": "Method note",
+        "result": "Nothing was removed or rewritten",
+        "detail": "All 1,894 pre-existing rows are byte-identical to the version supplied. Every change this round is an addition."
+      }
+    ]
+  }
+]

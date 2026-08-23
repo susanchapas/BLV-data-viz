@@ -32,7 +32,7 @@ function GenericBarChart({ spec, width }: { spec: ChartSpec; width: number }) {
   const xScale = scaleLinear<number>({ domain: [0, maxVal], range: [0, innerW], nice: true })
 
   return (
-    <svg width={width} height={height} aria-hidden="true">
+    <svg width={width} height={height} role="img" aria-label={spec.title}>
       <Group top={margin.top} left={margin.left}>
         {dataRows.map((row, i) => {
           const label = String(row[0])

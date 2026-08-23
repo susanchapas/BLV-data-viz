@@ -1,0 +1,191 @@
+[
+  {
+    "Section": "Scope",
+    "Item": "Transcripts newly coded",
+    "Was": "None",
+    "Now": "None",
+    "Reading": "All seventeen were already coded. No transcript was outstanding, which resolves the standing question about a fourth file from the previous round."
+  },
+  {
+    "Section": "Scope",
+    "Item": "Rows added by re-verification",
+    "Was": 1894,
+    "Now": 2146,
+    "Reading": "252 rows added by re-reading every transcript against the mature codebook. Nothing was removed and nothing was rewritten."
+  },
+  {
+    "Section": "Scope",
+    "Item": "Codes in the codebook",
+    "Was": 359,
+    "Now": 361,
+    "Reading": "Two added. Both fit inside existing themes, so the 22-theme structure has now held for two rounds."
+  },
+  {
+    "Section": "Density",
+    "Item": "Rows per kilobyte, P001",
+    "Was": "0.71",
+    "Now": "0.71",
+    "Reading": "Coded in round 1, before most of the codebook existed."
+  },
+  {
+    "Section": "Density",
+    "Item": "Rows per kilobyte, P012",
+    "Was": "3.06",
+    "Now": "3.06",
+    "Reading": "Coded in round 3 against the full scheme. The four-fold difference is a coding artefact, not a difference in what the participants said."
+  },
+  {
+    "Section": "Density",
+    "Item": "Rows added, P001 and P002",
+    "Was": "86",
+    "Now": "86",
+    "Reading": "These two roughly double. P003 to P011 gain 15 to 24 each. P014 to P017 gain 2 to 9, since they were coded more recently."
+  },
+  {
+    "Section": "Verification",
+    "Item": "Cane used to check a spatial claim",
+    "Was": 1,
+    "Now": 3,
+    "Reading": "Recorded as a single-source finding attributed to P012. P002 states it at L107. Two participants, so the wording of the headline claim needs softening."
+  },
+  {
+    "Section": "Verification",
+    "Item": "No route to check the answer exists",
+    "Was": 1,
+    "Now": 8,
+    "Reading": "P001, P003, P005, P011 and P014 all say a version of it. P014 at L1271: that is what you are asking, how would I know."
+  },
+  {
+    "Section": "Verification",
+    "Item": "Tests it on known answers",
+    "Was": 2,
+    "Now": 6,
+    "Reading": "P007, P008 and P016 all describe deliberately asking about something they already know. This is a real strategy, not a rarity."
+  },
+  {
+    "Section": "Sighted default",
+    "Item": "Wants body-relative directions",
+    "Was": 3,
+    "Now": 11,
+    "Reading": "P001, P002, P004, P008 and P017 join the round 3 group. Several already receive left and right; what is missing is the distance."
+  },
+  {
+    "Section": "Unserved",
+    "Item": "Rideshare pickup",
+    "Was": 3,
+    "Now": 14,
+    "Reading": "P007, P008, P014 and P017 raise it too. No longer a three-participant observation."
+  },
+  {
+    "Section": "Social",
+    "Item": "Read as sighted by bystanders",
+    "Was": 1,
+    "Now": 6,
+    "Reading": "P006 describes the same thing at L307 and reads it as a benefit rather than a barrier. Worth pairing with the P009 reading."
+  },
+  {
+    "Section": "Privacy",
+    "Item": "Lowers the volume for bystanders",
+    "Was": 1,
+    "Now": 4,
+    "Reading": "P001, P004 and P014 all name spoken output as the leak. P001 at L97 is the earliest instance in the corpus."
+  },
+  {
+    "Section": "Privacy",
+    "Item": "Believes the data stays local",
+    "Was": 1,
+    "Now": 2,
+    "Reading": "P005 at L505: they say it is private, so it is private. Consent resting on an assumption."
+  },
+  {
+    "Section": "Value",
+    "Item": "Open ear keeps ambient hearing",
+    "Was": 1,
+    "Now": 5,
+    "Reading": "P007 names it twice as the reason to wear them at all, which is the earliest statement of the finding in the corpus."
+  },
+  {
+    "Section": "Remote guidance",
+    "Item": "Volunteer guides a physical task",
+    "Was": null,
+    "Now": 18,
+    "Reading": "T21 did not exist when P004, P005, P010 and P011 were coded, and all four describe volunteer-through-the-camera work. P005 at L279 has the human giving the framing coaching the AI does not."
+  },
+  {
+    "Section": "Remote guidance",
+    "Item": "Helper cannot see well enough",
+    "Was": null,
+    "Now": 6,
+    "Reading": "P005 reports volunteers complaining the feed is grainy and preferring the phone. Independent of P016, who was the only source before."
+  },
+  {
+    "Section": "Remote guidance",
+    "Item": "Connect time defeats the task",
+    "Was": null,
+    "Now": 2,
+    "Reading": "P004 at L183: you have to wait in line."
+  },
+  {
+    "Section": "Remote guidance",
+    "Item": "Human preferred over the AI",
+    "Was": null,
+    "Now": 8,
+    "Reading": "P004, P005 and P010 join P016. The pattern is wider than one sceptical participant."
+  },
+  {
+    "Section": "X-01",
+    "Item": "Can it name a known person?",
+    "Was": null,
+    "Now": null,
+    "Reading": "P003 at L291 and L295 says it works and describes a database. P004 at L547 says it recognises her labelled family folder and refuses to say the names. Four positions, not two."
+  },
+  {
+    "Section": "X-06",
+    "Item": "Does it coach the framing?",
+    "Was": null,
+    "Now": 17,
+    "Reading": "P001 gets told the can is upside down. P002 gets told to move into better light. P006 gets a successful retry after the interviewer coached her. The tab currently reads as one participant against four."
+  },
+  {
+    "Section": "X-09",
+    "Item": "Would you let it read financial data?",
+    "Was": null,
+    "Now": 19,
+    "Reading": "P003 and P005 both draw the line unprompted. The count of participants running a private-data rule goes up."
+  },
+  {
+    "Section": null,
+    "Item": "P005 L59 coding",
+    "Was": null,
+    "Now": null,
+    "Reading": "Coded READ-GUIDANCE, which is defined as coaching succeeding. The quote describes its absence. Left untouched. Decide whether to recode before the X-06 write-up."
+  },
+  {
+    "Section": null,
+    "Item": "P013 gender",
+    "Was": null,
+    "Now": null,
+    "Reading": "Still unresolved. Transcript renders the answer as Mail at L479, interviewer uses she at L193, participant refers to a husband at L291."
+  },
+  {
+    "Section": null,
+    "Item": "Device split",
+    "Was": null,
+    "Now": null,
+    "Reading": "P011 is on EchoVision. Every pooled count on this sheet includes it and needs a visible split before it reaches the paper."
+  },
+  {
+    "Section": null,
+    "Item": "TRU-NODELEGATE and NONUSE-HABIT",
+    "Was": null,
+    "Now": null,
+    "Reading": "Still unsplit. Carried forward from two rounds ago."
+  },
+  {
+    "Section": null,
+    "Item": "Quote re-pull",
+    "Was": null,
+    "Now": null,
+    "Reading": "All 252 new rows are verified exact substrings of a participant turn at the cited line. The 1,894 carried-forward rows still need the pass."
+  }
+]

@@ -1,0 +1,174 @@
+{
+  "id": "chart-03",
+  "number": 3,
+  "title": "Trust and satisfaction against the ability to verify independently",
+  "caption": "Scatter. Satisfaction on the x axis, trust on the y axis, one series per verification-capability band. The claim to test is whether the high ratings sit with the people who cannot check an answer.",
+  "source_tab": null,
+  "chart_type": "scatter",
+  "columns": [
+    "Participant",
+    "Trust (1 to 5)",
+    "Satisfaction (1 to 5)",
+    "Verifies regularly",
+    "Can verify independently",
+    "Reported a fabrication",
+    "Source"
+  ],
+  "rows": [
+    [
+      "P001",
+      "Not asked",
+      "Not given",
+      "Yes, for anything important",
+      "No",
+      "Not stated",
+      "Comparison!C88, C87, C89, C111, C110"
+    ],
+    [
+      "P002",
+      4,
+      5,
+      "Not often",
+      "No",
+      "Not stated",
+      "Comparison!D88, D87, D89, D111, D110"
+    ],
+    [
+      "P003",
+      4.5,
+      4.5,
+      "Only when he already knows",
+      "Only what he already knows",
+      "Not stated",
+      "Comparison!E88, E87, E89, E111, E110"
+    ],
+    [
+      "P004",
+      3.5,
+      "Not given",
+      "Yes, asks for the source",
+      "Partly, residual vision",
+      "Not stated",
+      "Comparison!F88, F87, F89, F111, F110"
+    ],
+    [
+      "P005",
+      3.5,
+      2,
+      "No",
+      "No, nobody on hand",
+      "Yes, a menu",
+      "Comparison!G88, G87, G89, G111, G110"
+    ],
+    [
+      "P006",
+      3.75,
+      4,
+      "Yes, asks a sighted person",
+      "No, asks a sighted person",
+      "Yes, catalogue copy",
+      "Comparison!H88, H87, H89, H111, H110"
+    ],
+    [
+      "P007",
+      "Not asked",
+      3,
+      "Yes, only asks what he knows",
+      "No, relies on expectation",
+      "Yes, a menu and a bottle",
+      "Comparison!I88, I87, I89, I111, I110"
+    ],
+    [
+      "P008",
+      4,
+      4,
+      "Yes, checks with a magnifier",
+      "Yes, magnifier and residual sight",
+      "Yes, in radiology",
+      "Comparison!J88, J87, J89, J111, J110"
+    ],
+    [
+      "P009",
+      4,
+      4,
+      "No, states no method exists",
+      "No",
+      "No, failures to read and wrong colours",
+      "Comparison!K88, K87, K89, K111, K110"
+    ],
+    [
+      "P010",
+      5,
+      4,
+      "No",
+      "No",
+      "Not stated",
+      "Comparison!L88, L87, L89, L111, L110"
+    ],
+    [
+      "P011",
+      5,
+      4.5,
+      "No, says she should more",
+      "No",
+      "Yes",
+      "Comparison!M88, M87, M89, M111, M110"
+    ],
+    [
+      "P012",
+      5,
+      4,
+      "Yes, cane and touch",
+      "Partly, by touch and cane",
+      "Yes, rare colour and object errors",
+      "Comparison!N88, N87, N89, N111, N110"
+    ],
+    [
+      "P013",
+      4,
+      4,
+      "Yes, for important things",
+      "Partly, with residual vision",
+      "Yes, a false negative on a date",
+      "Comparison!O88, O87, O89, O111, O110"
+    ],
+    [
+      "P014",
+      4,
+      5,
+      "No, only trivial questions",
+      "Partly, residual contrast",
+      "Yes, a cherry invented",
+      "Comparison!P88, P87, P89, P111, P110"
+    ],
+    [
+      "P015",
+      4,
+      4,
+      "Yes, repeats the capture",
+      "No",
+      "No",
+      "Comparison!Q88, Q87, Q89, Q111, Q110"
+    ],
+    [
+      "P016",
+      3,
+      2,
+      "Yes, double-checks with a person",
+      "No",
+      "Yes, seltzer named as a cola",
+      "Comparison!R88, R87, R89, R111, R110"
+    ],
+    [
+      "P017",
+      4,
+      4,
+      "Partly, walks a new place first",
+      "No",
+      "No, second-hand only",
+      "Comparison!S88, S87, S89, S111, S110"
+    ]
+  ],
+  "footnote": "P001 and P007 have no usable trust figure, P004 no separate satisfaction figure. Left as text so they drop out of a scatter rather than being imputed.",
+  "alt_text": null
+}

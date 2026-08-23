@@ -27,5 +27,4 @@ dist-ssr
 *.xlsx
 BLV Research Data Brand Guide.html
 extract/
-data/
 .env*

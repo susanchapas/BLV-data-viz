@@ -1,0 +1,68 @@
+{
+  "id": "chart-04",
+  "number": 4,
+  "title": "The fallback ladder: what else each participant runs alongside the glasses",
+  "caption": "Bar. Tool on one axis, participants on the other. Yes counts only, with the unclear cases held separate so the denominator stays honest.",
+  "source_tab": null,
+  "chart_type": "bar",
+  "columns": [
+    "Tool or fallback",
+    "Uses it",
+    "Does not",
+    "Not stated",
+    "Share of 17",
+    "Source row"
+  ],
+  "rows": [
+    [
+      "A sighted person",
+      17,
+      0,
+      0,
+      1,
+      "Comparison row 50"
+    ],
+    [
+      "Be My Eyes",
+      14,
+      1,
+      2,
+      0.823529411764706,
+      "Comparison row 45"
+    ],
+    [
+      "ChatGPT or another chatbot",
+      14,
+      2,
+      1,
+      0.823529411764706,
+      "Comparison row 48"
+    ],
+    [
+      "Seeing AI",
+      12,
+      3,
+      2,
+      0.705882352941177,
+      "Comparison row 46"
+    ],
+    [
+      "Screen reader as the primary tool",
+      11,
+      2,
+      4,
+      0.647058823529412,
+      "Comparison row 49"
+    ],
+    [
+      "Aira",
+      7,
+      4,
+      6,
+      0.411764705882353,
+      "Comparison row 47"
+    ]
+  ],
+  "footnote": "Counts read off the Comparison tab across all seventeen participant columns. Not stated holds the cases where the tool never came up in the interview.",
+  "alt_text": null
+}

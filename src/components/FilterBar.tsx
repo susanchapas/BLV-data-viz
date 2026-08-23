@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useFilters } from '@/lib/filters'
 import { useAnnounce } from '@/lib/announce'
 import { themes, codebook } from '@/lib/data'
@@ -72,6 +72,11 @@ export function FilterBar() {
   const announce = useAnnounce()
   const searchRef = useRef<HTMLInputElement>(null)
   const debounceRef = useRef<ReturnType<typeof setTimeout>>()
+  const [localSearch, setLocalSearch] = useState(filters.search)
+
+  useEffect(() => {
+    setLocalSearch(filters.search)
+  }, [filters.search])
 
   useEffect(() => {
     return () => {
@@ -137,15 +142,15 @@ export function FilterBar() {
           id="search-quotes"
           type="search"
           placeholder="Search quotes…"
-          value={filters.search}
+          value={localSearch}
           onChange={(e) => {
             const v = e.target.value
+            setLocalSearch(v)
             if (debounceRef.current) clearTimeout(debounceRef.current)
             debounceRef.current = setTimeout(() => {
               updateFilter('search', v)
               announce(`Search: ${v || 'cleared'}`)
             }, 300)
-            updateFilter('search', v)
           }}
           className="w-full px-3 py-1.5 border border-grey-2 rounded text-sm min-h-[2.75rem]"
         />

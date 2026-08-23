@@ -1,0 +1,3362 @@
+{
+  "modes": [
+    {
+      "Tag": "VA-01",
+      "Failure mode": "Confident wrong answer, delivered as fact",
+      "Failure class": "Fabrication",
+      "Task surface": "All task types",
+      "Evidence codes": "TRU-HALLUCINATION, TRU-SYCOPHANCY, TRU-SPARSEDATA",
+      "Detectable without sight": "Undetectable",
+      "Detection channel available": "Second AI, second device, sighted person, prior knowledge",
+      "Cost to detect": "High. Needs a whole second tool or another person",
+      "Basis (cited evidence row)": "P016 L617; P011 L1511",
+      "Consequence if it goes undetected": "Wrong fact is acted on. Nothing in the interaction marks it as wrong",
+      "P001": 0,
+      "P002": 1,
+      "P003": 3,
+      "P004": 1,
+      "P005": 1,
+      "P006": 1,
+      "P007": 5,
+      "P008": 2,
+      "P009": 0,
+      "P010": 0,
+      "P011": 1,
+      "P012": 1,
+      "P013": 0,
+      "P014": 1,
+      "P015": 0,
+      "P016": 5,
+      "P017": 0,
+      "Rows (n=17)": 22,
+      "Participants (n=17)": 11,
+      "mode_codes": [
+        "TRU-HALLUCINATION",
+        "TRU-SYCOPHANCY",
+        "TRU-SPARSEDATA"
+      ]
+    },
+    {
+      "Tag": "VA-02",
+      "Failure mode": "Unrequested summary drops the part that was needed",
+      "Failure class": "Silent omission",
+      "Task surface": "Reading",
+      "Evidence codes": "READ-SUMMARY",
+      "Detectable without sight": "Undetectable",
+      "Detection channel available": "Re-ask for a full read, sighted person",
+      "Cost to detect": "High. The omission leaves no trace in the output",
+      "Basis (cited evidence row)": "P002 L421",
+      "Consequence if it goes undetected": "User believes they have the whole document. Drives P002's trust rating down to 4 of 5",
+      "P001": 0,
+      "P002": 2,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 1,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 3,
+      "Participants (n=17)": 2,
+      "mode_codes": [
+        "READ-SUMMARY"
+      ]
+    },
+    {
+      "Tag": "VA-03",
+      "Failure mode": "Answer describes the previous frame, not the current one",
+      "Failure class": "Stale state",
+      "Task surface": "Object and scene",
+      "Evidence codes": "REL-STALEFRAME",
+      "Detectable without sight": "Undetectable",
+      "Detection channel available": "Prior knowledge of what changed between frames",
+      "Cost to detect": "High. Both answers are plausible",
+      "Basis (cited evidence row)": "P014 L1223",
+      "Consequence if it goes undetected": "A correct description gets attached to the wrong object",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 1,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 2,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 3,
+      "Participants (n=17)": 2,
+      "mode_codes": [
+        "REL-STALEFRAME"
+      ]
+    },
+    {
+      "Tag": "VA-04",
+      "Failure mode": "Numerals wrong, or read with no meaning attached",
+      "Failure class": "Wrong value",
+      "Task surface": "Reading",
+      "Evidence codes": "READ-NUMBERS, READ-CONTEXT, READ-CURRENCY",
+      "Detectable without sight": "Undetectable",
+      "Detection channel available": "Dedicated reader device, sighted person, retake and compare",
+      "Cost to detect": "High. Digits are exactly what the user cannot check",
+      "Basis (cited evidence row)": "P001 L67; P011 L383",
+      "Consequence if it goes undetected": "Wrong dose, wrong bill, wrong oven temperature. 420 read as a clock, not a temperature",
+      "P001": 2,
+      "P002": 1,
+      "P003": 0,
+      "P004": 0,
+      "P005": 2,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 1,
+      "P010": 0,
+      "P011": 2,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 2,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 10,
+      "Participants (n=17)": 6,
+      "mode_codes": [
+        "READ-NUMBERS",
+        "READ-CONTEXT",
+        "READ-CURRENCY"
+      ]
+    },
+    {
+      "Tag": "VA-05",
+      "Failure mode": "Colour and garment identification wrong",
+      "Failure class": "Wrong value",
+      "Task surface": "Object and scene",
+      "Evidence codes": "OBJ-COLOR",
+      "Detectable without sight": "Undetectable",
+      "Detection channel available": "Sighted person, volunteer app, tactile memory of the item",
+      "Cost to detect": "High. Colour has no tactile equivalent",
+      "Basis (cited evidence row)": "P016 L821; P016 L825",
+      "Consequence if it goes undetected": "Self-presentation decisions made on wrong data. P016 double-checks with a person, hit or miss",
+      "P001": 1,
+      "P002": 2,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 2,
+      "P007": 0,
+      "P008": 0,
+      "P009": 2,
+      "P010": 2,
+      "P011": 0,
+      "P012": 4,
+      "P013": 1,
+      "P014": 0,
+      "P015": 1,
+      "P016": 2,
+      "P017": 3,
+      "Rows (n=17)": 20,
+      "Participants (n=17)": 10,
+      "mode_codes": [
+        "OBJ-COLOR"
+      ]
+    },
+    {
+      "Tag": "VA-06",
+      "Failure mode": "Off-frame content missed, or a bare no with nothing after it",
+      "Failure class": "Miss",
+      "Task surface": "Object and scene, Navigation",
+      "Evidence codes": "OBJ-OFFFRAME, OBJ-NEGATIVEANSWER, OBJ-LIMITS",
+      "Detectable without sight": "Undetectable",
+      "Detection channel available": "Cane sweep, physical contact, repeated queries",
+      "Cost to detect": "High. Absence of a mention reads as absence of the thing",
+      "Basis (cited evidence row)": "P002 L101; P017 L341",
+      "Consequence if it goes undetected": "User treats the frame as the room. P002 walks into the table on the unreported side",
+      "P001": 2,
+      "P002": 2,
+      "P003": 0,
+      "P004": 0,
+      "P005": 1,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 1,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 4,
+      "Rows (n=17)": 10,
+      "Participants (n=17)": 5,
+      "mode_codes": [
+        "OBJ-OFFFRAME",
+        "OBJ-NEGATIVEANSWER",
+        "OBJ-LIMITS"
+      ]
+    },
+    {
+      "Tag": "VA-07",
+      "Failure mode": "Cannot tell whether it is recording",
+      "Failure class": "State opacity",
+      "Task surface": "Capture",
+      "Evidence codes": "CAP-RECORDSTATE",
+      "Detectable without sight": "Undetectable",
+      "Detection channel available": "Check the file afterwards on another device",
+      "Cost to detect": "High. Only checkable after the fact, on the phone",
+      "Basis (cited evidence row)": "P005 L529",
+      "Consequence if it goes undetected": "Clip lost, or recorded while the user believed it was not",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 2,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 2,
+      "Participants (n=17)": 1,
+      "mode_codes": [
+        "CAP-RECORDSTATE"
+      ]
+    },
+    {
+      "Tag": "VA-08",
+      "Failure mode": "Framing and aiming fail with no coaching to fix it",
+      "Failure class": "Input failure",
+      "Task surface": "Reading, Capture",
+      "Evidence codes": "READ-AIM, CAP-AIM, CAP-FRAMING, OBJ-ORIENT, OBJ-SHAPE",
+      "Detectable without sight": "Partly detectable",
+      "Detection channel available": "Content plausibility, trial and error, in-product guidance when offered",
+      "Cost to detect": "Medium. Repeated attempts, sometimes many",
+      "Basis (cited evidence row)": "P003 L551; P010 L71",
+      "Consequence if it goes undetected": "A partial capture is read out as if complete. P010 blames her own angle",
+      "P001": 1,
+      "P002": 3,
+      "P003": 3,
+      "P004": 0,
+      "P005": 4,
+      "P006": 6,
+      "P007": 1,
+      "P008": 1,
+      "P009": 1,
+      "P010": 1,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 3,
+      "P015": 5,
+      "P016": 1,
+      "P017": 1,
+      "Rows (n=17)": 31,
+      "Participants (n=17)": 13,
+      "mode_codes": [
+        "READ-AIM",
+        "CAP-AIM",
+        "CAP-FRAMING",
+        "OBJ-ORIENT",
+        "OBJ-SHAPE"
+      ]
+    },
+    {
+      "Tag": "VA-09",
+      "Failure mode": "Complex layout or handwriting misparsed",
+      "Failure class": "Wrong value",
+      "Task surface": "Reading",
+      "Evidence codes": "READ-LAYOUT, READ-HANDWRITING",
+      "Detectable without sight": "Partly detectable",
+      "Detection channel available": "Content plausibility, retake, digital copy of the same text",
+      "Cost to detect": "Medium. Nonsense is catchable, plausible errors are not",
+      "Basis (cited evidence row)": "P015 L591; P002 L433",
+      "Consequence if it goes undetected": "Wrong side of a box read as the right side. Handwriting rated 3 of 5 by P002",
+      "P001": 1,
+      "P002": 1,
+      "P003": 0,
+      "P004": 0,
+      "P005": 1,
+      "P006": 0,
+      "P007": 0,
+      "P008": 2,
+      "P009": 0,
+      "P010": 0,
+      "P011": 1,
+      "P012": 0,
+      "P013": 2,
+      "P014": 0,
+      "P015": 1,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 9,
+      "Participants (n=17)": 7,
+      "mode_codes": [
+        "READ-LAYOUT",
+        "READ-HANDWRITING"
+      ]
+    },
+    {
+      "Tag": "VA-10",
+      "Failure mode": "State of things not judged: doneness, cleanliness, appliance setting",
+      "Failure class": "Capability gap",
+      "Task surface": "Object and scene, Safety",
+      "Evidence codes": "OBJ-CONDITION, OBJ-APPLIANCE, SAF-COOKING",
+      "Detectable without sight": "Partly detectable",
+      "Detection channel available": "Task outcome after the fact, sighted person",
+      "Cost to detect": "Medium. The outcome arrives after the risk has been taken",
+      "Basis (cited evidence row)": "P011 L431; P010 L355",
+      "Consequence if it goes undetected": "Heat and food safety. P011 treats the cooked result as the verification",
+      "P001": 1,
+      "P002": 1,
+      "P003": 0,
+      "P004": 2,
+      "P005": 0,
+      "P006": 0,
+      "P007": 2,
+      "P008": 0,
+      "P009": 4,
+      "P010": 2,
+      "P011": 2,
+      "P012": 5,
+      "P013": 0,
+      "P014": 0,
+      "P015": 2,
+      "P016": 0,
+      "P017": 3,
+      "Rows (n=17)": 24,
+      "Participants (n=17)": 10,
+      "mode_codes": [
+        "OBJ-CONDITION",
+        "OBJ-APPLIANCE",
+        "SAF-COOKING"
+      ]
+    },
+    {
+      "Tag": "VA-11",
+      "Failure mode": "Location and nearby-place answers wrong",
+      "Failure class": "Wrong value",
+      "Task surface": "Navigation",
+      "Evidence codes": "NAV-POI, NAV-ADDRESS",
+      "Detectable without sight": "Partly detectable",
+      "Detection channel available": "Phone map app, arrival outcome, another assistant",
+      "Cost to detect": "Medium. Cross-checkable, at the cost of the hands-free advantage",
+      "Basis (cited evidence row)": "P008 L363; P017 L97",
+      "Consequence if it goes undetected": "Bus stop reported six blocks off. Weather answered for the wrong city",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 1,
+      "P005": 0,
+      "P006": 1,
+      "P007": 1,
+      "P008": 5,
+      "P009": 0,
+      "P010": 0,
+      "P011": 1,
+      "P012": 1,
+      "P013": 2,
+      "P014": 2,
+      "P015": 0,
+      "P016": 0,
+      "P017": 3,
+      "Rows (n=17)": 17,
+      "Participants (n=17)": 9,
+      "mode_codes": [
+        "NAV-POI",
+        "NAV-ADDRESS"
+      ]
+    },
+    {
+      "Tag": "VA-12",
+      "Failure mode": "Low light, glare and lamination degrade the read",
+      "Failure class": "Degradation",
+      "Task surface": "Reading, Object and scene",
+      "Evidence codes": "OBJ-LOWLIGHT, READ-GLARE, ENV-LIGHTING",
+      "Detectable without sight": "Partly detectable",
+      "Detection channel available": "The system states the reason, when it states it",
+      "Cost to detect": "Low when announced, high when silent",
+      "Basis (cited evidence row)": "P006 L103; P014 L243",
+      "Consequence if it goes undetected": "Announced degradation is recoverable. Silent degradation looks like a normal answer",
+      "P001": 0,
+      "P002": 1,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 2,
+      "P007": 0,
+      "P008": 6,
+      "P009": 0,
+      "P010": 0,
+      "P011": 2,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 11,
+      "Participants (n=17)": 4,
+      "mode_codes": [
+        "OBJ-LOWLIGHT",
+        "READ-GLARE",
+        "ENV-LIGHTING"
+      ]
+    },
+    {
+      "Tag": "VA-13",
+      "Failure mode": "Read or task stops mid-way and restarts from the beginning",
+      "Failure class": "Truncation",
+      "Task surface": "Reading, Device",
+      "Evidence codes": "REL-INTERMITTENT, REL-NORESUME",
+      "Detectable without sight": "Self-evident",
+      "Detection channel available": "Audible. The output simply stops",
+      "Cost to detect": "None to detect, high to recover",
+      "Basis (cited evidence row)": "P001 L67; P001 L243",
+      "Consequence if it goes undetected": "Half the letter has to be heard again. No resume point is kept",
+      "P001": 5,
+      "P002": 1,
+      "P003": 0,
+      "P004": 0,
+      "P005": 2,
+      "P006": 1,
+      "P007": 0,
+      "P008": 0,
+      "P009": 3,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 5,
+      "P017": 0,
+      "Rows (n=17)": 17,
+      "Participants (n=17)": 6,
+      "mode_codes": [
+        "REL-INTERMITTENT",
+        "REL-NORESUME"
+      ]
+    },
+    {
+      "Tag": "VA-14",
+      "Failure mode": "Refusal on policy grounds: cards, medical text, people, copyright",
+      "Failure class": "Refusal",
+      "Task surface": "Reading, People",
+      "Evidence codes": "READ-POLICYBLOCK, OBJ-POLICY, PPL-POLICY",
+      "Detectable without sight": "Self-evident",
+      "Detection channel available": "The system states the refusal",
+      "Cost to detect": "None to detect. Task moves to a human",
+      "Basis (cited evidence row)": "P014 L243; P007 L485",
+      "Consequence if it goes undetected": "Task pushed back to a sighted helper. P007 is refused a public figure's name",
+      "P001": 0,
+      "P002": 1,
+      "P003": 0,
+      "P004": 2,
+      "P005": 1,
+      "P006": 0,
+      "P007": 4,
+      "P008": 0,
+      "P009": 1,
+      "P010": 0,
+      "P011": 3,
+      "P012": 3,
+      "P013": 1,
+      "P014": 2,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 18,
+      "Participants (n=17)": 9,
+      "mode_codes": [
+        "READ-POLICYBLOCK",
+        "OBJ-POLICY",
+        "PPL-POLICY"
+      ]
+    },
+    {
+      "Tag": "VA-15",
+      "Failure mode": "Refusal on a device state that is not true",
+      "Failure class": "Refusal",
+      "Task surface": "Device",
+      "Evidence codes": "REL-FALSESTATE",
+      "Detectable without sight": "Self-evident",
+      "Detection channel available": "User knows they are not in a call",
+      "Cost to detect": "None to detect, unclear how to clear",
+      "Basis (cited evidence row)": "P016 L525",
+      "Consequence if it goes undetected": "Feature reads as broken rather than blocked",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 1,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 1,
+      "P017": 0,
+      "Rows (n=17)": 2,
+      "Participants (n=17)": 2,
+      "mode_codes": [
+        "REL-FALSESTATE"
+      ]
+    },
+    {
+      "Tag": "VA-16",
+      "Failure mode": "Opinion added to a reading",
+      "Failure class": "Excess",
+      "Task surface": "Reading",
+      "Evidence codes": "READ-EDITORIAL",
+      "Detectable without sight": "Self-evident",
+      "Detection channel available": "Audible, though the seam is not marked",
+      "Cost to detect": "None to detect, some to separate",
+      "Basis (cited evidence row)": "P008 L111; P014 L923",
+      "Consequence if it goes undetected": "Commentary mixed into source text. Tolerated by P008, rejected by P014",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 2,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 1,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 3,
+      "Participants (n=17)": 2,
+      "mode_codes": [
+        "READ-EDITORIAL"
+      ]
+    },
+    {
+      "Tag": "VA-17",
+      "Failure mode": "No control over detail level, background clutter reported",
+      "Failure class": "Excess",
+      "Task surface": "Object and scene",
+      "Evidence codes": "OBJ-VERBOSITY, OBJ-CLUTTER",
+      "Detectable without sight": "Self-evident",
+      "Detection channel available": "Audible",
+      "Cost to detect": "None to detect, paid in attention and time",
+      "Basis (cited evidence row)": "P015 L163; P004 L655",
+      "Consequence if it goes undetected": "The needed item is buried. P015: it reads everything but what you need",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 2,
+      "P005": 3,
+      "P006": 0,
+      "P007": 0,
+      "P008": 2,
+      "P009": 2,
+      "P010": 1,
+      "P011": 2,
+      "P012": 1,
+      "P013": 2,
+      "P014": 1,
+      "P015": 4,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 20,
+      "Participants (n=17)": 10,
+      "mode_codes": [
+        "OBJ-VERBOSITY",
+        "OBJ-CLUTTER"
+      ]
+    },
+    {
+      "Tag": "VA-18",
+      "Failure mode": "Answer arrives behind the moment",
+      "Failure class": "Timing",
+      "Task surface": "Live AI, Navigation",
+      "Evidence codes": "REL-LATENCY, NAR-SPEED",
+      "Detectable without sight": "Self-evident",
+      "Detection channel available": "Audible timing against the world",
+      "Cost to detect": "None to detect, cannot be fixed by the user",
+      "Basis (cited evidence row)": "P011 L943; P017 L753",
+      "Consequence if it goes undetected": "Oncoming car named when it is already alongside",
+      "P001": 0,
+      "P002": 0,
+      "P003": 1,
+      "P004": 0,
+      "P005": 4,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 5,
+      "P012": 0,
+      "P013": 0,
+      "P014": 1,
+      "P015": 2,
+      "P016": 6,
+      "P017": 5,
+      "Rows (n=17)": 24,
+      "Participants (n=17)": 7,
+      "mode_codes": [
+        "REL-LATENCY",
+        "NAR-SPEED"
+      ]
+    },
+    {
+      "Tag": "VA-19",
+      "Failure mode": "Command not registered, wake or syntax failure",
+      "Failure class": "Input failure",
+      "Task surface": "Interaction",
+      "Evidence codes": "REL-WAKEFAIL, INT-WAKE, INT-COMMANDSYNTAX",
+      "Detectable without sight": "Self-evident",
+      "Detection channel available": "Silence, or the wrong action",
+      "Cost to detect": "None to detect, repeated attempts to clear",
+      "Basis (cited evidence row)": "P004 L95; P002 L205",
+      "Consequence if it goes undetected": "Photo taken with no description. Task abandoned",
+      "P001": 1,
+      "P002": 2,
+      "P003": 0,
+      "P004": 4,
+      "P005": 2,
+      "P006": 0,
+      "P007": 2,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 2,
+      "P012": 0,
+      "P013": 2,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 1,
+      "Rows (n=17)": 16,
+      "Participants (n=17)": 8,
+      "mode_codes": [
+        "REL-WAKEFAIL",
+        "INT-WAKE",
+        "INT-COMMANDSYNTAX"
+      ]
+    },
+    {
+      "Tag": "VA-20",
+      "Failure mode": "Accent and non-native speech not recognised",
+      "Failure class": "Input failure",
+      "Task surface": "Interaction",
+      "Evidence codes": "LANG-NONNATIVE",
+      "Detectable without sight": "Self-evident",
+      "Detection channel available": "Wrong response or none",
+      "Cost to detect": "None to detect, no user-side fix",
+      "Basis (cited evidence row)": "P004 L55",
+      "Consequence if it goes undetected": "Non-native speakers carry an extra prompting burden",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 3,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 1,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 4,
+      "Participants (n=17)": 2,
+      "mode_codes": [
+        "LANG-NONNATIVE"
+      ]
+    },
+    {
+      "Tag": "VA-21",
+      "Failure mode": "Absence reported where the thing is present",
+      "Failure class": "False negative",
+      "Task surface": "Object and scene, Navigation",
+      "Evidence codes": "TRU-FALSENEGATIVE",
+      "Detectable without sight": "Undetectable",
+      "Detection channel available": "Physical contact, cane, a sighted person who happens to be there",
+      "Cost to detect": "High. A no leaves nothing behind to check",
+      "Basis (cited evidence row)": "P013 L79; P012 L283; P012 L319",
+      "Consequence if it goes undetected": "Expiration date reported as absent when it was printed on the package. Awning and wheelchairs reported as nothing there. Separate from fabrication because no wrong fact is produced",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 2,
+      "P013": 1,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 3,
+      "Participants (n=17)": 2,
+      "mode_codes": [
+        "TRU-FALSENEGATIVE"
+      ]
+    },
+    {
+      "Tag": "VA-22",
+      "Failure mode": "Answer positioned for a sighted user, direction with no distance",
+      "Failure class": "Sighted default",
+      "Task surface": "Navigation, Object and scene",
+      "Evidence codes": "INT-SIGHTEDASSUMPTION",
+      "Detectable without sight": "Self-evident",
+      "Detection channel available": "Audible. The user hears that the answer is unusable",
+      "Cost to detect": "None to detect, paid in re-asking and in the trip itself",
+      "Basis (cited evidence row)": "P012 L43; P012 L763",
+      "Consequence if it goes undetected": "Right in front of you carries no distance. Three participants ask for the same repair, a direction plus a distance in feet. NAV-EGOCENTRIC holds that request and mixes device output with sighted-person speech, so it is left out of this count",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 2,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 2,
+      "Participants (n=17)": 1,
+      "mode_codes": [
+        "INT-SIGHTEDASSUMPTION"
+      ]
+    },
+    {
+      "Tag": "VA-23",
+      "Failure mode": "No verification route exists for this user",
+      "Failure class": "Absent detection channel",
+      "Task surface": "All task types",
+      "Evidence codes": "TRU-UNVERIFIABLE",
+      "Detectable without sight": "Undetectable",
+      "Detection channel available": "None available to the participant",
+      "Cost to detect": "Not payable. There is nothing to pay for",
+      "Basis (cited evidence row)": "P009 L1207; P009 L1215",
+      "Consequence if it goes undetected": "Lives alone, so no witness is on hand. States four times that no method exists, and rates trust 4 regardless",
+      "P001": 1,
+      "P002": 0,
+      "P003": 1,
+      "P004": 0,
+      "P005": 1,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 3,
+      "P010": 0,
+      "P011": 1,
+      "P012": 0,
+      "P013": 0,
+      "P014": 1,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 8,
+      "Participants (n=17)": 6,
+      "mode_codes": [
+        "TRU-UNVERIFIABLE"
+      ]
+    },
+    {
+      "Tag": "VA-24",
+      "Failure mode": "Read drops when the head moves or looks down",
+      "Failure class": "Truncation",
+      "Task surface": "Reading, Device",
+      "Evidence codes": "REL-MOTIONDROP",
+      "Detectable without sight": "Self-evident",
+      "Detection channel available": "Audible. Output stops",
+      "Cost to detect": "None to detect, high to recover. Restart from the top",
+      "Basis (cited evidence row)": "P009 L611; P009 L615",
+      "Consequence if it goes undetected": "Rules out any task done head-down, cleaning a floor among them. One participant only, unconfirmed elsewhere in the sample",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 3,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 3,
+      "Participants (n=17)": 1,
+      "mode_codes": [
+        "REL-MOTIONDROP"
+      ]
+    },
+    {
+      "Tag": "VA-25",
+      "Failure mode": "Command runs as the wrong action",
+      "Failure class": "False action",
+      "Task surface": "Interaction",
+      "Evidence codes": "INT-FALSEACTION",
+      "Detectable without sight": "Self-evident",
+      "Detection channel available": "Audible. The device announces a call or a message the user never asked for",
+      "Cost to detect": "None to detect, some to cancel",
+      "Basis (cited evidence row)": "P012 L779",
+      "Consequence if it goes undetected": "Offers to place a call and to send a message with no request behind either. Detectable, and it still costs the user the task in progress",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 2,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 2,
+      "Participants (n=17)": 1,
+      "mode_codes": [
+        "INT-FALSEACTION"
+      ]
+    },
+    {
+      "Tag": "VA-26",
+      "Failure mode": "Changing state not tracked: which light blinks, which item has focus",
+      "Failure class": "Dynamic state",
+      "Task surface": "Object and scene, Reading",
+      "Evidence codes": "OBJ-DYNAMICSTATE, READ-FOCUSSTATE",
+      "Detectable without sight": "Partly detectable",
+      "Detection channel available": "Task outcome, prior knowledge of the interface",
+      "Cost to detect": "Medium. A still frame cannot hold a change",
+      "Basis (cited evidence row)": "P009 L579; P009 L471",
+      "Consequence if it goes undetected": "Colour of an indicator reported, behaviour of it not. Thumbnails listed with nothing to say which one has focus",
+      "P001": 0,
+      "P002": 1,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 3,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 4,
+      "Participants (n=17)": 2,
+      "mode_codes": [
+        "OBJ-DYNAMICSTATE",
+        "READ-FOCUSSTATE"
+      ]
+    },
+    {
+      "Tag": "VA-27",
+      "Failure mode": "Unfamiliar or cultural item not identified",
+      "Failure class": "Capability gap",
+      "Task surface": "Object and scene",
+      "Evidence codes": "OBJ-CULTURALITEM",
+      "Detectable without sight": "Partly detectable",
+      "Detection channel available": "Prior knowledge of the item, touch, smell",
+      "Cost to detect": "Medium. Recognisable when the user already knows the food",
+      "Basis (cited evidence row)": "P009 L1007; P009 L1023",
+      "Consequence if it goes undetected": "Caribbean staples go unnamed, and a plantain in a prepared form goes unnamed. Recognition coverage is uneven across cuisines",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 2,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 2,
+      "Participants (n=17)": 1,
+      "mode_codes": [
+        "OBJ-CULTURALITEM"
+      ]
+    },
+    {
+      "Tag": "VA-28",
+      "Failure mode": "Person described with the wrong gender or pronoun",
+      "Failure class": "Wrong value",
+      "Task surface": "People",
+      "Evidence codes": "PPL-PRONOUN",
+      "Detectable without sight": "Undetectable",
+      "Detection channel available": "Voice, if the person speaks. Nothing otherwise",
+      "Cost to detect": "High. Corrected only by the person themselves",
+      "Basis (cited evidence row)": "P009 L291",
+      "Consequence if it goes undetected": "Participant now avoids pronouns entirely when relaying what the device said, to keep from repeating its error aloud",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 2,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 2,
+      "Participants (n=17)": 1,
+      "mode_codes": [
+        "PPL-PRONOUN"
+      ]
+    }
+  ],
+  "participant_counts": [
+    {
+      "Tag": "VA-01",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P003",
+      "count": 3
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P004",
+      "count": 1
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P005",
+      "count": 1
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P006",
+      "count": 1
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P007",
+      "count": 5
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P008",
+      "count": 2
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P011",
+      "count": 1
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P012",
+      "count": 1
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P014",
+      "count": 1
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P016",
+      "count": 5
+    },
+    {
+      "Tag": "VA-01",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P002",
+      "count": 2
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P015",
+      "count": 1
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-02",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P007",
+      "count": 1
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P014",
+      "count": 2
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-03",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P001",
+      "count": 2
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P005",
+      "count": 2
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P009",
+      "count": 1
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P011",
+      "count": 2
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P015",
+      "count": 2
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-04",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P002",
+      "count": 2
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P006",
+      "count": 2
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P009",
+      "count": 2
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P010",
+      "count": 2
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P012",
+      "count": 4
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P013",
+      "count": 1
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P015",
+      "count": 1
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P016",
+      "count": 2
+    },
+    {
+      "Tag": "VA-05",
+      "participant": "P017",
+      "count": 3
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P001",
+      "count": 2
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P002",
+      "count": 2
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P005",
+      "count": 1
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P012",
+      "count": 1
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-06",
+      "participant": "P017",
+      "count": 4
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P005",
+      "count": 2
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-07",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P002",
+      "count": 3
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P003",
+      "count": 3
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P005",
+      "count": 4
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P006",
+      "count": 6
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P007",
+      "count": 1
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P008",
+      "count": 1
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P009",
+      "count": 1
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P010",
+      "count": 1
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P014",
+      "count": 3
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P015",
+      "count": 5
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P016",
+      "count": 1
+    },
+    {
+      "Tag": "VA-08",
+      "participant": "P017",
+      "count": 1
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P005",
+      "count": 1
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P008",
+      "count": 2
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P011",
+      "count": 1
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P013",
+      "count": 2
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P015",
+      "count": 1
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-09",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P004",
+      "count": 2
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P007",
+      "count": 2
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P009",
+      "count": 4
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P010",
+      "count": 2
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P011",
+      "count": 2
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P012",
+      "count": 5
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P015",
+      "count": 2
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-10",
+      "participant": "P017",
+      "count": 3
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P004",
+      "count": 1
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P006",
+      "count": 1
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P007",
+      "count": 1
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P008",
+      "count": 5
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P011",
+      "count": 1
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P012",
+      "count": 1
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P013",
+      "count": 2
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P014",
+      "count": 2
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-11",
+      "participant": "P017",
+      "count": 3
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P006",
+      "count": 2
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P008",
+      "count": 6
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P011",
+      "count": 2
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-12",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P001",
+      "count": 5
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P005",
+      "count": 2
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P006",
+      "count": 1
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P009",
+      "count": 3
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P016",
+      "count": 5
+    },
+    {
+      "Tag": "VA-13",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P004",
+      "count": 2
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P005",
+      "count": 1
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P007",
+      "count": 4
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P009",
+      "count": 1
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P011",
+      "count": 3
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P012",
+      "count": 3
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P013",
+      "count": 1
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P014",
+      "count": 2
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-14",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P012",
+      "count": 1
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P016",
+      "count": 1
+    },
+    {
+      "Tag": "VA-15",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P008",
+      "count": 2
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P014",
+      "count": 1
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-16",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P004",
+      "count": 2
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P005",
+      "count": 3
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P008",
+      "count": 2
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P009",
+      "count": 2
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P010",
+      "count": 1
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P011",
+      "count": 2
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P012",
+      "count": 1
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P013",
+      "count": 2
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P014",
+      "count": 1
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P015",
+      "count": 4
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-17",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P003",
+      "count": 1
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P005",
+      "count": 4
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P011",
+      "count": 5
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P014",
+      "count": 1
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P015",
+      "count": 2
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P016",
+      "count": 6
+    },
+    {
+      "Tag": "VA-18",
+      "participant": "P017",
+      "count": 5
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P002",
+      "count": 2
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P004",
+      "count": 4
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P005",
+      "count": 2
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P007",
+      "count": 2
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P011",
+      "count": 2
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P013",
+      "count": 2
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-19",
+      "participant": "P017",
+      "count": 1
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P004",
+      "count": 3
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P013",
+      "count": 1
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-20",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P012",
+      "count": 2
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P013",
+      "count": 1
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-21",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P012",
+      "count": 2
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-22",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P003",
+      "count": 1
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P005",
+      "count": 1
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P009",
+      "count": 3
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P011",
+      "count": 1
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P014",
+      "count": 1
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-23",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P009",
+      "count": 3
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-24",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P012",
+      "count": 2
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-25",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P009",
+      "count": 3
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-26",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P009",
+      "count": 2
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-27",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P009",
+      "count": 2
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "VA-28",
+      "participant": "P017",
+      "count": 0
+    }
+  ]
+}

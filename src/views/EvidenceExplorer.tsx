@@ -128,8 +128,10 @@ export function EvidenceExplorer() {
                   key={c.key}
                   className={`text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4 cursor-pointer hover:text-grey-5 ${c.width}`}
                   onClick={() => handleSort(c.key)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSort(c.key) } }}
                   aria-sort={sortKey === c.key ? (sortDir === 'asc' ? 'ascending' : 'descending') : undefined}
                   scope="col"
+                  tabIndex={0}
                 >
                   {c.label}
                   {sortKey === c.key && (sortDir === 'asc' ? ' ↑' : ' ↓')}

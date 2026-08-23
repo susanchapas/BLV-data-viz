@@ -1,0 +1,48 @@
+{
+  "id": "chart-17",
+  "number": 17,
+  "title": "Non-use reasons by the code family behind them",
+  "caption": "Bar. Reads the primary code on the Non-use tab. Awareness leads, which is the finding that under-use is not a capability problem.",
+  "source_tab": "primary code on the Non-use",
+  "chart_type": "bar",
+  "columns": [
+    "Code family",
+    "Distinct reasons"
+  ],
+  "rows": [
+    [
+      "Awareness and mental model",
+      17
+    ],
+    [
+      "Adoption ceiling",
+      5
+    ],
+    [
+      "Form and fit",
+      4
+    ],
+    [
+      "Privacy",
+      4
+    ],
+    [
+      "Social perception",
+      3
+    ],
+    [
+      "Reliability",
+      2
+    ],
+    [
+      "Safety rules",
+      2
+    ],
+    [
+      "Ecosystem and support",
+      2
+    ]
+  ],
+  "footnote": null,
+  "alt_text": null
+}

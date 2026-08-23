@@ -1,0 +1,162 @@
+{
+  "id": "chart-08",
+  "number": 8,
+  "title": "Every signal the user needs, by weight of evidence",
+  "caption": "Bar. One row per signal. Announced, silent and consequence rows are labelled in column B so the split stays visible.",
+  "source_tab": null,
+  "chart_type": "bar",
+  "columns": [
+    "Signal",
+    "Status",
+    "Evidence rows",
+    "Participants (of 17)"
+  ],
+  "rows": [
+    [
+      "FB-01 Why a read failed",
+      "Announced",
+      9,
+      6
+    ],
+    [
+      "FB-02 How to re-aim during a capture",
+      "Announced",
+      17,
+      8
+    ],
+    [
+      "FB-03 Light too poor for an accurate answer",
+      "Announced",
+      7,
+      4
+    ],
+    [
+      "FB-04 Where the answer came from",
+      "Announced",
+      5,
+      3
+    ],
+    [
+      "FB-05 That the command was heard",
+      "Announced",
+      2,
+      1
+    ],
+    [
+      "FB-06 That the request is refused",
+      "Announced",
+      18,
+      9
+    ],
+    [
+      "FB-07 That a correction was accepted",
+      "Announced",
+      7,
+      5
+    ],
+    [
+      "FB-08 Confidence in the answer just given",
+      "Silent",
+      29,
+      11
+    ],
+    [
+      "FB-09 That content was dropped from a read",
+      "Silent",
+      3,
+      2
+    ],
+    [
+      "FB-10 That the subject is outside the frame",
+      "Silent",
+      18,
+      8
+    ],
+    [
+      "FB-11 That the answer describes an older frame",
+      "Silent",
+      3,
+      2
+    ],
+    [
+      "FB-12 That an absence is a limit and not a fact",
+      "Silent",
+      6,
+      3
+    ],
+    [
+      "FB-13 Whether it is recording",
+      "Silent",
+      2,
+      1
+    ],
+    [
+      "FB-14 Charge and pairing state",
+      "Silent",
+      2,
+      1
+    ],
+    [
+      "FB-15 What changed in an update",
+      "Silent",
+      4,
+      3
+    ],
+    [
+      "FB-16 Which phrasing would have worked",
+      "Silent",
+      8,
+      7
+    ],
+    [
+      "FB-17 That the user is being read as sighted",
+      "Silent",
+      8,
+      3
+    ],
+    [
+      "FB-18 Which item has focus, what is changing",
+      "Silent",
+      4,
+      2
+    ],
+    [
+      "FB-19 User absorbs the failure as personal error",
+      "Consequence",
+      20,
+      10
+    ],
+    [
+      "FB-20 No witness available to check",
+      "Consequence",
+      15,
+      8
+    ],
+    [
+      "FB-21 Trust confined to what is already known",
+      "Consequence",
+      20,
+      9
+    ],
+    [
+      "FB-22 Task ruled out in advance, no failure on record",
+      "Consequence",
+      24,
+      11
+    ],
+    [
+      "FB-23 Accuracy judged against no access at all",
+      "Consequence",
+      4,
+      2
+    ],
+    [
+      "FB-24 A human substitutes for the missing signal",
+      "Consequence",
+      29,
+      11
+    ]
+  ],
+  "footnote": null,
+  "alt_text": null
+}

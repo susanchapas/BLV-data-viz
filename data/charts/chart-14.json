@@ -1,0 +1,120 @@
+{
+  "id": "chart-14",
+  "number": 14,
+  "title": "Trust rating against the ability to verify, participant by participant",
+  "caption": "Clustered column. Verification capability is scored 0 for none, 1 for partial, 2 for unaided. The thesis predicts no relationship between the two series.",
+  "source_tab": null,
+  "chart_type": "clustered_bar",
+  "columns": [
+    "Participant",
+    "Trust (1 to 5)",
+    "Verification capability (0 to 2)",
+    "Satisfaction (1 to 5)"
+  ],
+  "rows": [
+    [
+      "P001",
+      null,
+      0,
+      null
+    ],
+    [
+      "P002",
+      4,
+      0,
+      5
+    ],
+    [
+      "P003",
+      4.5,
+      1,
+      4.5
+    ],
+    [
+      "P004",
+      3.5,
+      1,
+      null
+    ],
+    [
+      "P005",
+      3.5,
+      0,
+      2
+    ],
+    [
+      "P006",
+      3.75,
+      0,
+      4
+    ],
+    [
+      "P007",
+      null,
+      0,
+      3
+    ],
+    [
+      "P008",
+      4,
+      2,
+      4
+    ],
+    [
+      "P009",
+      4,
+      0,
+      4
+    ],
+    [
+      "P010",
+      5,
+      0,
+      4
+    ],
+    [
+      "P011",
+      5,
+      0,
+      4.5
+    ],
+    [
+      "P012",
+      5,
+      1,
+      4
+    ],
+    [
+      "P013",
+      4,
+      1,
+      4
+    ],
+    [
+      "P014",
+      4,
+      1,
+      5
+    ],
+    [
+      "P015",
+      4,
+      0,
+      4
+    ],
+    [
+      "P016",
+      3,
+      0,
+      2
+    ],
+    [
+      "P017",
+      4,
+      0,
+      4
+    ]
+  ],
+  "footnote": null,
+  "alt_text": null
+}

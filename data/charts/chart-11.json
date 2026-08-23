@@ -1,0 +1,42 @@
+{
+  "id": "chart-11",
+  "number": 11,
+  "title": "What it costs the user to notice the failure",
+  "caption": "Bar. Modes grouped by the opening word of the cost-to-detect column. High means a second tool or another person.",
+  "source_tab": null,
+  "chart_type": "bar",
+  "columns": [
+    "Cost to detect",
+    "Modes",
+    "Evidence rows"
+  ],
+  "rows": [
+    [
+      "High",
+      9,
+      75
+    ],
+    [
+      "Medium",
+      6,
+      87
+    ],
+    [
+      "Low when announced",
+      1,
+      11
+    ],
+    [
+      "None to detect",
+      11,
+      111
+    ],
+    [
+      "No route exists",
+      1,
+      8
+    ]
+  ],
+  "footnote": null,
+  "alt_text": null
+}

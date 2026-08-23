@@ -1,0 +1,145 @@
+{
+  "id": "chart-01",
+  "number": 1,
+  "title": "Evidence rows by participant, split by whether the failure is detectable without sight",
+  "caption": "Stacked column. Participant on the x axis, evidence rows on the y axis, three series. Reads off the Verification Asymmetry tab.",
+  "source_tab": "Verification Asymmetry",
+  "chart_type": "stacked_column",
+  "columns": [
+    "Participant",
+    "Undetectable",
+    "Partly detectable",
+    "Self-evident",
+    "Total rows"
+  ],
+  "rows": [
+    [
+      "P001",
+      6,
+      3,
+      6,
+      15
+    ],
+    [
+      "P002",
+      8,
+      7,
+      4,
+      19
+    ],
+    [
+      "P003",
+      4,
+      3,
+      1,
+      8
+    ],
+    [
+      "P004",
+      1,
+      3,
+      11,
+      15
+    ],
+    [
+      "P005",
+      7,
+      5,
+      12,
+      24
+    ],
+    [
+      "P006",
+      3,
+      9,
+      1,
+      13
+    ],
+    [
+      "P007",
+      6,
+      4,
+      6,
+      16
+    ],
+    [
+      "P008",
+      2,
+      14,
+      4,
+      20
+    ],
+    [
+      "P009",
+      8,
+      10,
+      9,
+      27
+    ],
+    [
+      "P010",
+      2,
+      3,
+      1,
+      6
+    ],
+    [
+      "P011",
+      4,
+      6,
+      12,
+      22
+    ],
+    [
+      "P012",
+      8,
+      6,
+      9,
+      23
+    ],
+    [
+      "P013",
+      2,
+      4,
+      6,
+      12
+    ],
+    [
+      "P014",
+      4,
+      5,
+      5,
+      14
+    ],
+    [
+      "P015",
+      4,
+      8,
+      6,
+      18
+    ],
+    [
+      "P016",
+      7,
+      1,
+      12,
+      20
+    ],
+    [
+      "P017",
+      7,
+      7,
+      6,
+      20
+    ],
+    [
+      "All coded",
+      83,
+      98,
+      111,
+      292
+    ]
+  ],
+  "footnote": null,
+  "alt_text": null
+}

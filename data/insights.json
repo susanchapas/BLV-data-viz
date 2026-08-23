@@ -1,0 +1,882 @@
+[
+  {
+    "Type": "Insight",
+    "#": 1,
+    "Title": "Reliability, capability, and the adoption ceiling",
+    "Note": "Strong capabilities gated by inconsistent operation. 'Works great when it works' recurs. Failures strand users mid-task with no recovery. Worse damage than a missing feature.",
+    "Spans": null,
+    "Evidence codes": "REL-INTERMITTENT, REL-NORESUME, REL-WAKEFAIL"
+  },
+  {
+    "Type": "Insight",
+    "#": 2,
+    "Title": "Silent summarization as a trust wound",
+    "Note": "P002 docked her trust rating specifically for this. The device deciding what she needs and staying quiet about the cut.",
+    "Spans": null,
+    "Evidence codes": "ECO-FALLBACK, ECO-STACK, ECO-SCREENREADER"
+  },
+  {
+    "Type": "Insight",
+    "#": 3,
+    "Title": "The phone conflict is structural",
+    "Note": "It sits under P001's entire facilitator and author workflow. She named the fix unprompted, twice.",
+    "Spans": null,
+    "Evidence codes": "ECO-HANDSFREE"
+  },
+  {
+    "Type": "Insight",
+    "#": 4,
+    "Title": "Purchase channel as hidden infrastructure",
+    "Note": "Same device, same setup need, opposite outcomes. Support access decided the whole first year.",
+    "Spans": null,
+    "Evidence codes": "READ-SUMMARY, READ-CURRENCY, READ-HANDWRITING"
+  },
+  {
+    "Type": "Insight",
+    "#": 5,
+    "Title": "Age doesn't predict capability",
+    "Note": "P001 is 78, teaches 77 people, uses ChatGPT daily. Poor onboarding predicted her failure",
+    "Spans": null,
+    "Evidence codes": "SUP-COMMUNITY"
+  },
+  {
+    "Type": "Insight",
+    "#": 6,
+    "Title": "Hands-free is the barrier",
+    "Note": "Both name it as the reason to reach for glasses over a phone camera app. Everything else has a phone equivalent.",
+    "Spans": null,
+    "Evidence codes": "SUP-CHANNEL, SUP-BROKEN"
+  },
+  {
+    "Type": "Insight",
+    "#": 7,
+    "Title": "Discreet interaction is an accessibility feature",
+    "Note": "Voice-in-public friction pushes users to whisper, cup a hand, or skip the task. Silent input unlocks social settings.",
+    "Spans": null,
+    "Evidence codes": "SOC-STIGMA, SOC-VOICEPUBLIC, SOC-NOISE"
+  },
+  {
+    "Type": "Insight",
+    "#": 8,
+    "Title": "The fallback ladder is the real system",
+    "Note": "Nobody uses the glasses alone. Be My Eyes, Aira, Seeing AI, a sighted person, a cane. The glasses are one rung.",
+    "Spans": null,
+    "Evidence codes": "SUP-BROKEN, REL-INTERMITTENT"
+  },
+  {
+    "Type": "Insight",
+    "#": 9,
+    "Title": "Emergent uses outrun the guide",
+    "Note": "License plates, food-order checks, hair how-tos, language practice. Users are already ahead of the roadmap.",
+    "Spans": null,
+    "Evidence codes": "EMP-CREATIVE, EMP-LEARNING, EMP-COMPANION"
+  },
+  {
+    "Type": "Insight",
+    "#": 10,
+    "Title": "The ceiling is adoption, not capability",
+    "Note": "Four of six say unprompted they under-use the device. Nothing is broken in those moments. They did not know, did not think to, were intimidated, forgot to bring it, or had a person on hand. The largest gap between what the hardware can do and what gets used is behavioural.",
+    "Spans": "T12, T8",
+    "Evidence codes": "ADOPT-UTILIZATION, NONUSE-AWARENESS, NONUSE-CONFIDENCE, NONUSE-HABIT"
+  },
+  {
+    "Type": "Insight",
+    "#": 11,
+    "Title": "Fit decides use",
+    "Note": "Two participants leave the glasses at home partly because they slide off the face. One calls it the single most annoying thing about a device she otherwise rates 4.5 of 5. Frame sizing is the cheapest unmet requirement in the whole set.",
+    "Spans": "T11, T12",
+    "Evidence codes": "DES-FIT, DES-WEIGHT, NONUSE-HABIT"
+  },
+  {
+    "Type": "Insight",
+    "#": 12,
+    "Title": "Prescription is an access barrier, not an accessory",
+    "Note": "A prescription gated one purchase for two years. A long-distance script blocks desk work. A second pair of reading glasses stops the device working. Non-prescription tint darkens what little vision remains.",
+    "Spans": "T11",
+    "Evidence codes": "DES-PRESCRIPTION, DES-TINT"
+  },
+  {
+    "Type": "Insight",
+    "#": 13,
+    "Title": "High trust ratings rest on no verification",
+    "Note": "Ratings run 3.5 to 5. The two 5s come with I do not question it as much as I should and I have not run into problems yet. Trust here tracks familiarity and low stakes, not accuracy. Treat the numbers as exposure, not endorsement.",
+    "Spans": "T15",
+    "Evidence codes": "TRU-RATING, TRU-FAMILIARITY, TRU-VERIFY, TRU-STAKES"
+  },
+  {
+    "Type": "Insight",
+    "#": 14,
+    "Title": "Guided capture is the fix for the aiming problem",
+    "Note": "Users cannot see where the camera points and blame themselves for partial reads. One device coaches out loud, move closer, turn to the light, stay still. That single pattern answers a failure reported by four participants.",
+    "Spans": "T2",
+    "Evidence codes": "READ-GUIDANCE, READ-AIM, OBJ-PHOTO"
+  },
+  {
+    "Type": "Insight",
+    "#": 15,
+    "Title": "Blind people on staff shows in the feature set",
+    "Note": "Silent button page turns for libraries. Ethnicity and age estimates. A case that doubles as a power bank. A live bug channel. The device with blind designers wins on the details, and loses on latency and frame sizing.",
+    "Spans": "T8, T11",
+    "Evidence codes": "SUP-CODESIGN, INT-BUTTONMODE, DES-CASE, SUP-FEEDBACKLOOP"
+  },
+  {
+    "Type": "Insight",
+    "#": 16,
+    "Title": "Withholding information reads as a design failure",
+    "Note": "Refusing to name a person, a character or a doneness is experienced as information other people get and they do not. The ask is a stated best guess with the reason attached, not certainty.",
+    "Spans": "T4, T3",
+    "Evidence codes": "PPL-POLICY, PPL-DEMOGRAPHICS, OBJ-POLICY, SAF-STAKES"
+  },
+  {
+    "Type": "Insight",
+    "#": 17,
+    "Title": "Failure recovery is a physical safety issue",
+    "Note": "A dropped audio connection ended in a fall off a treadmill. Attention went to the device, not the machine. Ungraceful failure has a body-count column, not just a satisfaction column.",
+    "Spans": "T14, T1",
+    "Evidence codes": "SAF-INCIDENT, REL-BLUETOOTH, REL-INTERMITTENT"
+  },
+  {
+    "Type": "Insight",
+    "#": 18,
+    "Title": "Hands-free is also a personal-security feature",
+    "Note": "Not holding a phone out in public means not advertising a target. One participant names safety, not convenience, as the reason she prefers the glasses to a phone camera outdoors.",
+    "Spans": "T14, T7",
+    "Evidence codes": "SAF-SECURITY, ECO-HANDSFREE"
+  },
+  {
+    "Type": "Insight",
+    "#": 19,
+    "Title": "Every participant runs a private data policy",
+    "Note": "Nobody points it at a bank statement, a benefit letter or client records. Concern is low in the abstract and precise in practice. The rule is self-enforced because the device offers no controls.",
+    "Spans": "T9",
+    "Evidence codes": "PRV-DATAHYGIENE, PRV-LOWCONCERN, PRV-CONSENT"
+  },
+  {
+    "Type": "Insight",
+    "#": 20,
+    "Title": "Users are already ahead on emergent uses",
+    "Note": "Record labels and chart history. A racetrack leaderboard. Museum wall labels. A moving car. Cooking-time comparison across two boxes. Nobody was told to try these. They are the roadmap.",
+    "Spans": "T10, T3",
+    "Evidence codes": "EMP-HOBBY, OBJ-LIVEEVENT, OBJ-VEHICLE, OBJ-ART, EMP-ACCESSGAP"
+  },
+  {
+    "Type": "Insight",
+    "#": 21,
+    "Title": "Vendor continuity is a purchase risk users name themselves",
+    "Note": "On niche blind-market hardware, the concern is not the feature list but whether the company survives long enough for the glasses to keep working.",
+    "Spans": "T13",
+    "Evidence codes": "RISK-VIABILITY, COST-SUBSCRIPTION, COST-UPGRADE"
+  },
+  {
+    "Type": "Insight",
+    "#": 22,
+    "Title": "The interview changed the behaviour",
+    "Note": "Two participants ended the session saying they should and would use the glasses more. Useful signal about how thin activation support is. Also a reactivity risk to note in the write-up.",
+    "Spans": "T8, T12",
+    "Evidence codes": "SUP-TRAINING, ADOPT-UTILIZATION"
+  },
+  {
+    "Type": "Insight",
+    "#": 23,
+    "Title": "Fluent fabrication is worse than visible failure",
+    "Note": "One participant prefers a literal reader that stumbles over words out loud to a describer that reads smoothly and invents. She could hear it reading nonsense and trusted it more for that. The glasses fail in the one register a blind user cannot audit.",
+    "Spans": "T15, T2, T7",
+    "Evidence codes": "TRU-HALLUCINATION, ECO-OCRVSLLM, TRU-CONFIDENCE"
+  },
+  {
+    "Type": "Insight",
+    "#": 24,
+    "Title": "One bad answer is permanent",
+    "Note": "Not a retry, a retirement. A Chinese tea on a supermarket bottle ended label reading. A menu invention ended menus. Return requires other users saying it improved, not a personal second attempt. Accuracy failures compound into non-use faster than any other defect in the set.",
+    "Spans": "T12, T15",
+    "Evidence codes": "ADOPT-ONESTRIKE, TRU-HALLUCINATION, NONUSE-ANTICIPATED"
+  },
+  {
+    "Type": "Insight",
+    "#": 25,
+    "Title": "Patience is the currency, and work has none",
+    "Note": "Named six times unprompted by one participant. Turning a bottle over and over is the actual cost of a read. At home the budget stretches. On an employer's clock it is one attempt, then another tool. Time to first correct read decides workplace adoption, not feature count.",
+    "Spans": "T12, T18",
+    "Evidence codes": "NONUSE-PATIENCE, WORK-TIMEPRESSURE, ADOPT-SKILLGROWTH"
+  },
+  {
+    "Type": "Insight",
+    "#": 26,
+    "Title": "Users absorb the device's failure as their own",
+    "Note": "Operator error. My patience. I am not asking clear enough questions. A blind person cannot give it good information. Three participants blame themselves for silent failures, then quietly use it less. Self-blame is a non-use mechanism that never shows up in a bug report.",
+    "Spans": "T15, T12",
+    "Evidence codes": "TRU-SELFBLAME, NONUSE-PATIENCE, ADOPT-UTILIZATION"
+  },
+  {
+    "Type": "Insight",
+    "#": 27,
+    "Title": "The camera is an output device too",
+    "Note": "One participant bought the glasses to make video, not to read. Every capture affordance a sighted creator takes for granted is missing: framing, record state, clip names, keeping the screen reader out of the take. Nothing in the accessibility framing of this product anticipates a blind creator.",
+    "Spans": "T17",
+    "Evidence codes": "CAP-POV, CAP-FRAMING, CAP-RECORDSTATE, CAP-FILEMGMT, CAP-AUDIOBLEED"
+  },
+  {
+    "Type": "Insight",
+    "#": 28,
+    "Title": "Half the failures belong to the world, not the device",
+    "Note": "White on pink, copy baked into catalogue images, laminated menus, QR codes to light-font pages, restaurants dark by design, flush appliance panels. Sighted companions cannot read them either. Users already vote with money, leaving banks and replacing stoves for contrast.",
+    "Spans": "T19",
+    "Evidence codes": "ENV-LOWCONTRAST, ENV-TEXTINIMAGE, ENV-QRCODE, ENV-PANEL, ENV-APPCHOICE"
+  },
+  {
+    "Type": "Insight",
+    "#": 29,
+    "Title": "It knows the address and misses the block",
+    "Note": "Reports the street number correctly, then puts the bus stop seven blocks off, the cinema five miles away and the weather at the airport. Users read commercial ranking into it. Location grounding, not language ability, is what fails.",
+    "Spans": "T16, T9",
+    "Evidence codes": "NAV-POI, PRV-ADSTARGETING"
+  },
+  {
+    "Type": "Insight",
+    "#": 30,
+    "Title": "Ad targeting is the only privacy objection that changes behaviour",
+    "Note": "Abstract surveillance gets a shrug across all ten participants. Ads built from what the glasses see and hear stopped one participant using the AI at all. And the objection is conditional: make it accurate enough and she stops caring. Privacy tolerance here is a function of usefulness.",
+    "Spans": "T9",
+    "Evidence codes": "PRV-ADSTARGETING, PRV-VENDORTRUST, PRV-TRADEOFF, PRV-THREATMODEL"
+  },
+  {
+    "Type": "Insight",
+    "#": 31,
+    "Title": "The wearer cannot see the light that protects bystanders",
+    "Note": "The recording indicator is the whole social contract, and it is the one signal the blind wearer has no access to. One participant knows kits are sold to drill it out, and stopped wearing the glasses in public. Bystander hostility and venue bans land on the accommodation case first.",
+    "Spans": "T9, T4",
+    "Evidence codes": "PRV-INDICATOR, SOC-BAN, SOC-STIGMA"
+  },
+  {
+    "Type": "Insight",
+    "#": 32,
+    "Title": "Nobody to check it against",
+    "Note": "Trust ratings of 3.5 to 4 with no verification behind them, because there is no verification available. One participant lives without a sighted checker and says plainly he cannot know if it is telling the truth. The only person who verifies independently is the one with residual sight and a magnifier.",
+    "Spans": "T15",
+    "Evidence codes": "TRU-NOWITNESS, TRU-VERIFY, TRU-FAMILIARITY, TRU-PROMPTHYGIENE"
+  },
+  {
+    "Type": "Insight",
+    "#": 33,
+    "Title": "Person recognition is now the single most requested feature",
+    "Note": "Four of ten ask unprompted. Church, a park, a boardroom table, a ballroom of two hundred. The ask has narrowed to something shippable: a name from a contact photo, plus which way to turn and roughly how far.",
+    "Spans": "T4",
+    "Evidence codes": "PPL-NOFACE, PPL-LOCATE, PPL-DESCRIBE"
+  },
+  {
+    "Type": "Insight",
+    "#": 34,
+    "Title": "Summarising is a defect or a feature depending on who asked",
+    "Note": "One participant docked her trust rating because it summarised without being told to. Another asks for summaries on purpose and rates it four. Same behaviour, opposite verdict. The defect is not summarising, it is summarising unrequested and staying quiet about the cut.",
+    "Spans": "T2",
+    "Evidence codes": "READ-SUMMARYWANTED, READ-SUMMARY, READ-EDITORIAL"
+  },
+  {
+    "Type": "Insight",
+    "#": 35,
+    "Title": "Partial sight is invisible to everyone, including the product",
+    "Note": "Fifty percent vision, a regular cane, a professorship. Friends and colleagues read no disability. Residual sight also fades through the day, so the same person needs the device more at four than at ten. Nothing in the product models either fact.",
+    "Spans": "T4, T12",
+    "Evidence codes": "SOC-INVISIBLE, VIS-FATIGUE, ADOPT-VISIONCHANGE"
+  },
+  {
+    "Type": "Insight",
+    "#": 36,
+    "Title": "It is barred from the one job it looks built for",
+    "Note": "Never a mobility tool, said flatly and repeated. Crossing decisions stay with hearing and the cane. Two others simply never tried travel. Orientation and mobility doctrine, not device capability, sets this ceiling, and marketing that implies otherwise will cost trust.",
+    "Spans": "T14, T16",
+    "Evidence codes": "SAF-MOBILITYRULE, NAV-NOTUSED, NAV-DIRECTIONS"
+  },
+  {
+    "Type": "Insight",
+    "#": 37,
+    "Title": "Owners hold capability they never switched on",
+    "Note": "Live mode never tried. A volunteer integration unused for eighteen months. Buttons whose function is unknown. Gallery description found during the interview. Across ten participants the pattern is now the single largest gap between hardware and use.",
+    "Spans": "T12, T8, T7",
+    "Evidence codes": "NONUSE-AWARENESS, ECO-INTEGRATIONSETUP, ADOPT-INTERVIEWEFFECT, SUP-TRAINING"
+  },
+  {
+    "Type": "Insight",
+    "#": 38,
+    "Title": "The community is the trust channel",
+    "Note": "Found through blind tech demonstrations. Bought on a peer's recommendation. And the only stated route back after abandonment is hearing from other users that it improved. Vendor claims do not reopen a retired use case. Peers do.",
+    "Spans": "T8",
+    "Evidence codes": "SUP-COMMUNITY, ADOPT-ONESTRIKE, SUP-CODESIGN"
+  },
+  {
+    "Type": "Insight",
+    "#": 39,
+    "Title": "Remote sighted guidance is the second product inside the glasses",
+    "Note": "One participant sends most of his visual work to a human looking through the camera, not to the AI. Not reading, but steering: a hand to a microwave button, a bottle turned to its label, eggs found in a garden, a game menu crossed. The AI describes a frozen frame; the human runs a live loop with the user's body in it. Nothing in the product is designed for that loop.",
+    "Spans": "T21, T7",
+    "Evidence codes": "RSG-TASKGUIDE, RSG-PREFERRED, RSG-CONNECTCOST, RSG-CAMERALIMIT"
+  },
+  {
+    "Type": "Insight",
+    "#": 40,
+    "Title": "A sealed battery makes an accessibility device a consumable",
+    "Note": "Two participants report capacity falling year on year, and one has traced it to the end: no access to the cell, so a worn battery means buying the whole device again. Aftermarket magnetic packs add weight to a product already causing face pressure. The lifecycle question never appears in an accessibility review and decides how long the access lasts.",
+    "Spans": "T22, T13",
+    "Evidence codes": "LIFE-BATTERYDEGRADE, LIFE-SEALED, LIFE-ACCESSORY, LIFE-SPARE"
+  },
+  {
+    "Type": "Insight",
+    "#": 41,
+    "Title": "The largest barrier named in the study is a touchscreen, not a camera",
+    "Note": "The participant with 48 years of adaptation ranks card readers, ticket machines and bank terminals above every device defect. A flat glass panel with no tactile path, in front of which he still needs a person. The glasses read the world and cannot touch it, and reading a control it cannot operate is now reported by two participants on different devices.",
+    "Spans": "T19, T2",
+    "Evidence codes": "ENV-DIGITALKIOSK, READ-NOACTION, SOC-HUMANLAYER"
+  },
+  {
+    "Type": "Insight",
+    "#": 42,
+    "Title": "Continuous narration needs a content dial, not a volume knob",
+    "Note": "The first participant to actually live with always-on description arrives with a specification: a checklist of what to hear, a gesture to pause, priority for hazards and people, and a speech rate above the current maximum. Everyone else in the study is still asking for the feature. He has used it and is asking for the controls.",
+    "Spans": "T20",
+    "Evidence codes": "NAR-FILTER, NAR-PAUSE, NAR-PRIORITY, NAR-SPEED, NAR-INTERRUPT"
+  },
+  {
+    "Type": "Insight",
+    "#": 43,
+    "Title": "Consent for face enrollment sits with the people being enrolled",
+    "Note": "The most requested missing feature across the study, and in the one household where it was attempted the wife and daughter refused. The wearer would have accepted the trade and did not, because it was not his data to give. A privacy review aimed at the wearer answers the wrong question.",
+    "Spans": "T4, T9",
+    "Evidence codes": "PPL-FAMILYCONSENT, PPL-NOFACE, PRV-ONDEVICE, PPL-ROSTER"
+  },
+  {
+    "Type": "Insight",
+    "#": 44,
+    "Title": "Guessing is the failure mode and declining is the feature",
+    "Note": "Seltzer named as Coca-Cola. A drink in a fridge named wrong. The same participant says another tool wins because it tells him when it cannot identify something. Across the study the request has now been made in six different words by six people: say when you do not know.",
+    "Spans": "T15",
+    "Evidence codes": "TRU-CONFIDENCE, TRU-HALLUCINATION, TRU-GENERALAI, ECO-COMPARE"
+  },
+  {
+    "Type": "Insight",
+    "#": 45,
+    "Title": "The benchmark is desktop assistive technology, not other glasses",
+    "Note": "A closed-circuit magnifier, a universal reader, a Kurzweil machine. One participant scores the glasses against forty years of tools that read a whole document, run in the background and never lose a frame. He is generous about what they add and precise about the gap: they are beginning to emulate what he already has at home.",
+    "Spans": "T7",
+    "Evidence codes": "ECO-DESKTOPAT, ECO-COMPARE, ECO-LEGACY"
+  },
+  {
+    "Type": "Insight",
+    "#": 46,
+    "Title": "Hallucination has become folk knowledge",
+    "Note": "A participant with no development background explains it unprompted as a property of AI rather than a bug in this product, and applies the same discount to every vendor. That lowers anger and lowers expectation at the same time. The reputational damage is now priced in before the first use.",
+    "Spans": "T15",
+    "Evidence codes": "TRU-GENERALAI, TRU-HALLUCINATION"
+  },
+  {
+    "Type": "Insight",
+    "#": 47,
+    "Title": "Distrust travels through the community faster than trust",
+    "Note": "One participant retired currency reading without ever attempting it, on the strength of a failure he watched in someone else's video. The community channel that recruits buyers also retires features. Peer demonstration is the only route back, and it is the same route the damage took.",
+    "Spans": "T15, T8",
+    "Evidence codes": "TRU-SECONDHAND, ADOPT-ONESTRIKE, SUP-COMMUNITY"
+  },
+  {
+    "Type": "Insight",
+    "#": 48,
+    "Title": "Weight is measured in hours on a face, not grams on a scale",
+    "Note": "Pressure across a day, named alongside battery as the reason a heavy user became an occasional one. Three participants now report fit or pressure as a direct cause of lower use. None of them reported discomfort when asked the standard comfort question, because the question asks about a session.",
+    "Spans": "T11, T12",
+    "Evidence codes": "DES-PRESSURE, DES-FIT, DES-WEIGHT"
+  },
+  {
+    "Type": "Insight",
+    "#": 49,
+    "Title": "Loss and breakage decide where the device goes",
+    "Note": "A $250 pair with no impact rating, worn by people who walk into things. One participant leaves them home for running, transit and crowds, which is the list of places the product is marketed for. Cheap headphones go everywhere precisely because they are disposable.",
+    "Spans": "T11, T12",
+    "Evidence codes": "NONUSE-LOSSRISK, DES-DURABILITY, COST-PRICE"
+  },
+  {
+    "Type": "Insight",
+    "#": 50,
+    "Title": "The interview is still functioning as an intervention",
+    "Note": "Seven participants have now ended a session naming something they intend to try. Two in this round said it about features they own. The consistency of the effect across fourteen interviews is itself the finding about activation support, and a reactivity risk that belongs in the write-up.",
+    "Spans": "T12, T8",
+    "Evidence codes": "ADOPT-INTERVIEWEFFECT, NONUSE-AWARENESS, SUP-TRAINING"
+  },
+  {
+    "Type": "Insight",
+    "#": 51,
+    "Title": "Two more participants rule it out for mobility, and one is a tester",
+    "Note": "The accessibility tester states it as advice to others: not on a street, not at a crossing, rely on orientation and mobility skills. A second uses it for exits and pickup points inside venues and never for the route. The ceiling on travel is set by doctrine and by liability instinct, not by description quality.",
+    "Spans": "T14, T16",
+    "Evidence codes": "SAF-MOBILITYRULE, NAV-NOTUSED, NAV-INDOOR"
+  },
+  {
+    "Type": "Insight",
+    "#": 52,
+    "Title": "The camera is the bottleneck for the AI and the human alike",
+    "Note": "Volunteers call the image fuzzy and ask for the phone. The AI misnames a can under the same conditions. Four participants across two rounds now name camera quality against a current phone. Every downstream feature, description, guidance, enrollment, capture, is rate-limited by one component.",
+    "Spans": "T11, T21",
+    "Evidence codes": "DES-CAMERAQUALITY, RSG-CAMERALIMIT, TRU-HALLUCINATION"
+  },
+  {
+    "Type": "Insight",
+    "#": 53,
+    "Title": "Curved packaging is a bounded, unaddressed accuracy gap",
+    "Note": "Good with a cereal box, defeated by a bowl of noodles, a soda can and a medication bottle. The failure is geometric rather than linguistic, it shows up in kitchens and pharmacies, and it has a known engineering answer that nobody has shipped.",
+    "Spans": "T3, T2",
+    "Evidence codes": "OBJ-SHAPE, READ-MEDICATION, OBJ-ORIENT"
+  },
+  {
+    "Type": "Insight",
+    "#": 54,
+    "Title": "Three vision histories produce three different products",
+    "Note": "Lifelong blindness wants layout, hazards and a person on the line. Late blindness wants the tasks it used to do without help. Partial and declining sight wants magnification, contrast and a reader that runs in the background. The product ships one description engine and reads all three as the same user.",
+    "Spans": "T4, T12",
+    "Evidence codes": "SOC-INVISIBLE, ADOPT-VISIONCHANGE, VIS-FATIGUE, OBJ-MAGNIFY"
+  },
+  {
+    "Type": "Insight",
+    "#": 55,
+    "Title": "Awareness is now the largest gap at fourteen participants",
+    "Note": "One daily user of two years has never tried the continuous mode and was unsure it exists. Another found the accessibility setting for detailed descriptions himself. A third learns about updates from a Facebook group rather than the vendor. Ownership and knowledge have come apart across the whole sample.",
+    "Spans": "T12, T8",
+    "Evidence codes": "NONUSE-AWARENESS, SUP-COMMUNITY, SUP-TRAINING, ADOPT-UTILIZATION"
+  },
+  {
+    "Type": "Insight",
+    "#": 56,
+    "Title": "Precision prompting is a skill users teach themselves after failures",
+    "Note": "Ask for the cooking time, not the box. Name the bottle, not the picture. Two more participants describe arriving at scoped prompts by being read the wrong thing repeatedly. The product ships no prompting guidance and the learning cost lands on the user.",
+    "Spans": "T5, T12",
+    "Evidence codes": "INT-PROMPTCRAFT, OBJ-SPECIFICITY, ADOPT-SKILLGROWTH, OBJ-CLUTTER"
+  },
+  {
+    "Type": "Insight",
+    "#": 57,
+    "Title": "The device speaks to a sighted user",
+    "Note": "One participant states it plainly: the glasses forget she is not sighted. Answers arrive as right in front of you and this one, with no distance, no side and no step count attached. Three participants ask for the same repair in the same terms: give me a direction and a number of feet. This is the sighted default operating inside the answer itself rather than in the feature list.",
+    "Spans": "T5, T16",
+    "Evidence codes": "INT-SIGHTEDASSUMPTION, NAV-EGOCENTRIC, READ-IMPOSSIBLEFIX"
+  },
+  {
+    "Type": "Insight",
+    "#": 58,
+    "Title": "Verification is absent, not merely skipped",
+    "Note": "Earlier rounds found high trust ratings resting on no verification. One participant this round states the stronger version four separate times: she does not know how to know if it is incorrect, there is no way of verifying it, and she assumes it is correct. She lives alone, so there is no sighted witness either. A trust score of 4 is being given to a system whose error rate she has no route to observe.",
+    "Spans": "T15",
+    "Evidence codes": "TRU-UNVERIFIABLE, TRU-NOWITNESS, TRU-BASELINE, TRU-RATING"
+  },
+  {
+    "Type": "Insight",
+    "#": 59,
+    "Title": "The false negative is the failure nobody can catch",
+    "Note": "A stated absence is the one answer a blind user can never check, because absence is precisely what she cannot see for herself. An expiration date reported as missing was there. Wheelchairs reported as not visible were there. An awning reported as nothing there was there. This sits alongside fabrication as a distinct class, and it is quieter, because it produces no wrong fact to trip over later.",
+    "Spans": "T15, T3",
+    "Evidence codes": "TRU-FALSENEGATIVE, OBJ-NEGATIVEANSWER, OBJ-DYNAMICSTATE"
+  },
+  {
+    "Type": "Insight",
+    "#": 60,
+    "Title": "The cane is the verification instrument",
+    "Note": "One participant runs every spatial claim through her long cane before acting on it, and describes the two as a single system. This is the only routine, repeatable verification method observed anywhere in the study, and it works because the cane returns ground truth on exactly the class of claim the glasses are worst at.",
+    "Spans": "T15, T16",
+    "Evidence codes": "TRU-CANECHECK, INT-SIGHTEDASSUMPTION, NAV-OBSTACLE"
+  },
+  {
+    "Type": "Insight",
+    "#": 61,
+    "Title": "Testing on known answers is the other verification method",
+    "Note": "A second participant deliberately asks the glasses about food she has already identified by touch, to gauge how far it can be trusted. Both working verification strategies in this round depend on the user already possessing the answer, which bounds them to exactly the tasks where the device adds nothing.",
+    "Spans": "T15",
+    "Evidence codes": "TRU-CALIBRATE, TRU-FAMILIARITY"
+  },
+  {
+    "Type": "Insight",
+    "#": 62,
+    "Title": "Satisfaction is a ceiling rather than a score",
+    "Note": "One participant says five separate times that she is happy with what it does and therefore never asks what else it does. She rates it 4 and adds that she is low-maintenance. Her friend criticises her for under-using it. Satisfaction here is suppressing demand, which means a satisfaction metric will read highest exactly where activation is weakest.",
+    "Spans": "T12, T15",
+    "Evidence codes": "ADOPT-CEILINGSATISFIED, ADOPT-UTILIZATION, TRU-RATING"
+  },
+  {
+    "Type": "Insight",
+    "#": 63,
+    "Title": "It is understood as a reader rather than an assistant",
+    "Note": "A daily user of nine months learns during the interview that the device runs a general AI. She had been using it as a one-step reader, had never asked a follow-up question, and says her ear never goes to the AI part of the name. A second participant separately says he does not think asking his location counts as AI. The activation ceiling here is the mental model of what the object is.",
+    "Spans": "T12, T8",
+    "Evidence codes": "ADOPT-MENTALMODEL, NONUSE-AWARENESS, ADOPT-INTERVIEWEFFECT"
+  },
+  {
+    "Type": "Insight",
+    "#": 64,
+    "Title": "Doing without is the baseline that never appears in a log",
+    "Note": "Asked what she used before, one participant answers that she relies on humans or she goes without. Reading an ingredient label was not a task she performed badly. It was not in her world at all. Any measure built on task success will miss this entirely, and it is the largest category of unmet need in the round.",
+    "Spans": "T12, T10",
+    "Evidence codes": "ADOPT-GOWITHOUT, EMP-ACCESSGAP, EMP-HEALTHCHOICE"
+  },
+  {
+    "Type": "Insight",
+    "#": 65,
+    "Title": "Label access changes what gets bought",
+    "Note": "Reading sugar content in the aisle changed a purchase decision on the spot, and the participant frames the change as ongoing. This is the first observed instance in the study of the device altering a health behaviour rather than completing a task, and it arrived through the most ordinary capability the device has.",
+    "Spans": "T10",
+    "Evidence codes": "EMP-HEALTHCHOICE, OBJ-RETAIL, READ-LABELS"
+  },
+  {
+    "Type": "Insight",
+    "#": 66,
+    "Title": "The glasses are read as sight",
+    "Note": "Bystanders treat the wearer as sighted, so they stop making way, start gesturing and expect eye contact. One participant names this as her single largest barrier to outdoor use, ahead of every capability limit in the study. The cane no longer reads as the primary signal once the glasses are on. Her workaround is to announce the device out loud.",
+    "Spans": "T4, T12",
+    "Evidence codes": "SOC-SIGHTEDPASSING, SOC-DISCLOSE, SOC-INVISIBLE"
+  },
+  {
+    "Type": "Insight",
+    "#": 67,
+    "Title": "Suspicion is a use context",
+    "Note": "Scanning a product with the glasses takes longer than the one minute that retail loss prevention watches for. One participant restricts task use to a single store where the staff know her, and pre-announces what she is doing anywhere else. Race, region and disability are all doing work in this account, and none of it is in the product model of a shopping trip.",
+    "Spans": "T4",
+    "Evidence codes": "SOC-SUSPICION, SOC-DISCLOSE, OBJ-RETAIL"
+  },
+  {
+    "Type": "Insight",
+    "#": 68,
+    "Title": "Culture decides what recognition is worth",
+    "Note": "In a Caribbean family, entering a room requires naming each relative by title, and failing to do so is read as rudeness. Relatives also decline to identify themselves as a joke. Face recognition is not a convenience in this account. It is the difference between meeting an etiquette obligation and failing it in front of the family.",
+    "Spans": "T4",
+    "Evidence codes": "SOC-CULTURALNORM, PPL-NOFACE, PPL-FAMILYCONSENT"
+  },
+  {
+    "Type": "Insight",
+    "#": 69,
+    "Title": "Gender guessing carries a social cost the user absorbs",
+    "Note": "A participant recounts using a wrong pronoun for a store assistant and feeling the room go quiet. Her response is to stop using pronouns entirely. She still wants the device to tell her gender and age for personal safety while waiting for a bus. Both things are true at once, and no current design position holds them together.",
+    "Spans": "T4, T14",
+    "Evidence codes": "PPL-PRONOUN, PPL-DEMOGRAPHICS, SAF-SECURITY"
+  },
+  {
+    "Type": "Insight",
+    "#": 70,
+    "Title": "A still frame cannot carry a changing state",
+    "Note": "A flashing hospital monitor, a blinking washer light, an alternating panel. The single most urgent thing in the room is the thing a photograph cannot report. One participant got a blood pressure figure from the monitor and still could not learn which line was flashing yellow, which was the only thing she asked.",
+    "Spans": "T3, T1",
+    "Evidence codes": "OBJ-DYNAMICSTATE, OBJ-COLOR, RSG-TASKGUIDE"
+  },
+  {
+    "Type": "Insight",
+    "#": 71,
+    "Title": "Users precondition the world so the device can succeed",
+    "Note": "Move to a window for natural light. Raise the screen contrast and clean the glass. Flip the box so the label faces out. Hold a known red next to the unknown one. This work is invisible, uncompensated, and it is what separates the participants who report high accuracy from those who do not.",
+    "Spans": "T19, T2",
+    "Evidence codes": "ENV-USERPREP, READ-AIM, OBJ-COLOR"
+  },
+  {
+    "Type": "Insight",
+    "#": 72,
+    "Title": "Reassurance is what people offer instead of information",
+    "Note": "Asked whether two garments match, sighted companions answer that it will blend in and it is alright. The participant wants the fact. The device does something adjacent: one participant says her glasses will not give a mean response and reads the answer as creative. The same failure mode appears in the human layer and the model layer.",
+    "Spans": "T4, T15",
+    "Evidence codes": "SOC-REASSURANCE, TRU-SYCOPHANCY, EMP-SELFIMAGE"
+  },
+  {
+    "Type": "Insight",
+    "#": 73,
+    "Title": "Accessibility disclosure runs one way",
+    "Note": "A rideshare app tells the rider that the driver is hearing impaired and tells the driver nothing about the rider. The participant names this as unfair without prompting. It is the same asymmetry the study is tracking inside the device, observed here in the surrounding service layer.",
+    "Spans": "T19, T16",
+    "Evidence codes": "ENV-DISCLOSUREASYM, NAV-RIDESHARE, LANG-NONNATIVE"
+  },
+  {
+    "Type": "Insight",
+    "#": 74,
+    "Title": "The peer channel decides what a user knows the device can do",
+    "Note": "The participant furthest outside the community channels is also the one who did not know the device ran an AI. She left the forums years ago, has one friend who uses the glasses, and finds that public how-to content teaches travel vlogging and covert recording. Awareness in this study tracks community membership more closely than it tracks tenure or technical comfort.",
+    "Spans": "T8, T12",
+    "Evidence codes": "SUP-ISOLATED, SUP-SIGHTEDCONTENT, SUP-TRAINING, NONUSE-AWARENESS"
+  },
+  {
+    "Type": "Insight",
+    "#": 75,
+    "Title": "Internalised judgement delays adoption before the device does",
+    "Note": "One participant did not carry a cane until her thirties because she was self-conscious, and now describes the same feeling about the glasses. Another judged people using text to speech as lazy before his own vision changed, and says that belief is still slowing him down. Stigma is operating inside the user well before any bystander appears.",
+    "Spans": "T12, T4",
+    "Evidence codes": "ADOPT-SELFSTIGMA, SOC-STIGMA, SOC-SIGHTEDPASSING"
+  },
+  {
+    "Type": "Insight",
+    "#": 76,
+    "Title": "The rideshare kerb is the unsolved everyday task",
+    "Note": "All three participants this round raise it independently. One has entered a stranger’s car by mistake. One asked the device to watch for a white car and was told it could not. Colour, make and plate are all sitting in the app, and none of them survives the walk to the kerb.",
+    "Spans": "T16, T14",
+    "Evidence codes": "NAV-RIDESHARE, INT-PROACTIVE, SAF-SECURITY"
+  },
+  {
+    "Type": "Insight",
+    "#": 77,
+    "Title": "Co-occurring conditions decide which features get used",
+    "Note": "Attention, memory and auditory processing appear this round as determinants of use. One participant uses the timers because of ADHD. Another cannot adopt a screen reader because he processes speech poorly, and says print too small and speech too fast are the same barrier to him. Vision alone does not predict what the device is for.",
+    "Spans": "T12, T20",
+    "Evidence codes": "VIS-COOCCURRING, NAR-LISTENLOAD, VIS-DEPTH"
+  },
+  {
+    "Type": "Insight",
+    "#": 78,
+    "Title": "Two participants arrived for the camera",
+    "Note": "One bought into wearable cameras looking for evidence against strangers who approach her in the street, found the glasses in that search, and discovered the AI afterwards. Personal safety, not description, was the purchase reason. The most valuable capability in the product was a surprise that came with it.",
+    "Spans": "T12, T14",
+    "Evidence codes": "ADOPT-SEARCHPATH, SAF-EVIDENCE, CAP-POV"
+  },
+  {
+    "Type": "Insight",
+    "#": 79,
+    "Title": "One participant wants pixels rather than speech",
+    "Note": "The participant with the most usable central vision asks for an in-lens overlay that draws a circle around what he is looking for, and separately says the descriptions are too thin. Everyone else in the study is asking for better audio. Vision history is producing genuinely different products again, and this is the first request in the set that audio cannot satisfy.",
+    "Spans": "T11, T12",
+    "Evidence codes": "DES-DISPLAY, OBJ-VERBOSITY, ADOPT-VISIONCHANGE"
+  },
+  {
+    "Type": "Insight",
+    "#": 80,
+    "Title": "Policy refusals are read as reasonable and remembered as loss",
+    "Note": "Medication dates, card numbers and person description all return refusals this round. Every participant supplies a liability explanation unprompted and accepts it, then describes the loss anyway. One had card reading and lost it in an update. Compliance is being absorbed as a capability limit, which means it never reaches anyone as a complaint.",
+    "Spans": "T15, T2",
+    "Evidence codes": "TRU-POLICYATTRIB, READ-POLICYBLOCK, REL-REGRESSION, SUP-CHANGELOG"
+  },
+  {
+    "Type": "Insight",
+    "#": 81,
+    "Title": "The interview effect is now in nine of seventeen sessions",
+    "Note": "Two more participants end the session naming things they intend to try, and one describes the exchange as putting the pieces together. One learned mid-interview that the device runs a general AI. This is a durable finding about the state of user knowledge, and it is also a standing threat to the validity of any self-report on capability in this sample.",
+    "Spans": "T12, T8",
+    "Evidence codes": "ADOPT-INTERVIEWEFFECT, NONUSE-AWARENESS, ADOPT-MENTALMODEL"
+  },
+  {
+    "Type": "Insight",
+    "#": 82,
+    "Title": "Open ear is the feature, and it is not the AI",
+    "Note": "The single most-used capability across the three new participants is audio playback with the ears left open. One names it as her favourite property of the device, and gives up the AI features rather than the ambient hearing when the two conflict. Half of what makes this device work for these users has nothing to do with the camera.",
+    "Spans": "T7, T20",
+    "Evidence codes": "ECO-OPENEAR, ECO-AUDIO, NAR-VOICEQUALITY"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C1",
+    "Title": "The reliability and recovery gap",
+    "Note": "Intermittent failure, no resume, wake-word cut-offs, Wi-Fi and battery limits. One experience: it fails ungracefully and can't pick up where it left off.",
+    "Spans": "T1, T5",
+    "Evidence codes": "REL-INTERMITTENT, REL-NORESUME, REL-WAKEFAIL, REL-WIFI, REL-BATTERY, INT-NOMEMORY"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C2",
+    "Title": "Hands-free-first, human-backed workflow",
+    "Note": "Accuracy gaps the user can't detect. Numbers, money, handwriting, colour, silent summaries. No confidence signal to catch them.",
+    "Spans": "T7, T2, T3",
+    "Evidence codes": "ECO-HANDSFREE, ECO-FALLBACK, READ-CURRENCY, OBJ-FINDOBJ"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C3",
+    "Title": "The social-visibility tax",
+    "Note": "Conspicuous hardware plus voice-only input. Both push the device out of the settings where users most want it.",
+    "Spans": "T4",
+    "Evidence codes": "SOC-STIGMA, SOC-VOICEPUBLIC, SOC-NOISE"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C4",
+    "Title": "Independence & dignity as the true value",
+    "Note": "Support, purchase channel, onboarding, facilitator networks. Everything before first successful use.",
+    "Spans": "T10, T3",
+    "Evidence codes": "EMP-INDEPENDENCE, OBJ-COLOR, PPL-LOCATE, OBJ-FINDOBJ"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C5",
+    "Title": "The ownership journey (buy → set up → support)",
+    "Note": "Independence, novel uses, learning, companionship. The reasons users tolerate all of the above.",
+    "Spans": "T8",
+    "Evidence codes": "SUP-CHANNEL, SUP-BROKEN, SUP-ONBOARD, SUP-COMMUNITY"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C6",
+    "Title": "The activation gap",
+    "Note": "Awareness, confidence, habit, fit, battery anxiety and human substitutes. Six different causes, one outcome: capable hardware sitting unused.",
+    "Spans": "T12, T8, T11",
+    "Evidence codes": "ADOPT-UTILIZATION, NONUSE-AWARENESS, NONUSE-CONFIDENCE, NONUSE-HABIT, NONUSE-BATTERY, NONUSE-HUMAN"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C7",
+    "Title": "The framing and scoping problem",
+    "Note": "Cannot see where the camera points, cannot narrow what it answers about, cannot control detail level. One root cause: no shared reference between user and camera.",
+    "Spans": "T2, T3, T5",
+    "Evidence codes": "READ-AIM, READ-GUIDANCE, OBJ-CLUTTER, OBJ-SPECIFICITY, OBJ-VERBOSITY, INT-POINTING"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C8",
+    "Title": "Trust without verification",
+    "Note": "Ratings of 4 to 5, verification by prior knowledge or nothing, confident errors, no confidence signal, and a second AI used to check the first.",
+    "Spans": "T15",
+    "Evidence codes": "TRU-RATING, TRU-VERIFY, TRU-FAMILIARITY, TRU-HALLUCINATION, TRU-CROSSAI, TRU-STAKES"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C9",
+    "Title": "Hardware that has to live on a face all day",
+    "Note": "Sizing, weight, prescription, tint, control layout, handedness, case noise, fogging. Everything below the software line.",
+    "Spans": "T11",
+    "Evidence codes": "DES-FIT, DES-WEIGHT, DES-PRESCRIPTION, DES-TINT, DES-CONTROLS, DES-HANDEDNESS, DES-AUDIBLEALERT, DES-STEAM"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C10",
+    "Title": "Fluent failure",
+    "Note": "Fabrication, silent omission, editorial padding, suspected flattery, no confidence signal, no witness to check against. One experience: the wrong answer sounds exactly like the right one.",
+    "Spans": "T15, T2",
+    "Evidence codes": "TRU-HALLUCINATION, TRU-SYCOPHANCY, TRU-NOWITNESS, TRU-CONFIDENCE, READ-SUMMARY, ECO-OCRVSLLM"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C11",
+    "Title": "The cost of trying",
+    "Note": "Patience, retries, wording, one bad answer, employer clock, self-blame, anticipated failure. Six routes to the same outcome: the device is not reached for.",
+    "Spans": "T12, T18",
+    "Evidence codes": "NONUSE-PATIENCE, ADOPT-ONESTRIKE, INT-PROMPTCRAFT, WORK-TIMEPRESSURE, TRU-SELFBLAME, NONUSE-ANTICIPATED"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C12",
+    "Title": "Capture as a first-class task",
+    "Note": "Point of view video, framing, record state, file names, audio bleed, sharing, publishing, bystander redaction. The camera pointed outward at an audience rather than inward at the user.",
+    "Spans": "T17, T9",
+    "Evidence codes": "CAP-POV, CAP-AIM, CAP-FRAMING, CAP-RECORDSTATE, CAP-FILEMGMT, CAP-AUDIOBLEED, CAP-SHARE, PRV-CAPTUREREDACT"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C13",
+    "Title": "Barriers the device did not create",
+    "Note": "Print design, packaging, menus, QR codes, venue lighting, appliance panels, unlabeled app controls, screens unreadable outdoors.",
+    "Spans": "T19",
+    "Evidence codes": "ENV-LOWCONTRAST, ENV-TEXTINIMAGE, ENV-QRCODE, ENV-LIGHTING, ENV-PANEL, ENV-UNLABELED, ENV-SCREENGLARE, READ-GLARE"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C14",
+    "Title": "Getting there",
+    "Note": "Signs, addresses, walking directions, indoor layout, nearby places, and a flat refusal to treat any of it as mobility.",
+    "Spans": "T16, T14",
+    "Evidence codes": "NAV-SIGNS, NAV-ADDRESS, NAV-DIRECTIONS, NAV-POI, NAV-INDOOR, NAV-EXPLORE, SAF-MOBILITYRULE"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C15",
+    "Title": "The human in the loop",
+    "Note": "Volunteer calls through the camera, task guidance, connect time, no answer, image too poor for the helper. A whole interaction model running on hardware designed for a different one.",
+    "Spans": "T21, T7",
+    "Evidence codes": "RSG-TASKGUIDE, RSG-PREFERRED, RSG-CONNECTCOST, RSG-NOANSWER, RSG-CAMERALIMIT, ECO-FALLBACK"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C16",
+    "Title": "The disposable device",
+    "Note": "Battery decay, sealed cells, aftermarket packs, spare pairs, per-pair setup, breakage and loss. How long the access lasts, rather than what it does.",
+    "Spans": "T22, T11, T13",
+    "Evidence codes": "LIFE-BATTERYDEGRADE, LIFE-SEALED, LIFE-ACCESSORY, LIFE-SPARE, DES-DURABILITY, NONUSE-LOSSRISK, SUP-MULTIPAIR"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C17",
+    "Title": "The narration dial",
+    "Note": "Always-on description, filtering, priority, pause, speech rate, talking over people. One feature with six missing controls.",
+    "Spans": "T20, T5",
+    "Evidence codes": "NAR-CONTINUOUS, NAR-FILTER, NAR-PRIORITY, NAR-PAUSE, NAR-SPEED, NAR-INTERRUPT, INT-LIVEAI"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C18",
+    "Title": "Interfaces the glasses can read and cannot touch",
+    "Note": "Kiosks, card readers, ticket machines, unlabeled app controls, on-screen buttons, live screens. Information arrives, action does not.",
+    "Spans": "T19, T2",
+    "Evidence codes": "ENV-DIGITALKIOSK, ENV-UNLABELED, READ-NOACTION, READ-SCREENREFRESH, CAP-SHAREBLOCK"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C19",
+    "Title": "The sighted-default layer",
+    "Note": "Answers phrased for a viewer. Coaching that assumes a hand and an eye. Absence asserted as fact. Directions with no body-relative anchor. The failure is in how the answer is composed rather than in whether it is correct.",
+    "Spans": "T5, T16, T2",
+    "Evidence codes": "INT-SIGHTEDASSUMPTION, NAV-EGOCENTRIC, READ-IMPOSSIBLEFIX, TRU-FALSENEGATIVE, INT-INTENTROUTE"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C20",
+    "Title": "Failures with no detection route",
+    "Note": "Stated absences, fluent misroutes, unreported changing states, and a user with no method of checking any of it. The category the study is now organised around.",
+    "Spans": "T15, T3",
+    "Evidence codes": "TRU-UNVERIFIABLE, TRU-FALSENEGATIVE, TRU-NOWITNESS, OBJ-DYNAMICSTATE, TRU-BASELINE, TRU-CANECHECK, TRU-CALIBRATE"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C21",
+    "Title": "Being seen wearing it",
+    "Note": "Read as sighted, read as a shoplifter, challenged over recording, and self-conscious before any of that happens. The social cost of the object on the face, separate from anything it does.",
+    "Spans": "T4, T12",
+    "Evidence codes": "SOC-SIGHTEDPASSING, SOC-SUSPICION, SOC-DISCLOSE, SOC-ACCESSCHALLENGE, ADOPT-SELFSTIGMA, SOC-MISSEDGESTURE"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C22",
+    "Title": "What the user does so it can work",
+    "Note": "Preconditioning the light, the contrast, the orientation and the reference colour. Announcing the device to staff. Arriving early. Carrying spares. Unpaid work that decides the accuracy the user reports.",
+    "Spans": "T19, T12",
+    "Evidence codes": "ENV-USERPREP, SOC-DISCLOSE, NONUSE-PREPARATION, ADOPT-LABELRELIEF, LIFE-SPARE"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C23",
+    "Title": "The things nobody has built",
+    "Note": "Rideshare pickup, unoccupied seats, a live exercise class, animal care, sound identification, an in-lens overlay. Frequent, ordinary, and absent from every roadmap the participants can name.",
+    "Spans": "T16, T10",
+    "Evidence codes": "NAV-RIDESHARE, NAV-SEATFIND, EMP-CLASSFOLLOW, CARE-PET, INT-AUDIOSENSE, DES-DISPLAY, EMP-DRIVING"
+  },
+  {
+    "Type": "Insight",
+    "#": 31,
+    "Title": "Coding date was masquerading as a finding",
+    "Note": "Three things reported as new in round 3 were present in the first interview in the study. The codebook grew, and growth in the codebook was being read as change in the population. Any claim of the form this is newly visible has to survive a backward pass before it goes in a paper.",
+    "Spans": null,
+    "Evidence codes": "NAV-EGOCENTRIC, NAV-RIDESHARE, PRV-AUDIOLEAK"
+  },
+  {
+    "Type": "Insight",
+    "#": 32,
+    "Title": "The camera carries a human in nine of seventeen, not six",
+    "Note": "Remote sighted guidance was themed in round 2, so a third of the corpus was never coded for it. P005 is the sharpest case: the volunteer supplies the turn-left, move-closer coaching the on-board AI does not, which makes the human a workaround for a specific missing feature rather than a general fallback.",
+    "Spans": "T21",
+    "Evidence codes": "RSG-TASKGUIDE, RSG-CAMERALIMIT, RSG-CONNECTCOST, RSG-PREFERRED"
+  },
+  {
+    "Type": "Insight",
+    "#": 33,
+    "Title": "Verification has a middle tier that the taxonomy is missing",
+    "Note": "Between checking nothing and having a sighted witness sits testing the device on something already known. P007 with a bottle of iced tea, P008 with a route to an exit he can already find, P016 asking the same question twice. It is cheap, it is deliberate, and it only calibrates trust on tasks where the device adds nothing.",
+    "Spans": "T15",
+    "Evidence codes": "TRU-CALIBRATE, TRU-FAMILIARITY"
+  },
+  {
+    "Type": "Insight",
+    "#": 34,
+    "Title": "The privacy concern that governs behaviour is the speech, not the image",
+    "Note": "P001 will not let it describe a person within earshot of that person. P004 chose the glasses over the phone partly because a speakerphone broadcasts. P014 turns the volume down around others. The interview guide asks about the camera; the participants answer about the speaker.",
+    "Spans": "T9",
+    "Evidence codes": "PRV-AUDIOLEAK, PRV-IDENTIFIER, PRV-MENTALMODEL"
+  },
+  {
+    "Type": "Cluster",
+    "#": "C24",
+    "Title": "What the first interview already contained",
+    "Note": "P001 in June reports body-relative directions, orientation coaching, letter-by-letter menu failure, audio leaking to bystanders, a phone range limit, and relying on a sighted photographer for a check she cannot perform. Six findings the study went on to discover again.",
+    "Spans": "T16, T2, T9, T15",
+    "Evidence codes": "NAV-EGOCENTRIC, OBJ-ORIENT, READ-MENU, PRV-AUDIOLEAK, PHN-TETHER, TRU-UNVERIFIABLE"
+  }
+]

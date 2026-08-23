@@ -1,0 +1,127 @@
+{
+  "id": "chart-13",
+  "number": 13,
+  "title": "Theme weight and theme breadth",
+  "caption": "Two bars off one table. Evidence rows show where the corpus sits. Participant counts show which themes are universal and which rest on a few people.",
+  "source_tab": null,
+  "chart_type": "bar",
+  "columns": [
+    "Theme",
+    "Evidence rows",
+    "Participants (of 17)"
+  ],
+  "rows": [
+    [
+      "T1 Reliability & Connectivity",
+      110,
+      17
+    ],
+    [
+      "T2 Reading & Text",
+      171,
+      17
+    ],
+    [
+      "T3 Object & Scene Description",
+      164,
+      17
+    ],
+    [
+      "T4 People & Social",
+      181,
+      17
+    ],
+    [
+      "T5 Interaction Model",
+      116,
+      16
+    ],
+    [
+      "T6 Phone and Glasses Conflict",
+      17,
+      4
+    ],
+    [
+      "T7 Assistive Ecosystem",
+      240,
+      17
+    ],
+    [
+      "T8 Support & Onboarding",
+      59,
+      15
+    ],
+    [
+      "T9 Privacy",
+      103,
+      17
+    ],
+    [
+      "T10 Empowerment & Emergent Value",
+      109,
+      17
+    ],
+    [
+      "T11 Device Form & Fit",
+      72,
+      17
+    ],
+    [
+      "T12 Adoption & Non-Use",
+      236,
+      17
+    ],
+    [
+      "T13 Cost & Vendor Viability",
+      23,
+      8
+    ],
+    [
+      "T14 Safety & Physical Risk",
+      43,
+      15
+    ],
+    [
+      "T15 Trust & Verification",
+      199,
+      17
+    ],
+    [
+      "T16 Navigation & Wayfinding",
+      105,
+      16
+    ],
+    [
+      "T17 Content Creation & Capture",
+      39,
+      10
+    ],
+    [
+      "T18 Work & Vocational Use",
+      27,
+      10
+    ],
+    [
+      "T19 Environmental & Information Design",
+      56,
+      11
+    ],
+    [
+      "T20 Continuous Narration & Attention",
+      26,
+      7
+    ],
+    [
+      "T21 Remote Sighted Guidance",
+      36,
+      8
+    ],
+    [
+      "T22 Device Lifecycle & Repairability",
+      14,
+      5
+    ]
+  ],
+  "footnote": null,
+  "alt_text": null
+}

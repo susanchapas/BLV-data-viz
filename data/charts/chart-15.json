@@ -1,0 +1,47 @@
+{
+  "id": "chart-15",
+  "number": 15,
+  "title": "Verification routes participants actually name",
+  "caption": "Bar. Every route except the first two needs something the product does not supply. Counts are participants, so a route named twice by one person counts once.",
+  "source_tab": null,
+  "chart_type": "bar",
+  "columns": [
+    "Route",
+    "Participants (of 17)",
+    "Evidence rows"
+  ],
+  "rows": [
+    [
+      "A sighted person or a volunteer",
+      11,
+      29
+    ],
+    [
+      "Prior knowledge of the answer",
+      8,
+      15
+    ],
+    [
+      "A second app or a second AI",
+      13,
+      29
+    ],
+    [
+      "Stakes-based selective checking",
+      5,
+      10
+    ],
+    [
+      "The cane or touch",
+      5,
+      9
+    ],
+    [
+      "No route at all",
+      8,
+      15
+    ]
+  ],
+  "footnote": null,
+  "alt_text": null
+}

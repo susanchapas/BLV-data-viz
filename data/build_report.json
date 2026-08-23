@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Evidence row count is 2146",
+    "status": "PASS",
+    "detail": "got 2146"
+  },
+  {
+    "name": "Distinct codes in Evidence = 361",
+    "status": "PASS",
+    "detail": "got 361"
+  },
+  {
+    "name": "Codebook row count = 361",
+    "status": "PASS",
+    "detail": "got 361"
+  },
+  {
+    "name": "Every Evidence code exists in Codebook",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "name": "Codebook codes in Evidence or with status",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "name": "Codebook participant sums = Total",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "name": "Sub-themes participant sums = Coded quotes",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "name": "Findings totals = Evidence theme counts",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "name": "VA Rows = sum of participant columns",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "name": "VA Participants = count of non-zero columns",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "name": "Chart 1 totals reconcile to VA by detectability",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "name": "Chart 2 row count = VA mode count",
+    "status": "PASS",
+    "detail": "chart=28, va=28"
+  },
+  {
+    "name": "Basis references resolve to Evidence rows",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "name": "Cross-tab code references exist in Codebook",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "name": "Opportunities Fixes resolve to Pain Points tags",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "name": "Participant count is 17",
+    "status": "PASS",
+    "detail": "got 17"
+  },
+  {
+    "name": "Device split: 16 Ray-Ban Meta + 1 EchoVision",
+    "status": "PASS",
+    "detail": "RBM=16, EchoVision=1"
+  }
+]

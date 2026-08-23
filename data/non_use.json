@@ -1,0 +1,373 @@
+[
+  {
+    "Reason": "Did not know it could do that",
+    "Who": "P002, P003, P004, P010, P011",
+    "What it looks like": "Photo framing assist, person recognition, Spanish commands, outfit feedback, the touchpad, general AI questions.",
+    "Primary code": "NONUSE-AWARENESS",
+    "Lever": "Activation and prompting"
+  },
+  {
+    "Reason": "Never thought to try it",
+    "Who": "P010 (repeatedly), P011",
+    "What it looks like": "Makeup, outfit checks, clothes shopping, follow-up questions.",
+    "Primary code": "NONUSE-AWARENESS",
+    "Lever": "Activation and prompting"
+  },
+  {
+    "Reason": "Hesitancy and AI shyness",
+    "Who": "P010, P011, P003",
+    "What it looks like": "Intimidated by conversational AI. Two dislike new technology in general.",
+    "Primary code": "NONUSE-CONFIDENCE",
+    "Lever": "Onboarding and confidence"
+  },
+  {
+    "Reason": "Forgets to wear or carry it",
+    "Who": "P010",
+    "What it looks like": "Constantly wishes she had them when out. Leaves them at home.",
+    "Primary code": "NONUSE-HABIT",
+    "Lever": "Habit and form factor"
+  },
+  {
+    "Reason": "Frames do not stay on the face",
+    "Who": "P010, P011",
+    "What it looks like": "Too wide, heavy, slide to the nose. Directly named as a reason for lower use.",
+    "Primary code": "DES-FIT",
+    "Lever": "Hardware"
+  },
+  {
+    "Reason": "Battery anxiety",
+    "Who": "P010, P004, P001",
+    "What it looks like": "Leaves them behind, or carries a backup pair, because the charge may not last.",
+    "Primary code": "NONUSE-BATTERY",
+    "Lever": "Hardware"
+  },
+  {
+    "Reason": "A human helper already does it",
+    "Who": "P003 (live-in aide), P010 (husband, daughter), P004 (occasionally)",
+    "What it looks like": "Appliances, makeup, clothes shopping, photo verification.",
+    "Primary code": "NONUSE-HUMAN",
+    "Lever": "Positioning"
+  },
+  {
+    "Reason": "Existing tactile or memory system works",
+    "Who": "P004, P001, P010, P011",
+    "What it looks like": "Braille and tactile labels, fixed order, known layout, tabbed appliances, residual vision.",
+    "Primary code": "NONUSE-TACTILE",
+    "Lever": "Positioning"
+  },
+  {
+    "Reason": "Mobility limits collapse the use context",
+    "Who": "P003",
+    "What it looks like": "Wheelchair and fall risk after a shoulder replacement. Use narrowed to one desk.",
+    "Primary code": "NONUSE-MOBILITY",
+    "Lever": "Population coverage"
+  },
+  {
+    "Reason": "No perceived need in that context",
+    "Who": "P003, P011, P004",
+    "What it looks like": "Rural setting with nothing to read, familiar routes, known house, no TV.",
+    "Primary code": "NONUSE-NOTNEEDED",
+    "Lever": "Positioning"
+  },
+  {
+    "Reason": "Reliability makes it not worth starting",
+    "Who": "P001, P002",
+    "What it looks like": "Cold-start ritual, repeated wake words, drops mid-task.",
+    "Primary code": "REL-INTERMITTENT",
+    "Lever": "Reliability"
+  },
+  {
+    "Reason": "Social setting makes it awkward",
+    "Who": "P002, P001, P011",
+    "What it looks like": "Church, restaurants, meetings. Voice commands draw attention or interrupt.",
+    "Primary code": "SOC-VOICEPUBLIC",
+    "Lever": "Interaction design"
+  },
+  {
+    "Reason": "Prescription or lens conflict",
+    "Who": "P004, P010",
+    "What it looks like": "Second pair of reading glasses stops it working. Tint darkens residual vision.",
+    "Primary code": "DES-PRESCRIPTION",
+    "Lever": "Hardware"
+  },
+  {
+    "Reason": "Privacy self-restriction",
+    "Who": "P003, P004, P010, P011",
+    "What it looks like": "Bank statements, benefit letters, client records, private photos deliberately kept away from it.",
+    "Primary code": "PRV-DATAHYGIENE",
+    "Lever": "Trust and policy"
+  },
+  {
+    "Reason": "Patience runs out before the read succeeds",
+    "Who": "P006 (repeatedly), P005, P007",
+    "What it looks like": "Turns the item over and over, then reaches for another app. Named six times unprompted.",
+    "Primary code": "NONUSE-PATIENCE",
+    "Lever": "Time to first correct answer"
+  },
+  {
+    "Reason": "One bad answer retires the task",
+    "Who": "P007 (severe), P005",
+    "What it looks like": "A single fabrication ends that use case. Return needs outside proof, not a retry.",
+    "Primary code": "ADOPT-ONESTRIKE",
+    "Lever": "Accuracy and confidence signals"
+  },
+  {
+    "Reason": "Never tried, expects failure",
+    "Who": "P005, P006",
+    "What it looks like": "Long documents, appliance panels, live mode. Ruled out in advance, no failure on record.",
+    "Primary code": "NONUSE-ANTICIPATED",
+    "Lever": "Activation and prompting"
+  },
+  {
+    "Reason": "Existing habit wins",
+    "Who": "P008",
+    "What it looks like": "Asks the smart speaker or the search engine out of years of practice. The glasses never get the question.",
+    "Primary code": "ADOPT-INCUMBENT",
+    "Lever": "Activation and prompting"
+  },
+  {
+    "Reason": "Prepares ahead so it is not needed",
+    "Who": "P008",
+    "What it looks like": "Studies the menu at home. Asks a friend to meet at the door. Avoids dark venues.",
+    "Primary code": "NONUSE-PREPARATION",
+    "Lever": "Positioning"
+  },
+  {
+    "Reason": "Nervous about calling a human volunteer",
+    "Who": "P006, P005",
+    "What it looks like": "Does not know who will answer. Does not want to spend a stranger's time. Paid agents feel safer.",
+    "Primary code": "ECO-VOLUNTEERANXIETY",
+    "Lever": "Onboarding and confidence"
+  },
+  {
+    "Reason": "Barred on safety grounds",
+    "Who": "P006",
+    "What it looks like": "Stated as doctrine. Never a mobility tool, whatever it describes.",
+    "Primary code": "SAF-MOBILITYRULE",
+    "Lever": "Positioning"
+  },
+  {
+    "Reason": "Output cannot beat the room",
+    "Who": "P007, P008, P006",
+    "What it looks like": "Restaurants, street noise, church. Cannot hear the answer, so the task is dropped.",
+    "Primary code": "DES-AUDIOCEILING",
+    "Lever": "Hardware"
+  },
+  {
+    "Reason": "Vendor distrust",
+    "Who": "P007",
+    "What it looks like": "Declines live conversation because of ad targeting. Same data, different company, different comfort.",
+    "Primary code": "PRV-VENDORTRUST",
+    "Lever": "Trust and policy"
+  },
+  {
+    "Reason": "Loss and breakage risk",
+    "Who": "P014, P015",
+    "What it looks like": "A $250 pair with no impact rating. Left at home for running, transit and crowds. One report of a blind walker breaking a pair on a wall.",
+    "Primary code": "NONUSE-LOSSRISK",
+    "Lever": "Hardware"
+  },
+  {
+    "Reason": "Battery degradation and a sealed cell",
+    "Who": "P016, P015",
+    "What it looks like": "Runtime falls year on year, the cell cannot be replaced, and use falls with it.",
+    "Primary code": "LIFE-BATTERYDEGRADE",
+    "Lever": "Hardware"
+  },
+  {
+    "Reason": "Pressure on the face across a day",
+    "Who": "P016",
+    "What it looks like": "Not session discomfort. Named alongside battery as the reason a heavy user became occasional.",
+    "Primary code": "DES-PRESSURE",
+    "Lever": "Hardware"
+  },
+  {
+    "Reason": "Distrust learned from someone else",
+    "Who": "P017",
+    "What it looks like": "Currency reading retired on the strength of a failure watched in another user's video. Never personally attempted.",
+    "Primary code": "TRU-SECONDHAND",
+    "Lever": "Accuracy and confidence signals"
+  },
+  {
+    "Reason": "The people around the user refuse enrollment",
+    "Who": "P014",
+    "What it looks like": "Wife and daughter declined to be added, so the household's most valuable feature was never tested.",
+    "Primary code": "PPL-FAMILYCONSENT",
+    "Lever": "Trust and policy"
+  },
+  {
+    "Reason": "Parents or partner already do it",
+    "Who": "P017, P014",
+    "What it looks like": "Mail, groceries, menus, labels. Where a person is on hand the device is never reached for.",
+    "Primary code": "NONUSE-HUMAN",
+    "Lever": "Positioning"
+  },
+  {
+    "Reason": "Will not point the camera in a private space",
+    "Who": "P017",
+    "What it looks like": "Bathrooms and changing rooms. The wearer self-restricts to protect bystanders.",
+    "Primary code": "PRV-PRIVATESPACE",
+    "Lever": "Trust and policy"
+  },
+  {
+    "Reason": "Routes visual work to a human instead",
+    "Who": "P016",
+    "What it looks like": "Rates the AI 2 of 5 and calls a volunteer for anything that matters. The AI is the fallback, not the default.",
+    "Primary code": "RSG-PREFERRED",
+    "Lever": "Accuracy and confidence signals"
+  },
+  {
+    "Reason": "Never tried the continuous mode",
+    "Who": "P015",
+    "What it looks like": "Two years of daily use, unsure whether the feature exists on his own device.",
+    "Primary code": "NONUSE-AWARENESS",
+    "Lever": "Activation and prompting"
+  },
+  {
+    "Reason": "No context for the task",
+    "Who": "P015",
+    "What it looks like": "Describes himself as a homebody. Person recognition, social settings and navigation have no occasion to arise.",
+    "Primary code": "NONUSE-NOTNEEDED",
+    "Lever": "Positioning"
+  },
+  {
+    "Reason": "Does not know it is a general AI",
+    "Who": "P009",
+    "What it looks like": "Nine months of daily use as a one-step reader. Never asked a follow-up question. Learned during the interview that the assistant is general purpose.",
+    "Primary code": "ADOPT-MENTALMODEL",
+    "Lever": "Activation and prompting"
+  },
+  {
+    "Reason": "Satisfied enough to stop asking",
+    "Who": "P009 (repeatedly)",
+    "What it looks like": "Happy with mail and ingredients, so never investigates what else it does. Says five times that she is not asking enough.",
+    "Primary code": "ADOPT-CEILINGSATISFIED",
+    "Lever": "Activation and prompting"
+  },
+  {
+    "Reason": "Outside the peer channel",
+    "Who": "P009",
+    "What it looks like": "Left the forums years ago. One friend is the whole information source. Public tutorials are made by and for sighted users.",
+    "Primary code": "SUP-ISOLATED",
+    "Lever": "Onboarding and confidence"
+  },
+  {
+    "Reason": "Read as suspicious in a shop",
+    "Who": "P009",
+    "What it looks like": "Task use confined to one store where staff know her. Announces the device pre-emptively anywhere else.",
+    "Primary code": "SOC-SUSPICION",
+    "Lever": "Positioning"
+  },
+  {
+    "Reason": "Bystanders treat her as sighted",
+    "Who": "P009",
+    "What it looks like": "Named as the largest barrier to outdoor use. People stop making way and start gesturing once the glasses are on.",
+    "Primary code": "SOC-SIGHTEDPASSING",
+    "Lever": "Interaction design"
+  },
+  {
+    "Reason": "Disconnects when she moves",
+    "Who": "P009",
+    "What it looks like": "Bending or looking down stops the session. Switched back to earbuds for a cleaning job.",
+    "Primary code": "REL-MOTIONDROP",
+    "Lever": "Reliability"
+  },
+  {
+    "Reason": "The live voice is unpleasant",
+    "Who": "P012",
+    "What it looks like": "Echoing and tunnel-like, and it masks natural hearing. Tried a handful of times and abandoned.",
+    "Primary code": "NAR-VOICEQUALITY",
+    "Lever": "Hardware"
+  },
+  {
+    "Reason": "Believed the feature was unavailable here",
+    "Who": "P013",
+    "What it looks like": "Never tried person recognition because he understood it was not offered in the United States.",
+    "Primary code": "NONUSE-ANTICIPATED",
+    "Lever": "Activation and prompting"
+  },
+  {
+    "Reason": "Crowds consume the attention",
+    "Who": "P013",
+    "What it looks like": "Penn Station takes all the cognitive load he has, so the features go unused exactly where they would help most.",
+    "Primary code": "NAV-COGLOAD",
+    "Lever": "Interaction design"
+  },
+  {
+    "Reason": "Never set up the volunteer service",
+    "Who": "P013",
+    "What it looks like": "Uses Be My Eyes on the phone and has never connected it to the glasses in fifteen months.",
+    "Primary code": "ECO-INTEGRATIONSETUP",
+    "Lever": "Onboarding and confidence"
+  },
+  {
+    "Reason": "Does not know the wording",
+    "Who": "P013",
+    "What it looks like": "Calls the trigger phrase the magic words and cannot reliably produce it. Blames himself.",
+    "Primary code": "INT-COMMANDSYNTAX",
+    "Lever": "Activation and prompting"
+  },
+  {
+    "Reason": "Judged the tool before needing it",
+    "Who": "P013",
+    "What it looks like": "Thought people using text to speech were lazy. Says that belief is still slowing his own adoption down.",
+    "Primary code": "ADOPT-SELFSTIGMA",
+    "Lever": "Onboarding and confidence"
+  },
+  {
+    "Reason": "Will not ask the question she fears",
+    "Who": "P009",
+    "What it looks like": "Asks for a general description rather than name the snake she is afraid of. Wants to know and does not want to know.",
+    "Primary code": "SAF-NOASK",
+    "Lever": "Trust and policy"
+  },
+  {
+    "Reason": "Keeps it away from the pharmacy label",
+    "Who": "P009",
+    "What it looks like": "Comfortable with the dosage instructions read aloud, unwilling to have her name on the bottle captured.",
+    "Primary code": "PRV-IDENTIFIER",
+    "Lever": "Trust and policy"
+  },
+  {
+    "Reason": "Never thought to try it",
+    "Who": "P002, P005, P010",
+    "What it looks like": "Framing feedback before a photo, describing a laptop screen, outfit feedback, what the buttons do.",
+    "Primary code": "NONUSE-AWARENESS",
+    "Lever": "Activation and prompting"
+  },
+  {
+    "Reason": "Satisfied with what it already does",
+    "Who": "P010",
+    "What it looks like": "Never asks a follow-up because the first description is enough. Satisfaction reads as sufficiency and caps the request list.",
+    "Primary code": "ADOPT-CEILINGSATISFIED",
+    "Lever": "Activation and prompting"
+  },
+  {
+    "Reason": "An established tactile system already works",
+    "Who": "P001, P004",
+    "What it looks like": "Appliances tabbed, spices labelled by touch and kept in a fixed order. The task was solved before the device arrived.",
+    "Primary code": "NONUSE-TACTILE",
+    "Lever": "Leave alone"
+  },
+  {
+    "Reason": "Would not touch the phone settings",
+    "Who": "P001",
+    "What it looks like": "Declined to switch Wi-Fi networks in a restaurant for fear of not getting the connection back.",
+    "Primary code": "NONUSE-CONFIDENCE",
+    "Lever": "Onboarding and confidence"
+  },
+  {
+    "Reason": "Doing without was the baseline",
+    "Who": "P001",
+    "What it looks like": "Left a graduate degree because the reading could not be done. The task never became a task performed badly.",
+    "Primary code": "ADOPT-GOWITHOUT",
+    "Lever": "Not visible in any usage log"
+  },
+  {
+    "Reason": "Cannot get to where it would help",
+    "Who": "P001",
+    "What it looks like": "No public transport she can reach, because the crossings between her and the pickup point were never learned.",
+    "Primary code": "NONUSE-MOBILITY",
+    "Lever": "Outside the product"
+  }
+]

@@ -1,0 +1,277 @@
+[
+  {
+    "Type": "Research",
+    "#": 1,
+    "Note": "Does the phone and glasses conflict hit most users, or just P001's hardware and operating system generation? Quantify it."
+  },
+  {
+    "Type": "Research",
+    "#": 2,
+    "Note": "How often does silent summarizing happen, and how much content goes missing? Measure against a full read."
+  },
+  {
+    "Type": "Research",
+    "#": 3,
+    "Note": "What share of users bought online and got stranded? Map purchase channel against first-year success."
+  },
+  {
+    "Type": "Research",
+    "#": 4,
+    "Note": "Would opt-in face enrollment survive a privacy review with blind users and with the people being enrolled?"
+  },
+  {
+    "Type": "Research",
+    "#": 5,
+    "Note": "Does a non-voice wake option actually get used in public, or do users still skip the task?"
+  },
+  {
+    "Type": "Research",
+    "#": 6,
+    "Note": "How much battery would a usable always-on mode need? What runtime do users call enough?"
+  },
+  {
+    "Type": "Research",
+    "#": 7,
+    "Note": "How often does the device answer from a stale frame, and can users detect it? P014's report is the first, and it is undetectable by design."
+  },
+  {
+    "Type": "Research",
+    "#": 8,
+    "Note": "Why does spoken framing guidance appear for some participants and not others? Same vendor, opposite reports from P014 and P017. Resolve before recommending it as a fix."
+  },
+  {
+    "Type": "Research",
+    "#": 9,
+    "Note": "What share of visual tasks go to a human volunteer rather than the on-board AI, and what does connect time cost? P016 suggests the majority."
+  },
+  {
+    "Type": "Research",
+    "#": 10,
+    "Note": "What is the real capacity curve on a two-year-old pair, and how many owners have hit the sealed-battery wall?"
+  },
+  {
+    "Type": "Research",
+    "#": 11,
+    "Note": "Would an on-device, wearer-local face enrollment model satisfy the family members who refused? The blocker is their consent, not the wearer's."
+  },
+  {
+    "Type": "Research",
+    "#": 12,
+    "Note": "Do users who run a continuous narration app keep it after a month, and which of the six missing controls decides that?"
+  },
+  {
+    "Type": "Research",
+    "#": 13,
+    "Note": "How much of the study's reported distrust is second-hand rather than experienced? P017 retired a use case he never tried."
+  },
+  {
+    "Type": "Research",
+    "#": 14,
+    "Note": "How many owners can name three features they have never used? Awareness is now the largest single gap across fourteen participants."
+  },
+  {
+    "Type": "Research",
+    "#": 15,
+    "Note": "Does pressure and weight predict reduced use better than battery does? Three participants now name fit or pressure directly."
+  },
+  {
+    "Type": "Research",
+    "#": 16,
+    "Note": "Which failures are policy refusals rather than capability limits, and would labelling them change trust?"
+  },
+  {
+    "Type": "Research",
+    "#": 17,
+    "Note": "How often does the device state that something is absent when it is present, and can any user detect it? The false negative is the cleanest test case for the detectability taxonomy and it has never been measured."
+  },
+  {
+    "Type": "Research",
+    "#": 18,
+    "Note": "What share of owners understand the device as a general assistant rather than a reader? Awareness has been treated as feature-level. One participant did not know the category."
+  },
+  {
+    "Type": "Research",
+    "#": 19,
+    "Note": "Does head movement drop the connection on other units? Single-source report, easy to test directly in the observation phase, and it would explain sessions other participants attribute to Wi-Fi."
+  },
+  {
+    "Type": "Research",
+    "#": 20,
+    "Note": "How much of the reported accuracy is produced by user preconditioning of light, contrast, orientation and reference objects? This work is currently invisible in every accuracy claim in the set."
+  },
+  {
+    "Type": "Research",
+    "#": 21,
+    "Note": "Do bystanders treat blind wearers as sighted, and does that change with frame style? Named as the largest barrier to outdoor use by one participant and as a benefit by another."
+  },
+  {
+    "Type": "Research",
+    "#": 22,
+    "Note": "Is card and payment reading being withdrawn by region or by account? One participant lost a working capability between updates. Dating these reports would establish whether the study caught a policy change in progress."
+  },
+  {
+    "Type": "Research",
+    "#": 23,
+    "Note": "How do users of the cane and the device combine them? One participant runs every spatial claim through the cane, which is the only repeatable verification method the study has observed."
+  },
+  {
+    "Type": "Research",
+    "#": 24,
+    "Note": "What is the recognition performance on culturally specific foods, garments and objects, and does it track training data coverage by community?"
+  },
+  {
+    "Type": "Research",
+    "#": 25,
+    "Note": "Would body-relative phrasing, a direction and a distance in feet, measurably reduce error and effort compared with the current deictic phrasing? Three participants ask for it in the same words."
+  },
+  {
+    "Type": "Research",
+    "#": 26,
+    "Note": "How many owners cannot recover the wording that triggers a capability, and does a spoken command list close it? Two participants blame themselves for a phrasing they were never given."
+  },
+  {
+    "Type": "Limitation",
+    "#": 1,
+    "Note": "sample size & demographics"
+  },
+  {
+    "Type": "Limitation",
+    "#": 2,
+    "Note": "some questions only asked of some participants"
+  },
+  {
+    "Type": "Limitation",
+    "#": 3,
+    "Note": "Reactivity is now visible in four participants who ended the session naming things they would go and try. The interview is an intervention."
+  },
+  {
+    "Type": "Limitation",
+    "#": 4,
+    "Note": "Nearly all accuracy reports are unverifiable. Only P008 can independently check what he is told, so most error rates here are self-assessed."
+  },
+  {
+    "Type": "Limitation",
+    "#": 5,
+    "Note": "Fourteen of a target twenty interviews are coded. P009, P012 and P013 are absent from this workbook; participant numbering is not contiguous."
+  },
+  {
+    "Type": "Limitation",
+    "#": 6,
+    "Note": "The new round is four men, which skews an otherwise mixed sample. Gender balance across the full set should be checked before any claim is broken out by gender."
+  },
+  {
+    "Type": "Limitation",
+    "#": 7,
+    "Note": "Three of the four new participants are not in paid employment, so the work-and-vocational theme rests on a narrow and shrinking base."
+  },
+  {
+    "Type": "Limitation",
+    "#": 8,
+    "Note": "Two of the four new participants live in Pennsylvania and one in New Jersey; the sample remains regionally concentrated in the mid-Atlantic."
+  },
+  {
+    "Type": "Limitation",
+    "#": 9,
+    "Note": "Device generation is unstated for three of the four new participants, so generation-linked differences in battery, camera and latency cannot be separated from device age."
+  },
+  {
+    "Type": "Limitation",
+    "#": 10,
+    "Note": "P016's account concerns a gen 1 device roughly two years old. Several of his reports may be artefacts of hardware age rather than current product behaviour."
+  },
+  {
+    "Type": "Limitation",
+    "#": 11,
+    "Note": "Reactivity is now visible in seven participants across the full set. The interview is reliably prompting intended behaviour change and should be reported as an effect."
+  },
+  {
+    "Type": "Limitation",
+    "#": 12,
+    "Note": "Two Sub-themes rows carry near-identical labels, 'No resume after a drop' and 'No resuming after a drop'. Counts are now formula-driven from the Evidence tab, so the stale variant reads zero. The row is retained rather than deleted."
+  },
+  {
+    "Type": "Limitation",
+    "#": 13,
+    "Note": "Comparison counts for the original ten participants are preserved as recorded. The new n=14 columns are computed fresh and may differ in interpretation from the earlier hand-coded columns."
+  },
+  {
+    "Type": "Limitation",
+    "#": 3,
+    "Note": "Participant count now 17 coded (P001 to P017). The earlier outline claimed 17 against 14 traceable rows; that discrepancy is closed by this round."
+  },
+  {
+    "Type": "Limitation",
+    "#": 4,
+    "Note": "P011 is on EchoVision rather than Ray-Ban Meta. Any pooled count needs a visible device split before it goes into a paper."
+  },
+  {
+    "Type": "Limitation",
+    "#": 5,
+    "Note": "P013 gender is unresolved. The transcript renders the answer as Mail at L479 while the interviewer uses she at L193 and the participant refers to a husband at L291. Verify with the participant before reporting demographics."
+  },
+  {
+    "Type": "Limitation",
+    "#": 6,
+    "Note": "Nine of seventeen sessions show an interview effect, with participants naming intentions they formed during the conversation. Self-reported capability knowledge in this sample is contaminated by the instrument."
+  },
+  {
+    "Type": "Limitation",
+    "#": 7,
+    "Note": "Ratings carry an acknowledged generosity bias. Two participants said outright that they like giving high scores, and one revised a 5 to a 4 on reflection within the same answer."
+  },
+  {
+    "Type": "Limitation",
+    "#": 8,
+    "Note": "Device generation is unstated for most participants, including all three added this round. Runtime and capability differences cannot be attributed to hardware with confidence."
+  },
+  {
+    "Type": "Limitation",
+    "#": 9,
+    "Note": "Three transcripts were added this round, not four. P009, P012 and P013 are coded here. No fourth transcript was supplied."
+  },
+  {
+    "Type": "Limitation",
+    "#": 10,
+    "Note": "Coding density tracked when a transcript was coded rather than what it contained. P001 held 0.71 coded rows per kilobyte against P012 at 3.06. Any count published before this round understated the early participants. Corrected by re-reading all seventeen against the mature codebook."
+  },
+  {
+    "Type": "Limitation",
+    "#": 11,
+    "Note": "Three codes created in round 3 turned out to have evidence in round 1 transcripts. Prevalence figures reported by round are therefore not a timeline of the phenomenon. Report prevalence across the whole corpus only."
+  },
+  {
+    "Type": "Limitation",
+    "#": 12,
+    "Note": "T21 Remote Sighted Guidance was created after P004, P005, P010 and P011 were coded. Their volunteer use went unrecorded until this round. Any theme created mid-study needs a backward pass before its counts are used."
+  },
+  {
+    "Type": "Limitation",
+    "#": 13,
+    "Note": "P005 L59 is coded READ-GUIDANCE, a success code, on a quote describing the coaching being absent. Left as found. Resolve before writing X-06."
+  },
+  {
+    "Type": "Limitation",
+    "#": 14,
+    "Note": "Two new codes were appended to the foot of the Codebook and Sub-themes tabs rather than inserted into their theme blocks, so that no existing row-relative formula would shift. Theme grouping on those two tabs is therefore not strictly contiguous. Counts are unaffected because every total is a COUNTIFS over the Evidence tab."
+  },
+  {
+    "Type": "Research",
+    "#": 12,
+    "Note": "P014 at L95 argues the vision questions belong at the start of the guide because the answers to everything else depend on them. Worth acting on for the observation phase."
+  },
+  {
+    "Type": "Research",
+    "#": 13,
+    "Note": "Does spoken framing coaching appear for some participants and not others because of device generation, account settings, or the task? P001, P002, P006, P012 and P014 get it; P003, P005 and P017 report silence on the same device family."
+  },
+  {
+    "Type": "Research",
+    "#": 14,
+    "Note": "How many participants verify by testing the device on a known answer? Three name it unprompted. Ask directly in the remaining protocol rather than waiting for it to surface."
+  },
+  {
+    "Type": "Research",
+    "#": 15,
+    "Note": "Is audio leaking to bystanders the privacy concern that actually governs behaviour? Four participants name spoken output rather than the captured image. The guide asks about the camera."
+  }
+]

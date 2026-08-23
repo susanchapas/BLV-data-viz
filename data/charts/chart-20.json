@@ -1,0 +1,67 @@
+{
+  "id": "chart-20",
+  "number": 20,
+  "title": "What participants actually use it for",
+  "caption": "Bar. Yes counts across all seventeen participant columns on the Comparison tab. Reading printed material is the anchor use, and it is the use with the weakest verification story.",
+  "source_tab": null,
+  "chart_type": "bar",
+  "columns": [
+    "Task",
+    "Participants (of 17)",
+    "Comparison row"
+  ],
+  "rows": [
+    [
+      "Reads printed labels or mail",
+      14,
+      78
+    ],
+    [
+      "Takes photos or video",
+      14,
+      116
+    ],
+    [
+      "Uses it outside the home",
+      12,
+      71
+    ],
+    [
+      "Uses it for any travel task",
+      12,
+      118
+    ],
+    [
+      "Person description used",
+      10,
+      83
+    ],
+    [
+      "Store shelf and product search",
+      9,
+      81
+    ],
+    [
+      "Uses it while cooking",
+      7,
+      82
+    ],
+    [
+      "Live or continuous AI mode",
+      6,
+      84
+    ],
+    [
+      "Reads menus in venues",
+      4,
+      80
+    ],
+    [
+      "Reads a full book",
+      1,
+      79
+    ]
+  ],
+  "footnote": null,
+  "alt_text": null
+}

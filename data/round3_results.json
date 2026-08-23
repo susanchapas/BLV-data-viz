@@ -1,0 +1,359 @@
+[
+  {
+    "Section": "Corpus",
+    "Item": "Coded evidence rows",
+    "New": 505,
+    "All 17": 2146,
+    "Reading": "Every row carries a participant, a theme, a sub-theme, a code, a verbatim quote and a transcript line number."
+  },
+  {
+    "Section": "Corpus",
+    "Item": "Codes in the codebook",
+    "New": 69,
+    "All 17": 361,
+    "Reading": "All 69 new codes fit inside the existing 22 themes. The theme structure has held for the first time."
+  },
+  {
+    "Section": "Corpus",
+    "Item": "Participants",
+    "New": 3,
+    "All 17": 17,
+    "Reading": "P001 to P017 complete. P011 is on EchoVision and needs a visible device split in any pooled count."
+  },
+  {
+    "Section": "Sighted default",
+    "Item": "Answers as if the user can see",
+    "New": 2,
+    "All 17": 2,
+    "Reading": "The glasses forget that I am not sighted. Told out loud that the user cannot see, it apologises and continues in the same terms."
+  },
+  {
+    "Section": "Sighted default",
+    "Item": "Wants body-relative directions",
+    "New": 6,
+    "All 17": 11,
+    "Reading": "Left, right, and a distance in feet. Three participants ask for the identical repair, one of them quoting a competing app that already does it."
+  },
+  {
+    "Section": "Sighted default",
+    "Item": "Coaching the user cannot act on",
+    "New": 1,
+    "All 17": 1,
+    "Reading": "Told to lay a curved package flat. Accurate advice, impossible instruction, and the user reads the failure as her own."
+  },
+  {
+    "Section": "Sighted default",
+    "Item": "Gaze habit misaims the camera",
+    "New": 2,
+    "All 17": 2,
+    "Reading": "Peripheral-only vision pulls the head up. The camera captured trees instead of the shop sign. The device assumes a normative sightline."
+  },
+  {
+    "Section": "Undetectable",
+    "Item": "No route to verify exists",
+    "New": 3,
+    "All 17": 8,
+    "Reading": "Stated four times by one participant. She does not know how to know if it is incorrect, and assumes it is correct."
+  },
+  {
+    "Section": "Undetectable",
+    "Item": "Says a thing is absent when present",
+    "New": 3,
+    "All 17": 3,
+    "Reading": "A new failure class. It leaves no wrong fact behind to catch later, and absence is what the user cannot check."
+  },
+  {
+    "Section": "Undetectable",
+    "Item": "Changing states not reported",
+    "New": 2,
+    "All 17": 3,
+    "Reading": "A flashing hospital monitor and a blinking washer light. The most urgent thing in the room is what a still frame cannot carry."
+  },
+  {
+    "Section": "Detectable",
+    "Item": "Cane confirms the spatial claim",
+    "New": 2,
+    "All 17": 3,
+    "Reading": "The only routine verification method in seventeen interviews. It works because the cane returns ground truth on the exact class of claim the device is worst at."
+  },
+  {
+    "Section": "Detectable",
+    "Item": "Tests it on known answers",
+    "New": 2,
+    "All 17": 6,
+    "Reading": "Asks about food already identified by touch, to gauge trust. Bounded to tasks where the device adds nothing."
+  },
+  {
+    "Section": "Baseline",
+    "Item": "Accuracy judged against no access",
+    "New": 4,
+    "All 17": 4,
+    "Reading": "Better than what I have had in the past. An unknown error rate is acceptable because the comparison is having nothing."
+  },
+  {
+    "Section": "Awareness",
+    "Item": "Understood as a reader",
+    "New": 6,
+    "All 17": 7,
+    "Reading": "A daily user of nine months learns mid-interview that it runs a general AI. My ear does not go to the AI part."
+  },
+  {
+    "Section": "Awareness",
+    "Item": "Satisfaction caps the request list",
+    "New": 5,
+    "All 17": 6,
+    "Reading": "Happy with what it does, so never asks what else it does. Satisfaction is suppressing demand."
+  },
+  {
+    "Section": "Awareness",
+    "Item": "Did not know it could do that",
+    "New": 11,
+    "All 17": 40,
+    "Reading": "Still the largest single non-use reason across the corpus."
+  },
+  {
+    "Section": "Awareness",
+    "Item": "Outside the peer channel",
+    "New": 3,
+    "All 17": 3,
+    "Reading": "The participant furthest from the community groups is the one who did not know the device category. Awareness tracks membership more closely than tenure."
+  },
+  {
+    "Section": "Awareness",
+    "Item": "Interview changed stated intent",
+    "New": 3,
+    "All 17": 9,
+    "Reading": "Now present in nine of seventeen sessions. A finding about user knowledge and a standing threat to self-report validity."
+  },
+  {
+    "Section": "Baseline",
+    "Item": "Doing without",
+    "New": 2,
+    "All 17": 3,
+    "Reading": "Reading an ingredient label was not a task performed badly. It was not in her world. No usage log can show this."
+  },
+  {
+    "Section": "Social",
+    "Item": "Read as sighted by bystanders",
+    "New": 5,
+    "All 17": 6,
+    "Reading": "Named as the largest barrier to outdoor use by one participant, ahead of every capability limit in the study."
+  },
+  {
+    "Section": "Social",
+    "Item": "Read as a shoplifter",
+    "New": 3,
+    "All 17": 3,
+    "Reading": "Scanning a product exceeds the one minute retail loss prevention watches for. Task use confined to one familiar shop."
+  },
+  {
+    "Section": "Social",
+    "Item": "Announces the device pre-emptively",
+    "New": 2,
+    "All 17": 4,
+    "Reading": "I am using the Meta Glasses, said to staff before scanning anything. Unpaid work, performed to avoid suspicion."
+  },
+  {
+    "Section": "Social",
+    "Item": "Challenged over recording",
+    "New": 3,
+    "All 17": 4,
+    "Reading": "Stopped by a Broadway usher. The wearer cannot see the indicator that would settle the challenge."
+  },
+  {
+    "Section": "Social",
+    "Item": "Greeting etiquette raises the stakes",
+    "New": 2,
+    "All 17": 2,
+    "Reading": "Naming each relative by title on entering a room is obligatory. Failing to recognise reads as rudeness."
+  },
+  {
+    "Section": "Social",
+    "Item": "Internalised stigma delays adoption",
+    "New": 7,
+    "All 17": 7,
+    "Reading": "Did not carry a cane until her thirties. Judged text-to-speech users as lazy before his own vision changed."
+  },
+  {
+    "Section": "Unserved",
+    "Item": "Rideshare pickup",
+    "New": 9,
+    "All 17": 14,
+    "Reading": "Raised independently by all three. One has entered the wrong car. One asked it to watch for a white car and was refused."
+  },
+  {
+    "Section": "Unserved",
+    "Item": "Finding an unoccupied seat",
+    "New": 4,
+    "All 17": 4,
+    "Reading": "Currently solved by arriving 45 minutes early, or tapping a cane against strangers’ feet."
+  },
+  {
+    "Section": "Unserved",
+    "Item": "Step-by-step instruction",
+    "New": 5,
+    "All 17": 5,
+    "Reading": "One step at a time while the hands are busy. Three participants ask for it, one routes through ChatGPT to get it."
+  },
+  {
+    "Section": "Unserved",
+    "Item": "Animal care",
+    "New": 3,
+    "All 17": 5,
+    "Reading": "Finding waste, vomit and a sore on a dog. Frequent, unglamorous, and one participant assumes it is banned."
+  },
+  {
+    "Section": "Unserved",
+    "Item": "Sound identification",
+    "New": 4,
+    "All 17": 4,
+    "Reading": "Name the noise and place it. The one request in the set that has nothing to do with the camera."
+  },
+  {
+    "Section": "Unserved",
+    "Item": "Following a live class",
+    "New": 1,
+    "All 17": 1,
+    "Reading": "Step aerobics choreography called out when the instructor does not cue verbally."
+  },
+  {
+    "Section": "Unserved",
+    "Item": "In-lens visual overlay",
+    "New": 3,
+    "All 17": 3,
+    "Reading": "Draw a circle around the person I am looking for. The first request in the study that audio output cannot satisfy."
+  },
+  {
+    "Section": "Reliability",
+    "Item": "Head movement disconnects it",
+    "New": 3,
+    "All 17": 3,
+    "Reading": "Single source. Bending or looking down stops the session and resets it. Needs a direct check in the observation phase."
+  },
+  {
+    "Section": "Reliability",
+    "Item": "Same words route to the wrong capability",
+    "New": 3,
+    "All 17": 4,
+    "Reading": "A colour question returns a room description. Read as operator error by the user, so it never reaches support."
+  },
+  {
+    "Section": "Reliability",
+    "Item": "Continuous mode changes the voice",
+    "New": 5,
+    "All 17": 5,
+    "Reading": "Echoing and tunnel-like, and it masks natural hearing. First report of audio character as the reason live mode stays off."
+  },
+  {
+    "Section": "Reliability",
+    "Item": "Unrequested actions offered",
+    "New": 2,
+    "All 17": 2,
+    "Reading": "Proposes calls and messages nobody asked for. Live mode switches itself on and costs a power cycle."
+  },
+  {
+    "Section": "Reliability",
+    "Item": "Notifications cut across media",
+    "New": 1,
+    "All 17": 1,
+    "Reading": "Interrupts the single most-used feature in this participant group, and the setting is not findable."
+  },
+  {
+    "Section": "Value",
+    "Item": "Open ear keeps ambient hearing",
+    "New": 3,
+    "All 17": 5,
+    "Reading": "Named as the favourite property of the device. Half of what makes it work for these users has nothing to do with the camera."
+  },
+  {
+    "Section": "Policy",
+    "Item": "Refuses to read on policy grounds",
+    "New": 3,
+    "All 17": 8,
+    "Reading": "Medication dates and payment cards. Every participant supplies a liability rationale unprompted and accepts it."
+  },
+  {
+    "Section": "Policy",
+    "Item": "Attributes a limit to a rule",
+    "New": 3,
+    "All 17": 6,
+    "Reading": "Compliance absorbed as a capability limit, which means it never reaches anyone as a complaint."
+  },
+  {
+    "Section": "Policy",
+    "Item": "No record of what changed",
+    "New": 2,
+    "All 17": 4,
+    "Reading": "A prompt that worked stops working. Card reading disappears. One participant has stopped tracking capabilities entirely."
+  },
+  {
+    "Section": "Privacy",
+    "Item": "Content acceptable, identifier withheld",
+    "New": 1,
+    "All 17": 1,
+    "Reading": "Comfortable with the dosage instructions read aloud, unwilling to have her name on the bottle captured."
+  },
+  {
+    "Section": "Privacy",
+    "Item": "Protects a third party",
+    "New": 2,
+    "All 17": 2,
+    "Reading": "Chose the AI over a human volunteer to keep a relative’s medical data out of a stranger’s view."
+  },
+  {
+    "Section": "Privacy",
+    "Item": "Believes the data stays local",
+    "New": 1,
+    "All 17": 2,
+    "Reading": "Just me, the glasses and my phone, and not the rest of the world. Consent is resting on a mistaken model of the system."
+  },
+  {
+    "Section": "Privacy",
+    "Item": "Lowers the volume for bystanders",
+    "New": 1,
+    "All 17": 4,
+    "Reading": "The privacy risk named is the spoken output rather than the captured image."
+  },
+  {
+    "Section": null,
+    "Item": "P013 gender",
+    "New": null,
+    "All 17": null,
+    "Reading": "Transcript renders the answer as Mail at L479. Interviewer uses she at L193, participant refers to a husband at L291. Verify with the participant."
+  },
+  {
+    "Section": null,
+    "Item": "Fourth transcript",
+    "New": null,
+    "All 17": null,
+    "Reading": "Three files were supplied and coded. The request named four. Confirm whether one is outstanding."
+  },
+  {
+    "Section": null,
+    "Item": "Device split",
+    "New": null,
+    "All 17": null,
+    "Reading": "P011 is on EchoVision. Any pooled count needs a visible split before it reaches a paper."
+  },
+  {
+    "Section": null,
+    "Item": "Delegation refused",
+    "New": null,
+    "All 17": null,
+    "Reading": "Still unresolved from the previous round. TRU-NODELEGATE and NONUSE-HABIT remain unsplit pending a decision."
+  },
+  {
+    "Section": null,
+    "Item": "Device generation",
+    "New": null,
+    "All 17": null,
+    "Reading": "Unstated for all three new participants. Runtime differences cannot be attributed to hardware."
+  },
+  {
+    "Section": null,
+    "Item": "Quote normalisation",
+    "New": null,
+    "All 17": null,
+    "Reading": "New rows are verified substrings. The carried-forward rows still need the re-pull pass before any verbatim quotation is published."
+  }
+]

@@ -35,7 +35,7 @@ function ThemeChart({ width, height }: { width: number; height: number }) {
   })
 
   return (
-    <svg width={width} height={height} aria-hidden="true">
+    <svg width={width} height={height} role="img" aria-label="Theme weight and breadth">
       <Group top={margin.top} left={margin.left}>
         {themes.map((t, i) => {
           const barW = xScale(t.Total)
@@ -162,6 +162,9 @@ export function ThemeBrowser() {
                 key={c.Code}
                 className="hover:bg-grey-0 cursor-pointer"
                 onClick={() => setExpandedTheme(expandedTheme === c.Code ? null : c.Code)}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpandedTheme(expandedTheme === c.Code ? null : c.Code) } }}
+                tabIndex={0}
+                aria-expanded={expandedTheme === c.Code}
               >
                 <td className="px-2 py-1.5 border-b border-grey-1 font-mono text-xs">{c.Code}</td>
                 <td className="px-2 py-1.5 border-b border-grey-1">{c.Label}</td>

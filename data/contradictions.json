@@ -1,0 +1,222 @@
+[
+  {
+    "Tag": "X-01",
+    "Question": "Can it name a known person?",
+    "What each participant reports": "P001 reports it names a labelled contact from her photo library. P002 says it cannot do it at all. P016 says it can be trained and is hit or miss. P004 reports a policy block.",
+    "Who": "P001, P002, P004, P016",
+    "Reading": "Likely a mix of device generation, region and account settings. Nobody has been told which. Behaviour is inconsistent enough that four users hold four beliefs about the same product.",
+    "Evidence codes": "PPL-NOFACE, PPL-POLICY",
+    "P009, P012, P013 update": "P012 receives an explicit spoken refusal, that it is not able to do that yet. P013 believed the feature was unavailable in the United States and had never tried. P009 wants it and assumes it is barred on political grounds. Three more readings of the same rule.",
+    "Round 4 re-verification": "P003 at L291 and L295 states it works and describes a database of faces. P004 at L547 reports it recognises her labelled family folder and withholds the names. Four beliefs about one product, and two of them are new."
+  },
+  {
+    "Tag": "X-02",
+    "Question": "Does it read a restaurant menu?",
+    "What each participant reports": "P015 calls menu reading pretty accurate. P017 cannot get a command heard in the room. P007 reports an invented appetizer section. P011 reports the layout read out of order. P001 got it spelled letter by letter.",
+    "Who": "P001, P007, P011, P015, P017",
+    "Reading": "Three different failure modes stacked on one task: noise, layout and fabrication. A single satisfaction rating hides which one a given user hit.",
+    "Evidence codes": "READ-MENU, SOC-NOISE, READ-LAYOUT, TRU-HALLUCINATION",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": "P001 at L267 had the menu spelled out letter by letter, then the session stopped. A fourth failure mode on the same task."
+  },
+  {
+    "Tag": "X-03",
+    "Question": "Does it summarise without being asked?",
+    "What each participant reports": "P002 docked her trust rating because it summarises unrequested. P015 says he has never seen it produce a summary. P014 uses the summary deliberately and values the distinction between a summary and a full read.",
+    "Who": "P002, P014, P015",
+    "Reading": "Same behaviour, three verdicts. Supports the earlier reading that the defect is unrequested summarising rather than summarising.",
+    "Evidence codes": "READ-SUMMARY, READ-SUMMARYWANTED",
+    "P009, P012, P013 update": "P013 asks for summaries deliberately on dense documents and counts it as a strength. P009 wants the opposite and gets a room description when she asks for a colour.",
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-04",
+    "Question": "How long does the battery last?",
+    "What each participant reports": "P003 and P008 report about eight hours and 45 percent left after six. P001 reports two. P016 reports half an hour on video and a couple of hours on audio, and traces it to age.",
+    "Who": "P001, P003, P008, P016",
+    "Reading": "Generation, workload and battery age all move this number. Runtime claims cannot be compared across users without all three.",
+    "Evidence codes": "REL-BATTERY, LIFE-BATTERYDEGRADE",
+    "P009, P012, P013 update": "P009 reports 2 to 3 hours. P012 reports 4 to 6 and charging in about half an hour. Both are heavy audio users, which was the variable X-04 already suspected.",
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-05",
+    "Question": "Is the AI any good?",
+    "What each participant reports": "P002 rates satisfaction 5 of 5. P016 rates the Meta AI 2 of 5 and routes visual work to volunteers instead. Both are daily-scale users of the same product family.",
+    "Who": "P002, P016",
+    "Reading": "Ratings track what each user asks of it. High scores come from narrow, familiar tasks; low scores come from testing it against a known answer.",
+    "Evidence codes": "TRU-RATING, TRU-FAMILIARITY",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-06",
+    "Question": "Does it coach the framing?",
+    "What each participant reports": "P014 reports spoken guidance to move right, get more light and reposition. P017 says it never tells him to move and he adjusts by trial and error. P005 and P003 report the same silence.",
+    "Who": "P003, P005, P014, P017",
+    "Reading": "The most consequential inconsistency in the set. One participant is getting the fix that four others are asking for.",
+    "Evidence codes": "READ-GUIDANCE, READ-AIM, CAP-AIM",
+    "P009, P012, P013 update": "P012 gets spoken coaching, that it is blurry, that the print is too small, that she should lay it flat. She cannot act on the last one. Coaching presence is confirmed again; usability of the coaching is the new question.",
+    "Round 4 re-verification": "P001 is told the can is upside down and to turn it. P002 is told to move into better light. P006 gets a successful retry after the interviewer coached her on where to hold the bottle. The split is closer to even than the tab reads."
+  },
+  {
+    "Tag": "X-07",
+    "Question": "Does it say why it failed?",
+    "What each participant reports": "P016 reports it sometimes warns that a reading may be wrong. P014 gets specific reasons. P008 gets a bare statement of difficulty. P017 gets nothing.",
+    "Who": "P008, P014, P016, P017",
+    "Reading": "Failure messaging varies by task, not just by device. Users read the silence as their own fault.",
+    "Evidence codes": "READ-FAILREASON, TRU-SELFBLAME",
+    "P009, P012, P013 update": "P012 gets an explicit reason and finds it useful. P009 gets a message she cannot recall that did not say failed. P013 gets a policy refusal on medication and supplies the liability reason himself.",
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-08",
+    "Question": "Is it safe to use for travel?",
+    "What each participant reports": "P016 states flatly that he does not recommend AI on a street or at a crossing. P006 rules it out as doctrine. P017 uses it for exits and pickup points. P008 uses it for signs and tested directions. P004 wears it from her front door.",
+    "Who": "P004, P006, P008, P016, P017",
+    "Reading": "The split is between route decisions and orientation information. Nobody uses it for crossings. Several use it for what is in the building.",
+    "Evidence codes": "SAF-MOBILITYRULE, NAV-NOTUSED, NAV-INDOOR, NAV-SIGNS",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-09",
+    "Question": "Would you let it read financial data?",
+    "What each participant reports": "P015 has his credit card and state ID numbers read aloud and is untroubled. P014 and P016 both draw the line at bank and account data. P004, P003, P010 and P011 all self-restrict.",
+    "Who": "P003, P004, P010, P011, P014, P015, P016",
+    "Reading": "Nine of fourteen run a private data policy. One does not, and reasons about card fraud rather than about the AI.",
+    "Evidence codes": "PRV-DATAHYGIENE, PRV-THREATMODEL, PRV-LOWCONCERN",
+    "P009, P012, P013 update": "P012 wants her card read aloud and is annoyed that it now refuses, lowering the volume as her only precaution. P009 will not point it at a card or a prescription at all. P013 had never considered the question until asked.",
+    "Round 4 re-verification": "P003 and P005 both self-restrict without being asked. The count of participants running a private-data rule rises again."
+  },
+  {
+    "Tag": "X-10",
+    "Question": "Is continuous mode worth using?",
+    "What each participant reports": "P017 prefers it for speed. P011 says it describes the world thirty seconds late. P015 has never tried it. P016 does not trust it. P006 used it once at a festival.",
+    "Who": "P006, P011, P015, P016, P017",
+    "Reading": "Latency, awareness and trust each block it independently. The feature has three separate adoption failures, not one.",
+    "Evidence codes": "INT-LIVEAI, REL-LATENCY, NONUSE-AWARENESS, NAR-CONTINUOUS",
+    "P009, P012, P013 update": "P013 uses it in unfamiliar areas and calls it an improvement. P012 tried it and rejected it over the voice quality. P009 used it once with a trainer and did not know it was available to her.",
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-11",
+    "Question": "Do you want it to be conversational?",
+    "What each participant reports": "P014 wants a tool and objects to the assistant behaving like a friend. P002 talks to it for fun and asks it how its day is going. P015 asks it questions to learn things.",
+    "Who": "P002, P014, P015",
+    "Reading": "Persona is a preference, not a default. Currently there is no setting.",
+    "Evidence codes": "INT-PERSONA, EMP-COMPANION",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-12",
+    "Question": "Does it read numbers accurately?",
+    "What each participant reports": "P015 reports his ID and card numbers read correctly and reliably. P001 reports sixes read as eights. P011 reports numerals read without knowing what kind of number they are. P002 reports currency as unreliable.",
+    "Who": "P001, P002, P011, P015",
+    "Reading": "Accuracy on digits is not one capability. Isolated numbers succeed, rows and denominations fail, and meaning is never attached.",
+    "Evidence codes": "READ-NUMBERS, READ-CONTEXT, READ-CURRENCY",
+    "P009, P012, P013 update": "P012 reports the laundry card balance unreadable. P013 pulls a suite number out of a wall directory reliably. P009 gets a blood pressure figure off a monitor correctly.",
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-13",
+    "Question": "Camera or phone for a remote helper?",
+    "What each participant reports": "P016 says the volunteer asks for the phone because the glasses image is fuzzy. P005 reports the same. P017 uses Be My Eyes connected to the glasses without complaint. P002 uses it for navigation help.",
+    "Who": "P002, P005, P016, P017",
+    "Reading": "Difference is likely task-based. Reading a small panel needs resolution; reading a room does not.",
+    "Evidence codes": "RSG-CAMERALIMIT, DES-CAMERAQUALITY, ECO-FALLBACK",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-14",
+    "Question": "Does it refuse on policy grounds?",
+    "What each participant reports": "P014 reports explicit refusals to read named copyrighted material. P004 reports policy blocks on describing people. Nobody else in the study reports either.",
+    "Who": "P004, P014",
+    "Reading": "Two participants encounter a rule layer that twelve others never meet. Neither was told the rule existed before hitting it.",
+    "Evidence codes": "READ-POLICYBLOCK, OBJ-POLICY, PPL-POLICY",
+    "P009, P012, P013 update": "P012 lost credit card reading to a privacy rule between updates. P013 was refused on a medication fill date. Both supply the liability rationale unprompted and accept it.",
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-15",
+    "Question": "Does it hold context between questions?",
+    "What each participant reports": "P001 gets a rapid-sequence conversation when connected. P017 believes chat history in the app means it can. P014 reports it answering from the previous frame. P002 wants to be asked whether to continue the last conversation.",
+    "Who": "P001, P002, P014, P017",
+    "Reading": "Frame memory, session memory and chat history are three different things and users cannot tell them apart.",
+    "Evidence codes": "INT-NOMEMORY, INT-FRAMEMEMORY, REL-STALEFRAME, INT-RAPIDCONV",
+    "P009, P012, P013 update": "P012 holds a genuine multi-turn exchange about speakers on camera during the interview. P009 believed follow-up questions were impossible and had never attempted one.",
+    "Round 4 re-verification": "P001 at L239 describes the captured frame being retained across follow-ups. The earliest report of frame memory in the corpus."
+  },
+  {
+    "Tag": "X-16",
+    "Question": "Does it work while the phone is in use?",
+    "What each participant reports": "P001 reports the glasses go dead whenever the app-phone is active and names it her top fix. P012 uses the glasses to read her own phone screen when VoiceOver will not. P013 keeps the phone in his pocket running Maps and listens through the glasses.",
+    "Who": "P001, P003, P008, P011, P012, P013, P014",
+    "Reading": "The conflict is real for some and absent for others, and the split does not follow device generation cleanly. Audio routing and camera use may be two different problems that have been collapsed into one pain point. Worth separating before submission.",
+    "Evidence codes": "PHN-CONFLICT, ECO-SRBACKUP, ECO-AUDIO",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": "P001 at L63 adds a separate constraint: the phone has to stay within range, and the stated thirty feet is not the working distance. Coded PHN-TETHER. Supports separating audio routing from camera use."
+  },
+  {
+    "Tag": "X-17",
+    "Question": "Does it say a thing is absent when it is there?",
+    "What each participant reports": "P013 was told a package had no expiration date and found one. P012 was told nothing was there when an awning was, and that wheelchairs were not visible when they were. P009 heard it take a picture and then report something she cannot recall that was not a failure message.",
+    "Who": "P009, P012, P013",
+    "Reading": "New class this round. Distinct from fabrication, because there is no wrong fact left behind to catch later. Undetectable by definition for a user who cannot check the frame. Strongest candidate for the sharpest cell in the detectability taxonomy.",
+    "Evidence codes": "TRU-FALSENEGATIVE, OBJ-NEGATIVEANSWER",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-18",
+    "Question": "Does continuous mode sound different?",
+    "What each participant reports": "P012 reports live mode switches to an echoing tunnel-like voice that masks her natural hearing, and names it as the reason the feature is off. P017 prefers live mode for speed. P011 reports a latency problem. P013 reports an improvement and uses it in new areas.",
+    "Who": "P011, P012, P013, P017",
+    "Reading": "Four reasons the same feature is on or off, and only one of them is latency. Audio character has not been asked about systematically and should be added to the remaining protocol.",
+    "Evidence codes": "NAR-VOICEQUALITY, INT-LIVEAI, REL-LATENCY",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-19",
+    "Question": "Will it read a payment card?",
+    "What each participant reports": "P015 has his credit card and state ID numbers read aloud and is untroubled. P012 had card identification and lost it to a privacy rule between updates. P009 has never tried and does not intend to. P013 was refused on a medication label under a health rule.",
+    "Who": "P009, P012, P013, P015",
+    "Reading": "A capability that is present for one participant, withdrawn for another, and never attempted by a third. If the rule is rolling out by region or account, the study is capturing a policy change in progress. Date the reports before writing this up.",
+    "Evidence codes": "READ-POLICYBLOCK, REL-REGRESSION, PRV-DATAHYGIENE, SUP-CHANGELOG",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-20",
+    "Question": "Does head movement break it?",
+    "What each participant reports": "P009 reports that looking down, bending or leaning over disconnects the device and stops audio, and that it then resets. No other participant in seventeen reports this.",
+    "Who": "P009",
+    "Reading": "Single source. Could be fit, could be a specific unit, could be a Bluetooth handoff behaviour that others experience and do not attribute to movement. P016 reports Bluetooth handoff failures separately. Needs a direct check in the observation phase.",
+    "Evidence codes": "REL-MOTIONDROP, REL-BLUETOOTH, DES-FIT",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": null
+  },
+  {
+    "Tag": "X-21",
+    "Question": "Is asking a follow-up question possible?",
+    "What each participant reports": "P001 gets a rapid-sequence exchange when connected. P012 runs a genuine multi-turn product query on camera during the interview. P009 believed only one question at a time was possible and had never tried. P013 does not think of it as an assistant at all.",
+    "Who": "P001, P009, P012, P013, P014, P017",
+    "Reading": "The capability is present and the belief about it is not. This is an awareness finding rather than a capability finding, and it is the cleanest evidence in the set that the activation ceiling is knowledge rather than function.",
+    "Evidence codes": "INT-FRAMEMEMORY, INT-NOMEMORY, ADOPT-MENTALMODEL, NONUSE-AWARENESS",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": "P001 and P002 both describe multi-turn exchanges. The capability has been present since the first interview in the study."
+  },
+  {
+    "Tag": "X-22",
+    "Question": "Is the wearer read as blind or as sighted?",
+    "What each participant reports": "P009 reports bystanders treating her as sighted once the glasses are on, over and above her cane. P013 says he does not present as visually impaired and is read as rude when he misses a handshake. P002 passes hers off as ordinary sunglasses deliberately and counts that as a benefit.",
+    "Who": "P002, P009, P013, P010",
+    "Reading": "The same property, going unnoticed, is an advantage to one participant and a barrier to another. Depends on whether the user wants the disability read or unread in that setting. There is no setting for this and probably should be.",
+    "Evidence codes": "SOC-SIGHTEDPASSING, SOC-MAINSTREAM, SOC-INVISIBLE, SOC-STIGMA",
+    "P009, P012, P013 update": null,
+    "Round 4 re-verification": "P006 at L307 is read as sighted because of the glasses and treats it as neutral. P002 passes hers off as ordinary sunglasses on purpose. Three readings of one property."
+  }
+]

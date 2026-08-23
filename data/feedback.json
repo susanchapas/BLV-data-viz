@@ -1,0 +1,2878 @@
+{
+  "signals": [
+    {
+      "Tag": "FB-01",
+      "Signal the user needs": "Why a read failed",
+      "Signal status": "Announced",
+      "Where it applies": "Reading",
+      "What the device does": "Names the blocker: too small, too blurry, not enough light",
+      "What the absence costs": "The user can act on it. Move, relight, retake",
+      "Basis (cited evidence row)": "P006 L23; P006 L103",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 2,
+      "P007": 0,
+      "P008": 1,
+      "P009": 1,
+      "P010": 0,
+      "P011": 0,
+      "P012": 2,
+      "P013": 0,
+      "P014": 2,
+      "P015": 0,
+      "P016": 1,
+      "P017": 0,
+      "Rows (n=17)": 9,
+      "Participants (n=17)": 6,
+      "Code 1": "READ-FAILREASON",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "READ-FAILREASON"
+      ]
+    },
+    {
+      "Tag": "FB-02",
+      "Signal the user needs": "How to re-aim during a capture",
+      "Signal status": "Announced",
+      "Where it applies": "Reading, Capture",
+      "What the device does": "Spoken coaching. Move closer, turn to the light, stay still, got it",
+      "What the absence costs": "Closes the aiming loop the user cannot close by eye",
+      "Basis (cited evidence row)": "P011 L95; P011 L99",
+      "P001": 1,
+      "P002": 1,
+      "P003": 0,
+      "P004": 0,
+      "P005": 2,
+      "P006": 1,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 3,
+      "P012": 0,
+      "P013": 0,
+      "P014": 2,
+      "P015": 3,
+      "P016": 0,
+      "P017": 4,
+      "Rows (n=17)": 17,
+      "Participants (n=17)": 8,
+      "Code 1": "READ-GUIDANCE",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "READ-GUIDANCE"
+      ]
+    },
+    {
+      "Tag": "FB-03",
+      "Signal the user needs": "Light too poor for an accurate answer",
+      "Signal status": "Announced",
+      "Where it applies": "Object and scene",
+      "What the device does": "States the limit before giving the answer",
+      "What the absence costs": "The answer arrives pre-discounted, which is what a caveat is for",
+      "Basis (cited evidence row)": "P002 L33; P011 L615",
+      "P001": 0,
+      "P002": 1,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 2,
+      "P007": 0,
+      "P008": 2,
+      "P009": 0,
+      "P010": 0,
+      "P011": 2,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 7,
+      "Participants (n=17)": 4,
+      "Code 1": "OBJ-LOWLIGHT",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "OBJ-LOWLIGHT"
+      ]
+    },
+    {
+      "Tag": "FB-04",
+      "Signal the user needs": "Where the answer came from",
+      "Signal status": "Announced",
+      "Where it applies": "Knowledge queries",
+      "What the device does": "Names the website behind the answer",
+      "What the absence costs": "Named by participants as the thing that raises trust",
+      "Basis (cited evidence row)": "P003 L463; P003 L467",
+      "P001": 0,
+      "P002": 0,
+      "P003": 2,
+      "P004": 2,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 1,
+      "Rows (n=17)": 5,
+      "Participants (n=17)": 3,
+      "Code 1": "TRU-SOURCE",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "TRU-SOURCE"
+      ]
+    },
+    {
+      "Tag": "FB-05",
+      "Signal the user needs": "That the command was heard",
+      "Signal status": "Announced",
+      "Where it applies": "Interaction",
+      "What the device does": "The beep. Listening-state confirmation",
+      "What the absence costs": "Absence of the beep is the retry signal",
+      "Basis (cited evidence row)": "P004 L107; P004 L111",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 2,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 2,
+      "Participants (n=17)": 1,
+      "Code 1": "INT-BEEPFEEDBACK",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "INT-BEEPFEEDBACK"
+      ]
+    },
+    {
+      "Tag": "FB-06",
+      "Signal the user needs": "That the request is refused",
+      "Signal status": "Announced",
+      "Where it applies": "Reading, People",
+      "What the device does": "States the refusal and often the reason",
+      "What the absence costs": "The one failure the device reliably narrates. Task moves to a human",
+      "Basis (cited evidence row)": "P014 L243; P011 L135",
+      "P001": 0,
+      "P002": 1,
+      "P003": 0,
+      "P004": 2,
+      "P005": 1,
+      "P006": 0,
+      "P007": 4,
+      "P008": 0,
+      "P009": 1,
+      "P010": 0,
+      "P011": 3,
+      "P012": 3,
+      "P013": 1,
+      "P014": 2,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 18,
+      "Participants (n=17)": 9,
+      "Code 1": "READ-POLICYBLOCK",
+      "Code 2": "OBJ-POLICY",
+      "Code 3": "PPL-POLICY",
+      "codes": [
+        "READ-POLICYBLOCK",
+        "OBJ-POLICY",
+        "PPL-POLICY"
+      ]
+    },
+    {
+      "Tag": "FB-07",
+      "Signal the user needs": "That a correction was accepted",
+      "Signal status": "Announced",
+      "Where it applies": "All task types",
+      "What the device does": "User says that is wrong, device rechecks and revises",
+      "What the absence costs": "Only reachable by a user who already suspected the error",
+      "Basis (cited evidence row)": "P003 L235; P003 L519",
+      "P001": 0,
+      "P002": 1,
+      "P003": 2,
+      "P004": 1,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 2,
+      "P013": 0,
+      "P014": 1,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 7,
+      "Participants (n=17)": 5,
+      "Code 1": "TRU-CORRECT",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "TRU-CORRECT"
+      ]
+    },
+    {
+      "Tag": "FB-08",
+      "Signal the user needs": "Confidence in the answer just given",
+      "Signal status": "Silent",
+      "Where it applies": "All task types",
+      "What the device does": "None. Wrong answers arrive in the same voice as right ones",
+      "What the absence costs": "The central defect. Hedging is named as the missing feature",
+      "Basis (cited evidence row)": "P003 L487; P006 L355",
+      "P001": 0,
+      "P002": 2,
+      "P003": 2,
+      "P004": 1,
+      "P005": 2,
+      "P006": 2,
+      "P007": 7,
+      "P008": 1,
+      "P009": 0,
+      "P010": 0,
+      "P011": 1,
+      "P012": 1,
+      "P013": 0,
+      "P014": 1,
+      "P015": 0,
+      "P016": 9,
+      "P017": 0,
+      "Rows (n=17)": 29,
+      "Participants (n=17)": 11,
+      "Code 1": "TRU-HALLUCINATION",
+      "Code 2": "TRU-CONFIDENCE",
+      "Code 3": "TRU-SYCOPHANCY",
+      "codes": [
+        "TRU-HALLUCINATION",
+        "TRU-CONFIDENCE",
+        "TRU-SYCOPHANCY"
+      ]
+    },
+    {
+      "Tag": "FB-09",
+      "Signal the user needs": "That content was dropped from a read",
+      "Signal status": "Silent",
+      "Where it applies": "Reading",
+      "What the device does": "None. The summary sounds complete",
+      "What the absence costs": "User believes they have the whole document",
+      "Basis (cited evidence row)": "P002 L41; P002 L421",
+      "P001": 0,
+      "P002": 2,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 1,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 3,
+      "Participants (n=17)": 2,
+      "Code 1": "READ-SUMMARY",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "READ-SUMMARY"
+      ]
+    },
+    {
+      "Tag": "FB-10",
+      "Signal the user needs": "That the subject is outside the frame",
+      "Signal status": "Silent",
+      "Where it applies": "Reading, Capture",
+      "What the device does": "None before the answer. Nothing confirms the subject is in shot",
+      "What the absence costs": "A partial capture is read out as if complete",
+      "Basis (cited evidence row)": "P005 L403; P003 L547",
+      "P001": 0,
+      "P002": 4,
+      "P003": 2,
+      "P004": 0,
+      "P005": 3,
+      "P006": 4,
+      "P007": 0,
+      "P008": 1,
+      "P009": 0,
+      "P010": 1,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 2,
+      "P016": 1,
+      "P017": 0,
+      "Rows (n=17)": 18,
+      "Participants (n=17)": 8,
+      "Code 1": "CAP-FRAMING",
+      "Code 2": "READ-AIM",
+      "Code 3": "OBJ-OFFFRAME",
+      "codes": [
+        "CAP-FRAMING",
+        "READ-AIM",
+        "OBJ-OFFFRAME"
+      ]
+    },
+    {
+      "Tag": "FB-11",
+      "Signal the user needs": "That the answer describes an older frame",
+      "Signal status": "Silent",
+      "Where it applies": "Object and scene",
+      "What the device does": "None. Both answers are plausible",
+      "What the absence costs": "A correct description attaches to the wrong object",
+      "Basis (cited evidence row)": "P014 L1223; P014 L1227",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 1,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 2,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 3,
+      "Participants (n=17)": 2,
+      "Code 1": "REL-STALEFRAME",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "REL-STALEFRAME"
+      ]
+    },
+    {
+      "Tag": "FB-12",
+      "Signal the user needs": "That an absence is a limit and not a fact",
+      "Signal status": "Silent",
+      "Where it applies": "Object and scene, Navigation",
+      "What the device does": "None. A bare no is delivered as knowledge",
+      "What the absence costs": "Nothing there and I cannot tell are said with the same words",
+      "Basis (cited evidence row)": "P012 L283; P012 L319; P013 L79",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 2,
+      "P013": 1,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 3,
+      "Rows (n=17)": 6,
+      "Participants (n=17)": 3,
+      "Code 1": "TRU-FALSENEGATIVE",
+      "Code 2": "OBJ-NEGATIVEANSWER",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "TRU-FALSENEGATIVE",
+        "OBJ-NEGATIVEANSWER"
+      ]
+    },
+    {
+      "Tag": "FB-13",
+      "Signal the user needs": "Whether it is recording",
+      "Signal status": "Silent",
+      "Where it applies": "Capture",
+      "What the device does": "A light the wearer cannot see",
+      "What the absence costs": "Clip lost, or recorded while the user believed it was not",
+      "Basis (cited evidence row)": "P005 L529",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 2,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 2,
+      "Participants (n=17)": 1,
+      "Code 1": "CAP-RECORDSTATE",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "CAP-RECORDSTATE"
+      ]
+    },
+    {
+      "Tag": "FB-14",
+      "Signal the user needs": "Charge and pairing state",
+      "Signal status": "Silent",
+      "Where it applies": "Device",
+      "What the device does": "A coloured light on the case, visual only",
+      "What the absence costs": "Runtime cannot be planned around",
+      "Basis (cited evidence row)": "P017 L653; P017 L657",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 2,
+      "Rows (n=17)": 2,
+      "Participants (n=17)": 1,
+      "Code 1": "DES-CASELIGHT",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "DES-CASELIGHT"
+      ]
+    },
+    {
+      "Tag": "FB-15",
+      "Signal the user needs": "What changed in an update",
+      "Signal status": "Silent",
+      "Where it applies": "Device",
+      "What the device does": "No accessible changelog",
+      "What the absence costs": "Capabilities appear and vanish with no announcement the user can read",
+      "Basis (cited evidence row)": "P013 L171; P013 L187",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 1,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 2,
+      "P014": 0,
+      "P015": 0,
+      "P016": 1,
+      "P017": 0,
+      "Rows (n=17)": 4,
+      "Participants (n=17)": 3,
+      "Code 1": "SUP-CHANGELOG",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "SUP-CHANGELOG"
+      ]
+    },
+    {
+      "Tag": "FB-16",
+      "Signal the user needs": "Which phrasing would have worked",
+      "Signal status": "Silent",
+      "Where it applies": "Interaction",
+      "What the device does": "None. Half the job is finding the wording",
+      "What the absence costs": "Failure is indistinguishable from asking wrongly",
+      "Basis (cited evidence row)": "P005 L51; P006 L259",
+      "P001": 0,
+      "P002": 1,
+      "P003": 0,
+      "P004": 0,
+      "P005": 1,
+      "P006": 1,
+      "P007": 0,
+      "P008": 0,
+      "P009": 1,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 1,
+      "P015": 2,
+      "P016": 0,
+      "P017": 1,
+      "Rows (n=17)": 8,
+      "Participants (n=17)": 7,
+      "Code 1": "INT-PROMPTCRAFT",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "INT-PROMPTCRAFT"
+      ]
+    },
+    {
+      "Tag": "FB-17",
+      "Signal the user needs": "That the user is being read as sighted",
+      "Signal status": "Silent",
+      "Where it applies": "Navigation, People",
+      "What the device does": "None. The answer is positioned for someone who can see",
+      "What the absence costs": "Right in front of you carries no distance. Bystanders stop signalling",
+      "Basis (cited evidence row)": "P012 L43; P009 L479",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 1,
+      "P007": 0,
+      "P008": 0,
+      "P009": 5,
+      "P010": 0,
+      "P011": 0,
+      "P012": 2,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 8,
+      "Participants (n=17)": 3,
+      "Code 1": "SOC-SIGHTEDPASSING",
+      "Code 2": "INT-SIGHTEDASSUMPTION",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "SOC-SIGHTEDPASSING",
+        "INT-SIGHTEDASSUMPTION"
+      ]
+    },
+    {
+      "Tag": "FB-18",
+      "Signal the user needs": "Which item has focus, what is changing",
+      "Signal status": "Silent",
+      "Where it applies": "Reading, Object and scene",
+      "What the device does": "None. A still frame cannot hold a change",
+      "What the absence costs": "Colour of an indicator reported, behaviour of it not",
+      "Basis (cited evidence row)": "P009 L471; P009 L579",
+      "P001": 0,
+      "P002": 1,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 3,
+      "P010": 0,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 4,
+      "Participants (n=17)": 2,
+      "Code 1": "READ-FOCUSSTATE",
+      "Code 2": "OBJ-DYNAMICSTATE",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "READ-FOCUSSTATE",
+        "OBJ-DYNAMICSTATE"
+      ]
+    },
+    {
+      "Tag": "FB-19",
+      "Signal the user needs": "User absorbs the failure as personal error",
+      "Signal status": "Consequence",
+      "Where it applies": "Reading, Capture",
+      "What the device does": "Operator error is the default reading of a silent failure",
+      "What the absence costs": "A product problem is carried as a personal one",
+      "Basis (cited evidence row)": "P005 L295; P003 L547",
+      "P001": 1,
+      "P002": 2,
+      "P003": 2,
+      "P004": 0,
+      "P005": 3,
+      "P006": 2,
+      "P007": 0,
+      "P008": 1,
+      "P009": 3,
+      "P010": 3,
+      "P011": 0,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 2,
+      "P016": 1,
+      "P017": 0,
+      "Rows (n=17)": 20,
+      "Participants (n=17)": 10,
+      "Code 1": "TRU-SELFBLAME",
+      "Code 2": "READ-AIM",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "TRU-SELFBLAME",
+        "READ-AIM"
+      ]
+    },
+    {
+      "Tag": "FB-20",
+      "Signal the user needs": "No witness available to check",
+      "Signal status": "Consequence",
+      "Where it applies": "All task types",
+      "What the device does": "Nobody on hand, so reliability is unknowable in principle",
+      "What the absence costs": "Verification is absent rather than skipped",
+      "Basis (cited evidence row)": "P009 L1207; P005 L47",
+      "P001": 1,
+      "P002": 0,
+      "P003": 1,
+      "P004": 0,
+      "P005": 2,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 4,
+      "P010": 0,
+      "P011": 1,
+      "P012": 0,
+      "P013": 0,
+      "P014": 2,
+      "P015": 1,
+      "P016": 3,
+      "P017": 0,
+      "Rows (n=17)": 15,
+      "Participants (n=17)": 8,
+      "Code 1": "TRU-NOWITNESS",
+      "Code 2": "TRU-UNVERIFIABLE",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "TRU-NOWITNESS",
+        "TRU-UNVERIFIABLE"
+      ]
+    },
+    {
+      "Tag": "FB-21",
+      "Signal the user needs": "Trust confined to what is already known",
+      "Signal status": "Consequence",
+      "Where it applies": "All task types",
+      "What the device does": "Prior knowledge, the cane, or calibration on known answers",
+      "What the absence costs": "The device is trusted precisely where it adds least",
+      "Basis (cited evidence row)": "P010 L507; P012 L551",
+      "P001": 0,
+      "P002": 1,
+      "P003": 2,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 3,
+      "P008": 3,
+      "P009": 0,
+      "P010": 1,
+      "P011": 4,
+      "P012": 4,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 1,
+      "P017": 1,
+      "Rows (n=17)": 20,
+      "Participants (n=17)": 9,
+      "Code 1": "TRU-FAMILIARITY",
+      "Code 2": "TRU-CALIBRATE",
+      "Code 3": "TRU-CANECHECK",
+      "codes": [
+        "TRU-FAMILIARITY",
+        "TRU-CALIBRATE",
+        "TRU-CANECHECK"
+      ]
+    },
+    {
+      "Tag": "FB-22",
+      "Signal the user needs": "Task ruled out in advance, no failure on record",
+      "Signal status": "Consequence",
+      "Where it applies": "All task types",
+      "What the device does": "Never attempted, so nothing registers as a failure",
+      "What the absence costs": "The largest cost is the one the logs cannot show",
+      "Basis (cited evidence row)": "P005 L109; P009 L967",
+      "P001": 1,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 1,
+      "P006": 1,
+      "P007": 1,
+      "P008": 0,
+      "P009": 6,
+      "P010": 0,
+      "P011": 0,
+      "P012": 1,
+      "P013": 1,
+      "P014": 2,
+      "P015": 3,
+      "P016": 2,
+      "P017": 5,
+      "Rows (n=17)": 24,
+      "Participants (n=17)": 11,
+      "Code 1": "NONUSE-ANTICIPATED",
+      "Code 2": "ADOPT-GOWITHOUT",
+      "Code 3": "TRU-SECONDHAND",
+      "codes": [
+        "NONUSE-ANTICIPATED",
+        "ADOPT-GOWITHOUT",
+        "TRU-SECONDHAND"
+      ]
+    },
+    {
+      "Tag": "FB-23",
+      "Signal the user needs": "Accuracy judged against no access at all",
+      "Signal status": "Consequence",
+      "Where it applies": "All task types",
+      "What the device does": "Better than what I had before, so an unknown error rate is acceptable",
+      "What the absence costs": "The comparison class is no information, not a correct answer",
+      "Basis (cited evidence row)": "P009 L143; P009 L1011",
+      "P001": 0,
+      "P002": 0,
+      "P003": 0,
+      "P004": 0,
+      "P005": 0,
+      "P006": 0,
+      "P007": 0,
+      "P008": 0,
+      "P009": 3,
+      "P010": 0,
+      "P011": 0,
+      "P012": 1,
+      "P013": 0,
+      "P014": 0,
+      "P015": 0,
+      "P016": 0,
+      "P017": 0,
+      "Rows (n=17)": 4,
+      "Participants (n=17)": 2,
+      "Code 1": "TRU-BASELINE",
+      "Code 2": "ZZ-UNUSED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "TRU-BASELINE"
+      ]
+    },
+    {
+      "Tag": "FB-24",
+      "Signal the user needs": "A human substitutes for the missing signal",
+      "Signal status": "Consequence",
+      "Where it applies": "All task types",
+      "What the device does": "Be My Eyes, Aira, a sighted person, a second app",
+      "What the absence costs": "The verification layer is staffed by people, not by the product",
+      "Basis (cited evidence row)": "P001 L75; P016 L197",
+      "P001": 2,
+      "P002": 3,
+      "P003": 2,
+      "P004": 5,
+      "P005": 2,
+      "P006": 3,
+      "P007": 0,
+      "P008": 0,
+      "P009": 0,
+      "P010": 3,
+      "P011": 1,
+      "P012": 0,
+      "P013": 0,
+      "P014": 0,
+      "P015": 2,
+      "P016": 3,
+      "P017": 3,
+      "Rows (n=17)": 29,
+      "Participants (n=17)": 11,
+      "Code 1": "ECO-FALLBACK",
+      "Code 2": "RSG-PREFERRED",
+      "Code 3": "ZZ-UNUSED",
+      "codes": [
+        "ECO-FALLBACK",
+        "RSG-PREFERRED"
+      ]
+    }
+  ],
+  "participant_counts": [
+    {
+      "Tag": "FB-01",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P006",
+      "count": 2
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P008",
+      "count": 1
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P009",
+      "count": 1
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P012",
+      "count": 2
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P014",
+      "count": 2
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P016",
+      "count": 1
+    },
+    {
+      "Tag": "FB-01",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P005",
+      "count": 2
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P006",
+      "count": 1
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P011",
+      "count": 3
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P014",
+      "count": 2
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P015",
+      "count": 3
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-02",
+      "participant": "P017",
+      "count": 4
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P006",
+      "count": 2
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P008",
+      "count": 2
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P011",
+      "count": 2
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-03",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P003",
+      "count": 2
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P004",
+      "count": 2
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-04",
+      "participant": "P017",
+      "count": 1
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P004",
+      "count": 2
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-05",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P004",
+      "count": 2
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P005",
+      "count": 1
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P007",
+      "count": 4
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P009",
+      "count": 1
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P011",
+      "count": 3
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P012",
+      "count": 3
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P013",
+      "count": 1
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P014",
+      "count": 2
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-06",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P003",
+      "count": 2
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P004",
+      "count": 1
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P012",
+      "count": 2
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P014",
+      "count": 1
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-07",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P002",
+      "count": 2
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P003",
+      "count": 2
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P004",
+      "count": 1
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P005",
+      "count": 2
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P006",
+      "count": 2
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P007",
+      "count": 7
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P008",
+      "count": 1
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P011",
+      "count": 1
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P012",
+      "count": 1
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P014",
+      "count": 1
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P016",
+      "count": 9
+    },
+    {
+      "Tag": "FB-08",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P002",
+      "count": 2
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P015",
+      "count": 1
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-09",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P002",
+      "count": 4
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P003",
+      "count": 2
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P005",
+      "count": 3
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P006",
+      "count": 4
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P008",
+      "count": 1
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P010",
+      "count": 1
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P015",
+      "count": 2
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P016",
+      "count": 1
+    },
+    {
+      "Tag": "FB-10",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P007",
+      "count": 1
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P014",
+      "count": 2
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-11",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P012",
+      "count": 2
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P013",
+      "count": 1
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-12",
+      "participant": "P017",
+      "count": 3
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P005",
+      "count": 2
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-13",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-14",
+      "participant": "P017",
+      "count": 2
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P004",
+      "count": 1
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P013",
+      "count": 2
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P016",
+      "count": 1
+    },
+    {
+      "Tag": "FB-15",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P005",
+      "count": 1
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P006",
+      "count": 1
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P009",
+      "count": 1
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P014",
+      "count": 1
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P015",
+      "count": 2
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-16",
+      "participant": "P017",
+      "count": 1
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P006",
+      "count": 1
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P009",
+      "count": 5
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P012",
+      "count": 2
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-17",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P009",
+      "count": 3
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-18",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P002",
+      "count": 2
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P003",
+      "count": 2
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P005",
+      "count": 3
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P006",
+      "count": 2
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P008",
+      "count": 1
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P009",
+      "count": 3
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P010",
+      "count": 3
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P015",
+      "count": 2
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P016",
+      "count": 1
+    },
+    {
+      "Tag": "FB-19",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P003",
+      "count": 1
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P005",
+      "count": 2
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P009",
+      "count": 4
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P011",
+      "count": 1
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P014",
+      "count": 2
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P015",
+      "count": 1
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P016",
+      "count": 3
+    },
+    {
+      "Tag": "FB-20",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P002",
+      "count": 1
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P003",
+      "count": 2
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P007",
+      "count": 3
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P008",
+      "count": 3
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P010",
+      "count": 1
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P011",
+      "count": 4
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P012",
+      "count": 4
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P016",
+      "count": 1
+    },
+    {
+      "Tag": "FB-21",
+      "participant": "P017",
+      "count": 1
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P001",
+      "count": 1
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P005",
+      "count": 1
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P006",
+      "count": 1
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P007",
+      "count": 1
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P009",
+      "count": 6
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P012",
+      "count": 1
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P013",
+      "count": 1
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P014",
+      "count": 2
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P015",
+      "count": 3
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P016",
+      "count": 2
+    },
+    {
+      "Tag": "FB-22",
+      "participant": "P017",
+      "count": 5
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P001",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P002",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P003",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P004",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P005",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P006",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P009",
+      "count": 3
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P010",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P011",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P012",
+      "count": 1
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P015",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P016",
+      "count": 0
+    },
+    {
+      "Tag": "FB-23",
+      "participant": "P017",
+      "count": 0
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P001",
+      "count": 2
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P002",
+      "count": 3
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P003",
+      "count": 2
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P004",
+      "count": 5
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P005",
+      "count": 2
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P006",
+      "count": 3
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P007",
+      "count": 0
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P008",
+      "count": 0
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P009",
+      "count": 0
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P010",
+      "count": 3
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P011",
+      "count": 1
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P012",
+      "count": 0
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P013",
+      "count": 0
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P014",
+      "count": 0
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P015",
+      "count": 2
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P016",
+      "count": 3
+    },
+    {
+      "Tag": "FB-24",
+      "participant": "P017",
+      "count": 3
+    }
+  ]
+}

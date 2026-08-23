@@ -1,0 +1,42 @@
+{
+  "id": "chart-19",
+  "number": 19,
+  "title": "The human verification layer, and where it fails too",
+  "caption": "Bar. The handoff route carries real load and has its own failure modes. Participants, then evidence rows.",
+  "source_tab": null,
+  "chart_type": "bar",
+  "columns": [
+    "Stage",
+    "Participants (of 17)",
+    "Evidence rows"
+  ],
+  "rows": [
+    [
+      "Uses a volunteer through the glasses camera",
+      9,
+      26
+    ],
+    [
+      "Volunteer steered a physical task",
+      3,
+      18
+    ],
+    [
+      "Helper could not see well enough",
+      3,
+      6
+    ],
+    [
+      "Connect time defeated the task",
+      2,
+      2
+    ],
+    [
+      "Nobody picked up",
+      1,
+      1
+    ]
+  ],
+  "footnote": null,
+  "alt_text": null
+}

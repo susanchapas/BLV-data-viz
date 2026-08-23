@@ -1,0 +1,36 @@
+{
+  "id": "chart-07",
+  "number": 7,
+  "title": "Feedback the device gives against feedback it withholds",
+  "caption": "Clustered bar. Signal types and evidence rows by status. Reads off the Feedback & Signal tab.",
+  "source_tab": "Feedback & Signal",
+  "chart_type": "clustered_bar",
+  "columns": [
+    "Signal status",
+    "Signal types",
+    "Evidence rows",
+    "Widest reach (participants)"
+  ],
+  "rows": [
+    [
+      "Announced",
+      7,
+      65,
+      9
+    ],
+    [
+      "Silent",
+      11,
+      87,
+      11
+    ],
+    [
+      "Consequence",
+      6,
+      112,
+      11
+    ]
+  ],
+  "footnote": null,
+  "alt_text": null
+}
