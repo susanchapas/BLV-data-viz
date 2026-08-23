@@ -1,8 +1,10 @@
 import { useMemo, useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useVirtualizer } from '@tanstack/react-virtual'
 import { useFilters } from '@/lib/filters'
 import { useAnnounce } from '@/lib/announce'
 import { evidence } from '@/lib/data'
+import { buildDrillUrl } from '@/lib/drilldown'
 import { DeviceNote } from '@/components/DeviceNote'
 import type { EvidenceRow } from '@/lib/types'
 
@@ -162,6 +164,12 @@ export function EvidenceExplorer() {
                     <td key={c.key} className={`px-4 py-3 text-text truncate max-w-md ${c.width}`}>
                       {c.key === 'Quote' ? (
                         <QuoteCell text={String(row[c.key] ?? '')} who={row.Who} line={row.Line} />
+                      ) : c.key === 'Who' ? (
+                        <Link to={`/participants/${row.Who}`} className="text-action hover:underline font-mono text-xs">{row.Who}</Link>
+                      ) : c.key === 'Code' ? (
+                        <Link to={buildDrillUrl({ code: row.Code })} className="text-action hover:underline font-mono text-xs">{row.Code}</Link>
+                      ) : c.key === 'Theme' ? (
+                        <Link to={`/themes?t=${row.Theme}`} className="text-action hover:underline">{row.Theme}</Link>
                       ) : (
                         String(row[c.key] ?? '')
                       )}

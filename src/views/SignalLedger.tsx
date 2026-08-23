@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Fragment, useMemo, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { Group } from '@visx/group'
 import { AxisBottom, AxisLeft } from '@visx/axis'
@@ -10,9 +10,17 @@ import { useAnnounce } from '@/lib/announce'
 import { useSelection } from '@/lib/selection'
 import { useContainerWidth } from '@/lib/useContainerWidth'
 import { buildDrillUrl } from '@/lib/drilldown'
-import { feedbackSignals, evidence } from '@/lib/data'
+import { feedbackSignals, evidence, isP011 } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { DeviceNote } from '@/components/DeviceNote'
+import {
+  ParticipantPills,
+  CodePills,
+  EvidencePreview,
+  CountButton,
+  ExpandedPanel,
+  getActiveParticipants,
+} from '@/components/LinkedData'
 import { color, motion as motionTokens } from '@/tokens/design'
 import type { FeedbackSignal } from '@/lib/types'
 
@@ -146,6 +154,7 @@ function ResponsiveSignalChart({
 export function SignalLedger() {
   const { filters, filterEvidence } = useFilters()
   const { selection, setSelection, clearSelection } = useSelection()
+  const [expandedTag, setExpandedTag] = useState<string | null>(null)
 
   const filteredEvidence = useMemo(() => filterEvidence(evidence), [filterEvidence])
   const uniqueParticipants = new Set(filteredEvidence.map((r) => r.Who))
@@ -169,6 +178,24 @@ export function SignalLedger() {
     }
     return groups
   }, [])
+
+  const expandedData = useMemo(() => {
+    if (!expandedTag) return null
+    const signal = data.find((d) => d.Tag === expandedTag)
+    if (!signal) return null
+    const codeSet = new Set(signal.codes)
+    const rows = evidence.filter((r) => {
+      if (!filters.includeP011 && isP011(r.Who)) return false
+      return codeSet.has(r.Code)
+    })
+    const { pids, counts } = getActiveParticipants(
+      signal as unknown as Record<string, unknown>,
+      filters.includeP011,
+    )
+    return { signal, rows, pids, counts }
+  }, [expandedTag, data, filters.includeP011])
+
+  const toggleExpand = (tag: string) => setExpandedTag((prev) => (prev === tag ? null : tag))
 
   return (
     <section aria-labelledby="signals-heading">
@@ -230,6 +257,114 @@ export function SignalLedger() {
             onItemHover={(label) => label ? setSelection([label], 'signal-chart') : clearSelection()}
           />
       </ChartWrapper>
+
+      <div className="mt-10">
+        <h2 className="font-heading text-[22px] font-normal text-navy-900 mb-4">All signals</h2>
+        <div className="table-wrap">
+          <div className="overflow-x-auto">
+            <table className="w-full text-[15px]" style={{ borderCollapse: 'collapse' }}>
+              <thead>
+                <tr className="border-b-2 border-border-strong bg-surface-sunk">
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Tag</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Signal</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">Status</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900" scope="col">What the device does</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900 text-right" scope="col">Rows</th>
+                  <th className="text-left px-4 py-3 font-bold text-navy-900 text-right" scope="col">Participants</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((d) => {
+                  const isExpanded = expandedTag === d.Tag
+                  return (
+                    <Fragment key={d.Tag}>
+                      <tr
+                        className={`border-b border-border hover:bg-surface-sunk cursor-pointer ${
+                          isExpanded ? 'bg-surface-sunk border-b-0' : ''
+                        }`}
+                        onClick={() => toggleExpand(d.Tag)}
+                      >
+                        <td className="px-4 py-3 font-mono text-xs">
+                          <Link
+                            to={buildDrillUrl({ code: d.codes })}
+                            className="text-action hover:underline"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {d.Tag}
+                          </Link>
+                        </td>
+                        <td className="px-4 py-3">
+                          <Link
+                            to={buildDrillUrl({ search: d['Signal the user needs'] })}
+                            className="text-action hover:underline"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {d['Signal the user needs']}
+                          </Link>
+                        </td>
+                        <td className="px-4 py-3">
+                          <span className="flex items-center gap-2">
+                            <span
+                              className="inline-block w-3.5 h-3.5 rounded-full border border-navy"
+                              style={{ backgroundColor: STATUS_FILLS[d['Signal status']] ?? color.textMuted }}
+                            />
+                            {d['Signal status']}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3 text-text-muted">{d['What the device does']}</td>
+                        <td className="px-4 py-3 text-right">
+                          <CountButton
+                            count={d['Rows (n=17)']}
+                            expanded={isExpanded}
+                            onClick={() => toggleExpand(d.Tag)}
+                            label={`${d['Rows (n=17)']} evidence rows for ${d['Signal the user needs']}`}
+                          />
+                        </td>
+                        <td className="px-4 py-3 text-right">
+                          <CountButton
+                            count={d['Participants (n=17)']}
+                            expanded={isExpanded}
+                            onClick={() => toggleExpand(d.Tag)}
+                            label={`${d['Participants (n=17)']} participants for ${d['Signal the user needs']}`}
+                          />
+                        </td>
+                      </tr>
+                      <ExpandedPanel open={isExpanded} colSpan={6}>
+                        {expandedData && (
+                          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6">
+                            <div>
+                              <h3 className="font-mono text-xs tracking-[0.14em] uppercase text-navy-900 mb-3">
+                                Evidence codes
+                              </h3>
+                              <CodePills codes={expandedData.signal.codes} />
+                              <h3 className="font-mono text-xs tracking-[0.14em] uppercase text-navy-900 mt-5 mb-3">
+                                Sample quotes ({expandedData.rows.length} rows)
+                              </h3>
+                              <EvidencePreview
+                                rows={expandedData.rows}
+                                drillParams={{ code: expandedData.signal.codes }}
+                              />
+                            </div>
+                            <div className="lg:border-l lg:border-border lg:pl-6 lg:min-w-[200px]">
+                              <h3 className="font-mono text-xs tracking-[0.14em] uppercase text-navy-900 mb-3">
+                                Participants ({expandedData.pids.length})
+                              </h3>
+                              <ParticipantPills
+                                pids={expandedData.pids}
+                                counts={expandedData.counts}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </ExpandedPanel>
+                    </Fragment>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

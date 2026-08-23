@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Fragment, useMemo, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { Group } from '@visx/group'
 import { AxisBottom, AxisLeft } from '@visx/axis'
@@ -10,9 +10,17 @@ import { useAnnounce } from '@/lib/announce'
 import { useSelection } from '@/lib/selection'
 import { useContainerWidth } from '@/lib/useContainerWidth'
 import { buildDrillUrl } from '@/lib/drilldown'
-import { verificationModes, evidence } from '@/lib/data'
+import { verificationModes, evidence, isP011 } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { DeviceNote } from '@/components/DeviceNote'
+import {
+  ParticipantPills,
+  CodePills,
+  EvidencePreview,
+  CountButton,
+  ExpandedPanel,
+  getActiveParticipants,
+} from '@/components/LinkedData'
 import { color, motion as motionTokens } from '@/tokens/design'
 import type { VerificationMode } from '@/lib/types'
 
@@ -142,6 +150,7 @@ function ResponsiveModeChart({
 export function VerificationAsymmetry() {
   const { filters, filterEvidence } = useFilters()
   const { selection, setSelection, clearSelection } = useSelection()
+  const [expandedTag, setExpandedTag] = useState<string | null>(null)
 
   const filteredEvidence = useMemo(() => filterEvidence(evidence), [filterEvidence])
 
@@ -158,7 +167,24 @@ export function VerificationAsymmetry() {
     return modes
   }, [filters.detectability, filters.failureClass])
 
+  const expandedData = useMemo(() => {
+    if (!expandedTag) return null
+    const mode = data.find((d) => d.Tag === expandedTag)
+    if (!mode) return null
+    const codeSet = new Set(mode.mode_codes)
+    const rows = evidence.filter((r) => {
+      if (!filters.includeP011 && isP011(r.Who)) return false
+      return codeSet.has(r.Code)
+    })
+    const { pids, counts } = getActiveParticipants(
+      mode as unknown as Record<string, unknown>,
+      filters.includeP011,
+    )
+    return { mode, rows, pids, counts }
+  }, [expandedTag, data, filters.includeP011])
+
   const uniqueParticipants = new Set(filteredEvidence.map((r) => r.Who))
+  const toggleExpand = (tag: string) => setExpandedTag((prev) => (prev === tag ? null : tag))
 
   return (
     <section aria-labelledby="va-heading">
@@ -218,25 +244,93 @@ export function VerificationAsymmetry() {
                 </tr>
               </thead>
               <tbody>
-                {data.map((d) => (
-                  <tr key={d.Tag} className={`border-b border-border hover:bg-surface-sunk ${selection.labels.includes(d.Tag) ? 'bg-cornflower/10' : ''}`}>
-                    <td className="px-4 py-3 font-mono text-xs">{d.Tag}</td>
-                    <td className="px-4 py-3">{d['Failure mode']}</td>
-                    <td className="px-4 py-3">{d['Failure class']}</td>
-                    <td className="px-4 py-3">
-                      <span className="flex items-center gap-2">
-                        <span
-                          className="inline-block w-3.5 h-3.5 rounded-full border border-navy"
-                          style={{ backgroundColor: DETECT_FILLS[d['Detectable without sight']] ?? color.textMuted }}
-                        />
-                        {d['Detectable without sight']}
-                      </span>
-                    </td>
-                    <td className="px-4 py-3">{d['Cost to detect']}</td>
-                    <td className="px-4 py-3 text-right font-mono">{d['Rows (n=17)']}</td>
-                    <td className="px-4 py-3 text-right font-mono">{d['Participants (n=17)']}</td>
-                  </tr>
-                ))}
+                {data.map((d) => {
+                  const isExpanded = expandedTag === d.Tag
+                  return (
+                    <Fragment key={d.Tag}>
+                      <tr
+                        className={`border-b border-border hover:bg-surface-sunk cursor-pointer ${
+                          selection.labels.includes(d.Tag) ? 'bg-cornflower/10' : ''
+                        } ${isExpanded ? 'bg-surface-sunk border-b-0' : ''}`}
+                        onClick={() => toggleExpand(d.Tag)}
+                      >
+                        <td className="px-4 py-3 font-mono text-xs">
+                          <Link
+                            to={buildDrillUrl({ code: d.mode_codes })}
+                            className="text-action hover:underline"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {d.Tag}
+                          </Link>
+                        </td>
+                        <td className="px-4 py-3">
+                          <Link
+                            to={buildDrillUrl({ search: d['Failure mode'] })}
+                            className="text-action hover:underline"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {d['Failure mode']}
+                          </Link>
+                        </td>
+                        <td className="px-4 py-3">{d['Failure class']}</td>
+                        <td className="px-4 py-3">
+                          <span className="flex items-center gap-2">
+                            <span
+                              className="inline-block w-3.5 h-3.5 rounded-full border border-navy"
+                              style={{ backgroundColor: DETECT_FILLS[d['Detectable without sight']] ?? color.textMuted }}
+                            />
+                            {d['Detectable without sight']}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3">{d['Cost to detect']}</td>
+                        <td className="px-4 py-3 text-right">
+                          <CountButton
+                            count={d['Rows (n=17)']}
+                            expanded={isExpanded}
+                            onClick={() => toggleExpand(d.Tag)}
+                            label={`${d['Rows (n=17)']} evidence rows for ${d['Failure mode']}`}
+                          />
+                        </td>
+                        <td className="px-4 py-3 text-right">
+                          <CountButton
+                            count={d['Participants (n=17)']}
+                            expanded={isExpanded}
+                            onClick={() => toggleExpand(d.Tag)}
+                            label={`${d['Participants (n=17)']} participants for ${d['Failure mode']}`}
+                          />
+                        </td>
+                      </tr>
+                      <ExpandedPanel open={isExpanded} colSpan={7}>
+                        {expandedData && (
+                          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6">
+                            <div>
+                              <h3 className="font-mono text-xs tracking-[0.14em] uppercase text-navy-900 mb-3">
+                                Evidence codes
+                              </h3>
+                              <CodePills codes={expandedData.mode.mode_codes} />
+                              <h3 className="font-mono text-xs tracking-[0.14em] uppercase text-navy-900 mt-5 mb-3">
+                                Sample quotes ({expandedData.rows.length} rows)
+                              </h3>
+                              <EvidencePreview
+                                rows={expandedData.rows}
+                                drillParams={{ code: expandedData.mode.mode_codes }}
+                              />
+                            </div>
+                            <div className="lg:border-l lg:border-border lg:pl-6 lg:min-w-[200px]">
+                              <h3 className="font-mono text-xs tracking-[0.14em] uppercase text-navy-900 mb-3">
+                                Participants ({expandedData.pids.length})
+                              </h3>
+                              <ParticipantPills
+                                pids={expandedData.pids}
+                                counts={expandedData.counts}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </ExpandedPanel>
+                    </Fragment>
+                  )
+                })}
               </tbody>
             </table>
           </div>

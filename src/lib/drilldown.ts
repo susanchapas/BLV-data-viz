@@ -1,6 +1,6 @@
 export function buildDrillUrl(params: {
   theme?: string
-  code?: string
+  code?: string | string[]
   participant?: string
   search?: string
   detectability?: string
@@ -8,7 +8,10 @@ export function buildDrillUrl(params: {
 }): string {
   const sp = new URLSearchParams()
   if (params.theme) sp.append('t', params.theme)
-  if (params.code) sp.append('c', params.code)
+  if (params.code) {
+    const codes = Array.isArray(params.code) ? params.code : [params.code]
+    codes.forEach((c) => sp.append('c', c))
+  }
   if (params.participant) sp.append('p', params.participant)
   if (params.search) sp.set('q', params.search)
   if (params.detectability) sp.append('det', params.detectability)

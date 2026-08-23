@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Fragment, useMemo, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { scaleBand, scaleLinear } from '@visx/scale'
 import { Group } from '@visx/group'
 import { AxisBottom, AxisLeft } from '@visx/axis'
@@ -10,9 +10,16 @@ import { useAnnounce } from '@/lib/announce'
 import { useSelection } from '@/lib/selection'
 import { useContainerWidth } from '@/lib/useContainerWidth'
 import { buildDrillUrl } from '@/lib/drilldown'
-import { themes, codebook, evidence } from '@/lib/data'
+import { themes, codebook, evidence, isP011 } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { DeviceNote } from '@/components/DeviceNote'
+import {
+  ParticipantPills,
+  EvidencePreview,
+  CountButton,
+  ExpandedPanel,
+  getActiveParticipants,
+} from '@/components/LinkedData'
 import { color, categorical, motion as motionTokens } from '@/tokens/design'
 
 const margin = { top: 20, right: 20, bottom: 60, left: 200 }
@@ -129,7 +136,7 @@ function ResponsiveThemeChart({
 export function ThemeBrowser() {
   const { filters, filterEvidence } = useFilters()
   const { selection, setSelection, clearSelection } = useSelection()
-  const [expandedTheme, setExpandedTheme] = useState<string | null>(null)
+  const [expandedCode, setExpandedCode] = useState<string | null>(null)
 
   const filteredEvidence = useMemo(() => filterEvidence(evidence), [filterEvidence])
   const uniqueParticipants = new Set(filteredEvidence.map((r) => r.Who))
@@ -146,6 +153,23 @@ export function ThemeBrowser() {
     }
     return codes
   }, [filters.themes, filters.codes])
+
+  const expandedData = useMemo(() => {
+    if (!expandedCode) return null
+    const code = filteredCodes.find((c) => c.Code === expandedCode)
+    if (!code) return null
+    const rows = evidence.filter((r) => {
+      if (!filters.includeP011 && isP011(r.Who)) return false
+      return r.Code === expandedCode
+    })
+    const { pids, counts } = getActiveParticipants(
+      code as unknown as Record<string, unknown>,
+      filters.includeP011,
+    )
+    return { code, rows, pids, counts }
+  }, [expandedCode, filteredCodes, filters.includeP011])
+
+  const toggleExpand = (code: string) => setExpandedCode((prev) => (prev === code ? null : code))
 
   return (
     <section aria-labelledby="themes-heading">
@@ -197,22 +221,80 @@ export function ThemeBrowser() {
                 </tr>
               </thead>
               <tbody>
-                {filteredCodes.map((c) => (
-                  <tr
-                    key={c.Code}
-                    className={`border-b border-border hover:bg-surface-sunk cursor-pointer ${selection.labels.includes(c.Theme) ? 'bg-cornflower/10' : ''}`}
-                    onClick={() => setExpandedTheme(expandedTheme === c.Code ? null : c.Code)}
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpandedTheme(expandedTheme === c.Code ? null : c.Code) } }}
-                    tabIndex={0}
-                    aria-expanded={expandedTheme === c.Code}
-                  >
-                    <td className="px-4 py-3 font-mono text-xs">{c.Code}</td>
-                    <td className="px-4 py-3">{c.Label}</td>
-                    <td className="px-4 py-3">{c.Theme} {c['Theme name']}</td>
-                    <td className="px-4 py-3 text-right font-mono">{c.Total}</td>
-                    <td className="px-4 py-3 text-text-muted">{c.Status}</td>
-                  </tr>
-                ))}
+                {filteredCodes.map((c) => {
+                  const isExpanded = expandedCode === c.Code
+                  return (
+                    <Fragment key={c.Code}>
+                      <tr
+                        className={`border-b border-border hover:bg-surface-sunk cursor-pointer ${
+                          selection.labels.includes(c.Theme) ? 'bg-cornflower/10' : ''
+                        } ${isExpanded ? 'bg-surface-sunk border-b-0' : ''}`}
+                        onClick={() => toggleExpand(c.Code)}
+                        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleExpand(c.Code) } }}
+                        tabIndex={0}
+                        aria-expanded={isExpanded}
+                      >
+                        <td className="px-4 py-3 font-mono text-xs">
+                          <Link
+                            to={buildDrillUrl({ code: c.Code })}
+                            className="text-action hover:underline"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {c.Code}
+                          </Link>
+                        </td>
+                        <td className="px-4 py-3">{c.Label}</td>
+                        <td className="px-4 py-3">
+                          <Link
+                            to={`/themes?t=${c.Theme}`}
+                            className="text-action hover:underline"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {c.Theme} {c['Theme name']}
+                          </Link>
+                        </td>
+                        <td className="px-4 py-3 text-right">
+                          <CountButton
+                            count={c.Total}
+                            expanded={isExpanded}
+                            onClick={() => toggleExpand(c.Code)}
+                            label={`${c.Total} evidence rows for ${c.Label}`}
+                          />
+                        </td>
+                        <td className="px-4 py-3 text-text-muted">{c.Status}</td>
+                      </tr>
+                      <ExpandedPanel open={isExpanded} colSpan={5}>
+                        {expandedData && (
+                          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6">
+                            <div>
+                              {expandedData.code.Note && (
+                                <p className="text-sm text-text-muted mb-4 italic">
+                                  {expandedData.code.Note}
+                                </p>
+                              )}
+                              <h3 className="font-mono text-xs tracking-[0.14em] uppercase text-navy-900 mb-3">
+                                Sample quotes ({expandedData.rows.length} rows)
+                              </h3>
+                              <EvidencePreview
+                                rows={expandedData.rows}
+                                drillParams={{ code: expandedCode! }}
+                              />
+                            </div>
+                            <div className="lg:border-l lg:border-border lg:pl-6 lg:min-w-[200px]">
+                              <h3 className="font-mono text-xs tracking-[0.14em] uppercase text-navy-900 mb-3">
+                                Participants ({expandedData.pids.length})
+                              </h3>
+                              <ParticipantPills
+                                pids={expandedData.pids}
+                                counts={expandedData.counts}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </ExpandedPanel>
+                    </Fragment>
+                  )
+                })}
               </tbody>
             </table>
           </div>

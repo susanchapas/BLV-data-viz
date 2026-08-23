@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useFilters } from '@/lib/filters'
 import { participants, evidence, isP011 } from '@/lib/data'
+import { buildDrillUrl } from '@/lib/drilldown'
 import { DeviceNote } from '@/components/DeviceNote'
 import type { Participant, EvidenceRow } from '@/lib/types'
 
@@ -45,6 +46,16 @@ function ProfileDetail({ pid }: { pid: string }) {
 
   const attrs = Object.entries(p).filter(([k]) => !SKIP_ATTRS.has(k))
 
+  const themeSummary = useMemo(() => {
+    const counts: Record<string, { name: string; count: number }> = {}
+    for (const r of rows) {
+      if (!counts[r.Theme]) counts[r.Theme] = { name: r['Theme name'], count: 0 }
+      counts[r.Theme].count++
+    }
+    return Object.entries(counts)
+      .sort((a, b) => b[1].count - a[1].count)
+  }, [rows])
+
   return (
     <div>
       <Link
@@ -77,6 +88,26 @@ function ProfileDetail({ pid }: { pid: string }) {
         </dl>
       </div>
 
+      {themeSummary.length > 0 && (
+        <div className="card mb-8">
+          <h2 className="font-mono text-xs tracking-[0.14em] uppercase text-navy-900 mb-4">
+            Themes ({themeSummary.length})
+          </h2>
+          <div className="flex flex-wrap gap-1.5">
+            {themeSummary.map(([tid, { name, count }]) => (
+              <Link
+                key={tid}
+                to={`/themes?t=${tid}`}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-pill bg-surface-sunk border border-border text-xs font-mono text-navy-900 hover:bg-cornflower/10 hover:border-cornflower transition-colors"
+              >
+                {tid} {name}
+                <span className="text-text-muted">({count})</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
       <h2 className="font-heading text-[22px] font-normal text-navy-900 mb-4">
         Evidence ({rows.length} rows)
       </h2>
@@ -95,8 +126,22 @@ function ProfileDetail({ pid }: { pid: string }) {
               {rows.map((r: EvidenceRow, i: number) => (
                 <tr key={i} className="border-b border-border hover:bg-surface-sunk">
                   <td className="px-4 py-3 font-mono text-xs">{r.Line}</td>
-                  <td className="px-4 py-3 font-mono text-xs">{r.Code}</td>
-                  <td className="px-4 py-3">{r.Theme}</td>
+                  <td className="px-4 py-3 font-mono text-xs">
+                    <Link
+                      to={buildDrillUrl({ code: r.Code })}
+                      className="text-action hover:underline"
+                    >
+                      {r.Code}
+                    </Link>
+                  </td>
+                  <td className="px-4 py-3">
+                    <Link
+                      to={`/themes?t=${r.Theme}`}
+                      className="text-action hover:underline"
+                    >
+                      {r.Theme}
+                    </Link>
+                  </td>
                   <td className="px-4 py-3">
                     <blockquote className="not-italic">
                       {r.Quote}
