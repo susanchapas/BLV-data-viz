@@ -10,7 +10,7 @@ import { useContainerWidth } from '@/lib/useContainerWidth'
 import { themes, codebook, evidence } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { DeviceNote } from '@/components/DeviceNote'
-import { grey } from '@/tokens/design'
+import { grey, motion as motionTokens } from '@/tokens/design'
 
 const margin = { top: 20, right: 20, bottom: 60, left: 200 }
 
@@ -35,7 +35,7 @@ function ThemeChart({ width, height }: { width: number; height: number }) {
   })
 
   return (
-    <svg width={width} height={height} role="img" aria-label="Themes by evidence weight">
+    <svg width={width} height={height} aria-hidden="true">
       <Group top={margin.top} left={margin.left}>
         {themes.map((t, i) => {
           const barW = xScale(t.Total)
@@ -45,13 +45,13 @@ function ThemeChart({ width, height }: { width: number; height: number }) {
               key={t.Theme}
               x={0}
               y={y}
-              height={yScale.bandwidth()}
+              height={Math.max(yScale.bandwidth(), 24)}
               fill={grey[4]}
               stroke={grey[5]}
               strokeWidth={0.5}
               initial={shouldAnimate ? { width: 0 } : { width: barW }}
               animate={{ width: barW }}
-              transition={{ duration: 0.3, delay: i * 0.03, ease: [0, 0, 0.2, 1] }}
+              transition={{ duration: motionTokens.duration / 1000, delay: i * motionTokens.stagger / 1000, ease: [...motionTokens.ease] }}
               role="graphics-symbol"
               aria-label={`${t.Name}: ${t.Total} evidence rows`}
               tabIndex={0}

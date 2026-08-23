@@ -8,7 +8,7 @@ import { useAnnounce } from '@/lib/announce'
 import { useContainerWidth } from '@/lib/useContainerWidth'
 import { charts } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
-import { grey } from '@/tokens/design'
+import { grey, motion as motionTokens } from '@/tokens/design'
 import type { ChartSpec } from '@/lib/types'
 
 const margin = { top: 20, right: 20, bottom: 60, left: 200 }
@@ -32,7 +32,7 @@ function GenericBarChart({ spec, width }: { spec: ChartSpec; width: number }) {
   const xScale = scaleLinear<number>({ domain: [0, maxVal], range: [0, innerW], nice: true })
 
   return (
-    <svg width={width} height={height} role="img" aria-label={spec.title}>
+    <svg width={width} height={height} aria-hidden="true">
       <Group top={margin.top} left={margin.left}>
         {dataRows.map((row, i) => {
           const label = String(row[0])
@@ -44,13 +44,13 @@ function GenericBarChart({ spec, width }: { spec: ChartSpec; width: number }) {
               <motion.rect
                 x={0}
                 y={y}
-                height={yScale.bandwidth()}
+                height={Math.max(yScale.bandwidth(), 24)}
                 fill={grey[4]}
                 stroke={grey[5]}
                 strokeWidth={0.5}
                 initial={shouldAnimate ? { width: 0 } : { width: barW }}
                 animate={{ width: barW }}
-                transition={{ duration: 0.3, delay: i * 0.03, ease: [0, 0, 0.2, 1] }}
+                transition={{ duration: motionTokens.duration / 1000, delay: i * motionTokens.stagger / 1000, ease: [...motionTokens.ease] }}
                 role="graphics-symbol"
                 aria-label={`${label}: ${val}`}
                 tabIndex={0}
