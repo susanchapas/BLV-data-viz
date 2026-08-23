@@ -84,19 +84,19 @@ export function EvidenceExplorer() {
     <section aria-labelledby="evidence-heading">
       <div className="flex items-baseline justify-between mb-4">
         <div>
-          <h1 id="evidence-heading" className="text-xl font-semibold text-grey-5">
+          <h1 id="evidence-heading" className="text-xl font-semibold text-text">
             Evidence explorer
           </h1>
-          <p className="text-sm text-grey-4">
+          <p className="text-sm text-text-muted">
             {sorted.length.toLocaleString()} of {evidence.length.toLocaleString()} rows
           </p>
           <DeviceNote total={new Set(sorted.map((r) => r.Who)).size} />
         </div>
         <details className="relative">
-          <summary className="cursor-pointer text-sm text-accent hover:underline min-h-[2.75rem] flex items-center">
+          <summary className="cursor-pointer text-sm text-action hover:underline min-h-[2.75rem] flex items-center">
             Columns
           </summary>
-          <div className="absolute right-0 z-50 mt-1 bg-white border border-grey-2 rounded shadow-lg p-2 min-w-[10rem]">
+          <div className="absolute right-0 z-50 mt-1 bg-surface-raised border border-border-strong rounded shadow-lg p-2 min-w-[10rem]">
             {COLUMNS.map((c) => (
               <label key={c.key} className="flex items-center gap-2 py-1 text-sm cursor-pointer">
                 <input
@@ -114,19 +114,19 @@ export function EvidenceExplorer() {
 
       <div
         ref={parentRef}
-        className="border border-grey-1 rounded overflow-auto"
+        className="border border-border rounded overflow-auto"
         style={{ height: 'calc(100vh - 14rem)' }}
         role="region"
         aria-label="Evidence table"
         tabIndex={0}
       >
         <table className="w-full text-sm" role="grid">
-          <thead className="sticky top-0 bg-white z-10">
+          <thead className="sticky top-0 bg-surface-raised z-10">
             <tr>
               {activeColumns.map((c) => (
                 <th
                   key={c.key}
-                  className={`text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4 cursor-pointer hover:text-grey-5 ${c.width}`}
+                  className={`text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted cursor-pointer hover:text-text ${c.width}`}
                   onClick={() => handleSort(c.key)}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleSort(c.key) } }}
                   aria-sort={sortKey === c.key ? (sortDir === 'asc' ? 'ascending' : 'descending') : undefined}
@@ -145,7 +145,7 @@ export function EvidenceExplorer() {
               return (
                 <tr
                   key={vi.key}
-                  className="hover:bg-grey-0"
+                  className="hover:bg-surface-sunk"
                   style={{
                     position: 'absolute',
                     top: 0,
@@ -156,7 +156,7 @@ export function EvidenceExplorer() {
                   }}
                 >
                   {activeColumns.map((c) => (
-                    <td key={c.key} className={`px-2 py-1.5 text-grey-5 truncate max-w-md ${c.width}`}>
+                    <td key={c.key} className={`px-2 py-1.5 text-text truncate max-w-md ${c.width}`}>
                       {c.key === 'Quote' ? (
                         <QuoteCell text={String(row[c.key] ?? '')} who={row.Who} line={row.Line} />
                       ) : (
@@ -180,9 +180,9 @@ function QuoteCell({ text, who, line }: { text: string; who: string; line: strin
 
   if (!truncated || expanded) {
     return (
-      <blockquote className="not-italic text-grey-5">
+      <blockquote className="not-italic text-text">
         {text}
-        <cite className="text-xs text-grey-3 ml-1 not-italic">{who} {line}</cite>
+        <cite className="text-xs text-text-muted ml-1 not-italic">{who} {line}</cite>
       </blockquote>
     )
   }
@@ -192,7 +192,7 @@ function QuoteCell({ text, who, line }: { text: string; who: string; line: strin
       {text.slice(0, 120)}…{' '}
       <button
         onClick={() => setExpanded(true)}
-        className="text-accent text-xs hover:underline"
+        className="text-action text-xs hover:underline"
         aria-label={`Expand quote from ${who} at ${line}`}
       >
         more

@@ -18,11 +18,11 @@ export default function App() {
     <MotionProvider>
       <AnnounceProvider>
         <FilterProvider>
-          <div className="min-h-screen bg-white text-grey-5 font-sans">
+          <div className="min-h-screen bg-surface text-text font-sans">
             <Nav />
             <FilterBar />
             <main id="main" className="max-w-screen-2xl mx-auto px-4 py-6" tabIndex={-1}>
-              <Suspense fallback={<div className="py-12 text-center text-grey-3">Loading…</div>}>
+              <Suspense fallback={<div className="py-12 text-center text-text-muted">Loading…</div>}>
                 <Routes>
                   <Route path="/" element={<EvidenceExplorer />} />
                   <Route path="/verification" element={<VerificationAsymmetry />} />

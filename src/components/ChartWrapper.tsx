@@ -26,12 +26,12 @@ export function ChartWrapper({
   return (
     <figure className="mb-8" aria-labelledby={titleId} aria-describedby={descId}>
       <figcaption className="mb-2">
-        <h2 id={titleId} className="text-base font-semibold text-grey-5">
+        <h2 id={titleId} className="text-base font-semibold text-text">
           {title}
         </h2>
-        <p className="text-sm text-grey-4">{caption}</p>
-        {deviceNote && <p className="text-sm text-grey-3 italic">{deviceNote}</p>}
-        <p className="text-xs text-grey-3 mt-1">Source: {source}</p>
+        <p className="text-sm text-text-muted">{caption}</p>
+        {deviceNote && <p className="text-sm text-text-muted italic">{deviceNote}</p>}
+        <p className="text-xs text-text-muted mt-1">Source: {source}</p>
       </figcaption>
       <div className="w-full">
         <span id={descId} className="sr-only">{altText}</span>
@@ -41,7 +41,7 @@ export function ChartWrapper({
         <>
           <button
             onClick={() => setShowTable(!showTable)}
-            className="mt-2 text-sm text-accent hover:underline min-h-[2.75rem] min-w-[2.75rem]"
+            className="mt-2 text-sm text-action hover:underline min-h-[2.75rem] min-w-[2.75rem]"
             aria-expanded={showTable}
           >
             {showTable ? 'Hide data table' : 'Show data table'}
@@ -65,7 +65,7 @@ export function DataTable({
       <thead>
         <tr>
           {columns.map((c) => (
-            <th key={c} scope="col" className="text-left px-2 py-1 border-b border-grey-2 font-medium text-grey-4">
+            <th key={c} scope="col" className="text-left px-2 py-1 border-b border-border-strong font-medium text-text-muted">
               {c}
             </th>
           ))}
@@ -73,9 +73,9 @@ export function DataTable({
       </thead>
       <tbody>
         {rows.map((row, i) => (
-          <tr key={i} className="hover:bg-grey-0">
+          <tr key={i} className="hover:bg-surface-sunk">
             {row.map((cell, j) => (
-              <td key={j} className="px-2 py-1 border-b border-grey-1 text-grey-5">
+              <td key={j} className="px-2 py-1 border-b border-border text-text">
                 {cell ?? '—'}
               </td>
             ))}

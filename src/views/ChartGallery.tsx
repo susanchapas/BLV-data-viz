@@ -8,7 +8,7 @@ import { useAnnounce } from '@/lib/announce'
 import { useContainerWidth } from '@/lib/useContainerWidth'
 import { charts } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
-import { grey, motion as motionTokens } from '@/tokens/design'
+import { color, categorical, motion as motionTokens } from '@/tokens/design'
 import type { ChartSpec } from '@/lib/types'
 
 const margin = { top: 20, right: 20, bottom: 60, left: 200 }
@@ -45,8 +45,8 @@ function GenericBarChart({ spec, width }: { spec: ChartSpec; width: number }) {
                 x={0}
                 y={y}
                 height={Math.max(yScale.bandwidth(), 24)}
-                fill={grey[4]}
-                stroke={grey[5]}
+                fill={categorical[i % categorical.length]}
+                stroke={color.navy}
                 strokeWidth={0.5}
                 initial={shouldAnimate ? { width: 0 } : { width: barW }}
                 animate={{ width: barW }}
@@ -61,7 +61,7 @@ function GenericBarChart({ spec, width }: { spec: ChartSpec; width: number }) {
                 y={y + yScale.bandwidth() / 2}
                 dy="0.35em"
                 fontSize={10}
-                fill={grey[4]}
+                fill={color.textMuted}
               >
                 {val}
               </text>
@@ -74,19 +74,19 @@ function GenericBarChart({ spec, width }: { spec: ChartSpec; width: number }) {
             const s = String(v)
             return s.length > 30 ? s.slice(0, 27) + '…' : s
           }}
-          stroke={grey[2]}
-          tickStroke={grey[2]}
-          tickLabelProps={{ fill: grey[4], fontSize: 11 }}
+          stroke={color.borderStrong}
+          tickStroke={color.borderStrong}
+          tickLabelProps={{ fill: color.textMuted, fontSize: 11 }}
           hideTicks
         />
         <AxisBottom
           top={innerH}
           scale={xScale}
           label={valueCol}
-          stroke={grey[2]}
-          tickStroke={grey[2]}
-          tickLabelProps={{ fill: grey[4], fontSize: 11 }}
-          labelProps={{ fill: grey[4], fontSize: 12 }}
+          stroke={color.borderStrong}
+          tickStroke={color.borderStrong}
+          tickLabelProps={{ fill: color.textMuted, fontSize: 11 }}
+          labelProps={{ fill: color.textMuted, fontSize: 12 }}
         />
       </Group>
     </svg>
@@ -115,7 +115,7 @@ function ChartCard({ spec }: { spec: ChartSpec }) {
     >
       <ResponsiveBarChart spec={spec} />
       {spec.footnote && (
-        <p className="text-xs text-grey-3 mt-1 italic">{spec.footnote}</p>
+        <p className="text-xs text-text-muted mt-1 italic">{spec.footnote}</p>
       )}
     </ChartWrapper>
   )
@@ -126,10 +126,10 @@ export function ChartGallery() {
 
   return (
     <section aria-labelledby="charts-heading">
-      <h1 id="charts-heading" className="text-xl font-semibold text-grey-5 mb-1">
+      <h1 id="charts-heading" className="text-xl font-semibold text-text mb-1">
         Chart gallery
       </h1>
-      <p className="text-sm text-grey-4 mb-4">{sortedCharts.length} pre-specified charts</p>
+      <p className="text-sm text-text-muted mb-4">{sortedCharts.length} pre-specified charts</p>
 
       <div className="space-y-12">
         {sortedCharts.map((spec) => (

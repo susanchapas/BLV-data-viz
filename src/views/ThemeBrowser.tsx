@@ -10,7 +10,7 @@ import { useContainerWidth } from '@/lib/useContainerWidth'
 import { themes, codebook, evidence } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { DeviceNote } from '@/components/DeviceNote'
-import { grey, motion as motionTokens } from '@/tokens/design'
+import { color, categorical, motion as motionTokens } from '@/tokens/design'
 
 const margin = { top: 20, right: 20, bottom: 60, left: 200 }
 
@@ -46,8 +46,8 @@ function ThemeChart({ width, height }: { width: number; height: number }) {
               x={0}
               y={y}
               height={Math.max(yScale.bandwidth(), 24)}
-              fill={grey[4]}
-              stroke={grey[5]}
+              fill={categorical[i % categorical.length]}
+              stroke={color.navy}
               strokeWidth={0.5}
               initial={shouldAnimate ? { width: 0 } : { width: barW }}
               animate={{ width: barW }}
@@ -68,19 +68,19 @@ function ThemeChart({ width, height }: { width: number; height: number }) {
             const label = t ? `${t.Theme} ${t.Name}` : String(id)
             return label.length > 28 ? label.slice(0, 25) + '…' : label
           }}
-          stroke={grey[2]}
-          tickStroke={grey[2]}
-          tickLabelProps={{ fill: grey[4], fontSize: 11 }}
+          stroke={color.borderStrong}
+          tickStroke={color.borderStrong}
+          tickLabelProps={{ fill: color.textMuted, fontSize: 11 }}
           hideTicks
         />
         <AxisBottom
           top={innerH}
           scale={xScale}
           label="Evidence rows"
-          stroke={grey[2]}
-          tickStroke={grey[2]}
-          tickLabelProps={{ fill: grey[4], fontSize: 11 }}
-          labelProps={{ fill: grey[4], fontSize: 12 }}
+          stroke={color.borderStrong}
+          tickStroke={color.borderStrong}
+          tickLabelProps={{ fill: color.textMuted, fontSize: 11 }}
+          labelProps={{ fill: color.textMuted, fontSize: 12 }}
         />
       </Group>
     </svg>
@@ -119,10 +119,10 @@ export function ThemeBrowser() {
 
   return (
     <section aria-labelledby="themes-heading">
-      <h1 id="themes-heading" className="text-xl font-semibold text-grey-5 mb-1">
+      <h1 id="themes-heading" className="text-xl font-semibold text-text mb-1">
         Themes and codes
       </h1>
-      <p className="text-sm text-grey-4 mb-1">
+      <p className="text-sm text-text-muted mb-1">
         {themes.length} themes, {filteredCodes.length} of {codebook.length} codes shown
       </p>
       <DeviceNote total={uniqueParticipants.size} />
@@ -144,33 +144,33 @@ export function ThemeBrowser() {
         </ChartWrapper>
       </div>
 
-      <h2 className="text-lg font-semibold text-grey-5 mt-8 mb-3">Codebook ({filteredCodes.length} codes)</h2>
+      <h2 className="text-lg font-semibold text-text mt-8 mb-3">Codebook ({filteredCodes.length} codes)</h2>
       <div className="overflow-x-auto">
         <table className="w-full text-sm border-collapse">
           <thead>
             <tr>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4" scope="col">Code</th>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4" scope="col">Label</th>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4" scope="col">Theme</th>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4 text-right" scope="col">Total</th>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4" scope="col">Status</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Code</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Label</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Theme</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted text-right" scope="col">Total</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
             {filteredCodes.map((c) => (
               <tr
                 key={c.Code}
-                className="hover:bg-grey-0 cursor-pointer"
+                className="hover:bg-surface-sunk cursor-pointer"
                 onClick={() => setExpandedTheme(expandedTheme === c.Code ? null : c.Code)}
                 onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setExpandedTheme(expandedTheme === c.Code ? null : c.Code) } }}
                 tabIndex={0}
                 aria-expanded={expandedTheme === c.Code}
               >
-                <td className="px-2 py-1.5 border-b border-grey-1 font-mono text-xs">{c.Code}</td>
-                <td className="px-2 py-1.5 border-b border-grey-1">{c.Label}</td>
-                <td className="px-2 py-1.5 border-b border-grey-1">{c.Theme} {c['Theme name']}</td>
-                <td className="px-2 py-1.5 border-b border-grey-1 text-right">{c.Total}</td>
-                <td className="px-2 py-1.5 border-b border-grey-1 text-xs text-grey-3">{c.Status}</td>
+                <td className="px-2 py-1.5 border-b border-border font-mono text-xs">{c.Code}</td>
+                <td className="px-2 py-1.5 border-b border-border">{c.Label}</td>
+                <td className="px-2 py-1.5 border-b border-border">{c.Theme} {c['Theme name']}</td>
+                <td className="px-2 py-1.5 border-b border-border text-right">{c.Total}</td>
+                <td className="px-2 py-1.5 border-b border-border text-xs text-text-muted">{c.Status}</td>
               </tr>
             ))}
           </tbody>

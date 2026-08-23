@@ -17,19 +17,19 @@ function MultiSelect({
   const set = new Set(selected)
   return (
     <details className="relative">
-      <summary className="cursor-pointer px-3 py-1.5 border border-grey-2 rounded text-sm hover:border-grey-4 min-h-[2.75rem] flex items-center">
+      <summary className="cursor-pointer px-3 py-1.5 border border-border-strong rounded text-sm hover:border-navy min-h-[2.75rem] flex items-center">
         {label}
         {selected.length > 0 && (
-          <span className="ml-1.5 bg-accent text-white rounded-full px-1.5 text-xs">
+          <span className="ml-1.5 bg-action text-white rounded-full px-1.5 text-xs">
             {selected.length}
           </span>
         )}
       </summary>
-      <div className="absolute z-50 mt-1 bg-white border border-grey-2 rounded shadow-lg max-h-60 overflow-y-auto min-w-[14rem]">
+      <div className="absolute z-50 mt-1 bg-surface-raised border border-border-strong rounded shadow-lg max-h-60 overflow-y-auto min-w-[14rem]">
         {options.map((o) => (
           <label
             key={o.value}
-            className="flex items-center gap-2 px-3 py-1.5 hover:bg-grey-0 cursor-pointer text-sm"
+            className="flex items-center gap-2 px-3 py-1.5 hover:bg-surface-sunk cursor-pointer text-sm"
           >
             <input
               type="checkbox"
@@ -95,7 +95,7 @@ export function FilterBar() {
   }))
 
   return (
-    <div role="search" aria-label="Filters" className="flex flex-wrap gap-2 items-center py-3 px-4 bg-grey-0 border-b border-grey-1">
+    <div role="search" aria-label="Filters" className="flex flex-wrap gap-2 items-center py-3 px-4 bg-surface-sunk border-b border-border">
       <MultiSelect
         label="Participant"
         options={PARTICIPANT_OPTIONS}
@@ -152,7 +152,7 @@ export function FilterBar() {
               announce(`Search: ${v || 'cleared'}`)
             }, 300)
           }}
-          className="w-full px-3 py-1.5 border border-grey-2 rounded text-sm min-h-[2.75rem]"
+          className="w-full px-3 py-1.5 border border-border-strong rounded text-sm min-h-[2.75rem]"
         />
       </div>
       {activeCount > 0 && (
@@ -161,7 +161,7 @@ export function FilterBar() {
             const cleared = resetFilters()
             announce(`Cleared ${cleared} filter${cleared !== 1 ? 's' : ''}`)
           }}
-          className="px-3 py-1.5 text-sm text-accent hover:underline min-h-[2.75rem]"
+          className="px-3 py-1.5 text-sm text-action hover:underline min-h-[2.75rem]"
         >
           Clear {activeCount} filter{activeCount !== 1 ? 's' : ''}
         </button>

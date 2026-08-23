@@ -10,13 +10,13 @@ import { useContainerWidth } from '@/lib/useContainerWidth'
 import { verificationModes, evidence } from '@/lib/data'
 import { ChartWrapper, DataTable } from '@/components/ChartWrapper'
 import { DeviceNote } from '@/components/DeviceNote'
-import { grey, motion as motionTokens } from '@/tokens/design'
+import { color, motion as motionTokens } from '@/tokens/design'
 import type { VerificationMode } from '@/lib/types'
 
 const DETECT_FILLS: Record<string, string> = {
-  Undetectable: grey[5],
-  'Partly detectable': grey[3],
-  'Self-evident': grey[1],
+  Undetectable: color.navy,
+  'Partly detectable': color.textMuted,
+  'Self-evident': color.border,
 }
 
 const margin = { top: 20, right: 20, bottom: 80, left: 250 }
@@ -56,7 +56,7 @@ function ModeChart({
           const rows = Number(d['Rows (n=17)']) || 0
           const barW = xScale(rows)
           const y = yScale(d.Tag) ?? 0
-          const fill = DETECT_FILLS[d['Detectable without sight']] ?? grey[3]
+          const fill = DETECT_FILLS[d['Detectable without sight']] ?? color.textMuted
           return (
             <motion.rect
               key={d.Tag}
@@ -64,7 +64,7 @@ function ModeChart({
               y={y}
               height={Math.max(yScale.bandwidth(), 24)}
               fill={fill}
-              stroke={grey[4]}
+              stroke={color.navy}
               strokeWidth={0.5}
               initial={shouldAnimate ? { width: 0 } : { width: barW }}
               animate={{ width: barW }}
@@ -85,19 +85,19 @@ function ModeChart({
             const label = mode?.['Failure mode'] ?? tag
             return String(label).length > 35 ? String(label).slice(0, 32) + '…' : String(label)
           }}
-          stroke={grey[2]}
-          tickStroke={grey[2]}
-          tickLabelProps={{ fill: grey[4], fontSize: 11 }}
+          stroke={color.borderStrong}
+          tickStroke={color.borderStrong}
+          tickLabelProps={{ fill: color.textMuted, fontSize: 11 }}
           hideTicks
         />
         <AxisBottom
           top={innerH}
           scale={xScale}
           label="Evidence rows"
-          stroke={grey[2]}
-          tickStroke={grey[2]}
-          tickLabelProps={{ fill: grey[4], fontSize: 11 }}
-          labelProps={{ fill: grey[4], fontSize: 12 }}
+          stroke={color.borderStrong}
+          tickStroke={color.borderStrong}
+          tickLabelProps={{ fill: color.textMuted, fontSize: 11 }}
+          labelProps={{ fill: color.textMuted, fontSize: 12 }}
         />
       </Group>
     </svg>
@@ -136,10 +136,10 @@ export function VerificationAsymmetry() {
 
   return (
     <section aria-labelledby="va-heading">
-      <h1 id="va-heading" className="text-xl font-semibold text-grey-5 mb-1">
+      <h1 id="va-heading" className="text-xl font-semibold text-text mb-1">
         Verification asymmetry
       </h1>
-      <p className="text-sm text-grey-4 mb-1">
+      <p className="text-sm text-text-muted mb-1">
         {data.length} of {verificationModes.length} failure modes
       </p>
       <DeviceNote total={uniqueParticipants.size} />
@@ -168,36 +168,36 @@ export function VerificationAsymmetry() {
         </ChartWrapper>
       </div>
 
-      <h2 className="text-lg font-semibold text-grey-5 mt-8 mb-3">All failure modes</h2>
+      <h2 className="text-lg font-semibold text-text mt-8 mb-3">All failure modes</h2>
       <div className="overflow-x-auto">
         <table className="w-full text-sm border-collapse">
           <thead>
             <tr>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4" scope="col">Tag</th>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4" scope="col">Failure mode</th>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4" scope="col">Failure class</th>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4" scope="col">Detectability</th>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4" scope="col">Cost to detect</th>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4 text-right" scope="col">Rows</th>
-              <th className="text-left px-2 py-2 border-b border-grey-2 font-medium text-grey-4 text-right" scope="col">Participants</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Tag</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Failure mode</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Failure class</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Detectability</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted" scope="col">Cost to detect</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted text-right" scope="col">Rows</th>
+              <th className="text-left px-2 py-2 border-b border-border-strong font-medium text-text-muted text-right" scope="col">Participants</th>
             </tr>
           </thead>
           <tbody>
             {data.map((d) => (
-              <tr key={d.Tag} className="hover:bg-grey-0">
-                <td className="px-2 py-1.5 border-b border-grey-1 font-mono text-xs">{d.Tag}</td>
-                <td className="px-2 py-1.5 border-b border-grey-1">{d['Failure mode']}</td>
-                <td className="px-2 py-1.5 border-b border-grey-1">{d['Failure class']}</td>
-                <td className="px-2 py-1.5 border-b border-grey-1">
+              <tr key={d.Tag} className="hover:bg-surface-sunk">
+                <td className="px-2 py-1.5 border-b border-border font-mono text-xs">{d.Tag}</td>
+                <td className="px-2 py-1.5 border-b border-border">{d['Failure mode']}</td>
+                <td className="px-2 py-1.5 border-b border-border">{d['Failure class']}</td>
+                <td className="px-2 py-1.5 border-b border-border">
                   <span
-                    className="inline-block w-3 h-3 rounded-full mr-1.5 align-middle border border-grey-3"
-                    style={{ backgroundColor: DETECT_FILLS[d['Detectable without sight']] ?? grey[3] }}
+                    className="inline-block w-3 h-3 rounded-full mr-1.5 align-middle border border-text-muted"
+                    style={{ backgroundColor: DETECT_FILLS[d['Detectable without sight']] ?? color.textMuted }}
                   />
                   {d['Detectable without sight']}
                 </td>
-                <td className="px-2 py-1.5 border-b border-grey-1">{d['Cost to detect']}</td>
-                <td className="px-2 py-1.5 border-b border-grey-1 text-right">{d['Rows (n=17)']}</td>
-                <td className="px-2 py-1.5 border-b border-grey-1 text-right">{d['Participants (n=17)']}</td>
+                <td className="px-2 py-1.5 border-b border-border">{d['Cost to detect']}</td>
+                <td className="px-2 py-1.5 border-b border-border text-right">{d['Rows (n=17)']}</td>
+                <td className="px-2 py-1.5 border-b border-border text-right">{d['Participants (n=17)']}</td>
               </tr>
             ))}
           </tbody>
