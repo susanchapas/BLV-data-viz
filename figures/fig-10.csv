@@ -1,0 +1,19 @@
+Failure class,Evidence rows,Modes in the class
+Wrong value,58,5
+Input failure,51,3
+Truncation,20,2
+Refusal,20,2
+Excess,23,2
+Capability gap,26,2
+Fabrication,22,1
+Silent omission,3,1
+Miss,10,1
+False negative,3,1
+Stale state,3,1
+Dynamic state,4,1
+State opacity,2,1
+Degradation,11,1
+Timing,24,1
+Sighted default,2,1
+False action,2,1
+Absent detection channel,8,1

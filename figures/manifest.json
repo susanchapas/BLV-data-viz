@@ -1,0 +1,162 @@
+{
+  "chart-01": {
+    "svg": "fig-01.svg",
+    "pdf": "fig-01.pdf",
+    "tex": "fig-01.tex",
+    "csv": "fig-01.csv",
+    "source": "Verification Asymmetry tab",
+    "alt_text": "Chart 1: Evidence rows by participant, split by whether the failure is detectable without sight. 18 data rows."
+  },
+  "chart-02": {
+    "svg": "fig-02.svg",
+    "pdf": "fig-02.pdf",
+    "tex": "fig-02.tex",
+    "csv": "fig-02.csv",
+    "source": "Verification Asymmetry tab",
+    "alt_text": "Chart 2: Failure modes by weight of evidence. 28 data rows."
+  },
+  "chart-03": {
+    "svg": "fig-03.svg",
+    "pdf": "fig-03.pdf",
+    "tex": "fig-03.tex",
+    "csv": "fig-03.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 3: Trust and satisfaction against the ability to verify independently. 17 data rows."
+  },
+  "chart-04": {
+    "svg": "fig-04.svg",
+    "pdf": "fig-04.pdf",
+    "tex": "fig-04.tex",
+    "csv": "fig-04.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 4: The fallback ladder: what else each participant runs alongside the glasses. 6 data rows."
+  },
+  "chart-05": {
+    "svg": "fig-05.svg",
+    "pdf": "fig-05.pdf",
+    "tex": "fig-05.tex",
+    "csv": "fig-05.csv",
+    "source": "Non-use tab",
+    "alt_text": "Chart 5: Non-use by the lever that would move it. 11 data rows."
+  },
+  "chart-06": {
+    "svg": "fig-06.svg",
+    "pdf": "fig-06.pdf",
+    "tex": "fig-06.tex",
+    "csv": "fig-06.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 6: Coded evidence per participant. 17 data rows."
+  },
+  "chart-07": {
+    "svg": "fig-07.svg",
+    "pdf": "fig-07.pdf",
+    "tex": "fig-07.tex",
+    "csv": "fig-07.csv",
+    "source": "Feedback & Signal tab",
+    "alt_text": "Chart 7: Feedback the device gives against feedback it withholds. 3 data rows."
+  },
+  "chart-08": {
+    "svg": "fig-08.svg",
+    "pdf": "fig-08.pdf",
+    "tex": "fig-08.tex",
+    "csv": "fig-08.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 8: Every signal the user needs, by weight of evidence. 24 data rows."
+  },
+  "chart-09": {
+    "svg": "fig-09.svg",
+    "pdf": "fig-09.pdf",
+    "tex": "fig-09.tex",
+    "csv": "fig-09.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 9: Announced, silent and consequence rows by participant. 17 data rows."
+  },
+  "chart-10": {
+    "svg": "fig-10.svg",
+    "pdf": "fig-10.pdf",
+    "tex": "fig-10.tex",
+    "csv": "fig-10.csv",
+    "source": "Verification Asymmetry tab",
+    "alt_text": "Chart 10: Failure class by weight of evidence. 18 data rows."
+  },
+  "chart-11": {
+    "svg": "fig-11.svg",
+    "pdf": "fig-11.pdf",
+    "tex": "fig-11.tex",
+    "csv": "fig-11.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 11: What it costs the user to notice the failure. 5 data rows."
+  },
+  "chart-12": {
+    "svg": "fig-12.svg",
+    "pdf": "fig-12.pdf",
+    "tex": "fig-12.tex",
+    "csv": "fig-12.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 12: Theme weight and theme breadth. 22 data rows."
+  },
+  "chart-13": {
+    "svg": "fig-13.svg",
+    "pdf": "fig-13.pdf",
+    "tex": "fig-13.tex",
+    "csv": "fig-13.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 13: Theme weight and theme breadth. 22 data rows."
+  },
+  "chart-14": {
+    "svg": "fig-14.svg",
+    "pdf": "fig-14.pdf",
+    "tex": "fig-14.tex",
+    "csv": "fig-14.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 14: Trust rating against the ability to verify, participant by participant. 17 data rows."
+  },
+  "chart-15": {
+    "svg": "fig-15.svg",
+    "pdf": "fig-15.pdf",
+    "tex": "fig-15.tex",
+    "csv": "fig-15.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 15: Verification routes participants actually name. 6 data rows."
+  },
+  "chart-16": {
+    "svg": "fig-16.svg",
+    "pdf": "fig-16.pdf",
+    "tex": "fig-16.tex",
+    "csv": "fig-16.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 16: Where the trust and satisfaction ratings actually sit. 8 data rows."
+  },
+  "chart-17": {
+    "svg": "fig-17.svg",
+    "pdf": "fig-17.pdf",
+    "tex": "fig-17.tex",
+    "csv": "fig-17.csv",
+    "source": "primary code on the Non-use tab",
+    "alt_text": "Chart 17: Non-use reasons by the code family behind them. 8 data rows."
+  },
+  "chart-18": {
+    "svg": "fig-18.svg",
+    "pdf": "fig-18.pdf",
+    "tex": "fig-18.tex",
+    "csv": "fig-18.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 18: Under-use and the awareness problem behind it. 6 data rows."
+  },
+  "chart-19": {
+    "svg": "fig-19.svg",
+    "pdf": "fig-19.pdf",
+    "tex": "fig-19.tex",
+    "csv": "fig-19.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 19: The human verification layer, and where it fails too. 5 data rows."
+  },
+  "chart-20": {
+    "svg": "fig-20.svg",
+    "pdf": "fig-20.pdf",
+    "tex": "fig-20.tex",
+    "csv": "fig-20.csv",
+    "source": "Chart Data tab",
+    "alt_text": "Chart 20: What participants actually use it for. 10 data rows."
+  }
+}
