@@ -8,7 +8,7 @@ const links = [
   { to: '/themes', label: 'Themes' },
   { to: '/participants', label: 'Participants' },
   { to: '/charts', label: 'Charts' },
-  { to: '/explore', label: 'Explorer' },
+  { to: '/explore', label: 'Generator' },
 ]
 
 function Logo() {
