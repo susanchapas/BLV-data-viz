@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef, useEffect, useCallback, useState } from 'react'
 import {
   forceSimulation,
   forceLink,
@@ -15,7 +15,16 @@ import {
   evidenceByTheme,
   evidenceByCode,
 } from '@/lib/dataModel'
-import { themes, codebook, painPoints, opportunities, verificationModes, feedbackSignals } from '@/lib/data'
+import {
+  themes,
+  codebook,
+  painPoints,
+  opportunities,
+  verificationModes,
+  feedbackSignals,
+  participants,
+} from '@/lib/data'
+import type { EvidenceRow } from '@/lib/types'
 
 type NodeType = 'theme' | 'code' | 'painPoint' | 'opportunity' | 'verification' | 'feedback'
 
@@ -40,6 +49,15 @@ const TYPE_COLORS: Record<NodeType, { fill: string; stroke: string }> = {
   opportunity:  { fill: '#4E521C', stroke: '#CACF85' },
   verification: { fill: '#75276F', stroke: '#C777C1' },
   feedback:     { fill: '#6F9CEB', stroke: '#FFFFFF' },
+}
+
+const TYPE_LABELS: Record<NodeType, string> = {
+  theme: 'Theme',
+  code: 'Code',
+  painPoint: 'Pain Point',
+  opportunity: 'Opportunity',
+  verification: 'Verification',
+  feedback: 'Feedback',
 }
 
 function buildGraph() {
@@ -120,6 +138,295 @@ function buildGraph() {
   return { nodes, links }
 }
 
+const pMap = new Map(participants.map(p => [p.id, p]))
+
+function PanelSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="mb-4">
+      <h3 className="text-xs font-mono uppercase tracking-wider text-action mb-1.5">{title}</h3>
+      {children}
+    </div>
+  )
+}
+
+function QuoteList({ rows }: { rows: EvidenceRow[] }) {
+  return (
+    <div className="space-y-2">
+      {rows.map((r, i) => (
+        <div key={i} className="text-sm border-l-2 border-border pl-3 py-1">
+          <p className="text-text italic">&ldquo;{r.Quote}&rdquo;</p>
+          <p className="text-xs text-text-muted font-mono mt-0.5">
+            {r.Who} &middot; {r.Code}
+          </p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function PidChips({ pids }: { pids: string[] }) {
+  return (
+    <div className="flex flex-wrap gap-1.5">
+      {pids.map(pid => (
+        <span
+          key={pid}
+          className="inline-flex items-center px-2 py-0.5 rounded-pill bg-surface-sunk border border-border text-xs font-mono text-navy-900"
+          title={pMap.get(pid)?.Persona ?? undefined}
+        >
+          {pid}
+        </span>
+      ))}
+    </div>
+  )
+}
+
+function InfoPanel({
+  node,
+  links,
+  nodes,
+  onClose,
+  onSelect,
+}: {
+  node: GraphNode
+  links: GraphLink[]
+  nodes: GraphNode[]
+  onClose: () => void
+  onSelect: (node: GraphNode) => void
+}) {
+  const key = node.id.slice(node.id.indexOf(':') + 1)
+  const colors = TYPE_COLORS[node.type]
+
+  const connectedIds = new Set<string>()
+  for (const l of links) {
+    const sId = typeof l.source === 'string' ? l.source : l.source.id
+    const tId = typeof l.target === 'string' ? l.target : l.target.id
+    if (sId === node.id) connectedIds.add(tId)
+    if (tId === node.id) connectedIds.add(sId)
+  }
+  const connectedNodes = nodes.filter(n => connectedIds.has(n.id))
+
+  let details: React.ReactNode = null
+
+  switch (node.type) {
+    case 'theme': {
+      const theme = themes.find(t => t.Theme === key)
+      const ev = evidenceByTheme.get(key) ?? []
+      const pids = [...new Set(ev.map(e => e.Who))]
+      details = (
+        <>
+          {theme?.['why it matters'] && (
+            <PanelSection title="Why it matters">
+              <p className="text-sm text-text-muted">{theme['why it matters']}</p>
+            </PanelSection>
+          )}
+          {theme && (
+            <PanelSection title="Overview">
+              <div className="flex gap-4 text-sm text-text-muted">
+                <span>{theme['Sub-themes']} sub-themes</span>
+                <span>{theme.Total} coded quotes</span>
+              </div>
+            </PanelSection>
+          )}
+          {ev.length > 0 && (
+            <PanelSection title={`Quotes (${ev.length})`}>
+              <QuoteList rows={ev.slice(0, 4)} />
+              {ev.length > 4 && <p className="text-xs text-text-muted mt-2">+{ev.length - 4} more</p>}
+            </PanelSection>
+          )}
+          {pids.length > 0 && (
+            <PanelSection title={`Participants (${pids.length})`}>
+              <PidChips pids={pids} />
+            </PanelSection>
+          )}
+        </>
+      )
+      break
+    }
+    case 'code': {
+      const code = codebook.find(c => c.Code === key)
+      const ev = evidenceByCode.get(key) ?? []
+      const pids = [...new Set(ev.map(e => e.Who))]
+      details = (
+        <>
+          {code?.Note && (
+            <PanelSection title="Note">
+              <p className="text-sm text-text-muted">{code.Note}</p>
+            </PanelSection>
+          )}
+          {code && (
+            <PanelSection title="Codebook hierarchy">
+              <p className="text-sm font-mono text-text-muted leading-relaxed">
+                {code['Theme name']}<br />
+                &ensp;&rarr; {code['Sub-theme']}<br />
+                &ensp;&ensp;&rarr; {code.Code} {code.Label}
+              </p>
+            </PanelSection>
+          )}
+          {ev.length > 0 && (
+            <PanelSection title={`Quotes (${ev.length})`}>
+              <QuoteList rows={ev.slice(0, 4)} />
+              {ev.length > 4 && <p className="text-xs text-text-muted mt-2">+{ev.length - 4} more</p>}
+            </PanelSection>
+          )}
+          {pids.length > 0 && (
+            <PanelSection title={`Participants (${pids.length})`}>
+              <PidChips pids={pids} />
+            </PanelSection>
+          )}
+        </>
+      )
+      break
+    }
+    case 'painPoint': {
+      const pp = painPoints.find(p => p.Tag === key)
+      if (pp) {
+        const ppCodes = pp['Evidence codes']?.split(/,\s*/).filter(Boolean) ?? []
+        const ev = ppCodes.flatMap(c => evidenceByCode.get(c) ?? [])
+        details = (
+          <>
+            <PanelSection title="What happens">
+              <p className="text-sm text-text-muted">{pp['What happens']}</p>
+            </PanelSection>
+            <PanelSection title="Context">
+              <dl className="text-sm text-text-muted space-y-1">
+                <div><dt className="inline font-medium text-text">Theme:</dt> {pp.Theme}</div>
+                <div><dt className="inline font-medium text-text">Sub-theme:</dt> {pp['Sub-theme']}</div>
+                <div><dt className="inline font-medium text-text">Who:</dt> {pp.Who}</div>
+              </dl>
+            </PanelSection>
+            {ppCodes.length > 0 && (
+              <PanelSection title="Evidence codes">
+                <div className="flex flex-wrap gap-1.5">
+                  {ppCodes.map(c => (
+                    <span key={c} className="px-2 py-0.5 rounded-pill bg-navy/5 border border-navy/20 text-xs font-mono text-navy-900">{c}</span>
+                  ))}
+                </div>
+              </PanelSection>
+            )}
+            {ev.length > 0 && (
+              <PanelSection title={`Quotes (${ev.length})`}>
+                <QuoteList rows={ev.slice(0, 3)} />
+                {ev.length > 3 && <p className="text-xs text-text-muted mt-2">+{ev.length - 3} more</p>}
+              </PanelSection>
+            )}
+          </>
+        )
+      }
+      break
+    }
+    case 'opportunity': {
+      const opp = opportunities.find(o => o.Tag === key)
+      if (opp) {
+        details = (
+          <>
+            <PanelSection title="Detail">
+              <p className="text-sm text-text-muted">{opp.Detail}</p>
+            </PanelSection>
+            <PanelSection title="Context">
+              <dl className="text-sm text-text-muted space-y-1">
+                <div><dt className="inline font-medium text-text">Theme:</dt> {opp.Theme}</div>
+                <div><dt className="inline font-medium text-text">Fixes:</dt> {opp.Fixes}</div>
+              </dl>
+            </PanelSection>
+          </>
+        )
+      }
+      break
+    }
+    case 'verification': {
+      const va = verificationModes.find(v => v.Tag === key)
+      if (va) {
+        details = (
+          <>
+            <PanelSection title="Classification">
+              <dl className="text-sm text-text-muted space-y-1">
+                <div><dt className="inline font-medium text-text">Failure class:</dt> {va['Failure class']}</div>
+                <div><dt className="inline font-medium text-text">Task surface:</dt> {va['Task surface']}</div>
+              </dl>
+            </PanelSection>
+            <PanelSection title="Detection">
+              <dl className="text-sm text-text-muted space-y-1">
+                <div><dt className="inline font-medium text-text">Without sight:</dt> {va['Detectable without sight']}</div>
+                <div><dt className="inline font-medium text-text">Channel:</dt> {va['Detection channel available']}</div>
+                <div><dt className="inline font-medium text-text">Cost:</dt> {va['Cost to detect']}</div>
+              </dl>
+            </PanelSection>
+            <PanelSection title="Consequence">
+              <p className="text-sm text-text-muted">{va['Consequence if it goes undetected']}</p>
+            </PanelSection>
+          </>
+        )
+      }
+      break
+    }
+    case 'feedback': {
+      const fb = feedbackSignals.find(f => f.Tag === key)
+      if (fb) {
+        details = (
+          <>
+            <PanelSection title="Signal status">
+              <p className="text-sm text-text-muted">{fb['Signal status']}</p>
+            </PanelSection>
+            <PanelSection title="Where it applies">
+              <p className="text-sm text-text-muted">{fb['Where it applies']}</p>
+            </PanelSection>
+            <PanelSection title="What the device does">
+              <p className="text-sm text-text-muted">{fb['What the device does']}</p>
+            </PanelSection>
+            <PanelSection title="What the absence costs">
+              <p className="text-sm text-text-muted">{fb['What the absence costs']}</p>
+            </PanelSection>
+          </>
+        )
+      }
+      break
+    }
+  }
+
+  return (
+    <div className="w-[360px] shrink-0 border-l border-border bg-surface-raised overflow-y-auto">
+      <div className="p-5">
+        <div className="flex items-start justify-between mb-3">
+          <span
+            className="inline-block px-2.5 py-0.5 text-xs font-mono rounded-pill text-white"
+            style={{ background: colors.fill }}
+          >
+            {TYPE_LABELS[node.type]}
+          </span>
+          <button
+            onClick={onClose}
+            className="text-text-muted hover:text-text text-lg leading-none p-1 -mr-1 -mt-1"
+            aria-label="Close panel"
+          >
+            &times;
+          </button>
+        </div>
+        <h2 className="text-lg font-semibold text-navy leading-snug mb-5">{node.label}</h2>
+        {details}
+        {connectedNodes.length > 0 && (
+          <PanelSection title={`Connections (${connectedNodes.length})`}>
+            <div className="space-y-0.5 max-h-56 overflow-y-auto">
+              {connectedNodes.map(cn => (
+                <button
+                  key={cn.id}
+                  onClick={() => onSelect(cn)}
+                  className="flex items-center gap-2 text-sm w-full text-left hover:bg-surface-sunk rounded px-1.5 py-1 -mx-1.5 transition-colors"
+                >
+                  <span
+                    className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
+                    style={{ background: TYPE_COLORS[cn.type].fill }}
+                  />
+                  <span className="text-text-muted truncate">{cn.label}</span>
+                </button>
+              ))}
+            </div>
+          </PanelSection>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export function NeuralMap() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -128,10 +435,15 @@ export function NeuralMap() {
   const animRef = useRef<number>(0)
   const hoveredRef = useRef<GraphNode | null>(null)
   const draggingRef = useRef<GraphNode | null>(null)
+  const selectedRef = useRef<GraphNode | null>(null)
   const transformRef = useRef({ x: 0, y: 0, k: 1 })
   const dimensionsRef = useRef({ width: 1200, height: 800 })
   const canvasSizedRef = useRef({ width: 0, height: 0 })
+  const pointerStartRef = useRef<{ x: number; y: number } | null>(null)
+  const lastPointerRef = useRef({ x: 0, y: 0 })
+  const isPanningRef = useRef(false)
   const { shouldAnimate } = useMotion()
+  const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null)
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current
@@ -152,6 +464,7 @@ export function NeuralMap() {
     ctx.clearRect(0, 0, width, height)
 
     const transform = transformRef.current
+    const selected = selectedRef.current
     const hovered = hoveredRef.current
 
     ctx.save()
@@ -159,15 +472,15 @@ export function NeuralMap() {
     ctx.scale(transform.k, transform.k)
 
     const { nodes, links } = graphRef.current
-    const hoveredId = hovered?.id
+    const selectedId = selected?.id
 
     const connectedIds = new Set<string>()
-    if (hoveredId) {
-      connectedIds.add(hoveredId)
+    if (selectedId) {
+      connectedIds.add(selectedId)
       for (const l of links) {
         const sId = typeof l.source === 'string' ? l.source : l.source.id
         const tId = typeof l.target === 'string' ? l.target : l.target.id
-        if (sId === hoveredId || tId === hoveredId) {
+        if (sId === selectedId || tId === selectedId) {
           connectedIds.add(sId)
           connectedIds.add(tId)
         }
@@ -179,13 +492,13 @@ export function NeuralMap() {
       const t = l.target as GraphNode
       if (s.x == null || t.x == null) continue
 
-      const isHighlighted = hoveredId && (connectedIds.has(s.id) && connectedIds.has(t.id))
+      const isHighlighted = selectedId && connectedIds.has(s.id) && connectedIds.has(t.id)
       ctx.beginPath()
       ctx.moveTo(s.x, s.y!)
       ctx.lineTo(t.x, t.y!)
       ctx.strokeStyle = isHighlighted
         ? 'rgba(168, 70, 160, 0.6)'
-        : hoveredId
+        : selectedId
           ? 'rgba(16, 47, 93, 0.03)'
           : 'rgba(16, 47, 93, 0.08)'
       ctx.lineWidth = isHighlighted ? 1.5 : 0.5
@@ -195,15 +508,15 @@ export function NeuralMap() {
     for (const node of nodes) {
       if (node.x == null) continue
       const colors = TYPE_COLORS[node.type]
-      const isConnected = !hoveredId || connectedIds.has(node.id)
-      const isHovered = node.id === hoveredId
+      const isConnected = !selectedId || connectedIds.has(node.id)
+      const isSelected = node.id === selectedId
 
       ctx.beginPath()
       ctx.arc(node.x, node.y!, node.radius, 0, Math.PI * 2)
       ctx.fillStyle = isConnected ? colors.fill : 'rgba(16, 47, 93, 0.08)'
       ctx.fill()
 
-      if (isHovered) {
+      if (isSelected) {
         ctx.strokeStyle = colors.stroke
         ctx.lineWidth = 3
         ctx.stroke()
@@ -222,8 +535,12 @@ export function NeuralMap() {
         ctx.stroke()
       }
 
-      if ((isHovered || (node.type === 'theme' && transform.k > 0.5)) && isConnected) {
-        ctx.font = `${isHovered ? 'bold ' : ''}${Math.round(11 / transform.k)}px 'Atkinson Hyperlegible', sans-serif`
+      const showLabel =
+        isSelected ||
+        (node.type === 'theme' && transform.k > 0.5 && isConnected) ||
+        (selectedId && isConnected && transform.k > 0.7)
+      if (showLabel) {
+        ctx.font = `${isSelected ? 'bold ' : ''}${Math.round(11 / transform.k)}px 'Atkinson Hyperlegible', sans-serif`
         ctx.fillStyle = isConnected ? '#102F5D' : 'rgba(16, 47, 93, 0.3)'
         ctx.textAlign = 'center'
         ctx.textBaseline = 'top'
@@ -234,14 +551,14 @@ export function NeuralMap() {
 
     ctx.restore()
 
-    if (hovered) {
+    if (hovered && hovered.id !== selectedId) {
       ctx.font = "bold 13px 'Atkinson Hyperlegible', sans-serif"
       ctx.fillStyle = '#102F5D'
       ctx.textAlign = 'left'
       ctx.fillText(hovered.label, 16, height - 40)
       ctx.font = "11px 'IBM Plex Mono', monospace"
       ctx.fillStyle = '#3D4C63'
-      ctx.fillText(`${hovered.type} · ${connectedIds.size - 1} connections`, 16, height - 22)
+      ctx.fillText(`${hovered.type}`, 16, height - 22)
     }
   }, [])
 
@@ -304,6 +621,21 @@ export function NeuralMap() {
     return () => obs.disconnect()
   }, [draw])
 
+  const handleSelect = useCallback((node: GraphNode | null) => {
+    selectedRef.current = node
+    setSelectedNode(node)
+    cancelAnimationFrame(animRef.current)
+    animRef.current = requestAnimationFrame(draw)
+  }, [draw])
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedRef.current) handleSelect(null)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [handleSelect])
+
   const screenToWorld = useCallback((sx: number, sy: number) => {
     const t = transformRef.current
     return { x: (sx - t.x) / t.k, y: (sy - t.y) / t.k }
@@ -322,6 +654,45 @@ export function NeuralMap() {
     return null
   }, [screenToWorld])
 
+  const zoom = useCallback((direction: 1 | -1) => {
+    const { width, height } = dimensionsRef.current
+    const cx = width / 2
+    const cy = height / 2
+    const prev = transformRef.current
+    const factor = direction > 0 ? 1.3 : 1 / 1.3
+    const newK = Math.max(0.2, Math.min(4, prev.k * factor))
+    transformRef.current = {
+      x: cx - (cx - prev.x) * (newK / prev.k),
+      y: cy - (cy - prev.y) * (newK / prev.k),
+      k: newK,
+    }
+    cancelAnimationFrame(animRef.current)
+    animRef.current = requestAnimationFrame(draw)
+  }, [draw])
+
+  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+    const rect = canvasRef.current?.getBoundingClientRect()
+    if (!rect) return
+    const sx = e.clientX - rect.left
+    const sy = e.clientY - rect.top
+
+    pointerStartRef.current = { x: sx, y: sy }
+    lastPointerRef.current = { x: sx, y: sy }
+
+    const node = findNode(sx, sy)
+    if (node) {
+      const { x, y } = screenToWorld(sx, sy)
+      node.fx = x
+      node.fy = y
+      draggingRef.current = node
+      simRef.current?.alphaTarget(0.3).restart()
+    } else {
+      isPanningRef.current = true
+      if (canvasRef.current) canvasRef.current.style.cursor = 'grabbing'
+    }
+    canvasRef.current?.setPointerCapture(e.pointerId)
+  }, [findNode, screenToWorld])
+
   const handlePointerMove = useCallback((e: React.PointerEvent) => {
     const rect = canvasRef.current?.getBoundingClientRect()
     if (!rect) return
@@ -332,6 +703,20 @@ export function NeuralMap() {
       const { x, y } = screenToWorld(sx, sy)
       draggingRef.current.fx = x
       draggingRef.current.fy = y
+      return
+    }
+
+    if (isPanningRef.current) {
+      const dx = sx - lastPointerRef.current.x
+      const dy = sy - lastPointerRef.current.y
+      lastPointerRef.current = { x: sx, y: sy }
+      transformRef.current = {
+        ...transformRef.current,
+        x: transformRef.current.x + dx,
+        y: transformRef.current.y + dy,
+      }
+      cancelAnimationFrame(animRef.current)
+      animRef.current = requestAnimationFrame(draw)
       return
     }
 
@@ -346,76 +731,83 @@ export function NeuralMap() {
     }
   }, [findNode, screenToWorld, draw])
 
-  const handlePointerDown = useCallback((e: React.PointerEvent) => {
+  const handlePointerUp = useCallback((e: React.PointerEvent) => {
     const rect = canvasRef.current?.getBoundingClientRect()
     if (!rect) return
     const sx = e.clientX - rect.left
     const sy = e.clientY - rect.top
-    const node = findNode(sx, sy)
+    const start = pointerStartRef.current
+    const dist = start ? Math.hypot(sx - start.x, sy - start.y) : 999
 
-    if (node) {
-      const { x, y } = screenToWorld(sx, sy)
-      node.fx = x
-      node.fy = y
-      draggingRef.current = node
-      simRef.current?.alphaTarget(0.3).restart()
-      canvasRef.current?.setPointerCapture(e.pointerId)
-    }
-  }, [findNode, screenToWorld])
-
-  const handlePointerUp = useCallback((e: React.PointerEvent) => {
-    const d = draggingRef.current
-    if (d) {
+    if (draggingRef.current) {
+      const d = draggingRef.current
       d.fx = null
       d.fy = null
+      if (dist < 5) {
+        handleSelect(selectedRef.current === d ? null : d)
+      }
       draggingRef.current = null
       simRef.current?.alphaTarget(0)
-      canvasRef.current?.releasePointerCapture(e.pointerId)
+    } else if (isPanningRef.current) {
+      isPanningRef.current = false
+      if (dist < 5) {
+        handleSelect(null)
+      }
+      if (canvasRef.current) canvasRef.current.style.cursor = 'grab'
     }
-  }, [])
 
-  const handleWheel = useCallback((e: React.WheelEvent) => {
-    e.preventDefault()
-    const rect = canvasRef.current?.getBoundingClientRect()
-    if (!rect) return
-    const sx = e.clientX - rect.left
-    const sy = e.clientY - rect.top
-
-    const prev = transformRef.current
-    const factor = e.deltaY > 0 ? 0.92 : 1.08
-    const newK = Math.max(0.2, Math.min(4, prev.k * factor))
-
-    transformRef.current = {
-      x: sx - (sx - prev.x) * (newK / prev.k),
-      y: sy - (sy - prev.y) * (newK / prev.k),
-      k: newK,
-    }
+    pointerStartRef.current = null
+    canvasRef.current?.releasePointerCapture(e.pointerId)
     cancelAnimationFrame(animRef.current)
     animRef.current = requestAnimationFrame(draw)
-  }, [draw])
+  }, [draw, handleSelect])
 
   return (
-    <div ref={containerRef} className="w-full h-[calc(100vh-180px)] min-h-[600px] relative">
-      <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-3">
-        {(Object.entries(TYPE_COLORS) as [NodeType, { fill: string; stroke: string }][]).map(([type, { fill }]) => (
-          <span key={type} className="flex items-center gap-1.5 text-xs font-mono text-text-muted">
-            <span className="inline-block w-3 h-3 rounded-full" style={{ background: fill }} />
-            {type}
-          </span>
-        ))}
+    <div className="flex w-full h-[calc(100vh-180px)] min-h-[600px]">
+      <div ref={containerRef} className="relative flex-1 min-w-0">
+        <div className="absolute top-4 left-4 z-10 flex flex-wrap gap-3">
+          {(Object.entries(TYPE_COLORS) as [NodeType, { fill: string; stroke: string }][]).map(([type, { fill }]) => (
+            <span key={type} className="flex items-center gap-1.5 text-xs font-mono text-text-muted">
+              <span className="inline-block w-3 h-3 rounded-full" style={{ background: fill }} />
+              {type}
+            </span>
+          ))}
+        </div>
+        <canvas
+          ref={canvasRef}
+          className="w-full h-full rounded-card"
+          style={{ background: 'var(--color-surface-sunk)', cursor: 'grab', touchAction: 'none' }}
+          onPointerMove={handlePointerMove}
+          onPointerDown={handlePointerDown}
+          onPointerUp={handlePointerUp}
+        />
+        <div className="absolute bottom-4 right-4 flex items-center gap-2">
+          <span className="text-xs font-mono text-text-muted mr-1">Drag to pan</span>
+          <button
+            onClick={() => zoom(-1)}
+            className="w-8 h-8 flex items-center justify-center rounded-button bg-surface-raised border border-border text-navy font-mono text-lg leading-none hover:bg-surface-sunk transition-colors"
+            aria-label="Zoom out"
+          >
+            &minus;
+          </button>
+          <button
+            onClick={() => zoom(1)}
+            className="w-8 h-8 flex items-center justify-center rounded-button bg-surface-raised border border-border text-navy font-mono text-lg leading-none hover:bg-surface-sunk transition-colors"
+            aria-label="Zoom in"
+          >
+            +
+          </button>
+        </div>
       </div>
-      <canvas
-        ref={canvasRef}
-        className="w-full h-full rounded-card"
-        style={{ background: 'var(--color-surface-sunk)' }}
-        onPointerMove={handlePointerMove}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        onWheel={handleWheel}
-      />
-      <div className="absolute bottom-4 right-4 text-xs font-mono text-text-muted">
-        Scroll to zoom · Drag nodes to rearrange
-      </div>
+      {selectedNode && (
+        <InfoPanel
+          node={selectedNode}
+          links={graphRef.current.links}
+          nodes={graphRef.current.nodes}
+          onClose={() => handleSelect(null)}
+          onSelect={handleSelect}
+        />
+      )}
     </div>
   )
 }

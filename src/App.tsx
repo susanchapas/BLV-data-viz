@@ -18,11 +18,11 @@ const ChartGallery = lazy(() => import('@/views/ChartGallery').then(m => ({ defa
 const DataExplorer = lazy(() => import('@/views/DataExplorer').then(m => ({ default: m.DataExplorer })))
 const NeuralMap = lazy(() => import('@/views/NeuralMap').then(m => ({ default: m.NeuralMap })))
 
-function Subpage({ children }: { children: React.ReactNode }) {
+function Subpage({ children, filters = false }: { children: React.ReactNode; filters?: boolean }) {
   return (
     <div className="min-h-screen bg-surface text-text font-sans">
       <Nav />
-      <FilterBar />
+      {filters && <FilterBar />}
       <main
         id="main"
         className="max-w-[1240px] mx-auto"
@@ -46,12 +46,12 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/generator" element={<Subpage><DataExplorer /></Subpage>} />
-              <Route path="/evidence" element={<Subpage><EvidenceExplorer /></Subpage>} />
-              <Route path="/verification" element={<Subpage><VerificationAsymmetry /></Subpage>} />
-              <Route path="/signals" element={<Subpage><SignalLedger /></Subpage>} />
-              <Route path="/themes" element={<Subpage><ThemeBrowser /></Subpage>} />
-              <Route path="/participants" element={<Subpage><ParticipantProfiles /></Subpage>} />
-              <Route path="/participants/:pid" element={<Subpage><ParticipantProfiles /></Subpage>} />
+              <Route path="/evidence" element={<Subpage filters><EvidenceExplorer /></Subpage>} />
+              <Route path="/verification" element={<Subpage filters><VerificationAsymmetry /></Subpage>} />
+              <Route path="/signals" element={<Subpage filters><SignalLedger /></Subpage>} />
+              <Route path="/themes" element={<Subpage filters><ThemeBrowser /></Subpage>} />
+              <Route path="/participants" element={<Subpage filters><ParticipantProfiles /></Subpage>} />
+              <Route path="/participants/:pid" element={<Subpage filters><ParticipantProfiles /></Subpage>} />
               <Route path="/charts" element={<Subpage><ChartGallery /></Subpage>} />
               <Route path="/neural-map" element={<Subpage><NeuralMap /></Subpage>} />
             </Routes>
