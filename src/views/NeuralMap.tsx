@@ -570,17 +570,17 @@ export function NeuralMap() {
     const sim = forceSimulation<GraphNode>(nodes)
       .force('link', forceLink<GraphNode, GraphLink>(links)
         .id(d => d.id)
-        .distance(d => 60 + (d.source as GraphNode).radius + (d.target as GraphNode).radius)
-        .strength(d => d.strength))
+        .distance(d => 140 + (d.source as GraphNode).radius + (d.target as GraphNode).radius)
+        .strength(d => d.strength * 0.6))
       .force('charge', forceManyBody<GraphNode>()
-        .strength(d => -80 - d.radius * 4)
-        .distanceMax(400))
-      .force('center', forceCenter(width / 2, height / 2).strength(0.05))
-      .force('collide', forceCollide<GraphNode>(d => d.radius + 3).iterations(2))
-      .force('x', forceX<GraphNode>(width / 2).strength(0.02))
-      .force('y', forceY<GraphNode>(height / 2).strength(0.02))
-      .alphaDecay(0.028)
-      .velocityDecay(0.4)
+        .strength(d => -180 - d.radius * 6)
+        .distanceMax(800))
+      .force('center', forceCenter(width / 2, height / 2).strength(0.03))
+      .force('collide', forceCollide<GraphNode>(d => d.radius + 8).iterations(3))
+      .force('x', forceX<GraphNode>(width / 2).strength(0.015))
+      .force('y', forceY<GraphNode>(height / 2).strength(0.015))
+      .alphaDecay(0.018)
+      .velocityDecay(0.25)
 
     if (!shouldAnimate) {
       sim.tick(300)
@@ -685,7 +685,7 @@ export function NeuralMap() {
       node.fx = x
       node.fy = y
       draggingRef.current = node
-      simRef.current?.alphaTarget(0.3).restart()
+      simRef.current?.alphaTarget(0.8).restart()
     } else {
       isPanningRef.current = true
       if (canvasRef.current) canvasRef.current.style.cursor = 'grabbing'
@@ -703,6 +703,8 @@ export function NeuralMap() {
       const { x, y } = screenToWorld(sx, sy)
       draggingRef.current.fx = x
       draggingRef.current.fy = y
+      const sim = simRef.current
+      if (sim && sim.alpha() < 0.5) sim.alpha(0.5).restart()
       return
     }
 
@@ -747,7 +749,10 @@ export function NeuralMap() {
         handleSelect(selectedRef.current === d ? null : d)
       }
       draggingRef.current = null
-      simRef.current?.alphaTarget(0)
+      const sim = simRef.current
+      if (sim) {
+        sim.alphaTarget(0).alpha(0.3).restart()
+      }
     } else if (isPanningRef.current) {
       isPanningRef.current = false
       if (dist < 5) {

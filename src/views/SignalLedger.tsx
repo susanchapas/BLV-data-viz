@@ -165,8 +165,10 @@ export function SignalLedger() {
       const set = new Set(filters.signalStatus)
       signals = signals.filter((s) => set.has(s['Signal status']))
     }
+    const matchedCodes = new Set(filteredEvidence.map((r) => r.Code))
+    signals = signals.filter((s) => s.codes?.some((c) => matchedCodes.has(c)))
     return signals
-  }, [filters.signalStatus])
+  }, [filters.signalStatus, filteredEvidence])
 
   const byStatus = useMemo(() => {
     const groups: Record<string, { count: number; rows: number }> = {}

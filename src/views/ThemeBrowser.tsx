@@ -151,8 +151,10 @@ export function ThemeBrowser() {
       const set = new Set(filters.codes)
       codes = codes.filter((c) => set.has(c.Code))
     }
+    const matchedCodes = new Set(filteredEvidence.map((r) => r.Code))
+    codes = codes.filter((c) => matchedCodes.has(c.Code))
     return codes
-  }, [filters.themes, filters.codes])
+  }, [filters.themes, filters.codes, filteredEvidence])
 
   const expandedData = useMemo(() => {
     if (!expandedCode) return null

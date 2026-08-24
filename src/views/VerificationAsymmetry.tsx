@@ -163,8 +163,10 @@ export function VerificationAsymmetry() {
       const set = new Set(filters.failureClass)
       modes = modes.filter((m) => set.has(m['Failure class']))
     }
+    const matchedCodes = new Set(filteredEvidence.map((r) => r.Code))
+    modes = modes.filter((m) => m.mode_codes?.some((c) => matchedCodes.has(c)))
     return modes
-  }, [filters.detectability, filters.failureClass])
+  }, [filters.detectability, filters.failureClass, filteredEvidence])
 
   const expandedData = useMemo(() => {
     if (!expandedTag) return null
