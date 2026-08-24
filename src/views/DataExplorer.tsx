@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback, useEffect, type Dispatch, type SetStateAction } from 'react'
+import { useState, useMemo, useCallback, useEffect, useRef, type Dispatch, type SetStateAction } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import { buildDrillUrl } from '@/lib/drilldown'
 import { useSelection } from '@/lib/selection'
@@ -481,6 +481,9 @@ export function DataExplorer() {
   const [showTable, setShowTable] = useState(false)
   const [limit, setLimit] = useState(initial.limit)
   const [copied, setCopied] = useState(false)
+  const copiedTimer = useRef<ReturnType<typeof setTimeout>>()
+
+  useEffect(() => () => clearTimeout(copiedTimer.current), [])
 
   const group = GROUP_MAP.get(groupKey) ?? ALL_GROUPS[0]
   const selectedItem = itemKey ? group.items.find(i => i.key === itemKey) ?? null : null
@@ -539,7 +542,8 @@ export function DataExplorer() {
   const handleShare = useCallback(() => {
     navigator.clipboard.writeText(window.location.href)
     setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    clearTimeout(copiedTimer.current)
+    copiedTimer.current = setTimeout(() => setCopied(false), 2000)
   }, [])
 
   useEffect(() => {

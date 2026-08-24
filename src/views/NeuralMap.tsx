@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useCallback } from 'react'
+import { useRef, useEffect, useCallback } from 'react'
 import {
   forceSimulation,
   forceLink,
@@ -126,51 +126,12 @@ export function NeuralMap() {
   const simRef = useRef<ReturnType<typeof forceSimulation<GraphNode>> | null>(null)
   const graphRef = useRef<{ nodes: GraphNode[]; links: GraphLink[] }>({ nodes: [], links: [] })
   const animRef = useRef<number>(0)
+  const hoveredRef = useRef<GraphNode | null>(null)
+  const draggingRef = useRef<GraphNode | null>(null)
+  const transformRef = useRef({ x: 0, y: 0, k: 1 })
+  const dimensionsRef = useRef({ width: 1200, height: 800 })
+  const canvasSizedRef = useRef({ width: 0, height: 0 })
   const { shouldAnimate } = useMotion()
-
-  const [dimensions, setDimensions] = useState({ width: 1200, height: 800 })
-  const [hovered, setHovered] = useState<GraphNode | null>(null)
-  const [dragging, setDragging] = useState<GraphNode | null>(null)
-  const [transform, setTransform] = useState({ x: 0, y: 0, k: 1 })
-
-  useEffect(() => {
-    const container = containerRef.current
-    if (!container) return
-    const obs = new ResizeObserver(entries => {
-      const { width, height } = entries[0].contentRect
-      setDimensions({ width, height: Math.max(height, 600) })
-    })
-    obs.observe(container)
-    return () => obs.disconnect()
-  }, [])
-
-  useEffect(() => {
-    const { nodes, links } = buildGraph()
-    graphRef.current = { nodes, links }
-
-    const sim = forceSimulation<GraphNode>(nodes)
-      .force('link', forceLink<GraphNode, GraphLink>(links)
-        .id(d => d.id)
-        .distance(d => 60 + (d.source as GraphNode).radius + (d.target as GraphNode).radius)
-        .strength(d => d.strength))
-      .force('charge', forceManyBody<GraphNode>()
-        .strength(d => -80 - d.radius * 4)
-        .distanceMax(400))
-      .force('center', forceCenter(dimensions.width / 2, dimensions.height / 2).strength(0.05))
-      .force('collide', forceCollide<GraphNode>(d => d.radius + 3).iterations(2))
-      .force('x', forceX<GraphNode>(dimensions.width / 2).strength(0.02))
-      .force('y', forceY<GraphNode>(dimensions.height / 2).strength(0.02))
-      .alphaDecay(0.008)
-      .velocityDecay(0.3)
-
-    if (!shouldAnimate) {
-      sim.tick(300)
-      sim.stop()
-    }
-
-    simRef.current = sim
-    return () => { sim.stop() }
-  }, [dimensions.width, dimensions.height, shouldAnimate])
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current
@@ -178,12 +139,20 @@ export function NeuralMap() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    const { width, height } = dimensions
+    const { width, height } = dimensionsRef.current
     const dpr = window.devicePixelRatio || 1
-    canvas.width = width * dpr
-    canvas.height = height * dpr
+
+    if (canvasSizedRef.current.width !== width || canvasSizedRef.current.height !== height) {
+      canvas.width = width * dpr
+      canvas.height = height * dpr
+      canvasSizedRef.current = { width, height }
+    }
+
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     ctx.clearRect(0, 0, width, height)
+
+    const transform = transformRef.current
+    const hovered = hoveredRef.current
 
     ctx.save()
     ctx.translate(transform.x, transform.y)
@@ -274,35 +243,71 @@ export function NeuralMap() {
       ctx.fillStyle = '#3D4C63'
       ctx.fillText(`${hovered.type} · ${connectedIds.size - 1} connections`, 16, height - 22)
     }
-  }, [dimensions, hovered, transform])
+  }, [])
 
   useEffect(() => {
-    const sim = simRef.current
-    if (!sim) return
+    const { nodes, links } = buildGraph()
+    graphRef.current = { nodes, links }
+    const { width, height } = dimensionsRef.current
 
-    if (shouldAnimate) {
+    const sim = forceSimulation<GraphNode>(nodes)
+      .force('link', forceLink<GraphNode, GraphLink>(links)
+        .id(d => d.id)
+        .distance(d => 60 + (d.source as GraphNode).radius + (d.target as GraphNode).radius)
+        .strength(d => d.strength))
+      .force('charge', forceManyBody<GraphNode>()
+        .strength(d => -80 - d.radius * 4)
+        .distanceMax(400))
+      .force('center', forceCenter(width / 2, height / 2).strength(0.05))
+      .force('collide', forceCollide<GraphNode>(d => d.radius + 3).iterations(2))
+      .force('x', forceX<GraphNode>(width / 2).strength(0.02))
+      .force('y', forceY<GraphNode>(height / 2).strength(0.02))
+      .alphaDecay(0.028)
+      .velocityDecay(0.4)
+
+    if (!shouldAnimate) {
+      sim.tick(300)
+      sim.stop()
+      draw()
+    } else {
       sim.on('tick', () => {
         cancelAnimationFrame(animRef.current)
         animRef.current = requestAnimationFrame(draw)
       })
-    } else {
+    }
+
+    simRef.current = sim
+    return () => { sim.stop() }
+  }, [shouldAnimate, draw])
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+    const obs = new ResizeObserver(entries => {
+      const { width, height: h } = entries[0].contentRect
+      const height = Math.max(h, 600)
+      dimensionsRef.current = { width, height }
+
+      const sim = simRef.current
+      if (sim) {
+        const cf = sim.force('center') as ReturnType<typeof forceCenter> | undefined
+        cf?.x(width / 2).y(height / 2)
+        const xf = sim.force('x') as ReturnType<typeof forceX> | undefined
+        xf?.x(width / 2)
+        const yf = sim.force('y') as ReturnType<typeof forceY> | undefined
+        yf?.y(height / 2)
+        if (sim.alpha() < 0.05) sim.alpha(0.1).restart()
+      }
       draw()
-    }
-
-    return () => {
-      sim.on('tick', null)
-      cancelAnimationFrame(animRef.current)
-    }
-  }, [draw, shouldAnimate])
-
-  useEffect(() => { draw() }, [draw])
+    })
+    obs.observe(container)
+    return () => obs.disconnect()
+  }, [draw])
 
   const screenToWorld = useCallback((sx: number, sy: number) => {
-    return {
-      x: (sx - transform.x) / transform.k,
-      y: (sy - transform.y) / transform.k,
-    }
-  }, [transform])
+    const t = transformRef.current
+    return { x: (sx - t.x) / t.k, y: (sy - t.y) / t.k }
+  }, [])
 
   const findNode = useCallback((sx: number, sy: number): GraphNode | null => {
     const { x, y } = screenToWorld(sx, sy)
@@ -323,20 +328,23 @@ export function NeuralMap() {
     const sx = e.clientX - rect.left
     const sy = e.clientY - rect.top
 
-    if (dragging) {
+    if (draggingRef.current) {
       const { x, y } = screenToWorld(sx, sy)
-      dragging.fx = x
-      dragging.fy = y
-      simRef.current?.alpha(0.3).restart()
+      draggingRef.current.fx = x
+      draggingRef.current.fy = y
       return
     }
 
     const node = findNode(sx, sy)
-    setHovered(node)
+    if (node !== hoveredRef.current) {
+      hoveredRef.current = node
+      cancelAnimationFrame(animRef.current)
+      animRef.current = requestAnimationFrame(draw)
+    }
     if (canvasRef.current) {
       canvasRef.current.style.cursor = node ? 'pointer' : 'grab'
     }
-  }, [dragging, findNode, screenToWorld])
+  }, [findNode, screenToWorld, draw])
 
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
     const rect = canvasRef.current?.getBoundingClientRect()
@@ -349,21 +357,22 @@ export function NeuralMap() {
       const { x, y } = screenToWorld(sx, sy)
       node.fx = x
       node.fy = y
-      setDragging(node)
+      draggingRef.current = node
       simRef.current?.alphaTarget(0.3).restart()
       canvasRef.current?.setPointerCapture(e.pointerId)
     }
   }, [findNode, screenToWorld])
 
   const handlePointerUp = useCallback((e: React.PointerEvent) => {
-    if (dragging) {
-      dragging.fx = null
-      dragging.fy = null
-      setDragging(null)
+    const d = draggingRef.current
+    if (d) {
+      d.fx = null
+      d.fy = null
+      draggingRef.current = null
       simRef.current?.alphaTarget(0)
       canvasRef.current?.releasePointerCapture(e.pointerId)
     }
-  }, [dragging])
+  }, [])
 
   const handleWheel = useCallback((e: React.WheelEvent) => {
     e.preventDefault()
@@ -372,15 +381,18 @@ export function NeuralMap() {
     const sx = e.clientX - rect.left
     const sy = e.clientY - rect.top
 
+    const prev = transformRef.current
     const factor = e.deltaY > 0 ? 0.92 : 1.08
-    const newK = Math.max(0.2, Math.min(4, transform.k * factor))
+    const newK = Math.max(0.2, Math.min(4, prev.k * factor))
 
-    setTransform(prev => ({
+    transformRef.current = {
       x: sx - (sx - prev.x) * (newK / prev.k),
       y: sy - (sy - prev.y) * (newK / prev.k),
       k: newK,
-    }))
-  }, [transform.k])
+    }
+    cancelAnimationFrame(animRef.current)
+    animRef.current = requestAnimationFrame(draw)
+  }, [draw])
 
   return (
     <div ref={containerRef} className="w-full h-[calc(100vh-180px)] min-h-[600px] relative">

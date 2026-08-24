@@ -60,10 +60,6 @@ export const font = {
   mono: "'IBM Plex Mono', monospace",
 } as const
 
-export const texture = {
-  patterns: ['solid', 'diagonal', 'dots', 'crosshatch', 'horizontal', 'vertical'] as const,
-} as const
-
 export const motion = {
   duration: 300,
   stagger: 30,
