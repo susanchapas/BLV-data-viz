@@ -48,7 +48,7 @@ function ModeChart({
   const { shouldAnimate } = useMotion()
   const announce = useAnnounce()
   const navigate = useNavigate()
-  const { toggleArrayFilter } = useFilters()
+
   const innerW = Math.max(width - margin.left - margin.right, 0)
   const innerH = Math.max(height - margin.top - margin.bottom, 0)
 
@@ -96,8 +96,7 @@ function ModeChart({
               onMouseEnter={() => onItemHover?.(d.Tag)}
               onMouseLeave={() => onItemHover?.(null)}
               onClick={() => {
-                toggleArrayFilter('detectability', d['Detectable without sight'])
-                navigate(buildDrillUrl({ search: d['Failure mode'] }))
+                navigate(buildDrillUrl(d.mode_codes?.length ? { code: d.mode_codes } : { search: d['Failure mode'] }))
               }}
               className="cursor-pointer"
             />

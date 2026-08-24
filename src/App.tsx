@@ -6,6 +6,7 @@ import { MotionProvider } from '@/lib/motion'
 import { AnnounceProvider } from '@/lib/announce'
 import { Nav } from '@/components/Nav'
 import { FilterBar } from '@/components/FilterBar'
+
 import { Dashboard } from '@/views/Dashboard'
 
 const EvidenceExplorer = lazy(() => import('@/views/EvidenceExplorer').then(m => ({ default: m.EvidenceExplorer })))
@@ -15,6 +16,7 @@ const ThemeBrowser = lazy(() => import('@/views/ThemeBrowser').then(m => ({ defa
 const ParticipantProfiles = lazy(() => import('@/views/ParticipantProfiles').then(m => ({ default: m.ParticipantProfiles })))
 const ChartGallery = lazy(() => import('@/views/ChartGallery').then(m => ({ default: m.ChartGallery })))
 const DataExplorer = lazy(() => import('@/views/DataExplorer').then(m => ({ default: m.DataExplorer })))
+const NeuralMap = lazy(() => import('@/views/NeuralMap').then(m => ({ default: m.NeuralMap })))
 
 function Subpage({ children }: { children: React.ReactNode }) {
   return (
@@ -51,6 +53,7 @@ export default function App() {
               <Route path="/participants" element={<Subpage><ParticipantProfiles /></Subpage>} />
               <Route path="/participants/:pid" element={<Subpage><ParticipantProfiles /></Subpage>} />
               <Route path="/charts" element={<Subpage><ChartGallery /></Subpage>} />
+              <Route path="/neural-map" element={<Subpage><NeuralMap /></Subpage>} />
             </Routes>
           </SelectionProvider>
         </FilterProvider>

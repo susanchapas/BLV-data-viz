@@ -102,7 +102,7 @@ function SignalChart({
               }
               onMouseEnter={() => onItemHover?.(d.Tag)}
               onMouseLeave={() => onItemHover?.(null)}
-              onClick={() => navigate(buildDrillUrl({ search: d['Signal the user needs'] }))}
+              onClick={() => navigate(buildDrillUrl(d.codes?.length ? { code: d.codes } : { search: d['Signal the user needs'] }))}
               className="cursor-pointer"
             />
           )

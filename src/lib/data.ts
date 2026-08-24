@@ -84,11 +84,8 @@ export const charts: ChartSpec[] = chartModules.map((c) => {
   return spec
 })
 
-export const P011_ID = 'P011'
-
-export function isP011(pid: string): boolean {
-  return pid === P011_ID
-}
+import { P011_ID, isP011 } from './constants'
+export { P011_ID, isP011 }
 
 export const PARTICIPANT_IDS = participants.map((p) => p.id)
 export const RBM_PARTICIPANTS = participants.filter((p) => !isP011(p.id)).map((p) => p.id)

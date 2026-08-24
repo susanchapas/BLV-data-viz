@@ -617,8 +617,23 @@ export function DataExplorer() {
     : [{ key: 'bar', label: 'Bar' }, { key: 'pie', label: 'Pie' }, { key: 'donut', label: 'Donut' }, { key: 'treemap', label: 'Treemap' }]
 
   const handleItemClick = useCallback((item: ChartClickItem) => {
-    navigate(buildDrillUrl({ search: item.label }))
-  }, [navigate])
+    const dataItem = group.items.find(i => i.label === item.label)
+    if (!dataItem) { navigate(buildDrillUrl({ search: item.label })); return }
+    const key = dataItem.key
+    if (key.startsWith('r|t|')) {
+      navigate(buildDrillUrl({ theme: key.slice(4) }))
+    } else if (key.startsWith('r|c|')) {
+      navigate(buildDrillUrl({ code: key.slice(4) }))
+    } else if (key.startsWith('r|s|')) {
+      const signal = feedbackSignals.find(s => s.Tag === key.slice(4))
+      navigate(buildDrillUrl(signal?.codes.length ? { code: signal.codes } : { search: item.label }))
+    } else if (key.startsWith('r|v|')) {
+      const mode = verificationModes.find(v => v.Tag === key.slice(4))
+      navigate(buildDrillUrl(mode?.mode_codes.length ? { code: mode.mode_codes } : { search: item.label }))
+    } else {
+      navigate(buildDrillUrl({ search: item.label }))
+    }
+  }, [navigate, group])
 
   const handleItemHover = useCallback((label: string | null) => {
     if (label) setSelection([label], 'explorer')

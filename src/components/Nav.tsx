@@ -9,6 +9,7 @@ const links = [
   { to: '/themes', label: 'Themes' },
   { to: '/participants', label: 'Participants' },
   { to: '/charts', label: 'Charts' },
+  { to: '/neural-map', label: 'Neural Map' },
 ]
 
 function Logo() {

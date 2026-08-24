@@ -1,5 +1,5 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { evidence, participants, themes, verificationModes, feedbackSignals, charts, codebook } from '@/lib/data'
 
 function Logo() {
   return (
@@ -22,7 +22,39 @@ function Stat({ value, label }: { value: number | string; label: string }) {
   )
 }
 
+interface DashboardStats {
+  evidenceCount: number
+  codebookCount: number
+  themeCount: number
+  verificationCount: number
+  signalCount: number
+  silentCount: number
+  chartCount: number
+  participantIds: string[]
+}
+
+function useDashboardStats() {
+  const [stats, setStats] = useState<DashboardStats | null>(null)
+  useEffect(() => {
+    import('@/lib/data').then(({ evidence, participants, themes, verificationModes, feedbackSignals, charts, codebook }) => {
+      setStats({
+        evidenceCount: evidence.length,
+        codebookCount: codebook.length,
+        themeCount: themes.length,
+        verificationCount: verificationModes.length,
+        signalCount: feedbackSignals.length,
+        silentCount: feedbackSignals.filter(s => s['Signal status'] === 'Silent').length,
+        chartCount: charts.length,
+        participantIds: participants.map(p => p.id),
+      })
+    })
+  }, [])
+  return stats
+}
+
 export function Dashboard() {
+  const stats = useDashboardStats()
+
   return (
     <div className="min-h-screen bg-surface text-text font-sans">
       <header className="max-w-[1240px] mx-auto" style={{ padding: 'clamp(32px, 5vw, 64px) clamp(20px, 4vw, 48px) 0' }}>
@@ -67,8 +99,8 @@ export function Dashboard() {
               </p>
             </div>
             <div className="relative z-10 flex gap-6 mt-6">
-              <Stat value={codebook.length} label="codes" />
-              <Stat value={themes.length} label="themes" />
+              <Stat value={stats?.codebookCount ?? '–'} label="codes" />
+              <Stat value={stats?.themeCount ?? '–'} label="themes" />
               <Stat value="7" label="demographics" />
             </div>
             <div className="absolute right-0 bottom-0 opacity-[0.08]" aria-hidden="true">
@@ -98,7 +130,7 @@ export function Dashboard() {
                 Filter, sort and search all coded evidence from 17 interviews.
               </p>
             </div>
-            <Stat value={evidence.length} label="coded rows" />
+            <Stat value={stats?.evidenceCount ?? '–'} label="coded rows" />
           </Link>
 
           <Link
@@ -115,7 +147,7 @@ export function Dashboard() {
                 Major themes and sub-themes that emerged from the data.
               </p>
             </div>
-            <Stat value={themes.length} label="themes" />
+            <Stat value={stats?.themeCount ?? '–'} label="themes" />
           </Link>
 
           <Link
@@ -133,8 +165,8 @@ export function Dashboard() {
               </p>
             </div>
             <div className="flex gap-4">
-              <Stat value={feedbackSignals.length} label="signals" />
-              <Stat value={feedbackSignals.filter(s => s['Signal status'] === 'Silent').length} label="silent" />
+              <Stat value={stats?.signalCount ?? '–'} label="signals" />
+              <Stat value={stats?.silentCount ?? '–'} label="silent" />
             </div>
           </Link>
 
@@ -152,7 +184,7 @@ export function Dashboard() {
                 How verification failures compound when users can't see.
               </p>
             </div>
-            <Stat value={verificationModes.length} label="failure modes" />
+            <Stat value={stats?.verificationCount ?? '–'} label="failure modes" />
           </Link>
 
           <Link
@@ -169,7 +201,7 @@ export function Dashboard() {
                 Publication-ready charts with alt text and data tables.
               </p>
             </div>
-            <Stat value={charts.length} label="charts" />
+            <Stat value={stats?.chartCount ?? '–'} label="charts" />
           </Link>
 
           <Link
@@ -180,16 +212,16 @@ export function Dashboard() {
             <div>
               <span className="font-mono text-[11px] tracking-[0.16em] uppercase text-action block mb-3">Participants</span>
               <span className="font-heading text-[clamp(1.1rem,2vw,1.375rem)] leading-[1.15] text-navy-900 block">
-                {participants.length} individual profiles
+                {stats ? `${stats.participantIds.length} individual profiles` : 'Individual profiles'}
               </span>
               <p className="text-[14px] text-text-muted mt-2 leading-relaxed max-w-[50ch]">
                 Demographics, devices, personas, and per-participant evidence links.
               </p>
             </div>
             <div className="flex flex-wrap gap-1.5 sm:max-w-[280px]">
-              {participants.map(p => (
-                <span key={p.id} className="font-mono text-[11px] px-2 py-1 rounded-pill bg-surface-sunk border border-border text-text-muted">
-                  {p.id}
+              {stats?.participantIds.map(id => (
+                <span key={id} className="font-mono text-[11px] px-2 py-1 rounded-pill bg-surface-sunk border border-border text-text-muted">
+                  {id}
                 </span>
               ))}
             </div>

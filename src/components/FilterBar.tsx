@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { useFilters } from '@/lib/filters'
 import { useAnnounce } from '@/lib/announce'
-import { themes, codebook } from '@/lib/data'
+import type { ThemeEntry, CodebookEntry } from '@/lib/types'
 
 function MultiSelect({
   label,
@@ -105,6 +105,8 @@ export function FilterBar() {
   const debounceRef = useRef<ReturnType<typeof setTimeout>>()
   const [localSearch, setLocalSearch] = useState(filters.search)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [themeOptions, setThemeOptions] = useState<{ value: string; label: string }[]>([])
+  const [codeOptions, setCodeOptions] = useState<{ value: string; label: string }[]>([])
   const toggle = useCallback((name: string) => {
     setOpenDropdown((prev) => (prev === name ? null : name))
   }, [])
@@ -119,15 +121,12 @@ export function FilterBar() {
     }
   }, [])
 
-  const themeOptions = themes.map((t) => ({
-    value: t.Theme,
-    label: `${t.Theme} ${t.Name}`,
-  }))
-
-  const codeOptions = codebook.map((c) => ({
-    value: c.Code,
-    label: `${c.Code} — ${c.Label}`,
-  }))
+  useEffect(() => {
+    import('@/lib/data').then(({ themes, codebook }) => {
+      setThemeOptions(themes.map((t: ThemeEntry) => ({ value: t.Theme, label: `${t.Theme} ${t.Name}` })))
+      setCodeOptions(codebook.map((c: CodebookEntry) => ({ value: c.Code, label: `${c.Code} — ${c.Label}` })))
+    })
+  }, [])
 
   return (
     <div role="search" aria-label="Filters" className="border-b border-border bg-surface-sunk">

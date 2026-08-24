@@ -8,7 +8,7 @@ import {
 import { useSearchParams } from 'react-router-dom'
 import type { FilterState, EvidenceRow } from './types'
 import { EMPTY_FILTERS } from './types'
-import { isP011 } from './data'
+import { isP011 } from './constants'
 
 function parseFilters(params: URLSearchParams): FilterState {
   return {
@@ -123,7 +123,9 @@ export function FilterProvider({ children }: { children: ReactNode }) {
           (r) =>
             r.Quote?.toLowerCase().includes(q) ||
             r['Label as coded']?.toLowerCase().includes(q) ||
-            r.Code?.toLowerCase().includes(q),
+            r.Code?.toLowerCase().includes(q) ||
+            r['Theme name']?.toLowerCase().includes(q) ||
+            r['Sub-theme']?.toLowerCase().includes(q),
         )
       }
       return result
